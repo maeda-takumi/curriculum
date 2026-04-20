@@ -12,7 +12,7 @@ $message = '';
 $error = '';
 
 /**
- * @return array<int, array{id:string,date:string,title:string,body:string}>
+ * @return array<int, array{id:string,date:string,title:string,body:string,visibility:string}>
  */
 function load_articles(string $path): array
 {
@@ -46,6 +46,7 @@ function load_articles(string $path): array
             'date' => trim((string)($item['date'] ?? '')),
             'title' => trim((string)($item['title'] ?? '')),
             'body' => (string)($item['body'] ?? ''),
+            'visibility' => normalize_visibility($item['visibility'] ?? 'public'),
         ];
     }
 
@@ -53,7 +54,7 @@ function load_articles(string $path): array
 }
 
 /**
- * @param array<int, array{id:string,date:string,title:string,body:string}> $articles
+ * @param array<int, array{id:string,date:string,title:string,body:string,visibility:string}> $articles
  */
 function save_articles(string $path, array $articles): bool
 {
@@ -65,6 +66,7 @@ function save_articles(string $path, array $articles): bool
             'title' => $article['title'],
             'excerpt' => '',
             'body' => $article['body'],
+            'visibility' => normalize_visibility($article['visibility'] ?? 'public'),
         ];
     }
 
@@ -77,6 +79,15 @@ function save_articles(string $path, array $articles): bool
     return file_put_contents($path, $json . PHP_EOL, LOCK_EX) !== false;
 }
 
+function normalize_visibility(mixed $visibility): string
+{
+    $normalized = strtolower(trim((string)$visibility));
+    if (in_array($normalized, ['private', 'admin', 'public'], true)) {
+        return $normalized;
+    }
+
+    return 'public';
+}
 $articles = load_articles($articlesFile);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -95,6 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $date = trim((string)($article['date'] ?? ''));
         $title = trim((string)($article['title'] ?? ''));
         $body = (string)($article['body'] ?? '');
+        $visibility = normalize_visibility($article['visibility'] ?? 'public');
 
         if ($date === '' && $title === '' && trim($body) === '') {
             continue;
@@ -109,6 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'date' => $date,
             'title' => $title,
             'body' => $body,
+            'visibility' => $visibility,
         ];
     }
 
@@ -132,6 +145,7 @@ $articlesForJs = array_values(array_map(
         'date' => (string)($article['date'] ?? ''),
         'title' => (string)($article['title'] ?? ''),
         'body' => (string)($article['body'] ?? ''),
+        'visibility' => normalize_visibility($article['visibility'] ?? 'public'),
     ],
     $articles
 ));
@@ -237,7 +251,7 @@ $articlesForJs = array_values(array_map(
       <div class="title-row">
         <div>
           <h1>記事編集</h1>
-          <p class="muted">入力項目は「タイトル」「投稿日付」「本文」のみです。ID は保存時に自動採番されます。</p>
+          <p class="muted">入力項目は「タイトル」「投稿日付」「本文」「公開モード」です。本文は HTML をそのまま保存できます。ID は保存時に自動採番されます。</p>
         </div>
       </div>
 
@@ -273,6 +287,14 @@ $articlesForJs = array_values(array_map(
         本文
         <textarea id="modal-body" required></textarea>
       </label>
+      <label>
+        公開モード
+        <select id="modal-visibility" required>
+          <option value="private">非公開（誰も見れない）</option>
+          <option value="admin">管理者公開（管理者ユーザのみ）</option>
+          <option value="public">一般公開（管理者ユーザ・通常ユーザ）</option>
+        </select>
+      </label>
       <div class="actions" style="margin-top: 12px; justify-content: flex-end;">
         <button class="btn-danger btn-inline" type="button" id="modal-delete" style="margin-right: auto; display: none;">削除</button>
         <button class="btn-sub btn-inline" type="button" id="modal-cancel">キャンセル</button>
@@ -297,6 +319,7 @@ $articlesForJs = array_values(array_map(
       const modalDate = document.getElementById('modal-date');
       const modalTitleInput = document.getElementById('modal-title');
       const modalBody = document.getElementById('modal-body');
+      const modalVisibility = document.getElementById('modal-visibility');
       const modalDelete = document.getElementById('modal-delete');
       const modalCancel = document.getElementById('modal-cancel');
       const modalSave = document.getElementById('modal-save');
@@ -362,8 +385,8 @@ $articlesForJs = array_values(array_map(
           const info = document.createElement('div');
           info.innerHTML = `
             <p class="article-title">${truncate(article.title || '(無題)', 80)}</p>
-            <p class="article-meta">ID: ${article.id || '-'} / 投稿日付: ${truncate(article.date || '-', 30)}</p>
-            <p class="article-body-preview">${truncate((article.body || '').replace(/\s+/g, ' ').trim(), 110)}</p>
+            <p class="article-meta">ID: ${article.id || '-'} / 投稿日付: ${truncate(article.date || '-', 30)} / 公開: ${article.visibility || 'public'}</p>
+            <p class="article-body-preview">${truncate((article.body || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim(), 110)}</p>
           `;
 
           const actions = document.createElement('div');
@@ -384,13 +407,15 @@ $articlesForJs = array_values(array_map(
           modalDate.value = todayDefault;
           modalTitleInput.value = '';
           modalBody.value = '';
+          modalVisibility.value = 'public';
           modalDelete.style.display = 'none';
         } else {
-          const article = articles[editingIndex] || { date: '', title: '', body: '' };
+          const article = articles[editingIndex] || { date: '', title: '', body: '', visibility: 'public' };
           modalTitle.textContent = '記事を編集';
           modalDate.value = article.date || '';
           modalTitleInput.value = article.title || '';
           modalBody.value = article.body || '';
+          modalVisibility.value = article.visibility || 'public';
           modalDelete.style.display = 'inline-flex';
         }
 
@@ -419,6 +444,7 @@ $articlesForJs = array_values(array_map(
             date: article.date || '',
             title: article.title || '',
             body: article.body || '',
+            visibility: article.visibility || 'public',
 
           };
 
@@ -440,13 +466,14 @@ $articlesForJs = array_values(array_map(
         const date = modalDate.value.trim();
         const title = modalTitleInput.value.trim();
         const body = modalBody.value;
+        const visibility = modalVisibility.value;
 
         if (date === '' || title === '' || body.trim() === '') {
           alert('投稿日付・タイトル・本文は必須です。');
           return;
         }
 
-        const next = { id: '', date, title, body };
+        const next = { id: '', date, title, body, visibility };
 
         if (editingIndex === null) {
           articles.push(next);

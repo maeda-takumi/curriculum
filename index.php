@@ -1833,4 +1833,11 @@ if ($loginEmailForClient !== '') {
         $html = $clientUserScript . $html;
     }
 }
+$loginRoleForClient = normalize_role($_SESSION['login_role'] ?? 'user');
+$clientRoleScript = '<script>window.__LOGIN_USER_ROLE__ = ' . json_encode($loginRoleForClient, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . ';</script>';
+if (stripos($html, '</head>') !== false) {
+    $html = preg_replace('/<\/head>/i', $clientRoleScript . "\n</head>", $html, 1) ?? $html;
+} else {
+    $html = $clientRoleScript . $html;
+}
 echo $html;
