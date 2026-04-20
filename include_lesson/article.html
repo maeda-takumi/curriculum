@@ -247,8 +247,20 @@
       const params = new URLSearchParams(window.location.search);
       const articleId = params.get('article');
       const loginUserEmail = typeof window.__LOGIN_USER_EMAIL__ === 'string' ? window.__LOGIN_USER_EMAIL__.trim() : '';
+      const loginUserRole = typeof window.__LOGIN_USER_ROLE__ === 'string' ? window.__LOGIN_USER_ROLE__.trim() : 'user';
       const openedStorageKey = loginUserEmail !== '' ? `openedArticles:${loginUserEmail}` : 'openedArticles:guest';
 
+      const canViewArticle = (article) => {
+        const visibility = String(article?.visibility || '').trim().toLowerCase() || 'public';
+        if (visibility === 'private') {
+          return false;
+        }
+        if (visibility === 'admin') {
+          return loginUserRole === 'admin';
+        }
+
+        return true;
+      };
       const getOpenedArticles = () => {
         try {
           const raw = localStorage.getItem(openedStorageKey);
@@ -292,7 +304,8 @@
 
         const payload = await response.json();
         const articles = Array.isArray(payload?.articles) ? payload.articles : [];
-        const sortedArticles = [...articles].sort((a, b) => {
+        const visibleArticles = articles.filter((article) => canViewArticle(article));
+        const sortedArticles = [...visibleArticles].sort((a, b) => {
           const toTimestamp = (value) => {
             const parsed = Date.parse(String(value || ''));
             return Number.isNaN(parsed) ? Number.NEGATIVE_INFINITY : parsed;
@@ -348,6 +361,10 @@
         const target = articles.find((article) => String(article.id) === articleId);
         if (!target) {
           showError('指定された記事が見つかりませんでした。');
+          return;
+        }
+        if (!canViewArticle(target)) {
+          showError('この記事を閲覧する権限がありません。');
           return;
         }
 

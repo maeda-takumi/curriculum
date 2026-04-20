@@ -251,7 +251,7 @@
       const openedStorageKey = loginUserEmail !== '' ? `openedArticles:${loginUserEmail}` : 'openedArticles:guest';
 
       const canViewArticle = (article) => {
-        const visibility = String(article?.visibility || 'public');
+        const visibility = String(article?.visibility || '').trim().toLowerCase() || 'public';
         if (visibility === 'private') {
           return false;
         }

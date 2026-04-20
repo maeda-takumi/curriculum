@@ -660,7 +660,19 @@
       const shortcutList = document.getElementById('article-shortcuts');
       const emptyMessage = document.getElementById('article-shortcuts-empty');
       const loginUserEmail = typeof window.__LOGIN_USER_EMAIL__ === 'string' ? window.__LOGIN_USER_EMAIL__.trim() : '';
+      const loginUserRole = typeof window.__LOGIN_USER_ROLE__ === 'string' ? window.__LOGIN_USER_ROLE__.trim() : 'user';
       const openedStorageKey = loginUserEmail !== '' ? `openedArticles:${loginUserEmail}` : 'openedArticles:guest';
+
+      const canViewArticle = (article) => {
+        const visibility = String(article?.visibility || '').trim().toLowerCase() || 'public';
+        if (visibility === 'private') {
+          return false;
+        }
+        if (visibility === 'admin') {
+          return loginUserRole === 'admin';
+        }
+        return true;
+      };
 
       const getOpenedArticles = () => {
         try {
@@ -680,7 +692,8 @@
 
         const payload = await response.json();
         const articles = Array.isArray(payload?.articles) ? payload.articles : [];
-        const latestFive = [...articles]
+        const visibleArticles = articles.filter((article) => canViewArticle(article));
+        const latestFive = [...visibleArticles]
           .sort((a, b) => {
             const dateCompare = String(b.date || '').localeCompare(String(a.date || ''));
             if (dateCompare !== 0) return dateCompare;
