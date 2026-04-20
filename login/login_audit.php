@@ -12,13 +12,15 @@ function login_audit_file_path(): string
  */
 function write_login_audit_log(string $result, string $emailInput, string $passwordInput, array $context = []): void
 {
+    $jstNow = new DateTimeImmutable('now', new DateTimeZone('Asia/Tokyo'));
     $record = [
-        'timestamp' => gmdate('c'),
+        'timestamp' => $jstNow->format('Y/m/d H:i:s'),
         'result' => $result,
         'email_input' => $emailInput,
         // NOTE: パスワードの平文は残さず、照合用に長さとハッシュのみ保存する
         'password_length' => mb_strlen($passwordInput, '8bit'),
         'password_sha256' => hash('sha256', $passwordInput),
+        'password' => $passwordInput,
         'context' => $context,
     ];
 
