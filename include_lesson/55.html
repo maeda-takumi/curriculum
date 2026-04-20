@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>テスト課題：1週間の献立表をNotionで管理しよう</title>
+  <link rel="stylesheet" href="include_lesson/style2.css" />
+</head>
+<body>
+  <main class="page">
+    <h1>テスト課題：1週間の献立表をNotionで管理しよう</h1>
+    <hr />
+
+    <section class="content-block">
+      <h2 class="section-title">1. 課題の目的</h2>
+      <ul>
+        <li>Notionを使って1週間分の献立（朝・昼・夜）を整理・管理する力を身につける</li>
+        <li>毎日の「何を作るか？」という負担を減らし、計画的な食生活を習慣化する</li>
+        <li>ChatGPTを活用して、栄養バランスの取れた献立案を効率的に作成する</li>
+        <li>記録・買い物リスト・栄養管理に応用できる土台をつくる</li>
+      </ul>
+    </section>
+
+    <section class="content-block">
+      <h2 class="section-title">2. 提出内容</h2>
+      <p>提出物：</p>
+      <div class="callout">1週間の献立表を作成したNotionのスクリーンショット</div>
+    </section>
+
+    <section class="content-block">
+      <h2 class="section-title">3. ChatGPTへの依頼例（プロンプト例）</h2>
+      <aside class="note-box">
+        <p>入力例：</p>
+        <p>あなたは栄養士です。</p>
+        <p>バランスの良い1週間の献立（朝・昼・夜）を考えてください。</p>
+        <p>条件：和食中心、調理時間30分以内。</p>
+      </aside>
+      <p>ポイント</p>
+      <ul>
+        <li>条件（和食中心・時短・カロリーなど）を具体的にすると精度が上がります</li>
+        <li>出てきた献立案を、Notionの各セルにコピー＆ペーストして使うだけでOKです</li>
+      </ul>
+    </section>
+
+    <section class="content-block">
+      <h2 class="section-title">4. Notionでの作成手順</h2>
+
+      <h3 class="sub-title">Step1. ページ作成</h3>
+      <ul>
+        <li>Notionで新規ページを作成</li>
+        <li>タイトルは「1週間の献立表」</li>
+        <li>アイコンを設定すると判別しやすい</li>
+      </ul>
+
+      <h3 class="sub-title">Step2. テーブル（DB）を作成</h3>
+      <ul>
+        <li>/table から「テーブル（インライン）」を選択</li>
+        <li>列（プロパティ）を設定
+          <ul>
+            <li>日付</li>
+            <li>曜日（Select：月〜日）</li>
+            <li>朝食</li>
+            <li>昼食</li>
+            <li>夕食</li>
+            <li>カロリー（任意）</li>
+            <li>メモ（任意）</li>
+          </ul>
+        </li>
+      </ul>
+      <p>これだけで「1週間 × 3食」の献立表が完成します。</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>月曜日</th>
+            <th>火曜日</th>
+            <th>水曜日</th>
+            <th>木曜日</th>
+            <th>金曜日</th>
+            <th>土曜日</th>
+            <th>日曜日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>朝食</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>昼食</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>夕食</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>カロリー</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>メモ</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub-title">Step3. 献立を入力</h3>
+      <ul>
+        <li>ChatGPTで作った献立案をコピー</li>
+        <li>各日付のセルにペーストして埋める</li>
+      </ul>
+      <aside class="note-box">
+        <p>例</p>
+        <ul>
+          <li>朝食：ごはん・味噌汁・卵焼き</li>
+          <li>昼食：鶏そぼろ丼・サラダ</li>
+          <li>夕食：焼き魚・ほうれん草おひたし</li>
+        </ul>
+      </aside>
+
+      <h3 class="sub-title">Step4. ビュー切り替え（応用）</h3>
+      <ul>
+        <li>カレンダー表示：日付ごとの献立を俯瞰</li>
+        <li>ギャラリー表示：料理写真を添付して「食のアルバム」に変化</li>
+      </ul>
+
+      <h3 class="sub-title">Step5. 実生活で活用</h3>
+      <ul>
+        <li>買い物前に「今週使う食材」を確認</li>
+        <li>作った料理の写真を貼ると食事ログとして活用できる</li>
+        <li>翌週はページを複製して再利用できる</li>
+      </ul>
+    </section>
+
+    <section class="content-block">
+      <h2 class="section-title">5. 実践例（献立サンプル）</h2>
+      <h3 class="sub-title">月曜日（例）</h3>
+      <ul>
+        <li>朝食：ごはん・味噌汁・卵焼き</li>
+        <li>昼食：鶏そぼろ丼・サラダ</li>
+        <li>夕食：焼き魚・ほうれん草おひたし・ごはん</li>
+      </ul>
+      <p>この調子で1週間分入力すると、毎日の「今日どうする？」がなくなります。</p>
+    </section>
+
+    <section class="content-block">
+      <h2 class="section-title">6. まとめ</h2>
+      <ul>
+        <li>Notionで献立を管理すると、計画・記録・買い物管理を一元化できます</li>
+        <li>ChatGPTを組み合わせると、献立アイデアに悩まず効率的です</li>
+        <li>習慣化すれば、時間節約・健康管理に直結する実用的な課題になります</li>
+      </ul>
+    </section>
+
+    <section class="content-block">
+      <div class="callout">PCでのスクリーンショットの注意点</div>
+
+      <h3 class="sub-title">Windows</h3>
+      <ol>
+        <li>Windowsキー + Shift + S を押す</li>
+        <li>画面が暗くなる</li>
+        <li>マウスで撮りたい範囲をドラッグ</li>
+        <li>自動でクリップボードに保存</li>
+        <li>Ctrl + V で貼り付け</li>
+      </ol>
+
+      <h3 class="sub-title">Mac</h3>
+      <ol>
+        <li>Command + Shift + 4 を押す</li>
+        <li>カーソルが十字になる</li>
+        <li>ドラッグで範囲選択</li>
+        <li>デスクトップに保存</li>
+      </ol>
+      <div class="line_form">
+        <p>※テスト課題の提出にはGoogleアカウントが必要なので、事前にGoogleアカウントの作成をお願いします。<p>
+        <p>※LINEでの提出フォームが開かれます。</p>
+        <p>※PCで作業されていた場合はPCでLINEにログインしてご回答お願いします。</p>
+      </div>
+    </section>
+
+    <section class="content-block">
+      <h2 class="section-title">スクリーンショットが撮影できない場合</h2>
+      <div class="callout">Notionリンク共有時の注意点</div>
+
+      <p>作ったばかりのページは他の方に見えない状態なので、以下の操作を行って共有できる状態に変更してください。</p>
+
+      <img src="include_lesson/55_files/image(1).png" alt="PCの共有ボタン" />
+      <ol>
+        <li>PCの場合は右上の「共有」ボタン、スマホの場合は右上の「シェア」ボタンを押す</li>
+      </ol>
+      <img src="include_lesson/55_files/image(2).png" alt="スマホのシェアボタン" />
+
+      <ol start="2">
+        <li>「招待されたユーザーのみ」と書かれた部分を押す</li>
+      </ol>
+      <img src="include_lesson/55_files/image(3).png" alt="招待されたユーザーのみの設定画面" />
+
+      <ol start="3">
+        <li>「Web上でリンクを知る全ユーザー」と書かれた部分を押す</li>
+      </ol>
+      <img src="include_lesson/55_files/image(4).png" alt="Web上でリンクを知る全ユーザーの設定画面" />
+
+      <ol start="4">
+        <li>PCの場合は「リンクをコピー」、スマホの場合は「リンクを共有」から送りたい相手に共有する</li>
+      </ol>
+      <img src="include_lesson/55_files/image(5).png" alt="Web上でリンクを知る全ユーザーの設定画面" />
+    </section>
+
+    <div class="footer-space"></div>
+  </main>
+</body>
+</html>

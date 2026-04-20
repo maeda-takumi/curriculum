@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>実践課題② 欲しい物リスト作成</title>
+  <link rel="stylesheet" href="include_lesson/style2.css" />
+</head>
+<body>
+  <main class="page">
+    <h1>実践課題② 「欲しい物リスト作成」</h1>
+    <hr />
+
+    <section class="content-block">
+      <h2 class="section-title">1. 課題の目的</h2>
+      <ul>
+        <li>欲しいものを「メモ」ではなくリスト化して管理する</li>
+        <li>購入する・しないを考える材料にする</li>
+        <li>価格・リンク・優先度を記録して、無駄遣い防止と計画的な買い物に繋げる</li>
+      </ul>
+      <div class="callout">提出は不要。自分の生活を便利にする練習課題です。</div>
+    </section>
+
+    <section class="content-block">
+      <h2 class="section-title">2. やり方の流れ</h2>
+
+      <h3 class="sub-title">Step1. ページを作成</h3>
+      <aside class="note-box">
+        <ol>
+          <li>Notionを開き「＋ 新規ページ」</li>
+          <li>ページ名を「欲しい物リスト」にする</li>
+          <li>アイコンを設定すると探しやすい</li>
+        </ol>
+      </aside>
+
+      <h3 class="sub-title">Step2. テーブルを作る</h3>
+      <aside class="note-box">
+        <ol>
+          <li>ページ内で /table と入力</li>
+          <li>「テーブル（インライン）」を選ぶ</li>
+          <li>列（プロパティ）を設定する</li>
+        </ol>
+      </aside>
+      <p>おすすめの列：</p>
+      <ul>
+        <li>商品名（タイトル欄）</li>
+        <li>カテゴリ（Select：ガジェット／本／服／食品など）</li>
+        <li>価格（Number）</li>
+        <li>リンク（URL：Amazonや楽天のページ）</li>
+        <li>優先度（Select：高／中／低）</li>
+        <li>購入状況（Checkbox：買ったかどうか）</li>
+      </ul>
+
+      <h3 class="sub-title">Step3. 欲しい物を入力</h3>
+      <ul>
+        <li>気になる商品をリストに書き出す</li>
+        <li>リンクを貼っておくと、買うときに探す手間が省ける</li>
+        <li>優先度をつけておくと衝動買い防止に効果的</li>
+      </ul>
+      <div class="callout">ChatGPTを使って、候補を整理するのもおすすめです。</div>
+      <aside class="note-box">
+        <p>例：</p>
+        <p>5万円以内で買えるデスク周りのガジェット候補を出してください。</p>
+        <p>条件：作業効率が上がるもの。</p>
+        <p>ChatGPTが提案した商品をリスト化する。</p>
+      </aside>
+
+      <h3 class="sub-title">Step4. ビュー切り替え（応用）</h3>
+      <ul>
+        <li>テーブル表示：一覧管理に便利</li>
+        <li>ギャラリー表示：写真を添付して「欲しい物カタログ」に</li>
+        <li>ボード表示：「未購入」「検討中」「購入済み」に分けて進行管理</li>
+      </ul>
+
+      <h3 class="sub-title">Step5. 活用する</h3>
+      <ul>
+        <li>購入したらチェックを入れて達成感を得る</li>
+        <li>優先度を見直し、月ごとに買うものを決める</li>
+        <li>セール時にリストを見返すと効率的に買い物できる</li>
+      </ul>
+    </section>
+
+    <section class="content-block">
+      <h2 class="section-title">3. 実践例</h2>
+      <p>欲しい物リスト（例）</p>
+      <table>
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>カテゴリ</th>
+            <th>価格</th>
+            <th>優先度</th>
+            <th>購入状況</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>iPad Air</td>
+            <td>ガジェット</td>
+            <td>90,000円</td>
+            <td>高</td>
+            <td>☐</td>
+          </tr>
+          <tr>
+            <td>コーヒーメーカー</td>
+            <td>家電</td>
+            <td>15,000円</td>
+            <td>中</td>
+            <td>☐</td>
+          </tr>
+          <tr>
+            <td>ビジネス書「○○」</td>
+            <td>本</td>
+            <td>1,800円</td>
+            <td>高</td>
+            <td>☑</td>
+          </tr>
+          <tr>
+            <td>ワイヤレスイヤホン</td>
+            <td>ガジェット</td>
+            <td>20,000円</td>
+            <td>低</td>
+            <td>☐</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout">ギャラリービューに写真を追加すると、欲しい物カタログとして使いやすくなります。</div>
+    </section>
+
+    <section class="content-block">
+      <h2 class="section-title">4. まとめ</h2>
+      <ul>
+        <li>欲しい物を一元管理できるリストにするだけで、買い物が整理される</li>
+        <li>衝動買いを防ぎ、優先度を考える習慣がつく</li>
+        <li>ギャラリー表示で「自分専用の欲しい物カタログ」が完成する</li>
+      </ul>
+      <div class="callout">提出不要。自分の暮らしを便利に、楽しくする課題です。</div>
+    </section>
+  </main>
+</body>
+</html>

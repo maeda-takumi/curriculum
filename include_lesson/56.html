@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>実践課題① ToDoリストを作る</title>
+  <link rel="stylesheet" href="include_lesson/style2.css" />
+</head>
+<body>
+  <main class="page">
+    <h1>実践課題① 「ToDoリストを作る」</h1>
+    <hr />
+
+    <section class="content-block">
+      <h2 class="section-title">1. 課題の目的</h2>
+      <aside class="note-box">
+        <ul>
+          <li>NotionでシンプルなToDoリストを作成する</li>
+          <li>やるべきことを一元管理し、抜け漏れを防ぐ</li>
+          <li>完了チェックで達成感を得る習慣を身につける</li>
+        </ul>
+      </aside>
+      <div class="callout">提出は不要。自分の生活管理をラクにする練習課題です。</div>
+    </section>
+
+    <section class="content-block">
+      <h2 class="section-title">2. やり方の流れ</h2>
+
+      <h3 class="sub-title">Step1. ページを作成する</h3>
+      <aside class="note-box">
+        <ol>
+          <li>Notionを開き「＋ 新規ページ」</li>
+          <li>ページ名を「ToDoリスト」にする</li>
+          <li>アイコンに「チェック」や「クリップボード」を設定してわかりやすくする</li>
+        </ol>
+      </aside>
+
+      <h3 class="sub-title">Step2. シンプルなチェックリストを作る（初心者向け）</h3>
+      <aside class="note-box">
+        <ol>
+          <li>ページ内で <code>/to-do</code> と入力</li>
+          <li>チェックボックス付きのリストが出現</li>
+          <li>「やること」を1行ずつ入力</li>
+        </ol>
+      </aside>
+      <aside class="note-box">
+        <p>例</p>
+        <ul>
+          <li>レポートを書く</li>
+          <li>スーパーで牛乳を買う</li>
+          <li>メール返信</li>
+          <li>30分ジョギング</li>
+        </ul>
+      </aside>
+      <p>完了したらチェックを入れるだけ。超シンプルです。</p>
+
+      <h3 class="sub-title">Step3. データベース形式で作る（応用）</h3>
+      <p>より整理したい場合は「テーブルビュー」を使います。</p>
+      <aside class="note-box">
+        <ol>
+          <li>ページ内で <code>/table</code> と入力し、「テーブル（インライン）」を選択</li>
+          <li>列（プロパティ）を設定する
+            <ul>
+              <li>タスク名（タイトル）</li>
+              <li>期限（Date）</li>
+              <li>優先度（Select：高・中・低）</li>
+              <li>状態（Checkbox または Select：未着手／進行中／完了）</li>
+            </ul>
+          </li>
+        </ol>
+      </aside>
+      <p>これで「いつ・何を・どの優先度でやるか」が整理できます。</p>
+
+      <h3 class="sub-title">Step4. ビュー切り替えで管理する</h3>
+      <aside class="note-box">
+        <ul>
+          <li>テーブル表示：一覧で全タスクを確認</li>
+          <li>ボード表示：カンバン形式で「未着手→進行中→完了」と進められる</li>
+          <li>カレンダー表示：締切日をカレンダーで可視化</li>
+        </ul>
+      </aside>
+      <p>1つのデータを複数の角度で見られるのがNotionの強みです。</p>
+
+      <h3 class="sub-title">Step5. 習慣化する</h3>
+      <aside class="note-box">
+        <ul>
+          <li>毎朝「今日やること」を入力</li>
+          <li>夜に完了チェックを入れて振り返る</li>
+          <li>翌週は「未完了タスク」をコピーして持ち越す</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="content-block">
+      <h2 class="section-title">3. 実践例</h2>
+      <h3 class="sub-title">シンプル版（チェックリスト）</h3>
+      <aside class="note-box">
+        <ul>
+          <li>明日のプレゼン資料作成</li>
+          <li>洗濯を回す</li>
+          <li>ジムに行く</li>
+        </ul>
+      </aside>
+
+      <h3 class="sub-title">応用版（データベース）</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>タスク</th>
+            <th>期限</th>
+            <th>優先度</th>
+            <th>状態</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>プレゼン資料作成</td>
+            <td>2026/01/05</td>
+            <td>高</td>
+            <td>進行中</td>
+          </tr>
+          <tr>
+            <td>洗濯</td>
+            <td>2026/01/02</td>
+            <td>低</td>
+            <td>完了</td>
+          </tr>
+          <tr>
+            <td>ジム</td>
+            <td>2026/01/03</td>
+            <td>中</td>
+            <td>未着手</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-block">
+      <h2 class="section-title">4. まとめ</h2>
+      <aside class="note-box">
+        <ul>
+          <li>ToDoリストはNotionの入り口として最適な課題</li>
+          <li>初心者は「チェックリスト」から始め、慣れたら「データベース化」</li>
+          <li>ビュー切替や優先度管理で、自分専用のタスク管理システムができる</li>
+        </ul>
+      </aside>
+      <div class="callout">提出不要。まずは「今日やること」を書き出してみることから始めましょう。</div>
+    </section>
+
+    <div class="footer-space"></div>
+  </main>
+</body>
+</html>

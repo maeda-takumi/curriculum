@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>目次：12週間カリキュラム完全ガイド</title>
+  <style>
+    :root{
+      --bg:#f7f7f8;
+      --card:#ffffff;
+      --line:#e5e7eb;
+      --text:#111827;
+      --head:#f1f3f5;
+      --shadow:0 10px 30px rgba(17,24,39,.06);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic UI","Yu Gothic",Meiryo,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,.9), transparent 35%),
+        linear-gradient(180deg,#fafafa 0%, #f3f4f6 100%);
+      line-height:1.7;
+    }
+    .wrap{
+      width:min(1120px, calc(100% - 32px));
+      margin:0 auto;
+      padding:32px 0 56px;
+    }
+    .week{
+      background:rgba(255,255,255,.78);
+      backdrop-filter: blur(10px);
+      border:1px solid rgba(255,255,255,.75);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      padding:24px;
+      margin-bottom:28px;
+    }
+    .week-image{
+      margin:0 0 20px;
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow:0 8px 24px rgba(17,24,39,.05);
+    }
+    .week-image img{
+      display:block;
+      width:100%;
+      height:auto;
+      object-fit:cover;
+      background:#f3f4f6;
+    }
+    .table-wrap{
+      overflow-x:auto;
+      border-radius:22px;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      min-width:720px;
+    }
+    th,td{
+      padding:16px 18px;
+      vertical-align:top;
+      border-bottom:1px solid var(--line);
+    }
+    th{
+      width:30%;
+      background:var(--head);
+      color:#1f2937;
+      font-weight:700;
+      border-right:1px solid var(--line);
+      text-align:left;
+      letter-spacing:.01em;
+    }
+    td{
+      background:#fcfcfd;
+      color:#374151;
+    }
+    tr:last-child th, tr:last-child td{
+      border-bottom:none;
+    }
+    @media (max-width: 768px){
+      .wrap{
+        width:min(100% - 20px, 100%);
+        padding:18px 0 36px;
+      }
+      .week{
+        padding:14px;
+        border-radius:20px;
+        margin-bottom:18px;
+      }
+      .week-image{
+        border-radius:16px;
+        margin-bottom:14px;
+      }
+      .table-wrap{
+        border-radius:16px;
+      }
+      table{
+        min-width:0;
+      }
+      tbody, tr, th, td{
+        display:block;
+        width:100%;
+      }
+      tr{
+        border-bottom:1px solid var(--line);
+      }
+      tr:last-child{
+        border-bottom:none;
+      }
+      th, td{
+        border:none;
+        padding:12px 14px;
+      }
+      th{
+        background:#eef0f2;
+        border-bottom:1px solid var(--line);
+      }
+      td{
+        background:#fafafa;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="week">
+      <figure class="week-image">
+        <img src="img/week1.png" alt="week1.png" loading="lazy">
+      </figure>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th>①ChatGPTとは何か？</th><td>◆「ChatGPTって何者？」という素朴な疑問から始まり、その仕組み・できること・限界を理解し、日常・学習・ビジネス・副業へと活用範囲を広げながら、読者が“AIを使いこなす未来の自分”へ自然にステップアップしていく流れを描いた内容！</td></tr>
+            <tr><th>②ChatGPTの基本</th><td>◆「プロンプトって何？」という出発点から、初心者がつまずきやすい失敗を知り、指示文の基本構造や使い分けを学び、具体例を通して徐々に思考が洗練され、最後には条件指定・ロールプレイ・出力形式など高度なテクニックまで身につけて“AIに思い通りの仕事をさせられる自分”へと成長していく流れをまとめました！</td></tr>
+            <tr><th>③よくある失敗例と修正例</th><td>◆ChatGPTが万能だという誤解や、曖昧な依頼で意図と異なる結果が出てしまう理由、そして一度で完璧を求める使い方がうまくいかない原因を整理し、具体例・失敗例・改善プロンプトとともに「対象・形式・目的を明確にしてAIと段階的にやり取りすることで、より正確で実用性の高い成果に近づける」という、初心者がつまずきやすいポイントを改善するための考え方と実践方法をまとめた内容</td></tr>
+            <tr><th>④ChatGPTを使いこなすためのマインド</th><td>◆ChatGPTを「完璧な答えをくれる存在」と誤解してつまずきやすいポイントを整理し、曖昧な指示・一発完了の期待・依存的な使い方を避けながら、「具体的な条件を伝え、対話を重ね、AIを編集者や思考整理の相棒として活用する」というマインドセットと実践方法を学べる！</td></tr>
+            <tr><th>テスト課題：ChatGPTで「冷蔵庫の中身から料理案を出してみよう」</th><td>◆身近な食材でどんな料理が生まれる？ChatGPTと対話しながら“レシピづくりの冒険”を体験する課題です。食材リストを渡すだけで、思わぬ料理アイデアが返ってきます！</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="week">
+      <figure class="week-image">
+        <img src="img/week2.png" alt="week2.png" loading="lazy">
+      </figure>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th>①ChatGPTプロンプト応用完全ガイド</th><td>◆Week1で学んだ「プロンプトって何？」という基礎理解をおさらいし、初心者が曖昧な質問でつまずく理由を知り、具体的な構造や比喩で理解を深め、条件指定・形式指定・ロールプレイなどの実践的テクニックを身につけ、さらに戦略的思考へと段階的にレベルアップしながら、“AIを思い通りに動かせる未来型スキル”としてプロンプト力を育てていく！</td></tr>
+            <tr><th>②ChatGPTの役割設定の意味と効力</th><td>◆「役割設定とは何？」という基礎理解から始まり、ただ質問するだけでは得られない理由を知り、専門家ロール・編集者ロールなどを使った実践例で効果を体感し、さらに条件指定との組み合わせや活用パターンを学びながら、最終的には“目的に合わせてAIの人格を切り替え、自分だけのAIチームを自在に操れるようになる未来の使い手”へとステップアップ！</td></tr>
+            <tr><th>③ChatGPTと「文章リライト」</th><td>◆「リライトとは何？」という基礎の理解から始まり、文章を読みやすく整える理由や種類を学び、短縮・文体変更・対象変更などの基本パターンをChatGPTで練習し、さらに複数バリエーション生成・トーン調整・複合指示・クリエイティブ変換といった応用へと段階的にレベルアップしながら、“文章を自在に生まれ変わらせる力”と“AIを使って表現の幅を広げるスキル”を身につけていく！</td></tr>
+            <tr><th>④ChatGPTで「情報整理」する力</th><td>◆情報が溢れる時代に必要な「要約・分類・比較・構造化」といった情報整理の基礎を整理しつつ、ChatGPTがそれらの工程をサポートして効率化する仕組みや、実際に活用するための練習方法・応用方法までを体系的に解説！</td></tr>
+            <tr><th>テスト課題：インフルエンサーになってSNS広告文を作ろう</th><td>◆あなたの言葉がインフルエンサー級に変身！？商品の魅力を“SNS映えするひと言”に仕上げる楽しい文章づくりの冒険です。ChatGPTと一緒にバズる投稿を作ってみよう！</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="week">
+      <figure class="week-image">
+        <img src="img/week3.png" alt="week3.png" loading="lazy">
+      </figure>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th>①Canvaとは？初心者のための徹底入門ガイド</th><td>◆Canvaの基本機能からログイン方法、テンプレートを使った編集ステップ、素材の扱い方、書き出し手順、そしてPro版・チーム機能・AI機能などの応用まで、デザイン初心者が実践的に使いこなせるようになるための流れを一通り解説</td></tr>
+            <tr><th>②テンプレートの使い方 完全ガイド</th><td>◆テンプレートの基本概念から役割、種類、初心者がつまずきやすい点、さらにCanvaを使った具体的な編集手順やアレンジ方法、応用的な使い方、テンプレートを自分専用の資産として育てるための工夫までを順序立てて解説し、「型を使って効率よく成果物を作る力」を段階的に身につけられる！</td></tr>
+            <tr><th>③フォントと色彩設定の基礎</th><td>◆フォントの種類と特徴、色彩の基本要素や心理効果、配色ルールを順序立てて解説し、さらにフォントと色の組み合わせがデザイン全体の印象をどのように左右するかを具体例と実践課題を通して学べる構成</td></tr>
+            <tr><th>④画像と素材の挿入方法 完全ガイド</th><td>◆写真・アイコン・イラストなどの素材がデザインにどんな役割を果たすのかという基礎から、実際の挿入方法や選び方、背景調整や統一感の出し方、さらに組み合わせて使う応用的なテクニックまでを体系的に説明し、「目的に合う素材を選び、配置し、整えるための実践的な考え方と操作方法」を段階的に学べる！</td></tr>
+            <tr><th>テスト課題：自分の名刺を作ろう！</th><td>◆あなたの名刺デビューを作るミニプロジェクト！ChatGPTで情報を整理し、Canvaでおしゃれ名刺を完成させる体験型課題です。世界に一つの自己紹介カードを作ろう！</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="week">
+      <figure class="week-image">
+        <img src="img/week4.png" alt="week4.png" loading="lazy">
+      </figure>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th>①Canvaのデザイン原則</th><td>◆余白の取り方・色の使い方・フォント選びというデザインの3原則を、初心者が陥りやすい失敗例や改善例を交えながら、ChatGPTとCanvaを使って実際に調整・改善できる形で学べる！</td></tr>
+            <tr><th>②テンプレートの応用方法</th><td>◆テンプレートを「土台」として理解し、色・写真・文字を差し替えることで“借り物感”をなくして自分らしいデザインに仕上げる方法から、複数テンプレートの組み合わせや統一感の作り方といった応用テクニックまで、ChatGPTを活用しながらオリジナルデザインを構築する考え方と実践法</td></tr>
+            <tr><th>③写真と文字のバランス</th><td>◆写真の雰囲気と文字の読みやすさを両立させるために、コントラスト・配置・透過・影などの調整を活用しながら、写真と文字が調和して“読める＋伝わる”デザインを作るための考え方と実践テクニックを、ChatGPTを活用したアドバイス例とともに体系的に学べる</td></tr>
+            <tr><th>④実用的なデータ書き出し</th><td>◆デザインをどこで・どう使うかに合わせてPNG・PDF・MP4を使い分け、画質・印刷精度・動画再生など用途に最適な書き出し形式を選ぶことで作品のクオリティを最大化し、ChatGPTを活用すれば用途別の最適設定まで瞬時に判断できるようになる！</td></tr>
+            <tr><th>テスト課題：YouTubeのサムネイルを作成しよう！</th><td>◆あなたの一枚が人気動画の顔になるかも！？ChatGPTでキャッチコピーを作り、Canvaで魅せるサムネをデザインする実践課題です。センスと発想を楽しみながら仕上げよう！</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="week">
+      <figure class="week-image">
+        <img src="img/week5.png" alt="week5.png" loading="lazy">
+      </figure>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th>①Notionとは？</th><td>◆Notionを「情報を集める → 整理する → 活用する → 振り返る」という流れで運用することで、メモ・タスク・知識を一元管理し、“頭では考えることに集中し、記憶はNotionに任せる”という第二の脳の仕組みを構築できるようになる手順と考え方をまとめ</td></tr>
+            <tr><th>②Notionの基本の操作</th><td>◆イベント名・日時・場所など必須情報を整理しながら、ChatGPTで文章を磨き、Canvaのテンプレートを色・写真・文字でオリジナル化し、印刷用PDFとSNS用PNGを最適な形式で書き出して提出する「イベントポスター制作テスト」の全工程と要件を具体的に示した構成</td></tr>
+            <tr><th>③日常生活での活用例（家計簿・習慣トラッカー）</th><td>◆日常の情報を一元管理するNotionの利点を軸に、家計簿や習慣トラッカーとして活用する具体的な方法と継続のコツ、さらにChatGPTとの組み合わせで生活全体を可視化・最適化できることを示した内容</td></tr>
+            <tr><th>④副業に向けた整理術</th><td>◆副業で散らかりがちなアイデア・学び・タスクをNotionで一元管理し、ChatGPTと組み合わせて整理・優先順位づけ・行動化まで自動化することで、限られた時間でも継続的に成果を出せるようにする整理術</td></tr>
+            <tr><th>テスト課題：1週間の献立表をNotionで管理しよう</th><td>◆1週間のごはん作りがもっと楽に、もっと楽しくなる！ChatGPTで献立を作り、Notionでキレイに管理する料理×デジタルの実践課題。あなたの食生活がちょっと進化します。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="week">
+      <figure class="week-image">
+        <img src="img/week6.png" alt="week6.png" loading="lazy">
+      </figure>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th>①Notion応用編：ChatGPT × Notionで作る「データベース」</th><td>◆Notionのデータベースを情報整理の土台として使い、ChatGPTで構造設計・タスク洗い出し・顧客対応案を補助させて、自分専用のタスク管理やCRMシステムを効率的に構築・運用する考え方と応用方法を解説</td></tr>
+            <tr><th>②Notion応用編：テンプレート活用とカスタマイズ</th><td>◆Notionのテンプレートを“出発点”として使い、ChatGPTでカスタマイズ案や設計を補助しながらタスク管理・顧客管理へ応用することで、テンプレを「学び → 改造 → 自分仕様の武器」に育てていく方法を解説</td></tr>
+            <tr><th>③Notion応用編：チーム利用を意識したページ共有方法</th><td>◆Notionの共有機能を使ってチームで安全かつ効率的にページを運用するための考え方と権限設計を、ChatGPTによる補助と合わせて体系的に解説し、「整理・ルール化・可視化」で協働をスムーズにする方法</td></tr>
+            <tr><th>④Notion応用編：副業への直結例（ブログネタ管理／SNSカレンダー）</th><td>◆副業を効率化するために、ChatGPTでネタや構成を生成し、Notionで情報を整理・管理し、Canvaでビジュアルを整えることで「発想 → 管理 → 発信」を仕組み化し、ブログやSNS運用を資産化していく方法を解説</td></tr>
+            <tr><th>テスト課題：副業アイデアリストを作成しよう</th><td>◆あなたの副業チャンスが一気に広がる！ChatGPTでアイデアを量産し、Notionで見える化する“未来の自分をつくる”実践課題。ワクワクしながら可能性を棚卸ししよう。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="week">
+      <figure class="week-image">
+        <img src="img/week7.png" alt="week7.png" loading="lazy">
+      </figure>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th>①CapCutとは？スマホでできる動画編集の基本</th><td>◆CapCutはスマホで直感的に動画編集ができる無料アプリであり、ChatGPTで台本づくり、Canvaで素材づくり、Notionで制作管理を行うことで、企画 → デザイン → 編集 → 発信 → 管理までを一連の流れとして自分一人で完結できる“動画発信の基礎と副業につながる総合スキル”を身につけられる！</td></tr>
+            <tr><th>②CapCut編集の第一歩：素材の取り込み（動画・写真・音楽）</th><td>◆動画・写真・音声素材を整理してCapCutに取り込み、ChatGPTで字幕や台本を作り、Canvaで画像素材を整え、Notionで制作管理を行うことで、スマホだけで企画から完成動画まで一貫して仕上げられる編集フローを身につける！</td></tr>
+            <tr><th>③CapCut編集の基本操作</th><td>◆カット編集・テキスト挿入・BGM調整というCapCutの基本操作を、ChatGPTで台本や字幕を用意し、Canvaで見出しや素材を作り、Notionでシーン管理を行いながら組み合わせていくことで、初心者でもスマホだけで見やすく伝わる動画を仕上げられるようになる内容</td></tr>
+            <tr><th>④TikTok / Instagram向け縦動画の作り方</th><td>◆縦動画は企画段階でNotionに整理し、ChatGPTで台本を作り、Canvaで素材を準備し、CapCutで撮影・カット・テキスト・BGMを整えて書き出し、投稿後もデータを管理することで、スマホだけで企画→制作→発信→改善の流れを最短で回せるようになる！</td></tr>
+            <tr><th>テスト課題：テロップ入りのショート動画（30秒）</th><td>◆たった30秒で心をつかむ動画を作ろう！ChatGPTで台本をサクッと作り、CapCutで映える編集に挑戦する実践課題。あなたの伝える力が一気にレベルアップするはず！</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="week">
+      <figure class="week-image">
+        <img src="img/week8.png" alt="week8.png" loading="lazy">
+      </figure>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th>①TikTokやリールで伸びる動画の特徴</th><td>◆縦動画が伸びる理由と心理・アルゴリズムの仕組みをふまえ、冒頭3秒のフック設計・テンポの良い編集・視聴維持率を高める構成・データ分析による改善サイクルを、ChatGPTの台本生成、Canvaのデザイン、CapCutの編集、Notionの記録管理と組み合わせて再現性ある“伸びる動画づくり”の仕組みに落とし込んだ内容</td></tr>
+            <tr><th>②動画にフック（冒頭で惹きつける要素）を入れる</th><td>◆フックは“冒頭3秒で続きを見たいと思わせる仕掛け”であり、視聴者心理とアルゴリズムがもっとも重視するこの部分を、問いかけ・逆説・数字・ストーリーなどの型と編集（テロップ・効果音・テンポ）で強化し、ChatGPTの文案生成・CapCutの演出・Canvaのビジュアル・Notionの記録分析を組み合わせて継続的に改善していくことで、誰でも再現性のある「伸びる動画のつかみ」を作れるようになる！</td></tr>
+            <tr><th>③ChatGPTでスクリプトを作って動画化</th><td>◆ChatGPTを使って「イントロ（フック）→本編→アウトロ」の型でスクリプト（台本）を素早く生成し、それをもとにCanvaでタイトルカードや解説スライドなどのビジュアル素材を作り、CapCutでテロップ・BGM・カット編集を加えて動画化することで、話すのが苦手でもSNS向けの教育系・ストーリー系などの縦動画を効率よく量産し、さらに同じ台本を各SNS用に最適化・改善しながら“再現性のある発信フロー”を構築できる！</td></tr>
+            <tr><th>テスト課題：AIナレーションを入れた3分動画を作ろう</th><td>◆声を出さずに自分の解説動画が作れる！ChatGPTで台本を作り、AI音声とCapCutで3分動画に仕上げる実践課題です。あなたの知識が映像作品になります。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="week">
+      <figure class="week-image">
+        <img src="img/week9.png" alt="week9.png" loading="lazy">
+      </figure>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th>①マーケティングとは？</th><td>◆マーケティングを「商品を売るテクニック」ではなく、「顧客が求める価値を理解し、その価値を適切に届け、選ばれる仕組みを設計するプロセス」として捉え、実生活の事例・ブランド戦略・フレームワーク・現代のSNS文脈を踏まえながら、ChatGPTで価値翻訳や分析を行い、Canvaで視覚化し、Notionで整理して“個人でも実践可能なマーケティング思考”を身につけるための内容</td></tr>
+            <tr><th>②マーケティング基礎編テキスト 「STP分析の超入門」</th><td>◆STP分析は「市場を分け（S）・狙いを定め（T）・自分の立ち位置を決める（P）」ことで“誰に・どんな価値を・どの視点で届けるか”を明確化し、商品も発信も副業も「勝てるポジション」を設計できるフレームワークであり、Segmentationの細分化、Targetingの選定基準、Positioningの差別化とブランド形成を日常例とともに理解しつつ、ChatGPTで言語化・比較・マッピングを行うことで、個人でも戦略的に「選ばれる仕組み」を作れる！</td></tr>
+            <tr><th>③マーケティング基礎「4P分析の超入門」</th><td>◆4P分析は「何を提供し（Product）・いくらで売り（Price）・どこで届け（Place）・どう伝えるか（Promotion）」という“売れる仕組みの4視点”を使って商品やサービスを構造化し、身近な事例から副業・SNS発信まで応用できるように、バランス設計・価格戦略・販売チャネル・販促方法を体系的に理解しつつ、ChatGPTで分解・整理・提案まで一気に行えるようになる内容</td></tr>
+            <tr><th>④マーケティング基礎「消費者心理の基本 AIDMAモデル」</th><td>◆AIDMAモデルは、消費者が「注意→興味→欲求→記憶→行動」という5段階で心理が動くという購買プロセスを体系化した理論で、その流れを理解することで“どこで心を掴むべきか”が明確になり、CM・SNS・副業発信まで応用しながら、ChatGPTで各段階の改善案やコピーを即生成して「人が動く導線」を自分で設計できるようになる！</td></tr>
+            <tr><th>テスト課題：「ユニクロ」と「GU」の商品の具体例を挙げて違いを4Pで整理して、それぞれのマーケティング戦略を細分化してまとめよう！</th><td>◆ユニクロとGUの戦略の違いを解き明かすマーケ戦略の探検へ！4P分析でブランドの個性を可視化し、プロの視点で比べる力を身につける実践課題です。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="week">
+      <figure class="week-image">
+        <img src="img/week11.png" alt="week11.png" loading="lazy">
+      </figure>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th>①マーケティング応用編「ファネル設計とは？」</th><td>◆ファネル設計は「知る→興味→検討→購入→リピート→紹介」という顧客の流れを構造化し、どこで離脱し、どこを伸ばせば成果が最大化するかを可視化して、ChatGPT×Notion×Canvaで自分の活動にもその仕組みを再現できるようにするための内容</td></tr>
+            <tr><th>②マーケティング応用編「KPI・KGIの考え方」</th><td>◆KGIとKPIは「最終ゴール」と「そこへ向かう行動指標」を数字でつなぎ、ChatGPT・Notion・Canvaで可視化しながら逆算思考で成長ルートを設計できるようになるための内容</td></tr>
+            <tr><th>③マーケティング応用編「オンライン広告の基本構造」</th><td>◆オンライン広告は「表示 → クリック → 行動」の流れを数字で見える化し、GoogleとSNSの特徴を踏まえながらChatGPT・Notion・Canvaで効果を高める仕組みを自分で設計できるようになるための内容</td></tr>
+            <tr><th>④マーケティング応用編「ストーリーテリングの力」</th><td>◆ストーリーテリングは「機能」ではなく「物語」を通して価値を伝え、主人公＝顧客の感情と変化を描くことで商品を“体験”として届けられるようになる考え方を、ChatGPT・Canva・SNSで実践できる形で学べる内容</td></tr>
+            <tr><th>テスト課題：「自分の副業アイデアをファネルに落とし込む」</th><td>◆あなたの副業がお客様に選ばれる流れをデザインする実践課題！ChatGPTで整理し、Notionで構造化し、Canvaで図解することで、ビジネスの仕組み化が一気に進みます。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap" style="margin-top: 15px;">
+        <table>
+          <tbody>
+            <tr><th>①マーケティング応用編「ブルーオーシャン戦略」</th><td>◆ブルーオーシャン戦略は、競争だらけの市場（レッドオーシャン）から離れ、ERRCや非顧客の視点を使って“戦わずに勝てる新しい価値の場”を設計し、ChatGPT・Notion・Canvaを使いながら自分のビジネスを独自ポジションへ導く考え方が学べる！</td></tr>
+            <tr><th>②マーケティング応用編「価格戦略の心理学」</th><td>◆価格と心理の基本では、人が数字を合理的ではなく感情で判断するという前提から、端数・高価格・サブスク・松竹梅などの心理テクニックを通して「価値の見え方」をデザインし、行動経済学のクセを味方につけながら、ChatGPTで価格の見せ方を整え、ブランドとしてどう見られたいかまで設計していく構成</td></tr>
+            <tr><th>③マーケティング応用編「データ分析と改善」</th><td>◆データ分析の章では、感覚ではなく数字を地図にし、アナリティクスで現状を把握し、A/Bテストで仮説を試し、ChatGPTで改善案を補強しながら「データ → 仮説 → 実験 → 改善」を回していくことで、ユーザーの行動が“見える”ようになり、どこを変えれば成果が伸びるのかを自分の手でつかめるようになる！</td></tr>
+            <tr><th>④マーケティング応用編「持続的なブランド作り」</th><td>◆ブランドとファン化の章では、商品を売るのではなく「世界観・体験・価値観」を届け、顧客を主人公にした一貫した物語と体験を積み重ねることで、単発の取引を超えて“また買いたい・誰かに薦めたい”という関係性を育て、LTVと信頼が自然と高まる仕組みをつくる内容</td></tr>
+            <tr><th>テスト課題：日常で体験したマーケティングの罠を分析し、利益向上の施策を考える</th><td>◆あなたは日常で、どんな買わされている瞬間に気づける？マーケの仕掛けを分析し、企業視点で利益アップ策まで考える実践課題。日常が一気に学びの宝庫になります。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>実践課題② コンビニの棚を見てアンカリング効果を探す</title>
+  <link rel="stylesheet" href="include_lesson/style2.css" />
+</head>
+<body>
+  <main class="page">
+    <h1>実践課題②「コンビニの棚を見てアンカリング効果を探す」</h1>
+    <hr />
+
+    <section class="content-block">
+      <div class="callout">1 課題の目的</div>
+      <ul>
+        <li>日常生活の中で「価格設定の心理トリガー（アンカリング効果）」を見抜く力を身につける</li>
+        <li>「なぜこの商品を高い/安いと感じるのか？」を言語化する</li>
+        <li>ChatGPTで分析 → Notionで整理 → Canvaで可視化 の流れを体験する</li>
+      </ul>
+    </section>
+
+    <section class="content-block">
+      <div class="callout">2 ステップごとのやり方</div>
+
+      <h2 class="section-title">Step1. コンビニの棚を観察</h2>
+      <ul>
+        <li>ジュース、カップ麺、スイーツなどを眺めて「なぜ高い／安いと感じたか？」をメモする</li>
+      </ul>
+      <p>例：</p>
+      <ul>
+        <li>ペットボトルお茶：500ml 120円／600ml 150円 → 600mlの方が「お得」に見える</li>
+        <li>カップ麺：198円の隣に298円の高級カップ麺 → 普通の198円が「安く」見える</li>
+      </ul>
+
+      <h2 class="section-title">Step2. ChatGPTで分析</h2>
+      <p>観察メモを入力して、行動経済学の観点で整理してもらう。</p>
+      <p>例プロンプト：</p>
+      <aside class="note-box">
+        <p>コンビニの棚で、お茶500mlが120円、600mlが150円でした。</p>
+        <p>これはアンカリング効果の観点からどう説明できますか？</p>
+      </aside>
+      <p>ChatGPTが「比較対象があることで600mlの方をお得に感じる仕組み」と説明してくれる。</p>
+
+      <h2 class="section-title">Step3. Notionで整理する</h2>
+      <p>Notionに以下の表を作ると、自分の気づきが体系化できる。</p>
+      <table>
+        <thead>
+          <tr>
+            <th>商品例</th>
+            <th>値段構造</th>
+            <th>アンカリングの仕掛け</th>
+            <th>自分の気づき</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ペットボトルお茶</td>
+            <td>500ml 120円 / 600ml 150円</td>
+            <td>600mlが「お得」に見える比較</td>
+            <td>実際は30円差だが心理的に選びやすい</td>
+          </tr>
+          <tr>
+            <td>カップ麺</td>
+            <td>198円 / 298円</td>
+            <td>高級品を置くことで通常品が安く見える</td>
+            <td>人は真ん中価格を選びがち</td>
+          </tr>
+          <tr>
+            <td>スイーツ</td>
+            <td>250円 / 450円</td>
+            <td>高価格を置くことで250円が手軽に見える</td>
+            <td>「つい買いやすい」と錯覚する</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="section-title">Step4. Canvaで図解（オプション）</h2>
+      <ul>
+        <li>Canvaで「価格比較図」を作り、矢印で「高価格 → 安く見える心理」の流れを描く</li>
+        <li>見せる資料や学習ログとして残せる</li>
+      </ul>
+    </section>
+
+    <section class="content-block">
+      <div class="callout">3 実例（カップ麺コーナーを想定）</div>
+      <ul>
+        <li>商品：カップラーメン</li>
+        <li>価格：198円、298円、398円</li>
+      </ul>
+      <p>アンカリング効果：</p>
+      <ul>
+        <li>398円の高級商品があることで、298円が「中間で安心」と感じる</li>
+        <li>本来198円でも十分だが「損したくない心理」で真ん中を選びやすい</li>
+      </ul>
+      <p>消費者は「絶対価格」ではなく「相対的な比較」で判断している。</p>
+    </section>
+
+    <section class="content-block">
+      <div class="callout">4 まとめ</div>
+      <ul>
+        <li>アンカリング効果は比較対象を意識させることで価値を操作する手法</li>
+        <li>コンビニは「ちょっと高い商品」をわざと並べて、他商品を安く見せている</li>
+        <li>ChatGPTで分析 → Notionで表整理 → Canvaで図解すると理解しやすい</li>
+      </ul>
+    </section>
+
+    <div class="footer-space"></div>
+  </main>
+</body>
+</html>

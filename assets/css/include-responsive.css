@@ -1,0 +1,15 @@
+/* Emotionの後勝ち対策: media条件外でも上書きを有効化 */
+.css-12ny5y4{
+    margin-top: 20px;
+}
+
+/* Gamma書き出しHTML（include/*.html）向けのスマホ最適化 */
+@media (max-width: 768px) {
+  .hb-toggle {
+    top: 5px !important;
+    right: 5px !important;
+    width: 45px !important;
+    height: 45px !important;
+  }
+
+}

@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI副業スクール | 目次</title>
+  <style>
+    :root {
+      --bg: #f4efe8;
+      --surface: #ffffff;
+      --surface-soft: #faf8f5;
+      --text: #2d3038;
+      --text-soft: #5f6572;
+      --border: #ebe5dd;
+      --border-strong: #dcd4ca;
+      --gradient: linear-gradient(90deg, #5a23e0 0%, #d94fa8 50%, #ff8a4c 100%);
+      --gradient-soft: linear-gradient(90deg, rgba(90,35,224,0.12) 0%, rgba(217,79,168,0.12) 50%, rgba(255,138,76,0.12) 100%);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --shadow: 0 18px 40px rgba(29, 20, 44, 0.08);
+    }
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      background:
+        radial-gradient(circle at 12% -8%, rgba(90,35,224,0.11), transparent 33%),
+        radial-gradient(circle at 94% 10%, rgba(255,138,76,0.11), transparent 34%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 36px auto 56px;
+      padding: 0 20px 32px;
+    }
+
+    .page-header {
+      margin-bottom: 28px;
+    }
+    .card {
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(255,255,255,0.75);
+      backdrop-filter: blur(6px);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 48px 56px;
+      margin-bottom: 36px;
+    }
+
+    .title {
+      margin: 0 0 18px;
+      font-size: clamp(36px, 6vw, 68px);
+      line-height: 1.2;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      font-size: clamp(16px, 2.1vw, 24px);
+      font-weight: 500;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    .divider {
+      height: 3px;
+      background: linear-gradient(90deg, rgba(90,35,224,0.36), rgba(217,79,168,0.45), rgba(255,138,76,0.35));
+      margin: 28px 0 0;
+      border-radius: 999px;
+    }
+
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .phase {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--surface-soft);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .phase[open] {
+      background: #fffdfb;
+      box-shadow: 0 14px 26px rgba(44, 29, 67, 0.11);
+      transform: translateY(-2px);
+    }
+
+    .phase-summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      transition: background 0.2s ease;
+      user-select: none;
+    }
+
+
+    .phase-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .phase-summary:hover {
+      background: var(--gradient-soft);
+    }
+
+    .phase-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .phase-label {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #6b5f7f;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .phase-title {
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.45;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .phase-arrow {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      border-right: 3px solid #7b6d92;
+      border-bottom: 3px solid #7b6d92;
+      transform: rotate(45deg);
+      transition: transform 0.25s ease;
+      margin-right: 6px;
+    }
+
+    .phase[open] .phase-arrow {
+      transform: rotate(225deg);
+      margin-top: 8px;
+    }
+
+    .phase-body {
+      padding: 4px 20px 20px;
+      margin-top: 8px;
+    }
+
+    .toc {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc li + li {
+      margin-top: 14px;
+    }
+
+    .toc a,
+    .toc .nolink {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 22px;
+      font-weight: 700;
+      padding: 16px 20px;
+      border-radius: 12px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .toc a:hover,
+    .toc .nolink:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(41, 29, 61, 0.12);
+      border-color: #d6c8f7;
+      background: var(--gradient-soft);
+    }
+
+    .toc .nolink {
+      cursor: default;
+    }
+
+    .num {
+      display: inline-block;
+      min-width: 72px;
+      margin-right: 10px;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      vertical-align: top;
+    }
+    .article-shortcuts {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      /* gap: 4px; */
+      margin-top: 18px;
+    }
+    .article-shortcuts li {
+      position: relative;
+      padding: 10px 0px;
+      box-sizing: border-box;
+    }
+    .article-shortcuts li + li {
+      border-top: 1px solid rgba(93, 75, 130, 0.14);
+    }
+    .article-shortcuts a {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      padding: 14px 12px 14px 14px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: transparent;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease, padding 0.2s ease;
+    }
+    .article-shortcuts a:hover {
+      transform: translateY(-1px);
+      padding-left: 18px;
+      /* box-shadow: 0 10px 20px rgba(41, 29, 61, 0.1); */
+      /* border-color: #d8caf8; */
+      /* background: linear-gradient(90deg, rgba(90,35,224,0.08) 0%, rgba(217,79,168,0.07) 52%, rgba(255,138,76,0.07) 100%); */
+    }
+    .article-shortcuts-date {
+      flex: 0 0 auto;
+      font-size: 12px;
+      color: #8a819d;
+      letter-spacing: 0.01em;
+    }
+    .article-shortcuts-title {
+      color: #2e2f3a;
+    }
+    .article-shortcuts .is-opened{
+      color: #8c8f98;
+      background: #f2f0ec;
+      border-color: #e2ddd5;
+    }
+    .article-shortcuts li.is-opened .article-shortcuts-date,
+    .article-shortcuts li.is-opened .article-shortcuts-title {
+      color: #a1a4ad;
+    }
+    /* .article-shortcuts li.is-opened a:hover {
+      background: #ece8e1;
+      border-color: #ddd6cc;
+      box-shadow: 0 8px 16px rgba(41, 29, 61, 0.06);
+    } */
+    .article-empty {
+      margin: 0;
+      color: #666;
+    }
+    .section-title {
+      margin: 0 0 12px;
+      font-size: clamp(22px, 2.8vw, 30px);
+      letter-spacing: 0.01em;
+      /* background: var(--gradient); */
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section-cta {
+      margin: 8px 0 4px;
+    }
+
+    .section-cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0;
+      border-radius: 0;
+      border: 0;
+      color: #5a23e0;
+      background: transparent;
+      text-decoration: none;
+      font-weight: 700;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .section-cta-link::after {
+      content: "→";
+      font-size: 14px;
+      transform: translateX(0);
+      transition: transform 0.2s ease;
+    }
+
+    .section-cta-link::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #5a23e0 0%, #d94fa8 60%, #ff8a4c 100%);
+      transform: scaleX(0.42);
+      transform-origin: left;
+      opacity: 0.5;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .section-cta-link:hover {
+      color: #3f12b8;
+    }
+
+    .section-cta-link:hover::after {
+      transform: translateX(3px);
+    }
+
+    .section-cta-link:hover::before {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .wrap {
+        margin: 24px auto 40px;
+        padding: 0 14px 22px;
+      }
+
+      .card {
+        padding: 28px 18px;
+        border-radius: 16px;
+        margin-bottom: 18px;
+      }
+
+      .phase-summary {
+        padding: 16px 14px;
+      }
+
+      .phase-title {
+        font-size: 20px;
+      }
+
+      .phase-body {
+        padding: 4px 10px 12px;
+      }
+
+      .toc a,
+      .toc .nolink {
+        font-size: 18px;
+        padding: 13px 14px;
+      }
+
+      .num {
+        min-width: 58px;
+      }
+      .article-shortcuts a {
+        flex-wrap: wrap;
+        gap: 6px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="page-header">
+      <h1 class="title">AI副業スクールライティング</h1>
+      <!-- <div class="subtitle">■■■■■■■■■■■■■■■■■■■■■■</div> -->
+      <div class="divider"></div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">最新AI NEWS</h2>
+      <p class="section-cta"><a class="section-cta-link" href="?page=article">記事一覧</a></p>
+      <ul class="article-shortcuts" id="article-shortcuts"></ul>
+      <p class="article-empty" id="article-shortcuts-empty" hidden>記事は準備中です。</p>
+    </section>
+    <section class="card">
+      <div class="accordion">
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">Week 1</span>
+              <span class="phase-title">Week 1｜ChatGPT</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=11"><span class="num">1-1.</span>ChatGPTとは何か？</a></li>
+              <li><a href="?page=12"><span class="num">1-2.</span>ChatGPTの基本</a></li>
+              <li><a href="?page=13"><span class="num">1-3.</span>よくある失敗例と修正例</a></li>
+              <li><a href="?page=14"><span class="num">1-4.</span>ChatGPTを使いこなすためのマインド</a></li>
+              <li><a href="?page=15"><span class="num">1-5.</span>【テスト課題】ChatGPTで「冷蔵庫の中身から料理案を出してみよう」</a></li>
+              <li><a href="?page=16"><span class="num">1-6.</span>【実践課題①】ChatGPTで「洋楽のタイトルを打ち込んで和訳してみよう」</a></li>
+              <li><a href="?page=17"><span class="num">1-7.</span>【実践課題②】ChatGPTで「今日の出来事を川柳にしてもらおう」</a></li>
+              <li><a href="?page=18"><span class="num">1-8.</span>【実践課題③】ChatGPTで「簡単な自己紹介文を3パターン作ってみよう」</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">Week 2</span>
+              <span class="phase-title">Week 2｜ChatGPT応用編</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=21"><span class="num">2-1.</span>ChatGPTプロンプト応用完全ガイド</a></li>
+              <li><a href="?page=22"><span class="num">2-2.</span>ChatGPTの役割設定の意味と効力</a></li>
+              <li><a href="?page=23"><span class="num">2-3.</span>ChatGPTと「文章リライト」</a></li>
+              <li><a href="?page=24"><span class="num">2-4.</span>ChatGPTで「情報整理」する力</a></li>
+              <li><a href="?page=25"><span class="num">2-5.</span>【テスト課題】インフルエンサーになってSNS広告文を作ろう</a></li>
+              <li><a href="?page=26"><span class="num">2-6.</span>【実践課題①】一日の出来事を長文でChatGPTに入力し、「日記風・ニュース風・友だちへのLINE風」でそれぞれ生成させよう！</a></li>
+              <li><a href="?page=27"><span class="num">2-7.</span>【実践課題②】ニュース記事をコピペして入力し、「3行要約」「子供むけ説明」「成人向け解説」にリライトさせよう！</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">Week 3</span>
+              <span class="phase-title">Week 3｜Canva</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=31"><span class="num">3-1.</span>Canvaとは?初心者のための徹底入門ガイド</a></li>
+              <li><a href="?page=32"><span class="num">3-2.</span>テンプレートの使い方 完全ガイド</a></li>
+              <li><a href="?page=33"><span class="num">3-3.</span>フォントと色彩設定の基礎</a></li>
+              <li><a href="?page=34"><span class="num">3-4.</span>画像と素材の挿入方法 完全ガイド</a></li>
+              <li><a href="?page=35"><span class="num">3-5.</span>【テスト課題】自分の名刺を作ろう！</a></li>
+              <li><a href="?page=36"><span class="num">3-6.</span>【応用課題①】自己紹介カードを作ろう</a></li>
+              <li><a href="?page=37"><span class="num">3-7.</span>【応用課題②】「誕生日おめでとうカードを作成しよう」</a></li>
+              <li><a href="?page=38"><span class="num">3-8.</span>【応用課題③】「LINEアイコンを作成しよう」</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">Week 4</span>
+              <span class="phase-title">Week 4｜Canva応用</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=41"><span class="num">4-1.</span>Canvaのデザイン原則</a></li>
+              <li><a href="?page=42"><span class="num">4-2.</span>テンプレートの応用方法</a></li>
+              <li><a href="?page=43"><span class="num">4-3.</span>写真と文字のバランス</a></li>
+              <li><a href="?page=44"><span class="num">4-4.</span>実用的なデータ書き出し</a></li>
+              <li><a href="?page=45"><span class="num">4-5.</span>【テスト課題】Youtubeのサムネイルを作成しよう</a></li>
+              <li><a href="?page=46"><span class="num">4-6.</span>【実践課題①】「オリジナル壁紙を作ろう！」</a></li>
+              <li><a href="?page=47"><span class="num">4-7.</span>【実践課題②】「お礼LINEで送れる一言画像」</a></li>
+              <li><a href="?page=48"><span class="num">4-8.</span>【実践課題③】「季節のイベント告知ポスター作製」</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">Week 5</span>
+              <span class="phase-title">Week 5｜Notion</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=51"><span class="num">5-1.</span>Notionとは？</a></li>
+              <li><a href="?page=52"><span class="num">5-2.</span>Notionの基本の操作</a></li>
+              <li><a href="?page=53"><span class="num">5-3.</span>日常生活での活用例（家計簿・習慣トラッカー）</a></li>
+              <li><a href="?page=54"><span class="num">5-4.</span>副業に向けた整理術</a></li>
+              <li><a href="?page=55"><span class="num">5-5.</span>【テスト課題】1週間の献立表をNotionで管理しよう</a></li>
+              <li><a href="?page=56"><span class="num">5-6.</span>【実践課題①】「ToDoリストを作る」</a></li>
+              <li><a href="?page=57"><span class="num">5-7.</span>【実践課題②】「欲しいものリスト作成」</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">Week 6</span>
+              <span class="phase-title">Week 6｜Notion応用</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=61"><span class="num">6-1.</span>ChatGPT×Notionで作る「データベース活用」</a></li>
+              <li><a href="?page=62"><span class="num">6-2.</span>テンプレート活用とカスタマイズ</a></li>
+              <li><a href="?page=63"><span class="num">6-3.</span>チーム利用を意識したページ共有方法</a></li>
+              <li><a href="?page=64"><span class="num">6-4.</span>副業への直結例（ブログネタ管理／SNSカレンダー）</a></li>
+              <li><a href="?page=65"><span class="num">6-5.</span>【テスト課題】副業アイデアリストを作成しよう</a></li>
+              <li><a href="?page=66"><span class="num">6-6.</span>【実践課題①】「副業アイデアリストを作る」</a></li>
+              <li><a href="?page=67"><span class="num">6-7.</span>【実践課題②】「夢・目標のロードマップを作る」</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">Week 7</span>
+              <span class="phase-title">Week 7｜CapCut</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=71"><span class="num">7-1.</span>CapCutとは？スマホで出来る動画編集の基本</a></li>
+              <li><a href="?page=72"><span class="num">7-2.</span>CapCut編集の第一歩：素材の取り込み（動画・編集・音楽）</a></li>
+              <li><a href="?page=73"><span class="num">7-3.</span>CapCut編集の基本操作</a></li>
+              <li><a href="?page=74"><span class="num">7-4.</span>CapCut×VOICEVOXで作るナレーション動画入門</a></li>
+              <li><a href="?page=75"><span class="num">7-5.</span>TikTok/Instagram向け縦動画の作り方</a></li>
+              <li><a href="?page=76"><span class="num">7-6.</span>【テスト課題】テロップ入りのショート動画（30秒）</a></li>
+              <li><a href="?page=77"><span class="num">7-7.</span>【実践課題①】「今日の1日を写真」＋音楽でスライド化</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">Week 8</span>
+              <span class="phase-title">Week 8｜CapCut応用</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=81"><span class="num">8-1.</span>TikTokやリールで伸びる動画の特徴</a></li>
+              <li><a href="?page=82"><span class="num">8-2.</span>動画にフック（納富でひきつける要素）を入れる</a></li>
+              <li><a href="?page=83"><span class="num">8-3.</span>ChatGPTでスクリプトを作って動画化</a></li>
+              <li><a href="?page=84"><span class="num">8-4.</span>【テスト課題】AIナレーションを入れた3分動画を作ろう</a></li>
+              <li><a href="?page=85"><span class="num">8-5.</span>【実践課題①】「ChatGPTに原稿を書かせ、CapCutで編集」</a></li>
+            </ul>
+          </div>
+        </details>
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">Week 9</span>
+              <span class="phase-title">Week 9｜マーケティング①</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=91"><span class="num">6-1.</span>マーケティングとは？</a></li>
+              <li><a href="?page=92"><span class="num">6-2.</span>マーケティング基礎編テキスト「STP分析の超入門」</a></li>
+              <li><a href="?page=93"><span class="num">6-3.</span>マーケティング基礎「4P分析の超入門」</a></li>
+              <li><a href="?page=94"><span class="num">6-4.</span>マーケティング基礎「消費者心理の基本 AIDMAモデル」</a></li>
+              <li><a href="?page=95"><span class="num">6-5.</span>【テスト課題①】「ユニクロ」と「GU」の商品の具体例を挙げて違いを4Pで整理し、のマーケティング戦略を細分化してまとめよう！</a></li>
+              <li><a href="?page=96"><span class="num">6-6.</span>【実践課題①】「今日買った商品を1つ選び、『値段以外の価値（意味）』を3つ書き出す」</a></li>
+              <li><a href="?page=97"><span class="num">6-7.</span>【実践課題②】自分が良く買う用品を1つ選んで、『誰向け（ターゲット）』かを考える</a></li>
+              <li><a href="?page=98"><span class="num">6-8.</span>【実践課題③】「最近買った商品の購入の流れをAIDMAに当てはめて書いてみる」</a></li>
+            </ul>
+          </div>
+        </details>
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">Week 10</span>
+              <span class="phase-title">Week 10｜マーケティング②</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=101"><span class="num">10-1.</span>カスタマージャーニーとは？</a></li>
+              <li><a href="?page=102"><span class="num">10-2.</span>マーケティング応用編「ロゴ・色・キャッチコピーがなぜ大事なのか」</a></li>
+              <li><a href="?page=103"><span class="num">10-3.</span>マーケティング応用編「競合優位性と差別化戦略」</a></li>
+              <li><a href="?page=104"><span class="num">10-4.</span>マーケティング応用編「LTVを考える」</a></li>
+              <li><a href="?page=105"><span class="num">10-5.</span>【テスト課題①】「架空の飲料ブランドを作り、企画書を各（5W1Hに基づいて細分化）」</a></li>
+              <li><a href="?page=106"><span class="num">10-6.</span>【実践課題①】「自分が最近買った商品のカスタマージャーニーを書き出す」</a></li>
+              <li><a href="?page=107"><span class="num">10-7.</span>【実践課題②】「家にある商品を1つ選び、ブランド戦略の観点から色・デザインを分析する」</a></li>
+              <li><a href="?page=108"><span class="num">10-8.</span>【実践課題③】「競合が多いジャンル（例：ペットボトル飲料）を比較して差別化ポイントを書く」</a></li>
+              <li><a href="?page=109"><span class="num">10-9.</span>【実践課題④】「自分のよく使うサービスのLTVを計算してみる」</a></li>
+            </ul>
+          </div>
+        </details>
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">Week 11</span>
+              <span class="phase-title">Week 11｜マーケティング応用①</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=111"><span class="num">11-1.</span>「ファネル設計とは？」</a></li>
+              <li><a href="?page=112"><span class="num">11-2.</span>「KPI・KGLの考え方」</a></li>
+              <li><a href="?page=113"><span class="num">11-3.</span>「オンライン広告の基本構造」</a></li>
+              <li><a href="?page=114"><span class="num">11-4.</span>「ストーリーテリングの力」</a></li>
+              <li><a href="?page=115"><span class="num">11-5.</span>【テスト課題】</a></li>
+              <li><a href="?page=116"><span class="num">11-6.</span>【実践課題①】「コンビニの新商品ポスターを見てストーリーテリング要素を抽出する」</a></li>
+              <li><a href="?page=117"><span class="num">11-7.</span>【実践課題②】「架空の商品を設定し、KGI・KPIを設計してみる」</a></li>
+              <li><a href="?page=118"><span class="num">11-8.</span>【実践課題③】「自分のよく使うサービスのLTVを計算してみる」</a></li>
+            </ul>
+          </div>
+        </details>
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">Week 12</span>
+              <span class="phase-title">Week 12｜マーケティング応用②</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=121"><span class="num">12-1.</span>ブルーオーシャン戦略</a></li>
+              <li><a href="?page=122"><span class="num">12-2.</span>価値戦略の心理学</a></li>
+              <li><a href="?page=123"><span class="num">12-3.</span>データ分析と改善</a></li>
+              <li><a href="?page=124"><span class="num">12-4.</span>持続的なブランド作り</a></li>
+              <li><a href="?page=125"><span class="num">12-5.</span>【テスト課題】日常で体験したマーケティングの罠を分析し、利益向上の施策を考える</a></li>
+              <li><a href="?page=126"><span class="num">12-6.</span>【実践課題①】「衝動買いした商品の行動経済学的理由を説明する」</a></li>
+              <li><a href="?page=127"><span class="num">12-7.</span>【実践課題②】「コンビニの棚を見てアンカリング効果を探す」</a></li>
+              <li><a href="?page=128"><span class="num">12-8.</span>【実践課題③】「自分のSNSに希少性を取り入れた投稿を考える」</a></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+  </div>
+  <script>
+    (async () => {
+      const shortcutList = document.getElementById('article-shortcuts');
+      const emptyMessage = document.getElementById('article-shortcuts-empty');
+      const loginUserEmail = typeof window.__LOGIN_USER_EMAIL__ === 'string' ? window.__LOGIN_USER_EMAIL__.trim() : '';
+      const openedStorageKey = loginUserEmail !== '' ? `openedArticles:${loginUserEmail}` : 'openedArticles:guest';
+
+      const getOpenedArticles = () => {
+        try {
+          const raw = localStorage.getItem(openedStorageKey);
+          const parsed = raw ? JSON.parse(raw) : [];
+          return Array.isArray(parsed) ? parsed.map((id) => String(id)) : [];
+        } catch (error) {
+          return [];
+        }
+      };
+
+      try {
+        const response = await fetch('include/articles.json', { cache: 'no-store' });
+        if (!response.ok) {
+          throw new Error('記事データの取得に失敗しました。');
+        }
+
+        const payload = await response.json();
+        const articles = Array.isArray(payload?.articles) ? payload.articles : [];
+        const latestFive = [...articles]
+          .sort((a, b) => {
+            const dateCompare = String(b.date || '').localeCompare(String(a.date || ''));
+            if (dateCompare !== 0) return dateCompare;
+            return Number(b.id || 0) - Number(a.id || 0);
+          })
+          .slice(0, 5);
+
+        if (latestFive.length === 0) {
+          emptyMessage.hidden = false;
+          return;
+        }
+
+        const openedArticles = new Set(getOpenedArticles());
+        latestFive.forEach((article) => {
+          const articleId = String(article.id || '');
+          const li = document.createElement('li');
+          const link = document.createElement('a');
+          link.href = `?page=article&article=${encodeURIComponent(articleId)}`;
+
+          const date = document.createElement('span');
+          date.className = 'article-shortcuts-date';
+          date.textContent = article.date || '';
+
+          const title = document.createElement('span');
+          title.className = 'article-shortcuts-title';
+          title.textContent = article.title || '無題の記事';
+
+          link.append(date, title);
+          if (articleId !== '' && openedArticles.has(articleId)) {
+            li.classList.add('is-opened');
+          }
+
+          li.appendChild(link);
+          shortcutList.appendChild(li);
+        });
+      } catch (error) {
+        emptyMessage.hidden = false;
+      }
+    })();
+  </script>
+</body>
+</html>

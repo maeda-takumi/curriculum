@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week6 ①Notion応用編：ChatGPT × Notionで作る「データベース活用」</title>
+  <link rel="stylesheet" href="include_lesson/style2.css" />
+</head>
+<body>
+  <main class="page">
+    <h1>Week6 ①Notion応用編：ChatGPT × Notionで作る「データベース活用」</h1>
+    <hr />
+
+    <div class="callout">データベースの応用の考え方（基礎＋ChatGPT活用）</div>
+
+    <section class="content-block">
+      <h3 class="sub-title">データベースの役割</h3>
+      <p>Notionの「表（データベース）」は、単なるメモや記録帳ではありません。情報を条件で絞り込んだり、並び替えたり、他のデータと関連づけたりできるのが特徴です。</p>
+      <p>つまり、Notionのデータベースは「あなた専用のシステム構築ツール」と言えます。上手に使えば、無料でタスク管理アプリや顧客管理システム（CRM）のような機能を作ることができます。</p>
+      <p>ポイントは、「どんな情報を管理したいか」を明確にすること。それが決まれば、Notionがその“情報の整理棚”になります。</p>
+    </section>
+
+    <section class="content-block">
+      <h3 class="sub-title">ChatGPTを設計補助に使う</h3>
+      <p>データベースの構造を考えるのが苦手な人でも、ChatGPTを活用すれば簡単です。「どんな内容を管理したいか」をChatGPTに伝えるだけで、必要な項目（列）や設計図を提案してくれます。</p>
+      <p>例として、タスク管理データベースを作りたい場合は次のように依頼できます。</p>
+      <aside class="note-box">
+        <p>プロンプト例：</p>
+        <p>あなたはNotion設計の専門家です。以下の条件でタスク管理データベースを設計してください。条件：期限・優先度・進行状況を管理。個人利用前提。</p>
+      </aside>
+      <p>ChatGPTは、「タスク名」「期限」「優先度」「状態」「メモ」といった構成案を自動で提案してくれます。あとはそれをNotionで再現するだけです。</p>
+      <p>初心者でも、まるで設計のプロのようにデータベースを作れるのがChatGPTの大きな強みです。</p>
+    </section>
+
+    <section class="content-block">
+      <div class="callout">まとめ</div>
+      <p>Notionのデータベースは「情報管理の土台」です。ChatGPTは「設計の補助役」。この2つを組み合わせることで、他の高価な業務アプリを使わずに、自分専用のシステムを作ることができます。</p>
+    </section>
+
+    <div class="callout">タスク管理を応用する（Notion × ChatGPT）</div>
+
+    <section class="content-block">
+      <h3 class="sub-title">Notionで作るタスク管理DB</h3>
+      <p>タスク管理は、データベース活用の中でも最も実践的なテーマです。</p>
+      <aside class="note-box">
+        <p>基本の列構成は次の通りです。</p>
+        <ul>
+          <li>タスク名（タイトル）</li>
+          <li>期限（Date）</li>
+          <li>優先度（Select：高／中／低）</li>
+          <li>状態（未着手／進行中／完了）</li>
+          <li>メモ（詳細や補足）</li>
+        </ul>
+      </aside>
+      <p>この構造を作るだけで、ToDoリスト以上の管理ができるようになります。優先度順で並び替えたり、完了済みのタスクを自動で非表示にしたりも可能です。</p>
+    </section>
+
+    <section class="content-block">
+      <h3 class="sub-title">ビューの使い分け</h3>
+      <p>Notionでは、同じデータベースを「複数の見方」で表示できます。これを使いこなすと、仕事効率が大きく向上します。</p>
+      <aside class="note-box">
+        <ul>
+          <li>ボードビュー：カンバン方式で「進行状況」を一目で把握<br /><p><img src="include_lesson/61_files/image(0).png" alt="データベース設計のイメージ" /></p></li>
+          <li>カレンダービュー：期限をカレンダー上で確認<br /><p><img src="include_lesson/61_files/image(1).png" alt="データベース設計のイメージ" /></p></li>
+          <li>テーブルビュー：全体をリスト形式で整理<br /><p><img src="include_lesson/61_files/image(3).png" alt="データベース設計のイメージ" /></p></li>
+        </ul>
+      </aside>
+      <p>例えば、「今週の予定」をカレンダービューで見ながら、「進行中タスク」だけをボードビューで管理するなど、柔軟に使い分けられます。</p>
+    </section>
+
+    <section class="content-block">
+      <h3 class="sub-title">ChatGPTで「タスク洗い出し」を補助</h3>
+      <p>「何から始めればいいか分からない」ときは、ChatGPTにタスクを洗い出してもらいましょう。</p>
+      <aside class="note-box">
+        <p>プロンプト例：</p>
+        <p>ブログ運営のための週次タスクをリスト化してください。カテゴリは「執筆・リサーチ・SNS運用・分析」に分けて。</p>
+      </aside>
+      <p>ChatGPTがカテゴリ別のタスク一覧を提案してくれるので、そのままNotionに貼り付ければ、すぐに実践可能なタスクリストになります。この方法を使えば、初めての副業でも計画をスムーズに立てられます。</p>
+    </section>
+
+    <section class="content-block">
+      <h3 class="sub-title">GTD（Getting Things Done）との親和性</h3>
+      <p>GTDとは、「頭の中の気になることをすべて書き出し、整理して行動に移す」手法です。Notionはこれにぴったり合います。</p>
+      <aside class="note-box">
+        <ul>
+          <li>まず「Inbox（受け皿ページ）」を作って全てのタスクや思いつきを放り込む</li>
+          <li>週に一度見直し、整理・分類して「次の行動」に変える</li>
+        </ul>
+      </aside>
+      <p>こうすることで、頭の中がスッキリ整理されます。</p>
+    </section>
+
+    <section class="content-block">
+      <div class="callout">まとめ</div>
+      <p>Notion＝データを管理する本体、ChatGPT＝タスクを洗い出す補助。この2つだけで、高機能なタスク管理アプリに匹敵する仕組みを自作できます。副業の作業効率化や、クライアントワークの進捗管理にも応用可能です。</p>
+    </section>
+
+    <div class="callout">顧客管理（CRM）を応用する（Notion × ChatGPT）</div>
+
+    <section class="content-block">
+      <h3 class="sub-title">顧客DBの設計</h3>
+      <p>副業を本格的に進めると、クライアントや顧客とのやり取りが増えます。その情報を整理するのに最適なのがNotionのCRM（顧客管理データベース）です。</p>
+      <aside class="note-box">
+        <p>基本の列構成は次の通りです。</p>
+        <ul>
+          <li>顧客名（タイトル）</li>
+          <li>連絡先（電話／メール）</li>
+          <li>ステータス（見込み客／商談中／契約済）</li>
+          <li>最終連絡日（Date）</li>
+          <li>案件数（Relation機能で関連付け）</li>
+          <li>メモ（やり取りや要望など）</li>
+        </ul>
+        <p>
+      <p><img src="include_lesson/61_files/image(3).png" alt="データベース設計のイメージ" /></p></p>
+      </aside>
+      <p>これで「誰とどんな話をしているのか」「どこまで進んでいるのか」がひと目でわかります。</p>
+    </section>
+
+    <section class="content-block">
+      <h3 class="sub-title">ビューの工夫</h3>
+      <p>顧客データは、ビューを使い分けることでさらに見やすくなります。</p>
+      <aside class="note-box">
+        <ul>
+          <li>ボードビュー：ステータス別に整理して営業進捗を管理</li>
+          <li>カレンダービュー：次回連絡日でフォロー漏れを防止</li>
+          <li>ギャラリービュー：名刺やロゴを画像として登録し、視覚的に把握</li>
+        </ul>
+      </aside>
+      <p>「次に誰に連絡するべきか」を可視化できるため、営業活動がスムーズになります。</p>
+    </section>
+
+    <section class="content-block">
+      <h3 class="sub-title">ChatGPTで「顧客対応案」を生成</h3>
+      <p>顧客対応に迷った時は、ChatGPTに次のアクションを提案してもらいましょう。</p>
+      <aside class="note-box">
+        <p>プロンプト例：</p>
+        <p>顧客管理データベースを効率化したいです。顧客ごとの「次のアクション例」を出してください。ステータス：見込み客／商談中／契約済／休眠</p>
+      </aside>
+      <aside class="note-box">
+        <p>ChatGPTは次のような提案を出してくれます。</p>
+        <ul>
+          <li>見込み客：次回アポイントの提案</li>
+          <li>商談中：見積送付とフォロー連絡</li>
+          <li>契約済：アフターフォローの確認</li>
+          <li>休眠：再提案メールの作成</li>
+        </ul>
+      </aside>
+      <p>これをそのままNotionの「次のアクション」欄にコピーして使えます。</p>
+    </section>
+
+    <section class="content-block">
+      <div class="callout">まとめ</div>
+      <p>顧客管理を効率化するには、Notionでデータをまとめ、ChatGPTでアクション提案を得るのが最もシンプルです。</p>
+      <p>2ツールを組み合わせることで、高額なCRMツールに匹敵するシステムを、無料で自作できます。フリーランス、副業コンサル、クリエイター業など、あらゆる職種に対応可能です。</p>
+      <p>この2ツール（ChatGPT・Notion）だけで、業務システム（タスク管理・顧客管理）を再現できます。副業においては、「多くのツールを使いこなす」よりも「最小限のツールを深く使う」ことが成功の鍵です。ChatGPTで設計し、Notionで運用する。これが、AI時代の新しい働き方の基本スタイルです。</p>
+    </section>
+  </main>
+</body>
+</html>
