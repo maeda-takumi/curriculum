@@ -165,8 +165,14 @@
     }
 
     .detail-body {
-      white-space: pre-wrap;
+      white-space: normal;
       font-size: 18px;
+    }
+    .detail-body > :first-child {
+      margin-top: 0;
+    }
+    .detail-body > :last-child {
+      margin-bottom: 0;
     }
 
     .empty,
@@ -368,9 +374,27 @@
           return;
         }
 
+        const renderArticleBody = (rawBody) => {
+          const value = String(rawBody || '');
+          const hasHtmlTag = /<\s*[a-zA-Z][^>]*>/.test(value);
+
+          if (hasHtmlTag) {
+            detailBody.innerHTML = value;
+            return;
+          }
+
+          const escaped = value
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/\r?\n/g, '<br>');
+          detailBody.innerHTML = escaped;
+        };
         detailTitle.textContent = target.title || '無題の記事';
         detailMeta.textContent = target.date || '';
-        detailBody.textContent = target.body || '';
+        renderArticleBody(target.body);
         markArticleAsOpened(target.id);
 
         listView.hidden = true;
