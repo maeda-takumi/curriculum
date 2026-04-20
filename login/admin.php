@@ -107,6 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = strtolower(trim((string)($_POST['email'] ?? '')));
         $password = trim((string)($_POST['password'] ?? ''));
         $status = normalize_status($_POST['status'] ?? 'inactive');
+        $role = normalize_role($_POST['role'] ?? 'user');
         $phaseLocks = collect_phase_locks_from_post($phaseOptions);
         $lessonWeekLocks = collect_lesson_week_locks_from_post($lessonWeekOptions);
 
@@ -134,6 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'password' => $password,
                     'password_hash' => password_hash($password, PASSWORD_DEFAULT),
                     'status' => $status,
+                    'role' => $role,
                     'phase_locks' => $phaseLocks,
                     'lesson_week_locks' => $lessonWeekLocks,
                 ];
@@ -151,6 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = strtolower(trim((string)($_POST['email'] ?? '')));
         $password = trim((string)($_POST['password'] ?? ''));
         $status = normalize_status($_POST['status'] ?? 'inactive');
+        $role = normalize_role($_POST['role'] ?? 'user');
         $phaseLocks = collect_phase_locks_from_post($phaseOptions);
         $lessonWeekLocks = collect_lesson_week_locks_from_post($lessonWeekOptions);
 
@@ -180,6 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $user['real_name'] = $realName;
                     $user['email'] = $email;
                     $user['status'] = $status;
+                    $user['role'] = $role;
                     $user['phase_locks'] = $phaseLocks;
                     $user['lesson_week_locks'] = $lessonWeekLocks;
                     if ($password !== '') {
@@ -275,7 +279,7 @@ function page_link(int $page, string $lineName, string $realName, string $email)
       <div class="title-row">
         <div>
           <h1>ユーザ管理</h1>
-          <p class="muted">登録情報（LINE名 / 本名 / メールアドレス / password / status / フェーズ・Weekロック）を管理できます。</p>
+          <p class="muted">登録情報（LINE名 / 本名 / メールアドレス / password / status / レベル / フェーズ・Weekロック）を管理できます。</p>
         </div>
         <button type="button" class="btn-inline" data-modal-target="create-user-modal">+ ユーザ追加</button>
       </div>
@@ -306,6 +310,7 @@ function page_link(int $page, string $lineName, string $realName, string $email)
               <div class="user-secondary">本名: <?= h((string)($user['real_name'] ?? '')) ?></div>
               <div class="user-secondary"><?= h((string)$user['email']) ?></div>
               <div class="user-password">password: <?= h((string)($user['password'] ?? '')) ?></div>
+              <div class="user-password">レベル: <?= h(((string)($user['role'] ?? 'user')) === 'admin' ? '管理者ユーザ' : '通常ユーザ') ?></div>
               <div class="user-password">
                 Lessonロック中:
                 <?php
@@ -353,6 +358,7 @@ function page_link(int $page, string $lineName, string $realName, string $email)
                   data-email="<?= h((string)$user['email']) ?>"
                   data-password="<?= h((string)($user['password'] ?? '')) ?>"
                   data-status="<?= h((string)$user['status']) ?>"
+                  data-role="<?= h((string)($user['role'] ?? 'user')) ?>"
                   data-phase-locks='<?= h(json_encode(normalize_phase_locks($user["phase_locks"] ?? null), JSON_UNESCAPED_UNICODE) ?: "{}") ?>'
                   data-lesson-week-locks='<?= h(json_encode(normalize_lesson_week_locks($user["lesson_week_locks"] ?? null), JSON_UNESCAPED_UNICODE) ?: "{}") ?>'
                 >編集</button>
@@ -405,6 +411,12 @@ function page_link(int $page, string $lineName, string $realName, string $email)
           <option value="inactive">無効</option>
         </select>
       </label>
+      <label>レベル
+        <select name="role">
+          <option value="user" selected>通常ユーザ</option>
+          <option value="admin">管理者ユーザ</option>
+        </select>
+      </label>
       <div class="lock_flex">
         <fieldset>
           <legend>Lesson Week閲覧ロック（チェックで閉場）</legend>
@@ -451,6 +463,12 @@ function page_link(int $page, string $lineName, string $realName, string $email)
         <select name="status" id="edit-status">
           <option value="active">有効</option>
           <option value="inactive">無効</option>
+        </select>
+      </label>
+      <label>レベル
+        <select name="role" id="edit-role">
+          <option value="user">通常ユーザ</option>
+          <option value="admin">管理者ユーザ</option>
         </select>
       </label>
         <div class="lock_flex">
@@ -529,9 +547,10 @@ function page_link(int $page, string $lineName, string $realName, string $email)
             const emailInput = document.getElementById('edit-email');
             const passwordInput = document.getElementById('edit-password');
             const statusInput = document.getElementById('edit-status');
+            const roleInput = document.getElementById('edit-role');
             const editForm = document.getElementById('edit-user-form');
 
-            if (!idInput || !lineNameInput || !realNameInput || !emailInput || !passwordInput || !statusInput || !(editForm instanceof HTMLFormElement)) {
+            if (!idInput || !lineNameInput || !realNameInput || !emailInput || !passwordInput || !statusInput || !roleInput || !(editForm instanceof HTMLFormElement)) {
               return;
             }
 
@@ -541,6 +560,7 @@ function page_link(int $page, string $lineName, string $realName, string $email)
             emailInput.value = openButton.dataset.email ?? '';
             passwordInput.value = openButton.dataset.password ?? '';
             statusInput.value = openButton.dataset.status ?? 'inactive';
+            roleInput.value = openButton.dataset.role ?? 'user';
             let phaseLocks = {};
             let lessonWeekLocks = {};
             try {

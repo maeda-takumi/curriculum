@@ -39,11 +39,13 @@ if ($loginEmail === '') {
 }
 
 $isActiveUser = false;
+$loginRole = 'user';
 foreach (load_users() as $user) {
     $email = trim((string)($user['email'] ?? ''));
     $status = (string)($user['status'] ?? 'inactive');
     if ($email !== '' && hash_equals($email, $loginEmail) && $status === 'active') {
         $isActiveUser = true;
+        $loginRole = normalize_role($user['role'] ?? 'user');
         break;
     }
 }
@@ -57,3 +59,4 @@ if (!$isActiveUser) {
     session_destroy();
     redirect_to_login();
 }
+$_SESSION['login_role'] = $loginRole;

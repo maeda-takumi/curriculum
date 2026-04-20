@@ -72,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['logged_in'] = true;
             $_SESSION['login_user'] = (string)($user['line_name'] ?? ($user['email'] ?? ''));
             $_SESSION['login_email'] = (string)($user['email'] ?? '');
+            $_SESSION['login_role'] = normalize_role($user['role'] ?? 'user');
             header('Location: ' . $next);
             exit;
         }

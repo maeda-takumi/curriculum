@@ -11,6 +11,10 @@ function normalize_status(mixed $status): string
 {
     return ((string)$status) === 'active' ? 'active' : 'inactive';
 }
+function normalize_role(mixed $role): string
+{
+    return ((string)$role) === 'admin' ? 'admin' : 'user';
+}
 /**
  * @return array<string, bool>
  */
@@ -93,6 +97,7 @@ function load_users(): array
             'password' => $defaultPassword,
             'password_hash' => password_hash($defaultPassword, PASSWORD_DEFAULT),
             'status' => 'active',
+            'role' => 'admin',
         ]];
         save_users($default);
         return $default;
@@ -131,6 +136,7 @@ function load_users(): array
             'password' => $password,
             'password_hash' => $passwordHash,
             'status' => normalize_status($row['status'] ?? 'inactive'),
+            'role' => normalize_role($row['role'] ?? 'user'),
             'phase_locks' => normalize_phase_locks($row['phase_locks'] ?? null),
             'lesson_week_locks' => normalize_lesson_week_locks($row['lesson_week_locks'] ?? null),
         ];
