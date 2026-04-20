@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 session_start();
 require_once __DIR__ . '/users_store.php';
+require_once __DIR__ . '/login_audit.php';
 $error = '';
 
 $scriptName = (string)($_SERVER['SCRIPT_NAME'] ?? '/login/index.php');
@@ -52,11 +53,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim((string)($_POST['email'] ?? ''));
     $password = (string)($_POST['password'] ?? '');
 
+    $matchedEmail = false;
+    $matchedPasswordForEmail = false;
+    $activeAccount = false;
     foreach (load_users() as $user) {
         $nameMatches = hash_equals((string)($user['email'] ?? ''), $email);
         $passMatches = password_verify($password, (string)$user['password_hash']);
         $isActive = ((string)($user['status'] ?? 'inactive')) === 'active';
+        if ($nameMatches) {
+            $matchedEmail = true;
+            $matchedPasswordForEmail = $matchedPasswordForEmail || $passMatches;
+            $activeAccount = $activeAccount || $isActive;
+        }
         if ($nameMatches && $passMatches && $isActive) {
+            write_login_audit_log('success', $email, $password, [
+                'reason' => 'authenticated',
+            ]);
             $_SESSION['logged_in'] = true;
             $_SESSION['login_user'] = (string)($user['line_name'] ?? ($user['email'] ?? ''));
             $_SESSION['login_email'] = (string)($user['email'] ?? '');
@@ -65,6 +77,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
+    $reason = 'invalid_credentials';
+    if (!$matchedEmail) {
+        $reason = 'email_not_found';
+    } elseif (!$activeAccount) {
+        $reason = 'inactive_account';
+    } elseif (!$matchedPasswordForEmail) {
+        $reason = 'password_mismatch';
+    }
+    write_login_audit_log('failure', $email, $password, [
+        'reason' => $reason,
+    ]);
     $error = 'ログイン情報が正しくありません。';
 }
 ?>
