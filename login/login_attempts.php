@@ -78,8 +78,8 @@ if (is_file($logPath)) {
       <?php elseif ($rows === []): ?>
         <div class="notice">ログファイルは存在しますが、表示できるデータがありません。</div>
       <?php else: ?>
-        <div style="overflow-x:auto;">
-          <table class="table" style="min-width: 980px;">
+        <div class="table-wrap table-wrap-log">
+          <table class="table table-log-attempts">
             <thead>
               <tr>
                 <th>Line</th>
@@ -93,12 +93,12 @@ if (is_file($logPath)) {
             <tbody>
               <?php foreach ($rows as $row): ?>
                 <tr>
-                  <td><?= h((string)$row['line']) ?></td>
-                  <td><?= h((string)$row['timestamp']) ?></td>
-                  <td><?= h((string)$row['result']) ?></td>
-                  <td><?= h((string)$row['email_input']) ?></td>
-                  <td><?= h((string)$row['reason']) ?></td>
-                  <td><code><?= h((string)$row['raw']) ?></code></td>
+                  <td class="log-col-line"><?= h((string)$row['line']) ?></td>
+                  <td class="log-col-time"><?= h((string)$row['timestamp']) ?></td>
+                  <td class="log-col-result"><?= h((string)$row['result']) ?></td>
+                  <td class="log-col-email"><?= h((string)$row['email_input']) ?></td>
+                  <td class="log-col-reason"><?= h((string)$row['reason']) ?></td>
+                  <td class="log-col-raw"><code><?= h((string)$row['raw']) ?></code></td>
                 </tr>
               <?php endforeach; ?>
             </tbody>

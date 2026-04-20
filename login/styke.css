@@ -441,3 +441,65 @@ textarea {
     width: 100%;
   }
 }
+
+
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  min-width: 980px;
+}
+
+.table th,
+.table td {
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  vertical-align: top;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.table th {
+  background: var(--surface-soft);
+  white-space: nowrap;
+}
+
+.table td {
+  background: #fff;
+}
+
+.table code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+}
+
+.table-wrap-log {
+  max-width: 100%;
+}
+
+.table-log-attempts .log-col-line {
+  width: 72px;
+  white-space: nowrap;
+}
+
+.table-log-attempts .log-col-time {
+  width: 190px;
+  white-space: nowrap;
+}
+
+.table-log-attempts .log-col-result {
+  width: 120px;
+}
+
+.table-log-attempts .log-col-email,
+.table-log-attempts .log-col-reason {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.table-log-attempts .log-col-raw {
+  overflow-wrap: anywhere;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
