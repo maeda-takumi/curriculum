@@ -53,43 +53,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim((string)($_POST['email'] ?? ''));
     $password = (string)($_POST['password'] ?? '');
 
-    $matchedEmail = false;
-    $matchedPasswordForEmail = false;
-    $activeAccount = false;
-    foreach (load_users() as $user) {
-        $nameMatches = hash_equals((string)($user['email'] ?? ''), $email);
-        $passMatches = password_verify($password, (string)$user['password_hash']);
-        $isActive = ((string)($user['status'] ?? 'inactive')) === 'active';
-        if ($nameMatches) {
-            $matchedEmail = true;
-            $matchedPasswordForEmail = $matchedPasswordForEmail || $passMatches;
-            $activeAccount = $activeAccount || $isActive;
-        }
-        if ($nameMatches && $passMatches && $isActive) {
-            write_login_audit_log('success', $email, $password, [
-                'reason' => 'authenticated',
-            ]);
-            $_SESSION['logged_in'] = true;
-            $_SESSION['login_user'] = (string)($user['line_name'] ?? ($user['email'] ?? ''));
-            $_SESSION['login_email'] = (string)($user['email'] ?? '');
-            $_SESSION['login_role'] = normalize_role($user['role'] ?? 'user');
-            header('Location: ' . $next);
-            exit;
-        }
-    }
+    if ($email === '' || $password === '') {
+        write_login_audit_log('failure', $email, $password, [
+            'reason' => 'missing_fields',
+        ]);
+        $error = 'メールアドレスとパスワードを入力してください。';
+    } else {
 
-    $reason = 'invalid_credentials';
-    if (!$matchedEmail) {
-        $reason = 'email_not_found';
-    } elseif (!$activeAccount) {
-        $reason = 'inactive_account';
-    } elseif (!$matchedPasswordForEmail) {
-        $reason = 'password_mismatch';
+        $matchedEmail = false;
+        $matchedPasswordForEmail = false;
+        $activeAccount = false;
+        foreach (load_users() as $user) {
+            $nameMatches = hash_equals((string)($user['email'] ?? ''), $email);
+            $passMatches = password_verify($password, (string)$user['password_hash']);
+            $isActive = ((string)($user['status'] ?? 'inactive')) === 'active';
+            if ($nameMatches) {
+                $matchedEmail = true;
+                $matchedPasswordForEmail = $matchedPasswordForEmail || $passMatches;
+                $activeAccount = $activeAccount || $isActive;
+            }
+            if ($nameMatches && $passMatches && $isActive) {
+                write_login_audit_log('success', $email, $password, [
+                    'reason' => 'authenticated',
+                ]);
+                $_SESSION['logged_in'] = true;
+                $_SESSION['login_user'] = (string)($user['line_name'] ?? ($user['email'] ?? ''));
+                $_SESSION['login_email'] = (string)($user['email'] ?? '');
+                $_SESSION['login_role'] = normalize_role($user['role'] ?? 'user');
+                header('Location: ' . $next);
+                exit;
+            }
+        }
+        $reason = 'invalid_credentials';
+        if (!$matchedEmail) {
+            $reason = 'email_not_found';
+        } elseif (!$activeAccount) {
+            $reason = 'inactive_account';
+        } elseif (!$matchedPasswordForEmail) {
+            $reason = 'password_mismatch';
+        }
+        write_login_audit_log('failure', $email, $password, [
+            'reason' => $reason,
+        ]);
+        $error = 'ログイン情報が正しくありません。';
     }
-    write_login_audit_log('failure', $email, $password, [
-        'reason' => $reason,
-    ]);
-    $error = 'ログイン情報が正しくありません。';
 }
 ?>
 <!doctype html>
@@ -101,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="stylesheet" href="styke.css?v=<?= time() ?>">
 </head>
 <body class="login-page">
-  <form class="card login-card" method="post">
+  <form class="card login-card" method="post" novalidate>
     <h1>ログイン</h1>
     <p class="muted">登録ユーザ情報を入力してください。</p>
     <?php if ($error !== ''): ?>
