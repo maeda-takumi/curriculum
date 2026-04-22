@@ -1416,8 +1416,11 @@ if ($isMobileClient) {
     $isGammaPublishedRoute =
         strpos($html, '"page":"/published/[docId]"') !== false
         || strpos($html, '"page":"\\/published\\/[docId]"') !== false;
+    $isGammaTurbopackRuntime =
+        strpos($html, '__turbopack_load_page_chunks__') !== false
+        || strpos($html, 'static/chunks/turbopack-') !== false;
 
-    if ($isGammaPublishedRoute) {
+    if ($isGammaPublishedRoute && $isGammaTurbopackRuntime) {
         $html = str_replace('"page":"/published/[docId]"', '"page":"/published_mobile/[docId]"', $html);
         $html = str_replace('"page":"\\/published\\/[docId]"', '"page":"\\/published_mobile\\/[docId]"', $html);
 
