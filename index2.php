@@ -1416,18 +1416,19 @@ if ($isMobileClient) {
     $isGammaPublishedRoute =
         strpos($html, '"page":"/published/[docId]"') !== false
         || strpos($html, '"page":"\\/published\\/[docId]"') !== false;
-    $isGammaTurbopackRuntime =
-        strpos($html, '__turbopack_load_page_chunks__') !== false
-        || strpos($html, 'static/chunks/turbopack-') !== false;
 
-    if ($isGammaPublishedRoute && $isGammaTurbopackRuntime) {
+    if ($isGammaPublishedRoute) {
         $html = str_replace('"page":"/published/[docId]"', '"page":"/published_mobile/[docId]"', $html);
         $html = str_replace('"page":"\\/published\\/[docId]"', '"page":"\\/published_mobile\\/[docId]"', $html);
 
         $mobileRouteLoaderPath = 'static/chunks/a946c26f1dc00c95.js';
         if (strpos($html, $mobileRouteLoaderPath) === false) {
+            $mobileRouteLoaderSrc = $appBasePath . ltrim($mobileRouteLoaderPath, '/');
+            if (preg_match('#<script[^>]+src=["\'](https?://[^"\']+/_next/)static/chunks/[^"\']+["\'][^>]*>#i', $html, $scriptSourceMatch) === 1) {
+                $mobileRouteLoaderSrc = $scriptSourceMatch[1] . ltrim($mobileRouteLoaderPath, '/');
+            }
             $mobileRouteLoaderTag = '<script src="'
-                . htmlspecialchars($appBasePath . ltrim($mobileRouteLoaderPath, '/'), ENT_QUOTES, 'UTF-8')
+                . htmlspecialchars($mobileRouteLoaderSrc, ENT_QUOTES, 'UTF-8')
                 . '" defer></script>';
             if (stripos($html, '</body>') !== false) {
                 $html = preg_replace('/<\/body>/i', $mobileRouteLoaderTag . "\n</body>", $html, 1) ?? $html;
