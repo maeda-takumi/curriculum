@@ -1191,6 +1191,87 @@ $loadingOverlayScript = <<<'JS'
     document.body.classList.remove('is-loading');
   }
 
+  function isGammaHydrationStable() {
+    var hasNextData = document.getElementById('__NEXT_DATA__') !== null;
+    if (!hasNextData) {
+      return false;
+    }
+
+    var hasHydratedMarkers =
+      document.querySelector('[data-nextjs-scroll-focus-boundary]') !== null ||
+      document.querySelector('.chakra-portal') !== null;
+    if (!hasHydratedMarkers) {
+      return false;
+    }
+
+    return true;
+  }
+
+  function waitForStableRenderThenHide() {
+    var stableDurationMs = 400;
+    var maxWaitMs = 10000;
+    var checkIntervalMs = 100;
+    var startTime = Date.now();
+    var lastMutationAt = Date.now();
+    var rafId = 0;
+    var timeoutId = 0;
+    var pollingIntervalId = 0;
+    var finished = false;
+    var observer = new MutationObserver(function () {
+      lastMutationAt = Date.now();
+    });
+
+    observer.observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      characterData: true
+    });
+
+    function cleanup() {
+      finished = true;
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      if (pollingIntervalId) {
+        clearInterval(pollingIntervalId);
+      }
+      observer.disconnect();
+    }
+
+    function tryHide() {
+      var now = Date.now();
+      if (isGammaHydrationStable() && now - lastMutationAt >= stableDurationMs) {
+        cleanup();
+        hideLoadingOverlay();
+      }
+    }
+
+    function runRafLoop() {
+      if (finished) {
+        return;
+      }
+      tryHide();
+      rafId = requestAnimationFrame(runRafLoop);
+    }
+
+    timeoutId = setTimeout(function () {
+      cleanup();
+      hideLoadingOverlay();
+    }, maxWaitMs);
+
+    pollingIntervalId = setInterval(function () {
+      if (Date.now() - startTime >= maxWaitMs) {
+        return;
+      }
+      tryHide();
+    }, checkIntervalMs);
+
+    rafId = requestAnimationFrame(runRafLoop);
+  }
   document.addEventListener('click', function (event) {
     var link = event.target.closest('a[href]');
     if (!link) {
@@ -1230,8 +1311,8 @@ $loadingOverlayScript = <<<'JS'
     showLoadingOverlay();
   }, true);
 
-  window.addEventListener('pageshow', hideLoadingOverlay);
-  window.addEventListener('load', hideLoadingOverlay, { once: true });
+  window.addEventListener('pageshow', waitForStableRenderThenHide);
+  window.addEventListener('load', waitForStableRenderThenHide, { once: true });
 })();
 </script>
 JS;
