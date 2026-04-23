@@ -1411,41 +1411,7 @@ if ($isLessonCurriculum) {
 }
 
 $isMobileClient = is_mobile_client();
-header('Vary: User-Agent, Sec-CH-UA-Mobile', false);
 if ($isMobileClient) {
-    $isGammaPublishedRoute =
-        strpos($html, '"page":"/published/[docId]"') !== false
-        || strpos($html, '"page":"\\/published\\/[docId]"') !== false;
-
-    $forceMobileRouteLoaderPages = ['71', '72', '73', '74', '75', '76', '77'];
-    $requiresMobileRouteLoader = $isGammaPublishedRoute
-        || (!$isLessonCurriculum && in_array($page, $forceMobileRouteLoaderPages, true));
-
-    if ($requiresMobileRouteLoader) {
-        if ($isGammaPublishedRoute) {
-            $html = str_replace('"page":"/published/[docId]"', '"page":"/published_mobile/[docId]"', $html);
-            $html = str_replace('"page":"\\/published\\/[docId]"', '"page":"\\/published_mobile\\/[docId]"', $html);
-        }
-
-
-        $mobileRouteLoaderPath = in_array($page, ['72', '73'], true)
-            ? 'static/chunks/a9071dc46c486e2f.js'
-            : 'static/chunks/a946c26f1dc00c95.js';
-        if (strpos($html, $mobileRouteLoaderPath) === false) {
-            $mobileRouteLoaderSrc = $appBasePath . ltrim($mobileRouteLoaderPath, '/');
-            if (preg_match('#<script[^>]+src=["\'](https?://[^"\']+/_next/)static/chunks/[^"\']+["\'][^>]*>#i', $html, $scriptSourceMatch) === 1) {
-                $mobileRouteLoaderSrc = $scriptSourceMatch[1] . ltrim($mobileRouteLoaderPath, '/');
-            }
-            $mobileRouteLoaderTag = '<script src="'
-                . htmlspecialchars($mobileRouteLoaderSrc, ENT_QUOTES, 'UTF-8')
-                . '" defer></script>';
-            if (stripos($html, '</body>') !== false) {
-                $html = preg_replace('/<\/body>/i', $mobileRouteLoaderTag . "\n</body>", $html, 1) ?? $html;
-            } else {
-                $html .= $mobileRouteLoaderTag;
-            }
-        }
-    }
     $html = preg_replace('/\bdata-is-mobile=(["\'])false\1/i', 'data-is-mobile=${1}true${1}', $html) ?? $html;
     $html = str_replace('"isMobile":false', '"isMobile":true', $html);
     $html = str_replace('"isMobile":!1', '"isMobile":!0', $html);
