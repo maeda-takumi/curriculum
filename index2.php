@@ -1417,9 +1417,16 @@ if ($isMobileClient) {
         strpos($html, '"page":"/published/[docId]"') !== false
         || strpos($html, '"page":"\\/published\\/[docId]"') !== false;
 
-    if ($isGammaPublishedRoute) {
-        $html = str_replace('"page":"/published/[docId]"', '"page":"/published_mobile/[docId]"', $html);
-        $html = str_replace('"page":"\\/published\\/[docId]"', '"page":"\\/published_mobile\\/[docId]"', $html);
+    $forceMobileRouteLoaderPages = ['71', '72', '73', '74', '75', '76', '77'];
+    $requiresMobileRouteLoader = $isGammaPublishedRoute
+        || (!$isLessonCurriculum && in_array($page, $forceMobileRouteLoaderPages, true));
+
+    if ($requiresMobileRouteLoader) {
+        if ($isGammaPublishedRoute) {
+            $html = str_replace('"page":"/published/[docId]"', '"page":"/published_mobile/[docId]"', $html);
+            $html = str_replace('"page":"\\/published\\/[docId]"', '"page":"\\/published_mobile\\/[docId]"', $html);
+        }
+
 
         $mobileRouteLoaderPath = 'static/chunks/a946c26f1dc00c95.js';
         if (strpos($html, $mobileRouteLoaderPath) === false) {
