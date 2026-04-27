@@ -1966,7 +1966,7 @@ if ($page === '54' || $page === '64') {
     border-radius: 999px;
     background: linear-gradient(135deg, #6b2cff 0%, #ff5ca8 45%, #ff7a59 100%);
     color: #ffffff;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 700;
     line-height: 1.4;
     text-decoration: none;
