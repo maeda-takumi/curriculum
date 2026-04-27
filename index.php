@@ -1939,6 +1939,170 @@ SCRIPT;
     }
     }
 }
+if ($page === '54' || $page === '64') {
+    $instagramTargetText = $page === '54'
+        ? 'あなたはショート動画の台本を書く専門家です。以下の内容を60秒のショート動画の台本にしてください。'
+        : '自己紹介に「楽天ROOMで〇〇を紹介中」と記載';
+    $instagramTargetBlockSelector = $page === '54'
+        ? '[data-pos="11956"].block-paragraph'
+        : '';
+    $instagramTargetInnerSelector = $page === '54'
+        ? 'div[data-node-view-content-inner="paragraph"]'
+        : 'div[data-node-view-content-inner="bullet"]';
+    $instagramTargetClosestSelector = $page === '54'
+        ? '.block-paragraph'
+        : 'li[data-testid="bullet-list-item"], li';
+    $instagramInsertInsideTarget = $page === '64';
+
+    $instagramCtaStyle = <<<'CSS'
+<style>
+.instagram-buzz-cta {
+    margin-top: 15px;
+}
+
+.instagram-buzz-cta__link {
+    display: inline-block;
+    padding: 14px 24px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #6b2cff 0%, #ff5ca8 45%, #ff7a59 100%);
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(255, 92, 168, 0.28);
+}
+</style>
+CSS;
+
+    $instagramCtaScript = <<<'SCRIPT'
+<script>
+(function () {
+  const targetText = __TARGET_TEXT__;
+  const targetBlockSelector = __TARGET_BLOCK_SELECTOR__;
+  const targetInnerSelector = __TARGET_INNER_SELECTOR__;
+  const targetClosestSelector = __TARGET_CLOSEST_SELECTOR__;
+  const insertInsideTarget = __INSERT_INSIDE_TARGET__;
+  const ctaClass = 'instagram-buzz-cta';
+  const ctaHtml = [
+    '<p class="' + ctaClass + '">',
+    '  <a',
+    '    href="https://schoolai.biz/curriculum/Instagram/"',
+    '    target="_blank"',
+    '    rel="noopener noreferrer"',
+    '    class="instagram-buzz-cta__link"',
+    '  >',
+    '    Instagramバズる投稿の作り方',
+    '  </a>',
+    '</p>'
+  ].join('');
+
+  let observer = null;
+  let rafId = 0;
+
+  const normalizeText = (value) => (value || '').replace(/\s+/g, ' ').trim();
+  const normalizedTargetText = normalizeText(targetText);
+
+  const inject = () => {
+    const explicitTargetBlock = targetBlockSelector ? document.querySelector(targetBlockSelector) : null;
+    let paragraphBlock = explicitTargetBlock;
+
+    if (!paragraphBlock) {
+      const paragraphs = Array.from(document.querySelectorAll(targetInnerSelector));
+      const targetParagraph = paragraphs.find((node) => normalizeText(node.textContent).includes(normalizedTargetText));
+      if (targetParagraph) {
+        paragraphBlock = targetParagraph.closest(targetClosestSelector);
+      }
+    }
+
+    if (!paragraphBlock) {
+      return false;
+    }
+
+    if (insertInsideTarget) {
+      if (paragraphBlock.querySelector(':scope > .' + ctaClass)) {
+        return true;
+      }
+      paragraphBlock.insertAdjacentHTML('beforeend', ctaHtml);
+      return true;
+    }
+
+    if (!paragraphBlock.parentElement) {
+      return false;
+    }
+
+    if (paragraphBlock.parentElement.querySelector(':scope > .' + ctaClass)) {
+      return true;
+    }
+
+    paragraphBlock.insertAdjacentHTML('afterend', ctaHtml);
+    return true;
+  };
+
+  const scheduleInject = () => {
+    if (rafId) {
+      return;
+    }
+    rafId = window.requestAnimationFrame(() => {
+      rafId = 0;
+      inject();
+    });
+  };
+
+  const initialize = () => {
+    if (!document.body) {
+      return;
+    }
+    if (!observer) {
+      observer = new MutationObserver(() => scheduleInject());
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
+    scheduleInject();
+  };
+
+  window.addEventListener('beforeunload', () => {
+    if (observer) {
+      observer.disconnect();
+      observer = null;
+    }
+    if (rafId) {
+      window.cancelAnimationFrame(rafId);
+      rafId = 0;
+    }
+  }, { once: true });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+SCRIPT;
+    $instagramCtaScript = str_replace(
+        ['__TARGET_TEXT__', '__TARGET_BLOCK_SELECTOR__', '__TARGET_INNER_SELECTOR__', '__TARGET_CLOSEST_SELECTOR__', '__INSERT_INSIDE_TARGET__'],
+        [
+            json_encode($instagramTargetText, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+            json_encode($instagramTargetBlockSelector, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+            json_encode($instagramTargetInnerSelector, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+            json_encode($instagramTargetClosestSelector, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+            $instagramInsertInsideTarget ? 'true' : 'false',
+        ],
+        $instagramCtaScript
+    );
+
+    if (stripos($html, '</head>') !== false) {
+        $html = preg_replace('/<\/head>/i', $instagramCtaStyle . "\n</head>", $html, 1) ?? $html;
+    } else {
+        $html = $instagramCtaStyle . $html;
+    }
+
+    if (stripos($html, '</body>') !== false) {
+        $html = preg_replace('/<\/body>/i', $instagramCtaScript . "\n</body>", $html, 1) ?? $html;
+    } else {
+        $html .= $instagramCtaScript;
+    }
+}
 $loginEmailForClient = trim((string)($_SESSION['login_email'] ?? ''));
 if ($loginEmailForClient !== '') {
     $clientUserScript = '<script>window.__LOGIN_USER_EMAIL__ = ' . json_encode($loginEmailForClient, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . ';</script>';
