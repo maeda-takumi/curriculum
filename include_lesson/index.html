@@ -261,6 +261,19 @@
     .article-shortcuts-title {
       color: #2e2f3a;
     }
+    .article-shortcuts-new {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #fff;
+      background: linear-gradient(135deg, #ff5f8f 0%, #ff8a4c 100%);
+    }
     .article-shortcuts .is-opened{
       color: #8c8f98;
       background: #f2f0ec;
@@ -721,8 +734,16 @@
           title.className = 'article-shortcuts-title';
           title.textContent = article.title || '無題の記事';
 
+          const isOpened = articleId !== '' && openedArticles.has(articleId);
           link.append(date, title);
-          if (articleId !== '' && openedArticles.has(articleId)) {
+          if (!isOpened) {
+            const badge = document.createElement('span');
+            badge.className = 'article-shortcuts-new';
+            badge.textContent = 'NEW';
+            link.appendChild(badge);
+          }
+
+          if (isOpened) {
             li.classList.add('is-opened');
           }
 

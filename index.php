@@ -1427,9 +1427,16 @@ if ($isMobileClient) {
                 $html = str_replace('"page":"\\/published\\/[docId]"', '"page":"\\/published_mobile\\/[docId]"', $html);
             }
 
-            $mobileRouteLoaderPath = in_array($page, ['72', '73'], true)
+            /* $mobileRouteLoaderPath = in_array($page, ['72', '73'], true)
                 ? 'static/chunks/a9071dc46c486e2f.js'
-                : 'static/chunks/a946c26f1dc00c95.js';
+                : 'static/chunks/a946c26f1dc00c95.js'; */
+            if ($page === '14') {
+                $mobileRouteLoaderPath = 'static/chunks/6cb26c7fd1b4603f.js';
+            } elseif (in_array($page, ['72', '73'], true)) {
+                $mobileRouteLoaderPath = 'static/chunks/a9071dc46c486e2f.js';
+            } else {
+                $mobileRouteLoaderPath = 'static/chunks/a946c26f1dc00c95.js';
+            }
             if (strpos($html, $mobileRouteLoaderPath) === false) {
                 $mobileRouteLoaderSrc = $appBasePath . ltrim($mobileRouteLoaderPath, '/');
                 if (preg_match('#<script[^>]+src=["\'](https?://[^"\']+/_next/)static/chunks/[^"\']+["\'][^>]*>#i', $html, $scriptSourceMatch) === 1) {
