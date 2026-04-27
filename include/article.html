@@ -109,12 +109,13 @@
 
     .article-link {
       display: flex;
-      align-items: baseline;
+      align-items: center;
+      justify-content: space-between;
       gap: 10px;
       text-decoration: none;
       color: var(--text);
       font-weight: 700;
-      padding: 14px 12px 14px 14px;
+      padding: 25px 12px 25px 14px;
       border-radius: 10px;
       border: 1px solid transparent;
       background: transparent;
@@ -126,6 +127,13 @@
       padding-left: 18px;
     }
 
+    .article-main {
+      min-width: 0;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex: 1 1 auto;
+    }
     .article-date {
       flex: 0 0 auto;
       font-size: 12px;
@@ -140,6 +148,24 @@
       line-height: 1.5;
       font-weight: 700;
       color: inherit;
+    }
+
+    .article-new {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.06em;
+      color: #fff;
+      background: linear-gradient(90deg, #ff4d6d 0%, #ff8a4c 100%);
+      box-shadow: 0 6px 14px rgba(255, 111, 76, 0.3);
+      margin: auto;
     }
 
     .article-item.is-opened {
@@ -164,6 +190,15 @@
       font-size: 14px;
     }
 
+      .article-main {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+      .article-new {
+        align-self: flex-start;
+      }
     .detail-body {
       white-space: normal;
       font-size: 18px;
@@ -339,12 +374,15 @@
           const openedArticles = new Set(getOpenedArticles());
           sortedArticles.forEach((article) => {
             const normalizedArticleId = String(article.id || '');
+            const isOpened = normalizedArticleId !== '' && openedArticles.has(normalizedArticleId);
             const li = document.createElement('li');
             li.className = 'article-item';
             const link = document.createElement('a');
             link.className = 'article-link';
             link.href = `?page=article&article=${encodeURIComponent(normalizedArticleId)}`;
 
+            const main = document.createElement('div');
+            main.className = 'article-main';
             const date = document.createElement('span');
             date.className = 'article-date';
             date.textContent = article.date || '';
@@ -353,10 +391,16 @@
             title.className = 'article-item-title';
             title.textContent = article.title || '無題の記事';
 
-            if (normalizedArticleId !== '' && openedArticles.has(normalizedArticleId)) {
+            if (isOpened) {
               li.classList.add('is-opened');
+            } else {
+              const newBadge = document.createElement('span');
+              newBadge.className = 'article-new';
+              newBadge.textContent = 'NEW';
+              link.appendChild(newBadge);
             }
-            link.append(date, title);
+            main.append(date, title);
+            link.prepend(main);
             li.appendChild(link);
             articleList.appendChild(li);
           });
