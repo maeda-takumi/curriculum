@@ -1939,7 +1939,7 @@ SCRIPT;
     }
     }
 }
-if ($page === '54' || $page === '64') {
+if ($page === '54' || $page === '62') {
     $instagramTargetText = $page === '54'
         ? 'あなたはショート動画の台本を書く専門家です。以下の内容を60秒のショート動画の台本にしてください。'
         : '自己紹介に「楽天ROOMで〇〇を紹介中」と記載';
@@ -1952,7 +1952,7 @@ if ($page === '54' || $page === '64') {
     $instagramTargetClosestSelector = $page === '54'
         ? '.block-paragraph'
         : 'li[data-testid="bullet-list-item"], li';
-    $instagramInsertInsideTarget = $page === '64';
+    $instagramInsertInsideTarget = $page === '62';
 
     $instagramCtaStyle = <<<'CSS'
 <style>
@@ -1962,7 +1962,7 @@ if ($page === '54' || $page === '64') {
 
 .instagram-buzz-cta__link {
     display: inline-block;
-    padding: 14px 24px;
+    padding: 14px 18px;
     border-radius: 999px;
     background: linear-gradient(135deg, #6b2cff 0%, #ff5ca8 45%, #ff7a59 100%);
     color: #ffffff;
