@@ -1413,7 +1413,7 @@ if ($isLessonCurriculum) {
 $isMobileClient = is_mobile_client();
 header('Vary: User-Agent, Sec-CH-UA-Mobile', false);
 if ($isMobileClient) {
-    $mobileOrderTargetPages = ['71', '72', '73', '74', '75', '76', '77'];
+    $mobileOrderTargetPages = ['14', '71', '72', '73', '74', '75', '76', '77', '81', '82', '83', '84', '85', '86', '87', '88'];
     if (in_array($page, $mobileOrderTargetPages, true)) {
         $isGammaPublishedRoute =
             strpos($html, '"page":"/published/[docId]"') !== false
@@ -1430,13 +1430,24 @@ if ($isMobileClient) {
             /* $mobileRouteLoaderPath = in_array($page, ['72', '73'], true)
                 ? 'static/chunks/a9071dc46c486e2f.js'
                 : 'static/chunks/a946c26f1dc00c95.js'; */
+
             if ($page === '14') {
                 $mobileRouteLoaderPath = 'static/chunks/6cb26c7fd1b4603f.js';
             } elseif (in_array($page, ['72', '73'], true)) {
                 $mobileRouteLoaderPath = 'static/chunks/a9071dc46c486e2f.js';
+            } elseif (in_array($page, ['86'], true)) {
+                $mobileRouteLoaderPath = 'static/chunks/32f6d3e85ffb6ba9.js';
+            } elseif (in_array($page, ['81', '82'], true)) {
+                $mobileRouteLoaderPath = 'static/chunks/a946c26f1dc00c95.js';
+            } elseif (in_array($page, ['83'], true)) {
+                $mobileRouteLoaderPath = 'static/chunks/50ed16859c087a3d.js';
+            } elseif (in_array($page, ['84'], true)) {
+                $mobileRouteLoaderPath = 'static/chunks/6596247e43bf4e11.js';
+            } elseif (in_array($page, ['85','87', '88'], true)) {
+                $mobileRouteLoaderPath = 'static/chunks/a8a6bf390259e2f9.js';
             } else {
                 $mobileRouteLoaderPath = 'static/chunks/a946c26f1dc00c95.js';
-            }
+            }            
             if (strpos($html, $mobileRouteLoaderPath) === false) {
                 $mobileRouteLoaderSrc = $appBasePath . ltrim($mobileRouteLoaderPath, '/');
                 if (preg_match('#<script[^>]+src=["\'](https?://[^"\']+/_next/)static/chunks/[^"\']+["\'][^>]*>#i', $html, $scriptSourceMatch) === 1) {
