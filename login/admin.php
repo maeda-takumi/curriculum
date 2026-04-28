@@ -576,12 +576,14 @@ function page_link(int $page, string $lineName, string $realName, string $email)
             } catch (error) {
               lessonWeekLocks = {};
             }
-            ['phase0', 'phase1', 'phase2', 'phase3', 'phase4', 'phase5', 'phase6'].forEach((phaseKey) => {
-              const checkbox = editForm.querySelector(`input[name="lock_${phaseKey}"]`);
+            <?php foreach (array_keys($phaseOptions) as $phaseKey): ?>
+            {
+              const checkbox = editForm.querySelector('input[name="lock_<?= h($phaseKey) ?>"]');
               if (checkbox instanceof HTMLInputElement) {
-                checkbox.checked = Boolean(phaseLocks[phaseKey]);
+                checkbox.checked = Boolean(phaseLocks['<?= h($phaseKey) ?>']);
               }
-            });
+            }
+            <?php endforeach; ?>
             ['week1', 'week2', 'week3', 'week4', 'week5', 'week6', 'week7', 'week8', 'week9', 'week10', 'week11', 'week12'].forEach((weekKey) => {
               const checkbox = editForm.querySelector(`input[name="lesson_lock_${weekKey}"]`);
               if (checkbox instanceof HTMLInputElement) {

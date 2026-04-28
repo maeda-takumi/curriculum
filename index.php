@@ -390,15 +390,39 @@ function resolve_lesson_week_key_from_page(string $page): ?string
 
     return null;
 }
-function maybe_unlock_phase1_from_phase0_next(string $currentPage): void
+function maybe_unlock_phase_from_transition(string $currentPage): void
 {
-    if ($currentPage !== '11') {
+
+    $unlockTransitions = [
+        [
+            'current_page' => '11',
+            'unlock_param' => 'unlock_phase1',
+            'from_page' => '08',
+            'phase_key' => 'phase1',
+        ],
+        [
+            'current_page' => '81',
+            'unlock_param' => 'unlock_phase8',
+            'from_page' => '77',
+            'phase_key' => 'phase8',
+        ],
+    ];
+
+    $transition = null;
+    foreach ($unlockTransitions as $candidate) {
+        if ($currentPage === $candidate['current_page']) {
+            $transition = $candidate;
+            break;
+        }
+    }
+
+    if ($transition === null) {
         return;
     }
 
-    $shouldUnlock = (string)($_GET['unlock_phase1'] ?? '') === '1'
-        && (string)($_GET['from'] ?? '') === '08';
-    if (!$shouldUnlock) {
+    $shouldUnlock = (string)($_GET[$transition['unlock_param']] ?? '') === '1'
+        && (string)($_GET['from'] ?? '') === $transition['from_page'];
+    if ($shouldUnlock === false) {
         return;
     }
 
@@ -417,8 +441,8 @@ function maybe_unlock_phase1_from_phase0_next(string $currentPage): void
         }
 
         $phaseLocks = normalize_phase_locks($user['phase_locks'] ?? null);
-        if (($phaseLocks['phase1'] ?? false) === true) {
-            $phaseLocks['phase1'] = false;
+        if (($phaseLocks[$transition['phase_key']] ?? false) === true) {
+            $phaseLocks[$transition['phase_key']] = false;
             $user['phase_locks'] = $phaseLocks;
             $updated = true;
         }
@@ -720,7 +744,7 @@ $lessonPhases = [
 $phaseLocks = [];
 $lockedPages = [];
 if (!$isLessonCurriculum) {
-    maybe_unlock_phase1_from_phase0_next($page);
+    maybe_unlock_phase_from_transition($page);
     $pagePhaseMap = build_page_phase_map($practicePhases);
     $phaseLocks = resolve_login_user_phase_locks();
     foreach ($pagePhaseMap as $targetPage => $phaseKey) {
@@ -1616,11 +1640,18 @@ if ($nextNavigation !== null) {
     $nextLabelEscaped = htmlspecialchars($nextNavigation['label'], ENT_QUOTES, 'UTF-8');
     $nextPageEscaped = htmlspecialchars($nextNavigation['page'], ENT_QUOTES, 'UTF-8');
     $nextIsLocked = (($lockedPages[$nextNavigation['page']] ?? false) === true);
-    $canAutoUnlockPhase1 = $page === '08' && $nextNavigation['page'] === '11' && $nextIsLocked;
-    $nextHref = $canAutoUnlockPhase1
-        ? $appBasePath . '?page=11&unlock_phase1=1&from=08'
+
+    $canAutoUnlockNext = (
+        ($page === '08' && $nextNavigation['page'] === '11')
+        || ($page === '77' && $nextNavigation['page'] === '81')
+    ) && $nextIsLocked && !$isLessonCurriculum;
+    $autoUnlockQuery = ($page === '08' && $nextNavigation['page'] === '11')
+        ? 'unlock_phase1=1&from=08'
+        : 'unlock_phase8=1&from=77';
+    $nextHref = $canAutoUnlockNext
+        ? $appBasePath . '?page=' . $nextPageEscaped . '&' . $autoUnlockQuery
         : ($nextIsLocked ? lock_page_url($nextNavigation['page'], $isLessonCurriculum) : $appBasePath . '?page=' . $nextPageEscaped);
-    $showNextLockedState = $nextIsLocked && !$canAutoUnlockPhase1;
+    $showNextLockedState = $nextIsLocked && !$canAutoUnlockNext;
     $nextLinkMarkup = '<div class="page-actions">';
     if (is_array($assignmentConfig) && isset($assignmentConfig['label'], $assignmentConfig['href'])) {
         $assignmentLabelEscaped = htmlspecialchars((string) $assignmentConfig['label'], ENT_QUOTES, 'UTF-8');
