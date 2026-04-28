@@ -28,6 +28,8 @@ $phaseOptions = [
     'phase4' => 'PHASE 4',
     'phase5' => 'PHASE 5',
     'phase6' => 'PHASE 6',
+    'phase7' => 'PHASE 7',
+    'phase8' => 'PHASE 8',
 ];
 $lessonWeekOptions = [
     'week1' => 'Week 1',

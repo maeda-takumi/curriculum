@@ -65,6 +65,8 @@ function default_phase_locks(): array
         'phase4' => false,
         'phase5' => false,
         'phase6' => false,
+        'phase7' => false,
+        'phase8' => false,
     ];
 }
 
