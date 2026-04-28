@@ -544,6 +544,7 @@ $articlesForJs = array_values(array_map(
           return;
         }
 
+        const visibility = modalVisibility.value;
         const next = { id: '', date, title, body, visibility, publish_types: publishTypes };
 
 
