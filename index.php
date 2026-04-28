@@ -2197,4 +2197,10 @@ if (stripos($html, '</head>') !== false) {
 } else {
     $html = $clientRoleScript . $html;
 }
+$clientCurriculumScript = '<script>window.__SESSION_CURRICULUM__ = ' . json_encode($curriculum, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . ';</script>';
+if (stripos($html, '</head>') !== false) {
+    $html = preg_replace('/<\/head>/i', $clientCurriculumScript . "\n</head>", $html, 1) ?? $html;
+} else {
+    $html = $clientCurriculumScript . $html;
+}
 echo $html;

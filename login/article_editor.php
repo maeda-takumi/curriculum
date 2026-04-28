@@ -12,7 +12,7 @@ $message = '';
 $error = '';
 
 /**
- * @return array<int, array{id:string,date:string,title:string,body:string,visibility:string}>
+ * @return array<int, array{id:string,date:string,title:string,body:string,visibility:string,publish_types:array<int, string>}>
  */
 function load_articles(string $path): array
 {
@@ -47,6 +47,7 @@ function load_articles(string $path): array
             'title' => trim((string)($item['title'] ?? '')),
             'body' => (string)($item['body'] ?? ''),
             'visibility' => normalize_visibility($item['visibility'] ?? 'public'),
+            'publish_types' => normalize_publish_types($item['publish_types'] ?? null),
         ];
     }
 
@@ -54,7 +55,7 @@ function load_articles(string $path): array
 }
 
 /**
- * @param array<int, array{id:string,date:string,title:string,body:string,visibility:string}> $articles
+ * @param array<int, array{id:string,date:string,title:string,body:string,visibility:string,publish_types:array<int, string>}> $articles
  */
 function save_articles(string $path, array $articles): bool
 {
@@ -67,6 +68,7 @@ function save_articles(string $path, array $articles): bool
             'excerpt' => '',
             'body' => $article['body'],
             'visibility' => normalize_visibility($article['visibility'] ?? 'public'),
+            'publish_types' => normalize_publish_types($article['publish_types'] ?? null),
         ];
     }
 
@@ -88,6 +90,29 @@ function normalize_visibility(mixed $visibility): string
 
     return 'public';
 }
+/**
+ * @return array<int, string>
+ */
+function normalize_publish_types(mixed $publishTypes): array
+{
+    $allowed = ['lesson', 'practice'];
+    if (is_string($publishTypes)) {
+        $publishTypes = array_filter(array_map('trim', explode(',', $publishTypes)), static fn(string $value): bool => $value !== '');
+    }
+    if (!is_array($publishTypes)) {
+        return $allowed;
+    }
+
+    $normalized = [];
+    foreach ($publishTypes as $type) {
+        $typeValue = strtolower(trim((string)$type));
+        if (in_array($typeValue, $allowed, true) && !in_array($typeValue, $normalized, true)) {
+            $normalized[] = $typeValue;
+        }
+    }
+
+    return $normalized === [] ? $allowed : $normalized;
+}
 $articles = load_articles($articlesFile);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -108,6 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $body = (string)($article['body'] ?? '');
         $visibility = normalize_visibility($article['visibility'] ?? 'public');
 
+        $publishTypes = normalize_publish_types($article['publish_types'] ?? null);
         if ($date === '' && $title === '' && trim($body) === '') {
             continue;
         }
@@ -122,6 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'title' => $title,
             'body' => $body,
             'visibility' => $visibility,
+            'publish_types' => $publishTypes,
         ];
     }
 
@@ -146,6 +173,7 @@ $articlesForJs = array_values(array_map(
         'title' => (string)($article['title'] ?? ''),
         'body' => (string)($article['body'] ?? ''),
         'visibility' => normalize_visibility($article['visibility'] ?? 'public'),
+        'publish_types' => normalize_publish_types($article['publish_types'] ?? null),
     ],
     $articles
 ));
@@ -251,7 +279,7 @@ $articlesForJs = array_values(array_map(
       <div class="title-row">
         <div>
           <h1>記事編集</h1>
-          <p class="muted">入力項目は「タイトル」「投稿日付」「本文」「公開モード」です。本文は HTML をそのまま保存できます。ID は保存時に自動採番されます。</p>
+          <p class="muted">入力項目は「タイトル」「投稿日付」「本文」「公開モード」「公開タイプ（lesson / practice）」です。本文は HTML をそのまま保存できます。ID は保存時に自動採番されます。</p>
         </div>
       </div>
 
@@ -295,6 +323,17 @@ $articlesForJs = array_values(array_map(
           <option value="public">一般公開（管理者ユーザ・通常ユーザ）</option>
         </select>
       </label>
+      <fieldset style="border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px;">
+        <legend style="padding: 0 4px;">公開タイプ（複数選択可）</legend>
+        <label style="display: inline-flex; align-items: center; gap: 8px; margin-right: 12px;">
+          <input type="checkbox" id="modal-publish-type-lesson" value="lesson" checked>
+          lesson
+        </label>
+        <label style="display: inline-flex; align-items: center; gap: 8px;">
+          <input type="checkbox" id="modal-publish-type-practice" value="practice" checked>
+          practice
+        </label>
+      </fieldset>
       <div class="actions" style="margin-top: 12px; justify-content: flex-end;">
         <button class="btn-danger btn-inline" type="button" id="modal-delete" style="margin-right: auto; display: none;">削除</button>
         <button class="btn-sub btn-inline" type="button" id="modal-cancel">キャンセル</button>
@@ -320,10 +359,26 @@ $articlesForJs = array_values(array_map(
       const modalTitleInput = document.getElementById('modal-title');
       const modalBody = document.getElementById('modal-body');
       const modalVisibility = document.getElementById('modal-visibility');
+      const modalPublishTypeLesson = document.getElementById('modal-publish-type-lesson');
+      const modalPublishTypePractice = document.getElementById('modal-publish-type-practice');
       const modalDelete = document.getElementById('modal-delete');
       const modalCancel = document.getElementById('modal-cancel');
       const modalSave = document.getElementById('modal-save');
       const todayDefault = '<?= date('Y-m-d') ?>';
+      const normalizePublishTypes = (publishTypes) => {
+        const allowed = ['lesson', 'practice'];
+        if (!Array.isArray(publishTypes)) {
+          return allowed;
+        }
+        const normalized = [];
+        publishTypes.forEach((type) => {
+          const value = String(type || '').trim().toLowerCase();
+          if (allowed.includes(value) && !normalized.includes(value)) {
+            normalized.push(value);
+          }
+        });
+        return normalized.length > 0 ? normalized : allowed;
+      };
 
       let currentPage = 1;
       let editingIndex = null;
@@ -385,7 +440,7 @@ $articlesForJs = array_values(array_map(
           const info = document.createElement('div');
           info.innerHTML = `
             <p class="article-title">${truncate(article.title || '(無題)', 80)}</p>
-            <p class="article-meta">ID: ${article.id || '-'} / 投稿日付: ${truncate(article.date || '-', 30)} / 公開: ${article.visibility || 'public'}</p>
+            <p class="article-meta">ID: ${article.id || '-'} / 投稿日付: ${truncate(article.date || '-', 30)} / 公開: ${article.visibility || 'public'} / 公開タイプ: ${(normalizePublishTypes(article.publish_types).join(', '))}</p>
             <p class="article-body-preview">${truncate((article.body || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim(), 110)}</p>
           `;
 
@@ -408,14 +463,19 @@ $articlesForJs = array_values(array_map(
           modalTitleInput.value = '';
           modalBody.value = '';
           modalVisibility.value = 'public';
+          modalPublishTypeLesson.checked = true;
+          modalPublishTypePractice.checked = true;
           modalDelete.style.display = 'none';
         } else {
-          const article = articles[editingIndex] || { date: '', title: '', body: '', visibility: 'public' };
+          const article = articles[editingIndex] || { date: '', title: '', body: '', visibility: 'public', publish_types: ['lesson', 'practice'] };
+          const publishTypes = normalizePublishTypes(article.publish_types);
           modalTitle.textContent = '記事を編集';
           modalDate.value = article.date || '';
           modalTitleInput.value = article.title || '';
           modalBody.value = article.body || '';
           modalVisibility.value = article.visibility || 'public';
+          modalPublishTypeLesson.checked = publishTypes.includes('lesson');
+          modalPublishTypePractice.checked = publishTypes.includes('practice');
           modalDelete.style.display = 'inline-flex';
         }
 
@@ -445,6 +505,7 @@ $articlesForJs = array_values(array_map(
             title: article.title || '',
             body: article.body || '',
             visibility: article.visibility || 'public',
+            publish_types: normalizePublishTypes(article.publish_types).join(','),
 
           };
 
@@ -466,14 +527,25 @@ $articlesForJs = array_values(array_map(
         const date = modalDate.value.trim();
         const title = modalTitleInput.value.trim();
         const body = modalBody.value;
-        const visibility = modalVisibility.value;
+        const publishTypes = [];
+        if (modalPublishTypeLesson.checked) {
+          publishTypes.push('lesson');
+        }
+        if (modalPublishTypePractice.checked) {
+          publishTypes.push('practice');
+        }
 
         if (date === '' || title === '' || body.trim() === '') {
           alert('投稿日付・タイトル・本文は必須です。');
           return;
         }
+        if (publishTypes.length === 0) {
+          alert('公開タイプを1つ以上選択してください。');
+          return;
+        }
 
-        const next = { id: '', date, title, body, visibility };
+        const next = { id: '', date, title, body, visibility, publish_types: publishTypes };
+
 
         if (editingIndex === null) {
           articles.push(next);
