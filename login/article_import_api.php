@@ -63,6 +63,24 @@ function build_article_document(string $title, string $bodyHtml): string
 {
     $safeTitle = htmlspecialchars($title, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 
+    $headerHtml = '<header data-import-part="header"></header>';
+    $footerHtml = '<footer data-import-part="footer"></footer>';
+
+    if (preg_match('/<\s*html[\s>]/iu', $bodyHtml) === 1) {
+        $result = preg_replace(
+            '/<\s*body([^>]*)>/iu',
+            '<body$1>' . $headerHtml,
+            $bodyHtml,
+            1,
+            $bodyOpenReplaced
+        );
+        if (is_string($result) && ($bodyOpenReplaced ?? 0) > 0) {
+            $result = preg_replace('/<\s*\/\s*body\s*>/iu', $footerHtml . '</body>', $result, 1, $bodyCloseReplaced);
+            if (is_string($result) && ($bodyCloseReplaced ?? 0) > 0) {
+                return $result;
+            }
+        }
+    }
     return <<<HTML
 <!DOCTYPE html>
 <html lang="ja">
@@ -72,7 +90,9 @@ function build_article_document(string $title, string $bodyHtml): string
 <title>{$safeTitle}</title>
 </head>
 <body>
+{$headerHtml}
 {$bodyHtml}
+{$footerHtml}
 </body>
 </html>
 HTML;
@@ -111,7 +131,7 @@ function normalize_visibility(mixed $visibility): string
 function normalize_publish_type(mixed $publishType): string
 {
     $normalized = strtolower(trim((string)$publishType));
-    if (in_array($normalized, ['lesson', 'practice'], true)) {
+    if (in_array($normalized, ['lesson', 'practice', 'all'], true)) {
         return $normalized;
     }
 
@@ -243,7 +263,7 @@ if ($publishType === '') {
     echo json_encode([
         'ok' => false,
         'error' => 'validation_error',
-        'message' => 'publish_type は lesson / practice のいずれかを指定してください。',
+        'message' => 'publish_type は lesson / practice / all のいずれかを指定してください。',
     ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     exit;
 }
@@ -266,7 +286,7 @@ $articles[] = [
 
     'body' => $articleHtml,
     'visibility' => $visibility,
-    'publish_types' => [$publishType],
+    'publish_types' => $publishType === 'all' ? ['lesson', 'practice'] : [$publishType],
 ];
 
 if (!save_articles($articlesFile, $articles)) {
