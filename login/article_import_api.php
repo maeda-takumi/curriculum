@@ -1,0 +1,217 @@
+<?php
+
+declare(strict_types=1);
+
+header('Content-Type: application/json; charset=UTF-8');
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    header('Allow: POST');
+    echo json_encode([
+        'ok' => false,
+        'error' => 'method_not_allowed',
+        'message' => 'POST メソッドのみ利用できます。',
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    exit;
+}
+
+$rawBody = file_get_contents('php://input');
+if ($rawBody === false || trim($rawBody) === '') {
+    http_response_code(400);
+    echo json_encode([
+        'ok' => false,
+        'error' => 'invalid_request',
+        'message' => 'リクエストボディが空です。',
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    exit;
+}
+
+$payload = json_decode($rawBody, true);
+if (!is_array($payload)) {
+    http_response_code(400);
+    echo json_encode([
+        'ok' => false,
+        'error' => 'invalid_json',
+        'message' => 'JSON 形式が不正です。',
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    exit;
+}
+
+function normalize_visibility(mixed $visibility): string
+{
+    $normalized = strtolower(trim((string)$visibility));
+    if (in_array($normalized, ['private', 'admin', 'public'], true)) {
+        return $normalized;
+    }
+
+    return '';
+}
+
+function normalize_publish_type(mixed $publishType): string
+{
+    $normalized = strtolower(trim((string)$publishType));
+    if (in_array($normalized, ['lesson', 'practice'], true)) {
+        return $normalized;
+    }
+
+    return '';
+}
+
+/**
+ * @return array<int, array{id:string,date:string,title:string,body:string,visibility:string,publish_types:array<int, string>}>
+ */
+function load_articles(string $path): array
+{
+    if (!is_file($path)) {
+        return [];
+    }
+
+    $raw = file_get_contents($path);
+    if ($raw === false || trim($raw) === '') {
+        return [];
+    }
+
+    $decoded = json_decode($raw, true);
+    if (!is_array($decoded)) {
+        return [];
+    }
+
+    $items = $decoded['articles'] ?? [];
+    if (!is_array($items)) {
+        return [];
+    }
+
+    $articles = [];
+    foreach ($items as $item) {
+        if (!is_array($item)) {
+            continue;
+        }
+
+        $visibility = normalize_visibility($item['visibility'] ?? 'public');
+        if ($visibility === '') {
+            $visibility = 'public';
+        }
+
+        $publishTypes = $item['publish_types'] ?? ['lesson', 'practice'];
+        if (!is_array($publishTypes)) {
+            $publishTypes = ['lesson', 'practice'];
+        }
+
+        $normalizedPublishTypes = [];
+        foreach ($publishTypes as $publishType) {
+            $type = normalize_publish_type($publishType);
+            if ($type !== '' && !in_array($type, $normalizedPublishTypes, true)) {
+                $normalizedPublishTypes[] = $type;
+            }
+        }
+        if ($normalizedPublishTypes === []) {
+            $normalizedPublishTypes = ['lesson', 'practice'];
+        }
+
+        $articles[] = [
+            'id' => trim((string)($item['id'] ?? '')),
+            'date' => trim((string)($item['date'] ?? '')),
+            'title' => trim((string)($item['title'] ?? '')),
+            'body' => (string)($item['body'] ?? ''),
+            'visibility' => $visibility,
+            'publish_types' => $normalizedPublishTypes,
+        ];
+    }
+
+    return $articles;
+}
+
+/**
+ * @param array<int, array{id:string,date:string,title:string,body:string,visibility:string,publish_types:array<int, string>}> $articles
+ */
+function save_articles(string $path, array $articles): bool
+{
+    $payloadArticles = [];
+    foreach ($articles as $article) {
+        $payloadArticles[] = [
+            'id' => $article['id'],
+            'date' => $article['date'],
+            'title' => $article['title'],
+            'excerpt' => '',
+            'body' => $article['body'],
+            'visibility' => $article['visibility'],
+            'publish_types' => $article['publish_types'],
+        ];
+    }
+
+    $json = json_encode(['articles' => $payloadArticles], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    if ($json === false) {
+        return false;
+    }
+
+    return file_put_contents($path, $json . PHP_EOL, LOCK_EX) !== false;
+}
+
+$html = (string)($payload['html'] ?? '');
+$title = trim((string)($payload['title'] ?? ''));
+$visibility = normalize_visibility($payload['visibility'] ?? '');
+$publishType = normalize_publish_type($payload['publish_type'] ?? '');
+$date = trim((string)($payload['date'] ?? date('Y.m.d')));
+
+if (trim($html) === '') {
+    http_response_code(422);
+    echo json_encode([
+        'ok' => false,
+        'error' => 'validation_error',
+        'message' => 'html は必須です。',
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    exit;
+}
+
+if ($visibility === '') {
+    http_response_code(422);
+    echo json_encode([
+        'ok' => false,
+        'error' => 'validation_error',
+        'message' => 'visibility は public / admin / private のいずれかを指定してください。',
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    exit;
+}
+
+if ($publishType === '') {
+    http_response_code(422);
+    echo json_encode([
+        'ok' => false,
+        'error' => 'validation_error',
+        'message' => 'publish_type は lesson / practice のいずれかを指定してください。',
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    exit;
+}
+
+if ($title === '') {
+    $title = '外部連携記事 ' . date('Y-m-d H:i:s');
+}
+
+$articlesFile = __DIR__ . '/../include/articles.json';
+$articles = load_articles($articlesFile);
+$newId = (string)(count($articles) + 1);
+
+$articles[] = [
+    'id' => $newId,
+    'date' => $date,
+    'title' => $title,
+    'body' => $html,
+    'visibility' => $visibility,
+    'publish_types' => [$publishType],
+];
+
+if (!save_articles($articlesFile, $articles)) {
+    http_response_code(500);
+    echo json_encode([
+        'ok' => false,
+        'error' => 'save_failed',
+        'message' => '記事の保存に失敗しました。',
+    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    exit;
+}
+
+echo json_encode([
+    'ok' => true,
+    'article_id' => $newId,
+    'message' => '記事を保存しました。',
+], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);

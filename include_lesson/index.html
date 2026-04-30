@@ -674,17 +674,33 @@
       const emptyMessage = document.getElementById('article-shortcuts-empty');
       const loginUserEmail = typeof window.__LOGIN_USER_EMAIL__ === 'string' ? window.__LOGIN_USER_EMAIL__.trim() : '';
       const loginUserRole = typeof window.__LOGIN_USER_ROLE__ === 'string' ? window.__LOGIN_USER_ROLE__.trim() : 'user';
+      const sessionCurriculum = window.__SESSION_CURRICULUM__ === 'lesson' ? 'lesson' : 'practice';
       const openedStorageKey = loginUserEmail !== '' ? `openedArticles:${loginUserEmail}` : 'openedArticles:guest';
 
+      const normalizePublishTypes = (publishTypes) => {
+        const allowed = ['lesson', 'practice'];
+        if (!Array.isArray(publishTypes)) {
+          return allowed;
+        }
+        const normalized = [];
+        publishTypes.forEach((type) => {
+          const value = String(type || '').trim().toLowerCase();
+          if (allowed.includes(value) && !normalized.includes(value)) {
+            normalized.push(value);
+          }
+        });
+        return normalized.length > 0 ? normalized : allowed;
+      };
       const canViewArticle = (article) => {
         const visibility = String(article?.visibility || '').trim().toLowerCase() || 'public';
+        const publishTypes = normalizePublishTypes(article?.publish_types);
         if (visibility === 'private') {
           return false;
         }
         if (visibility === 'admin') {
-          return loginUserRole === 'admin';
+          return loginUserRole === 'admin' && publishTypes.includes(sessionCurriculum);
         }
-        return true;
+        return publishTypes.includes(sessionCurriculum);
       };
 
       const getOpenedArticles = () => {
