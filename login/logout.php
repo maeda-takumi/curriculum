@@ -11,8 +11,8 @@ if ($appBase === '.' || $appBase === '/') {
 }
 $curriculum = (string)($_GET['curriculum'] ?? '');
 $nextPath = ($appBase === '' ? '' : rtrim($appBase, '/')) . '/?page=index';
-if ($curriculum === 'lesson') {
-    $nextPath .= '&curriculum=lesson';
+if ($curriculum === 'lesson' || $curriculum === 'claude') {
+    $nextPath .= '&curriculum=' . rawurlencode($curriculum);
 }
 $_SESSION = [];
 session_destroy();

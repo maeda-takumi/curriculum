@@ -29,16 +29,29 @@ require_once __DIR__ . '/login_check.php';
 
 function normalize_curriculum(string $curriculum): string
 {
-    return $curriculum === 'lesson' ? 'lesson' : 'practice';
+    if ($curriculum === 'lesson' || $curriculum === 'claude') {
+        return $curriculum;
+    }
+
+    return 'practice';
+}
+
+function curriculum_query_suffix(string $curriculum): string
+{
+    return $curriculum === 'practice' ? '' : '&curriculum=' . rawurlencode($curriculum);
+}
+
+function curriculum_page_url(string $page, string $curriculum): string
+{
+    global $appBasePath;
+
+
+    return $appBasePath . '?page=' . rawurlencode($page) . curriculum_query_suffix($curriculum);
 }
 
 function invalid_page_fallback(string $curriculum, string $appBasePath): string
 {
-    if ($curriculum === 'lesson') {
-        return $appBasePath . '?page=index&curriculum=lesson';
-    }
-
-    return $appBasePath . '?page=index';
+    return $appBasePath . '?page=index' . curriculum_query_suffix($curriculum);
 }
 
 function is_mobile_client(): bool
@@ -71,6 +84,7 @@ if ($requestedCurriculum !== null) {
 }
 $curriculum = normalize_curriculum((string)($_SESSION['curriculum'] ?? 'practice'));
 $isLessonCurriculum = $curriculum === 'lesson';
+$isClaudeCurriculum = $curriculum === 'claude';
 
 $page = $_GET['page'] ?? 'index';
 if (!is_string($page) || trim($page) === '') {
@@ -82,7 +96,7 @@ if (!preg_match('/^[a-zA-Z0-9_-]+$/', $page)) {
     exit;
 }
 
-$includeDirectoryName = $isLessonCurriculum ? 'include_lesson' : 'include';
+$includeDirectoryName = $isLessonCurriculum ? 'include_lesson' : ($isClaudeCurriculum ? 'include_claude' : 'include');
 $includeDir = __DIR__ . '/' . $includeDirectoryName;
 $requested = $includeDir . '/' . $page . '.html';
 $realIncludeDir = realpath($includeDir);
@@ -103,7 +117,7 @@ $html = file_get_contents($realRequested);
  * @param array<string, bool> $lockedPhases
  * @param array<string, bool> $lockedPages
  */
-function renderHamburgerMenu(array $phases, string $currentPage, array $lockedPhases, array $lockedPages, bool $isLessonCurriculum = false): string
+function renderHamburgerMenu(array $phases, string $currentPage, array $lockedPhases, array $lockedPages, string $curriculum = 'practice'): string
 {
     global $appBasePath;
     $html = '<button class="hb-toggle" id="hb-toggle" type="button" aria-label="メニューを開く" aria-controls="hb-nav" aria-expanded="false">';
@@ -140,7 +154,7 @@ function renderHamburgerMenu(array $phases, string $currentPage, array $lockedPh
                 $isLockedPage = ($lockedPages[$item['page']] ?? false) === true;
                 $active = $currentPage === $item['page'] ? ' is-active' : '';
                 $lockClass = $isLockedPage ? ' is-locked' : '';
-                $targetHref = $isLockedPage ? lock_page_url($item['page'], $isLessonCurriculum) : $appBasePath . '?page=' . $target;
+                $targetHref = $isLockedPage ? lock_page_url($item['page'], $curriculum) : curriculum_page_url($item['page'], $curriculum);
                 $html .= '<a class="hb-link' . $active . $lockClass . '" href="' . htmlspecialchars($targetHref, ENT_QUOTES, 'UTF-8') . '"><span class="hb-num">' . $num . '</span>' . $title;
                 if ($isLockedPage) {
                     $html .= '<span class="hb-lock-overlay"><img src="img/lock.png" alt="ロック中"></span>';
@@ -158,12 +172,12 @@ function renderHamburgerMenu(array $phases, string $currentPage, array $lockedPh
     $html .= '</ul>';
     $html .= '<div class="hb-nav__footer">';
     $html .= '<div class="hb-nav__quick-links">';
-    $indexLink = $appBasePath . '?page=index' . ($isLessonCurriculum ? '&curriculum=lesson' : '');
-    $articleLink = $appBasePath . '?page=article' . ($isLessonCurriculum ? '&curriculum=lesson' : '');
+    $indexLink = curriculum_page_url('index', $curriculum);
+    $articleLink = curriculum_page_url('article', $curriculum);
     $html .= '<a class="hb-quick-link" href="' . htmlspecialchars($indexLink, ENT_QUOTES, 'UTF-8') . '">目次へ</a>';
     $html .= '<a class="hb-quick-link" href="' . htmlspecialchars($articleLink, ENT_QUOTES, 'UTF-8') . '">記事一覧へ</a>';
     $html .= '</div>';
-    $logoutHref = $appBasePath . 'login/logout.php' . ($isLessonCurriculum ? '?curriculum=lesson' : '');
+    $logoutHref = $appBasePath . 'login/logout.php' . ($curriculum === 'practice' ? '' : '?curriculum=' . rawurlencode($curriculum));
     $html .= '<div class="hb-nav__logout"><a class="hb-logout-link" href="' . htmlspecialchars($logoutHref, ENT_QUOTES, 'UTF-8') . '">ログアウト</a></div>';
     $html .= '</div>';
     $html .= '</nav>';
@@ -234,21 +248,16 @@ function build_sequential_next_navigation(array $phases): array
 
     return $map;
 }
-function lock_page_url(string $targetPage, bool $isLessonCurriculum = false): string
+function lock_page_url(string $targetPage, string $curriculum = 'practice'): string
 {
     global $appBasePath;
 
-    $query = '?page=lock&target=' . rawurlencode($targetPage);
-    if ($isLessonCurriculum) {
-        $query .= '&curriculum=lesson';
-    }
-
-    return $appBasePath . $query;
+    return $appBasePath . '?page=lock&target=' . rawurlencode($targetPage) . curriculum_query_suffix($curriculum);
 }
 
-function with_lesson_curriculum_for_status_pages(string $url, bool $isLessonCurriculum): string
+function with_curriculum_for_status_pages(string $url, string $curriculum): string
 {
-    if (!$isLessonCurriculum) {
+    if ($curriculum === 'practice') {
         return $url;
     }
 
@@ -268,11 +277,11 @@ function with_lesson_curriculum_for_status_pages(string $url, bool $isLessonCurr
         return $url;
     }
 
-    if (($params['curriculum'] ?? null) === 'lesson') {
+    if (($params['curriculum'] ?? null) === $curriculum) {
         return $url;
     }
 
-    $params['curriculum'] = 'lesson';
+    $params['curriculum'] = $curriculum;
     $rebuilt = '';
     if (isset($parts['scheme'])) {
         $rebuilt .= $parts['scheme'] . '://';
@@ -752,7 +761,7 @@ if (!$isLessonCurriculum) {
     }
 
     if ($page !== 'index' && $page !== 'lock' && (($lockedPages[$page] ?? false) === true)) {
-        header('Location: ' . lock_page_url($page, false));
+        header('Location: ' . lock_page_url($page, $curriculum));
         exit;
     }
 } else {
@@ -781,7 +790,7 @@ if (!$isLessonCurriculum) {
     }
     $lessonWeekKey = resolve_lesson_week_key_from_page($page);
     if ($page !== 'index' && $page !== 'lock' && $lessonWeekKey !== null && (($lessonWeekLocks[$lessonWeekKey] ?? false) === true)) {
-        header('Location: ' . lock_page_url($page, true));
+        header('Location: ' . lock_page_url($page, $curriculum));
         exit;
     }
 }
@@ -1452,11 +1461,11 @@ $rewriteRelativeAssetAttributes = static function (string $markup) use ($appBase
     ) ?? $markup;
 };
 $html = $rewriteRelativeAssetAttributes($html);
-if ($isLessonCurriculum) {
+if ($curriculum !== 'practice') {
     $html = preg_replace_callback(
         '/\b(href|action)\s*=\s*(["\'])([^"\']+)\2/i',
-        static function (array $matches): string {
-            $updatedUrl = with_lesson_curriculum_for_status_pages($matches[3], true);
+        static function (array $matches) use ($curriculum): string {
+            $updatedUrl = with_curriculum_for_status_pages($matches[3], $curriculum);
             return $matches[1] . '=' . $matches[2] . $updatedUrl . $matches[2];
         },
         $html
@@ -1567,7 +1576,7 @@ if (stripos($html, '</body>') !== false) {
 }
 if ($page !== 'index') {
     $menuPhases = $isLessonCurriculum ? $lessonPhases : $practicePhases;
-    $menuMarkup = renderHamburgerMenu($menuPhases, $page, $phaseLocks, $lockedPages, $isLessonCurriculum);
+    $menuMarkup = renderHamburgerMenu($menuPhases, $page, $phaseLocks, $lockedPages, $curriculum);
     if (stripos($html, '</head>') !== false) {
         $html = preg_replace('/<\/head>/i', $menuStyle . "\n</head>", $html, 1) ?? $html;
     } else {
@@ -1649,8 +1658,8 @@ if ($nextNavigation !== null) {
         ? 'unlock_phase1=1&from=08'
         : 'unlock_phase8=1&from=77';
     $nextHref = $canAutoUnlockNext
-        ? $appBasePath . '?page=' . $nextPageEscaped . '&' . $autoUnlockQuery
-        : ($nextIsLocked ? lock_page_url($nextNavigation['page'], $isLessonCurriculum) : $appBasePath . '?page=' . $nextPageEscaped);
+        ? $appBasePath . '?page=' . $nextPageEscaped . curriculum_query_suffix($curriculum) . '&' . $autoUnlockQuery
+        : ($nextIsLocked ? lock_page_url($nextNavigation['page'], $curriculum) : curriculum_page_url($nextNavigation['page'], $curriculum));
     $showNextLockedState = $nextIsLocked && !$canAutoUnlockNext;
     $nextLinkMarkup = '<div class="page-actions">';
     if (is_array($assignmentConfig) && isset($assignmentConfig['label'], $assignmentConfig['href'])) {
