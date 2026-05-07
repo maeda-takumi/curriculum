@@ -585,6 +585,87 @@ $practicePhases = [
         ],
     ],
 ];
+$claudePhases = [
+    [
+        'label' => 'PHASE 1',
+        'title' => 'フェーズ1｜Claude×ライティング基礎構築編',
+        'items' => [
+            ['num' => '1-1.', 'title' => 'Claudeを「ライティングアシスタント」にする基本操作', 'page' => '11'],
+            ['num' => '1-2.', 'title' => '売れる文章の型（構造・流れ・役割）を理解する', 'page' => '12'],
+            ['num' => '1-3.', 'title' => '読まれる文章と読まれない文章の決定的な違い', 'page' => '13'],
+            ['num' => '1-4.', 'title' => 'STP・4P・AIDMAを「ライティング視点」で理解する', 'page' => '14'],
+            ['num' => '1-5.', 'title' => 'Claudeに「狙った文章」を書かせる指示の出し方', 'page' => '15'],
+            ['num' => '1-6.', 'title' => '短文・長文・SNS・セールスでの使い分け', 'page' => '16'],
+            ['num' => '1-7.', 'title' => '実践：Claudeで「使える文章」を量産する', 'page' => '17'],
+        ],
+    ],
+    [
+        'label' => 'PHASE 2',
+        'title' => 'フェーズ2｜最短で初収益を出すライティング実践編',
+        'items' => [
+            ['num' => '2-1.', 'title' => '7Days Complete Manual', 'page' => '21'],
+            ['num' => '2-2.', 'title' => '初心者が狙うべき「応募型ライティング案件」の見極め方', 'page' => '22'],
+            ['num' => '2-3.', 'title' => 'Claude前提で成立する「低リスク・即金型」の稼ぎ方', 'page' => '23'],
+            ['num' => '2-4.', 'title' => 'クラウドワークス攻略｜待たずに案件を取りに行く思考', 'page' => '24'],
+            ['num' => '2-5.', 'title' => '実績ゼロでも通る「応募文＝営業ライティング」設計', 'page' => '25'],
+            ['num' => '2-6.', 'title' => '「作業者」で終わらないための納品コミュニケーション', 'page' => '26'],
+            ['num' => '2-7.', 'title' => '単価が上がる人・上がらない人の分岐点', 'page' => '27'],
+            ['num' => '2-8.', 'title' => '実践：案件応募→受注→納品→初収益まで', 'page' => '28'],
+        ],
+    ],
+    [
+        'label' => 'PHASE 3',
+        'title' => 'フェーズ3｜ライティングを“武器”にする応用編',
+        'items' => [
+            ['num' => '3-1.', 'title' => 'セールスライティングの基本構造', 'page' => '31'],
+            ['num' => '3-2.', 'title' => 'LP・セールス文章をClaudeで設計する', 'page' => '32'],
+            ['num' => '3-3.', 'title' => 'SNS・動画台本・広告文への横展開', 'page' => '33'],
+            ['num' => '3-4.', 'title' => '文章×画像×動画をつなぐ設計思考', 'page' => '34'],
+            ['num' => '3-5.', 'title' => '「書ける人」から「全体を設計できる人」へ', 'page' => '35'],
+            ['num' => '3-6.', 'title' => 'クライアントワークの幅を広げる考え方', 'page' => '36'],
+            ['num' => '3-7.', 'title' => '実践：複数ジャンルに応用するライティング設計', 'page' => '37'],
+        ],
+    ],
+    [
+        'label' => 'PHASE 4',
+        'title' => 'フェーズ4｜再現性・自動化・仕組み化編',
+        'items' => [
+            ['num' => '4-1.', 'title' => 'ライティングを「使い回す」という発想', 'page' => '41'],
+            ['num' => '4-2.', 'title' => 'Claude×テンプレ化の考え方', 'page' => '42'],
+            ['num' => '4-3.', 'title' => '自分専用プロンプトの作り方', 'page' => '43'],
+            ['num' => '4-4.', 'title' => 'クライアント案件を効率化する設計', 'page' => '44'],
+            ['num' => '4-5.', 'title' => '自動化ツールを「ライティング視点」で使う【ハンズオン実践版】', 'page' => '45'],
+            ['num' => '4-6.', 'title' => '時間単価を上げるための仕組み設計', 'page' => '46'],
+            ['num' => '4-7.', 'title' => '実践：自分の作業を半分に減らす【フェーズ4総仕上げ編】', 'page' => '47'],
+        ],
+    ],
+    [
+        'label' => 'PHASE 5',
+        'title' => 'フェーズ5｜資産化・教育・展開編',
+        'items' => [
+            ['num' => '5-1.', 'title' => '自分のノウハウを商品化する考え方', 'page' => '51'],
+            ['num' => '5-2.', 'title' => 'ライティング×コンテンツ販売の設計', 'page' => '52'],
+            ['num' => '5-3.', 'title' => 'note／Kindle／楽天ROOMへの展開', 'page' => '53'],
+            ['num' => '5-4.', 'title' => 'SNS・LINE・動画と組み合わせた導線設計', 'page' => '54'],
+            ['num' => '5-5.', 'title' => '「信用」を積み上げる発信戦略', 'page' => '55'],
+            ['num' => '5-6.', 'title' => '教える側に回ると収益が安定する理由', 'page' => '56'],
+            ['num' => '5-7.', 'title' => '実践：自分のAI副業ロードマップを完成させる', 'page' => '57'],
+        ],
+    ],
+    [
+        'label' => 'PHASE 6',
+        'title' => 'フェーズ6｜ライティング以外のAI副業展開編',
+        'items' => [
+            ['num' => '6-1.', 'title' => 'ライティング以外で稼げるAI副業の全体マップ', 'page' => '61'],
+            ['num' => '6-2.', 'title' => '楽天ROOM「収益安定化・自動化」実践編', 'page' => '62'],
+            ['num' => '6-3.', 'title' => 'Claude×Canvaで「売れるビジュアル」を量産する設計', 'page' => '63'],
+            ['num' => '6-4.', 'title' => 'Claude×画像生成AIで「素材を自作」する実践フロー', 'page' => '64'],
+            ['num' => '6-5.', 'title' => '楽天ROOM以外への「横展開」モデル', 'page' => '65'],
+            ['num' => '6-6.', 'title' => '初心者でも再現できる「AI×ビジュアル副業」の案件化', 'page' => '66'],
+            ['num' => '6-7.', 'title' => '実践：自分の「ライティング以外の収益ルート」を1本完成させる', 'page' => '67'],
+        ],
+    ],
+];
 $lessonPhases = [
     [
         'label' => 'Week 1',
@@ -1575,7 +1656,7 @@ if (stripos($html, '</body>') !== false) {
     $html .= $loadingOverlayScript;
 }
 if ($page !== 'index') {
-    $menuPhases = $isLessonCurriculum ? $lessonPhases : $practicePhases;
+    $menuPhases = $isLessonCurriculum ? $lessonPhases : ($isClaudeCurriculum ? $claudePhases : $practicePhases);
     $menuMarkup = renderHamburgerMenu($menuPhases, $page, $phaseLocks, $lockedPages, $curriculum);
     if (stripos($html, '</head>') !== false) {
         $html = preg_replace('/<\/head>/i', $menuStyle . "\n</head>", $html, 1) ?? $html;
@@ -1596,10 +1677,10 @@ if ($page !== 'index') {
     }
 }
 
-$lessonNextNavigationMap = build_sequential_next_navigation($lessonPhases);
+$claudeNextNavigationMap = build_sequential_next_navigation($claudePhases);
 $nextNavigation = $isLessonCurriculum
     ? ($lessonNextNavigationMap[$page] ?? null)
-    : resolveNextNavigation($page);
+    : ($isClaudeCurriculum ? ($claudeNextNavigationMap[$page] ?? null) : resolveNextNavigation($page));
 if ($nextNavigation !== null) {
     $assignmentLinksByCurriculum = [
         'practice' => [
