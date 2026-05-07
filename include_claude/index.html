@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI副業スクール | 目次</title>
+  <style>
+    :root {
+      --bg: #f4efe8;
+      --surface: #ffffff;
+      --surface-soft: #faf8f5;
+      --text: #2d3038;
+      --text-soft: #5f6572;
+      --border: #ebe5dd;
+      --border-strong: #dcd4ca;
+      --gradient: linear-gradient(90deg, #5a23e0 0%, #d94fa8 50%, #ff8a4c 100%);
+      --gradient-soft: linear-gradient(90deg, rgba(90,35,224,0.12) 0%, rgba(217,79,168,0.12) 50%, rgba(255,138,76,0.12) 100%);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --shadow: 0 18px 40px rgba(29, 20, 44, 0.08);
+    }
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      background:
+        radial-gradient(circle at 12% -8%, rgba(90,35,224,0.11), transparent 33%),
+        radial-gradient(circle at 94% 10%, rgba(255,138,76,0.11), transparent 34%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 36px auto 56px;
+      padding: 0 20px 32px;
+    }
+
+    .page-header {
+      margin-bottom: 28px;
+    }
+    .card {
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(255,255,255,0.75);
+      backdrop-filter: blur(6px);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 48px 56px;
+      margin-bottom: 36px;
+    }
+
+    .title {
+      margin: 0 0 18px;
+      font-size: clamp(36px, 6vw, 68px);
+      line-height: 1.2;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      font-size: clamp(16px, 2.1vw, 24px);
+      font-weight: 500;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    .divider {
+      height: 3px;
+      background: linear-gradient(90deg, rgba(90,35,224,0.36), rgba(217,79,168,0.45), rgba(255,138,76,0.35));
+      margin: 28px 0 0;
+      border-radius: 999px;
+    }
+
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .phase {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--surface-soft);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .phase[open] {
+      background: #fffdfb;
+      box-shadow: 0 14px 26px rgba(44, 29, 67, 0.11);
+      transform: translateY(-2px);
+    }
+
+    .phase-summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      transition: background 0.2s ease;
+      user-select: none;
+    }
+
+
+    .phase-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .phase-summary:hover {
+      background: var(--gradient-soft);
+    }
+
+    .phase-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .phase-label {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #6b5f7f;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .phase-title {
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.45;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .phase-arrow {
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      border-right: 3px solid #7b6d92;
+      border-bottom: 3px solid #7b6d92;
+      transform: rotate(45deg);
+      transition: transform 0.25s ease;
+      margin-right: 6px;
+    }
+
+    .phase[open] .phase-arrow {
+      transform: rotate(225deg);
+      margin-top: 8px;
+    }
+
+    .phase-body {
+      padding: 4px 20px 20px;
+      margin-top: 8px;
+    }
+
+    .toc {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc li + li {
+      margin-top: 14px;
+    }
+
+    .toc a,
+    .toc .nolink {
+      display: block;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 22px;
+      font-weight: 700;
+      padding: 16px 20px;
+      border-radius: 12px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .toc a:hover,
+    .toc .nolink:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(41, 29, 61, 0.12);
+      border-color: #d6c8f7;
+      background: var(--gradient-soft);
+    }
+
+    .toc .nolink {
+      cursor: default;
+    }
+
+    .num {
+      display: inline-block;
+      min-width: 72px;
+      margin-right: 10px;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      vertical-align: top;
+    }
+    .article-shortcuts {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      /* gap: 4px; */
+      margin-top: 18px;
+    }
+    .article-shortcuts li {
+      position: relative;
+      padding: 10px 0px;
+      box-sizing: border-box;
+    }
+    .article-shortcuts li + li {
+      border-top: 1px solid rgba(93, 75, 130, 0.14);
+    }
+    .article-shortcuts a {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      padding: 14px 12px 14px 14px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: transparent;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease, padding 0.2s ease;
+    }
+    .article-shortcuts a:hover {
+      transform: translateY(-1px);
+      padding-left: 18px;
+      /* box-shadow: 0 10px 20px rgba(41, 29, 61, 0.1); */
+      /* border-color: #d8caf8; */
+      /* background: linear-gradient(90deg, rgba(90,35,224,0.08) 0%, rgba(217,79,168,0.07) 52%, rgba(255,138,76,0.07) 100%); */
+    }
+    .article-shortcuts-date {
+      flex: 0 0 auto;
+      font-size: 12px;
+      color: #8a819d;
+      letter-spacing: 0.01em;
+    }
+    .article-shortcuts-title {
+      color: #2e2f3a;
+    }
+    .article-shortcuts-new {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #fff;
+      background: linear-gradient(135deg, #ff5f8f 0%, #ff8a4c 100%);
+    }
+    .article-shortcuts .is-opened{
+      color: #8c8f98;
+      background: #f2f0ec;
+      border-color: #e2ddd5;
+    }
+    .article-shortcuts li.is-opened .article-shortcuts-date,
+    .article-shortcuts li.is-opened .article-shortcuts-title {
+      color: #a1a4ad;
+    }
+    /* .article-shortcuts li.is-opened a:hover {
+      background: #ece8e1;
+      border-color: #ddd6cc;
+      box-shadow: 0 8px 16px rgba(41, 29, 61, 0.06);
+    } */
+    .article-empty {
+      margin: 0;
+      color: #666;
+    }
+    .section-title {
+      margin: 0 0 12px;
+      font-size: clamp(22px, 2.8vw, 30px);
+      letter-spacing: 0.01em;
+      /* background: var(--gradient); */
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section-cta {
+      margin: 8px 0 4px;
+    }
+
+    .section-cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0;
+      border-radius: 0;
+      border: 0;
+      color: #5a23e0;
+      background: transparent;
+      text-decoration: none;
+      font-weight: 700;
+      position: relative;
+      transition: color 0.2s ease;
+    }
+
+    .section-cta-link::after {
+      content: "→";
+      font-size: 14px;
+      transform: translateX(0);
+      transition: transform 0.2s ease;
+    }
+
+    .section-cta-link::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #5a23e0 0%, #d94fa8 60%, #ff8a4c 100%);
+      transform: scaleX(0.42);
+      transform-origin: left;
+      opacity: 0.5;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .section-cta-link:hover {
+      color: #3f12b8;
+    }
+
+    .section-cta-link:hover::after {
+      transform: translateX(3px);
+    }
+
+    .section-cta-link:hover::before {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .wrap {
+        margin: 24px auto 40px;
+        padding: 0 14px 22px;
+      }
+
+      .card {
+        padding: 28px 18px;
+        border-radius: 16px;
+        margin-bottom: 18px;
+      }
+
+      .phase-summary {
+        padding: 16px 14px;
+      }
+
+      .phase-title {
+        font-size: 20px;
+      }
+
+      .phase-body {
+        padding: 4px 10px 12px;
+      }
+
+      .toc a,
+      .toc .nolink {
+        font-size: 18px;
+        padding: 13px 14px;
+      }
+
+      .num {
+        min-width: 58px;
+      }
+      .article-shortcuts a {
+        flex-wrap: wrap;
+        gap: 6px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="page-header">
+      <h1 class="title">AI副業スクールライティングから始める、稼ぐ力の設計図</h1>
+      <div class="subtitle">ゼロから始めて、ChatGPTを武器に。7つのフェーズで"自分で稼ぐ力"を体系的に身につける。</div>
+      <div class="divider"></div>
+    </section>
+
+    <section class="card">
+      <h2 class="section-title">最新AI NEWS</h2>
+      <p class="section-cta"><a class="section-cta-link" href="?page=article">記事一覧</a></p>
+      <ul class="article-shortcuts" id="article-shortcuts"></ul>
+      <p class="article-empty" id="article-shortcuts-empty" hidden>記事は準備中です。</p>
+    </section>
+    <section class="card">
+      <div class="accordion">
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">PHASE 0</span>
+              <span class="phase-title">フェーズ0｜思考OSのインストール編</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=01"><span class="num">01.</span>AI副業が乱立する時代に“軸”がないと起きること</a></li>
+              <li><a href="?page=02"><span class="num">02.</span>すべてのAI副業に共通する「言語設計」という土台</a></li>
+              <li><a href="?page=03"><span class="num">03.</span>画像・動画・自動化・SNSの前に必ず存在する工程</a></li>
+              <li><a href="?page=04"><span class="num">04.</span>このスクールで定義する「ライティング」とは何か</a></li>
+              <li><a href="?page=05"><span class="num">05.</span>ライティングが“つぶしが効くスキル”である理由</a></li>
+              <li><a href="?page=06"><span class="num">06.</span>ChatGPTと人間の役割分担の考え方</a></li>
+              <li><a href="?page=07"><span class="num">07.</span>「書く人」ではなく「価値を生む編集者」になる思考</a></li>
+              <li><a href="?page=08"><span class="num">08.</span>実践ワーク：あらゆるコンテンツを“言語設計”で分解する</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">PHASE 1</span>
+              <span class="phase-title">フェーズ1｜ChatGPT×ライティング基礎構築編</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=11"><span class="num">1-1.</span>ChatGPTを「ライティングアシスタント」にする基本操作</a></li>
+              <li><a href="?page=12"><span class="num">1-2.</span>売れる文章の型（構造・流れ・役割）を理解する</a></li>
+              <li><a href="?page=13"><span class="num">1-3.</span>読まれる文章と読まれない文章の決定的な違い</a></li>
+              <li><a href="?page=14"><span class="num">1-4.</span>STP・4P・AIDMAを“ライティング視点”で理解する</a></li>
+              <li><a href="?page=15"><span class="num">1-5.</span>ChatGPTに「狙った文章」を書かせる指示の出し方</a></li>
+              <li><a href="?page=16"><span class="num">1-6.</span>短文・長文・SNS・セールスでの使い分け</a></li>
+              <li><a href="?page=17"><span class="num">1-7.</span>実践：ChatGPTで“使える文章”を量産する</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">PHASE 2</span>
+              <span class="phase-title">フェーズ2｜最短で初収益を出すライティング実践編</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=21"><span class="num">2-1.</span>7Days Complete Manual</a></li>
+              <li><a href="?page=22"><span class="num">2-2.</span>初心者が狙うべき「応募型ライティング案件」の見極め方</a></li>
+              <li><a href="?page=23"><span class="num">2-3.</span>ChatGPT前提で成立する“低リスク・即金型”の稼ぎ方</a></li>
+              <li><a href="?page=24"><span class="num">2-4.</span>クラウドワークス攻略｜待たずに案件を取りに行く思考</a></li>
+              <li><a href="?page=25"><span class="num">2-5.</span>実績ゼロでも通る「応募文＝営業ライティング」設計</a></li>
+              <li><a href="?page=26"><span class="num">2-6.</span>「作業者」で終わらないための納品コミュニケーション</a></li>
+              <li><a href="?page=27"><span class="num">2-7.</span>単価が上がる人・上がらない人の分岐点</a></li>
+              <li><a href="?page=28"><span class="num">2-8.</span>実践：案件応募 → 受注 → 納品 → 初収益までを1周させる</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">PHASE 3</span>
+              <span class="phase-title">フェーズ3｜ライティングを“武器”にする応用編</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=31"><span class="num">3-1.</span>セールスライティングの基本構造</a></li>
+              <li><a href="?page=32"><span class="num">3-2.</span>LP・セールス文章をChatGPTで設計する</a></li>
+              <li><a href="?page=33"><span class="num">3-3.</span>SNS・動画台本・広告文への横展開</a></li>
+              <li><a href="?page=34"><span class="num">3-4.</span>文章×画像×動画をつなぐ“設計思考”</a></li>
+              <li><a href="?page=35"><span class="num">3-5.</span>「書ける人」から「全体を設計できる人」へ</a></li>
+              <li><a href="?page=36"><span class="num">3-6.</span>クライアントワークの幅を広げる考え方</a></li>
+              <li><a href="?page=37"><span class="num">3-7.</span>実践：複数ジャンルに応用するライティング設計</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">PHASE 4</span>
+              <span class="phase-title">フェーズ4｜再現性・自動化・仕組み化編</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=41"><span class="num">4-1.</span>ライティングを“使い回す”という発想</a></li>
+              <li><a href="?page=42"><span class="num">4-2.</span>ChatGPT×テンプレ化の考え方</a></li>
+              <li><a href="?page=43"><span class="num">4-3.</span>自分専用プロンプトの作り方</a></li>
+              <li><a href="?page=44"><span class="num">4-4.</span>クライアント案件を効率化する設計</a></li>
+              <li><a href="?page=45"><span class="num">4-5.</span>自動化ツールを「ライティング視点」で使う</a></li>
+              <li><a href="?page=46"><span class="num">4-6.</span>時間単価を上げるための仕組み設計</a></li>
+              <li><a href="?page=47"><span class="num">4-7.</span>実践：自分の作業を半分に減らす</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">PHASE 5</span>
+              <span class="phase-title">フェーズ5｜資産化・教育・展開編</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=51"><span class="num">5-1.</span>自分のノウハウを商品化する考え方</a></li>
+              <li><a href="?page=52"><span class="num">5-2.</span>ライティング×コンテンツ販売の設計</a></li>
+              <li><a href="?page=53"><span class="num">5-3.</span>note／Kindle／楽天ROOMへの展開</a></li>
+              <li><a href="?page=54"><span class="num">5-4.</span>SNS・LINE・動画と組み合わせた導線設計</a></li>
+              <li><a href="?page=55"><span class="num">5-5.</span>「信用」を積み上げる発信戦略</a></li>
+              <li><a href="?page=56"><span class="num">5-6.</span>教える側に回ると収益が安定する理由</a></li>
+              <li><a href="?page=57"><span class="num">5-7.</span>実践：自分のAI副業ロードマップを完成させる</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">PHASE 6</span>
+              <span class="phase-title">フェーズ6｜ライティング以外のAI副業展開編</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=61"><span class="num">6-1.</span>ライティング以外で稼げるAI副業の全体マップ</a></li>
+              <li><a href="?page=62"><span class="num">6-2.</span>楽天ROOM×AIで成立する“仕組み化副業”の構造理解</a></li>
+              <li><a href="?page=63"><span class="num">6-3.</span>ChatGPT×CANVAで「売れるビジュアル」を量産する設計</a></li>
+              <li><a href="?page=64"><span class="num">6-4.</span>ChatGPT×画像生成AIで“素材を自作”する実践フロー</a></li>
+              <li><a href="?page=65"><span class="num">6-5.</span>楽天ROOM以外への横展開モデル</a></li>
+              <li><a href="?page=66"><span class="num">6-6.</span>初心者でも再現できる“AI×ビジュアル副業”の案件化</a></li>
+              <li><a href="?page=67"><span class="num">6-7.</span>実践：自分の「ライティング以外の収益ルート」を1本完成させる</a></li>
+            </ul>
+          </div>
+        </details>
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">PHASE 7</span>
+              <span class="phase-title">フェーズ7｜AI使い分け戦略編</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=71"><span class="num">7-1.</span>なぜ「AI使い分け」が副業の天井を突き破るのか</a></li>
+              <li><a href="?page=72"><span class="num">7-2.</span>AI全体マップ：分野別「得意・苦手」を完全解説</a></li>
+              <li><a href="?page=73"><span class="num">7-3.</span>Claude完全攻略：「誠実・長文・設計力・コード」副業の天井を壊す最重要AI</a></li>
+              <li><a href="?page=74"><span class="num">7-4.</span>Gemini完全攻略：「Google連携×リアルタイム情報×画像理解」エコシステムが生む独占的価値</a></li>
+              <li><a href="?page=75"><span class="num">7-5.</span>Perplexity完全攻略：「出典付きリアルタイムリサーチ」で副業の情報精度を革命する</a></li>
+              <li><a href="?page=76"><span class="num">7-6.</span>画像生成AI群の使い分け：DALL-E・Midjourney・Stable Diffusion・Canva AI──4つの使い分けで副業ビジュアルを制圧する</a></li>
+              <li><a href="?page=77"><span class="num">7-7.</span>実践：「AI編成表」を作って副業効率を2倍にする</a></li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="phase">
+          <summary class="phase-summary">
+            <div class="phase-left">
+              <span class="phase-label">PHASE 8</span>
+              <span class="phase-title">フェーズ8｜高単価Web制作編</span>
+            </div>
+            <span class="phase-arrow"></span>
+          </summary>
+          <div class="phase-body">
+            <ul class="toc">
+              <li><a href="?page=81"><span class="num">8-1.</span>なぜ「ライター × AIコード生成」が最強の高単価モデルなのか</a></li>
+              <li><a href="?page=82"><span class="num">8-2.</span>フェーズ0〜7の「ライティング資産」がWeb制作でどう活きるか</a></li>
+              <li><a href="?page=83"><span class="num">8-3.</span>ClaudeでHTMLを生成する基礎──コードを書かずにWebページを作る思考法</a></li>
+              <li><a href="?page=84"><span class="num">8-4.</span>LP制作完全実践──Claude × Nano Bananaで「売れるLP」を1日で作る</a></li>
+              <li><a href="?page=85"><span class="num">8-5.</span>HP制作完全実践──複数ページのコーポレートサイトを設計・構築する</a></li>
+              <li><a href="?page=86"><span class="num">8-6.</span>WordPressへの展開──生成したHTMLをCMSに組み込んで運用可能にする</a></li>
+              <li><a href="?page=87"><span class="num">8-7.</span>高単価受注の営業設計──「AIライター × Web制作者」のポジショニングと提案術</a></li>
+              <li><a href="?page=88"><span class="num">8-8.</span>1案件完納のフルワークフロー　ヒアリングから納品・継続依頼設計まで、1案件を完走する実践ガイド</a></li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+  </div>
+  <script>
+    (async () => {
+      const shortcutList = document.getElementById('article-shortcuts');
+      const emptyMessage = document.getElementById('article-shortcuts-empty');
+      const loginUserEmail = typeof window.__LOGIN_USER_EMAIL__ === 'string' ? window.__LOGIN_USER_EMAIL__.trim() : '';
+      const loginUserRole = typeof window.__LOGIN_USER_ROLE__ === 'string' ? window.__LOGIN_USER_ROLE__.trim() : 'user';
+      const sessionCurriculum = window.__SESSION_CURRICULUM__ === 'lesson' ? 'lesson' : 'practice';
+      const openedStorageKey = loginUserEmail !== '' ? `openedArticles:${loginUserEmail}` : 'openedArticles:guest';
+
+      const normalizePublishTypes = (publishTypes) => {
+        const allowed = ['lesson', 'practice'];
+        if (!Array.isArray(publishTypes)) {
+          return allowed;
+        }
+        const normalized = [];
+        publishTypes.forEach((type) => {
+          const value = String(type || '').trim().toLowerCase();
+          if (allowed.includes(value) && !normalized.includes(value)) {
+            normalized.push(value);
+          }
+        });
+        return normalized.length > 0 ? normalized : allowed;
+      };
+      const canViewArticle = (article) => {
+        const visibility = String(article?.visibility || '').trim().toLowerCase() || 'public';
+        const publishTypes = normalizePublishTypes(article?.publish_types);
+        if (visibility === 'private') {
+          return false;
+        }
+        if (visibility === 'admin') {
+          return loginUserRole === 'admin' && publishTypes.includes(sessionCurriculum);
+        }
+        return publishTypes.includes(sessionCurriculum);
+      };
+
+      const getOpenedArticles = () => {
+        try {
+          const raw = localStorage.getItem(openedStorageKey);
+          const parsed = raw ? JSON.parse(raw) : [];
+          return Array.isArray(parsed) ? parsed.map((id) => String(id)) : [];
+        } catch (error) {
+          return [];
+        }
+      };
+
+      try {
+        const response = await fetch('include/articles.json', { cache: 'no-store' });
+        if (!response.ok) {
+          throw new Error('記事データの取得に失敗しました。');
+        }
+
+        const payload = await response.json();
+        const articles = Array.isArray(payload?.articles) ? payload.articles : [];
+        const visibleArticles = articles.filter((article) => canViewArticle(article));
+        const latestFive = [...visibleArticles]
+          .sort((a, b) => {
+            const dateCompare = String(b.date || '').localeCompare(String(a.date || ''));
+            if (dateCompare !== 0) return dateCompare;
+            return Number(b.id || 0) - Number(a.id || 0);
+          })
+          .slice(0, 5);
+
+        if (latestFive.length === 0) {
+          emptyMessage.hidden = false;
+          return;
+        }
+
+        const openedArticles = new Set(getOpenedArticles());
+        latestFive.forEach((article) => {
+          const articleId = String(article.id || '');
+          const li = document.createElement('li');
+          const link = document.createElement('a');
+          link.href = `?page=article&article=${encodeURIComponent(articleId)}`;
+
+          const date = document.createElement('span');
+          date.className = 'article-shortcuts-date';
+          date.textContent = article.date || '';
+
+          const title = document.createElement('span');
+          title.className = 'article-shortcuts-title';
+          title.textContent = article.title || '無題の記事';
+
+          const isOpened = articleId !== '' && openedArticles.has(articleId);
+          link.append(date, title);
+          if (!isOpened) {
+            const badge = document.createElement('span');
+            badge.className = 'article-shortcuts-new';
+            badge.textContent = 'NEW';
+            link.appendChild(badge);
+          }
+
+          if (isOpened) {
+            li.classList.add('is-opened');
+          }
+
+          li.appendChild(link);
+          shortcutList.appendChild(li);
+        });
+      } catch (error) {
+        emptyMessage.hidden = false;
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>記事ページ</title>
+  <style>
+    :root {
+      --bg: #f4efe8;
+      --surface: #ffffff;
+      --surface-soft: #faf8f5;
+      --text: #2d3038;
+      --text-soft: #5f6572;
+      --border: #ebe5dd;
+      --gradient: linear-gradient(90deg, #5a23e0 0%, #d94fa8 50%, #ff8a4c 100%);
+      --gradient-soft: linear-gradient(90deg, rgba(90,35,224,0.12) 0%, rgba(217,79,168,0.12) 50%, rgba(255,138,76,0.12) 100%);
+      --shadow: 0 18px 40px rgba(29, 20, 44, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html{
+      min-height: 100%;
+    }
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      background:
+        radial-gradient(circle at 10% -8%, rgba(90,35,224,0.12), transparent 33%),
+        radial-gradient(circle at 92% 12%, rgba(255,138,76,0.11), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 36px auto 56px;
+      padding: 0 20px 24px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(255,255,255,0.75);
+      backdrop-filter: blur(6px);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 36px;
+      margin-bottom: 24px;
+    }
+
+    .title {
+      margin: 0 0 6px;
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.2;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 14px;
+      font-size: 14px;
+      color: var(--text-soft);
+      background: #f0ebff;
+      border: 1px solid #e2d5ff;
+      border-radius: 999px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    .btn {
+      border: 1px solid #d6c8f7;
+      border-radius: 10px;
+      background: #fff;
+      color: #5a23e0;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 10px 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, rgba(90,35,224,0.08) 0%, rgba(217,79,168,0.08) 50%, rgba(255,138,76,0.08) 100%);
+    }
+
+    .article-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      /* margin-top: 18px; */
+    }
+    .article-item + .article-item {
+      border-top: 1px solid rgba(93, 75, 130, 0.14);
+    }
+
+    .article-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      padding: 25px 12px 25px 14px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease, padding 0.2s ease;
+    }
+
+    .article-link:hover {
+      transform: translateY(-1px);
+      padding-left: 18px;
+    }
+
+    .article-main {
+      min-width: 0;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex: 1 1 auto;
+    }
+    .article-date {
+      flex: 0 0 auto;
+      font-size: 12px;
+      color: #8a819d;
+      letter-spacing: 0.01em;
+    }
+
+    .article-item-title {
+      margin: 0;
+      color: #2e2f3a;
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: 700;
+      color: inherit;
+    }
+
+    .article-new {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 44px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.06em;
+      color: #fff;
+      background: linear-gradient(90deg, #ff4d6d 0%, #ff8a4c 100%);
+      box-shadow: 0 6px 14px rgba(255, 111, 76, 0.3);
+      margin: auto;
+    }
+
+    .article-item.is-opened {
+      color: #8c8f98;
+      background: #f2f0ec;
+      border-color: #e2ddd5;
+    }
+    .article-item.is-opened .article-date,
+    .article-item.is-opened .article-item-title {
+      color: #a1a4ad;
+    }
+
+    .detail-title {
+      margin: 0 0 12px;
+      font-size: clamp(24px, 4vw, 36px);
+      line-height: 1.4;
+    }
+
+    .detail-meta {
+      margin: 0 0 20px;
+      color: #6b5f7f;
+      font-size: 14px;
+    }
+
+      .article-main {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+      .article-new {
+        align-self: flex-start;
+      }
+    .detail-body {
+      white-space: normal;
+      font-size: 18px;
+    }
+    .detail-body > :first-child {
+      margin-top: 0;
+    }
+    .detail-body > :last-child {
+      margin-bottom: 0;
+    }
+
+    .empty,
+    .error {
+      margin: 0;
+      font-size: 16px;
+      color: #666;
+    }
+
+    .error {
+      color: #b3261e;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        padding: 24px 20px;
+      }
+
+      .article-link {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .detail-body {
+        font-size: 15px;
+      }
+
+ 
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="card">
+      <h1 class="title">記事ページ</h1>
+      <div class="subtitle">記事一覧 / 記事閲覧</div>
+      <div class="toolbar">
+        <a class="btn" href="?page=index">目次へ戻る</a>
+      </div>
+    </section>
+
+    <section class="card" id="list-view" hidden>
+      <ul class="article-list" id="article-list"></ul>
+      <p class="empty" id="list-empty" hidden>記事は準備中です。</p>
+    </section>
+
+    <section class="card" id="detail-view" hidden>
+      <h2 class="detail-title" id="detail-title"></h2>
+      <p class="detail-meta" id="detail-meta"></p>
+      <div class="detail-body" id="detail-body"></div>
+      <div class="toolbar">
+        <a class="btn" href="?page=article">一覧に戻る</a>
+      </div>
+    </section>
+
+    <section class="card" id="error-view" hidden>
+      <p class="error" id="error-message"></p>
+    </section>
+  </div>
+
+  <script>
+    (async () => {
+      const listView = document.getElementById('list-view');
+      const detailView = document.getElementById('detail-view');
+      const errorView = document.getElementById('error-view');
+      const errorMessage = document.getElementById('error-message');
+      const articleList = document.getElementById('article-list');
+      const listEmpty = document.getElementById('list-empty');
+
+      const detailTitle = document.getElementById('detail-title');
+      const detailMeta = document.getElementById('detail-meta');
+      const detailBody = document.getElementById('detail-body');
+
+      const params = new URLSearchParams(window.location.search);
+      const articleId = params.get('article');
+      const loginUserEmail = typeof window.__LOGIN_USER_EMAIL__ === 'string' ? window.__LOGIN_USER_EMAIL__.trim() : '';
+      const loginUserRole = typeof window.__LOGIN_USER_ROLE__ === 'string' ? window.__LOGIN_USER_ROLE__.trim() : 'user';
+      const sessionCurriculum = window.__SESSION_CURRICULUM__ === 'lesson' ? 'lesson' : 'practice';
+      const openedStorageKey = loginUserEmail !== '' ? `openedArticles:${loginUserEmail}` : 'openedArticles:guest';
+
+      const normalizePublishTypes = (publishTypes) => {
+        const allowed = ['lesson', 'practice'];
+        if (!Array.isArray(publishTypes)) {
+          return allowed;
+        }
+        const normalized = [];
+        publishTypes.forEach((type) => {
+          const value = String(type || '').trim().toLowerCase();
+          if (allowed.includes(value) && !normalized.includes(value)) {
+            normalized.push(value);
+          }
+        });
+        return normalized.length > 0 ? normalized : allowed;
+      };
+      const canViewArticle = (article) => {
+        const visibility = String(article?.visibility || '').trim().toLowerCase() || 'public';
+        const publishTypes = normalizePublishTypes(article?.publish_types);
+        if (visibility === 'private') {
+          return false;
+        }
+        if (visibility === 'admin') {
+          return loginUserRole === 'admin' && publishTypes.includes(sessionCurriculum);
+        }
+
+        return publishTypes.includes(sessionCurriculum);
+      };
+      const getOpenedArticles = () => {
+        try {
+          const raw = localStorage.getItem(openedStorageKey);
+          const parsed = raw ? JSON.parse(raw) : [];
+          return Array.isArray(parsed) ? parsed.map((id) => String(id)) : [];
+        } catch (error) {
+          return [];
+        }
+      };
+
+      const markArticleAsOpened = (id) => {
+        const normalizedId = String(id || '').trim();
+        if (normalizedId === '') {
+          return;
+        }
+        const current = getOpenedArticles();
+        if (current.includes(normalizedId)) {
+          return;
+        }
+        const next = [...current, normalizedId];
+        try {
+          localStorage.setItem(openedStorageKey, JSON.stringify(next));
+        } catch (error) {
+          // no-op
+        }
+      };
+
+
+      const showError = (message) => {
+        listView.hidden = true;
+        detailView.hidden = true;
+        errorView.hidden = false;
+        errorMessage.textContent = message;
+      };
+
+      try {
+        const response = await fetch('include/articles.json', { cache: 'no-store' });
+        if (!response.ok) {
+          throw new Error('記事データの取得に失敗しました。');
+        }
+
+        const payload = await response.json();
+        const articles = Array.isArray(payload?.articles) ? payload.articles : [];
+        const visibleArticles = articles.filter((article) => canViewArticle(article));
+        const sortedArticles = [...visibleArticles].sort((a, b) => {
+          const toTimestamp = (value) => {
+            const parsed = Date.parse(String(value || ''));
+            return Number.isNaN(parsed) ? Number.NEGATIVE_INFINITY : parsed;
+          };
+          const dateDiff = toTimestamp(b.date) - toTimestamp(a.date);
+          if (dateDiff !== 0) {
+            return dateDiff;
+          }
+          return String(b.id || '').localeCompare(String(a.id || ''), 'ja', { numeric: true });
+        });
+
+        if (!articleId) {
+          listView.hidden = false;
+          detailView.hidden = true;
+          errorView.hidden = true;
+
+          if (sortedArticles.length === 0) {
+            listEmpty.hidden = false;
+            return;
+          }
+
+          listEmpty.hidden = true;
+          articleList.innerHTML = '';
+
+          const openedArticles = new Set(getOpenedArticles());
+          sortedArticles.forEach((article) => {
+            const normalizedArticleId = String(article.id || '');
+            const isOpened = normalizedArticleId !== '' && openedArticles.has(normalizedArticleId);
+            const li = document.createElement('li');
+            li.className = 'article-item';
+            const link = document.createElement('a');
+            link.className = 'article-link';
+            link.href = `?page=article&article=${encodeURIComponent(normalizedArticleId)}`;
+
+            const main = document.createElement('div');
+            main.className = 'article-main';
+            const date = document.createElement('span');
+            date.className = 'article-date';
+            date.textContent = article.date || '';
+
+            const title = document.createElement('span');
+            title.className = 'article-item-title';
+            title.textContent = article.title || '無題の記事';
+
+            if (isOpened) {
+              li.classList.add('is-opened');
+            } else {
+              const newBadge = document.createElement('span');
+              newBadge.className = 'article-new';
+              newBadge.textContent = 'NEW';
+              link.appendChild(newBadge);
+            }
+            main.append(date, title);
+            link.prepend(main);
+            li.appendChild(link);
+            articleList.appendChild(li);
+          });
+
+          return;
+        }
+
+        const target = articles.find((article) => String(article.id) === articleId);
+        if (!target) {
+          showError('指定された記事が見つかりませんでした。');
+          return;
+        }
+        if (!canViewArticle(target)) {
+          showError('この記事を閲覧する権限がありません。');
+          return;
+        }
+
+        const renderArticleBody = (rawBody) => {
+          const value = String(rawBody || '');
+          const hasHtmlTag = /<\s*[a-zA-Z][^>]*>/.test(value);
+
+          if (hasHtmlTag) {
+            detailBody.innerHTML = value;
+            return;
+          }
+
+          const escaped = value
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;')
+            .replace(/\r?\n/g, '<br>');
+          detailBody.innerHTML = escaped;
+        };
+        detailTitle.textContent = target.title || '無題の記事';
+        detailMeta.textContent = target.date || '';
+        renderArticleBody(target.body);
+        markArticleAsOpened(target.id);
+
+        listView.hidden = true;
+        detailView.hidden = false;
+        errorView.hidden = true;
+      } catch (error) {
+        showError(error instanceof Error ? error.message : '不明なエラーが発生しました。');
+      }
+    })();
+  </script>
+</body>
+</html>
