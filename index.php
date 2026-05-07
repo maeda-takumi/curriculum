@@ -139,6 +139,7 @@ function renderHamburgerMenu(array $phases, string $currentPage, array $lockedPh
         $html .= '<span class="hb-phase-label">' . htmlspecialchars($phase['label'], ENT_QUOTES, 'UTF-8') . '</span>';
         $html .= '<span class="hb-phase-arrow" aria-hidden="true"></span>';
         $html .= '</span>';
+        $html .= '<span class="hb-phase-title">' . htmlspecialchars($phase['title'], ENT_QUOTES, 'UTF-8') . '</span>';
         if ($isPhaseLocked) {
             $html .= '<span class="hb-lock-overlay"><img src="img/lock.png" alt="ロック中"></span>';
         }
