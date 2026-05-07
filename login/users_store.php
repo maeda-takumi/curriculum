@@ -86,6 +86,21 @@ function normalize_phase_locks(mixed $phaseLocks): array
 
     return $normalized;
 }
+/**
+ * @return array<string, bool>
+ */
+function default_claude_phase_locks(): array
+{
+    return default_phase_locks();
+}
+
+/**
+ * @return array<string, bool>
+ */
+function normalize_claude_phase_locks(mixed $phaseLocks): array
+{
+    return normalize_phase_locks($phaseLocks);
+}
 function load_users(): array
 {
     $path = users_file_path();
@@ -140,6 +155,7 @@ function load_users(): array
             'status' => normalize_status($row['status'] ?? 'inactive'),
             'role' => normalize_role($row['role'] ?? 'user'),
             'phase_locks' => normalize_phase_locks($row['phase_locks'] ?? null),
+            'claude_phase_locks' => normalize_claude_phase_locks($row['claude_phase_locks'] ?? null),
             'lesson_week_locks' => normalize_lesson_week_locks($row['lesson_week_locks'] ?? null),
         ];
     }

@@ -313,11 +313,12 @@ button:hover, .btn:hover { filter: brightness(.97); }
 }
 
 .modal {
-  border: none;
-  border-radius: 14px;
-  /* width: min(560px, 92vw); */
+    border: none;
+    border-radius: 14px;
+    /* width: min(560px, 92vw); */
     width: auto;
-    max-width: 900px;
+    max-width: 1250px;
+    padding: 0 0 16px;
   padding: 0 0 16px;
 }
 

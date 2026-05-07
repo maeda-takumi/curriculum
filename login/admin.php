@@ -31,6 +31,7 @@ $phaseOptions = [
     'phase7' => 'PHASE 7',
     'phase8' => 'PHASE 8',
 ];
+$claudePhaseOptions = $phaseOptions;
 $lessonWeekOptions = [
     'week1' => 'Week 1',
     'week2' => 'Week 2',
@@ -66,6 +67,33 @@ function collect_phase_locks_from_post(array $phaseOptions): array
 function default_create_phase_locks(): array
 {
     $locks = default_phase_locks();
+    foreach ($locks as $phaseKey => $_) {
+        $locks[$phaseKey] = true;
+    }
+
+    return $locks;
+}
+
+/**
+ * @param array<string, string> $phaseOptions
+ * @return array<string, bool>
+ */
+function collect_claude_phase_locks_from_post(array $phaseOptions): array
+{
+    $locks = default_claude_phase_locks();
+    foreach ($phaseOptions as $phaseKey => $_) {
+        $locks[$phaseKey] = (string)($_POST['claude_lock_' . $phaseKey] ?? '0') === '1';
+    }
+
+    return normalize_claude_phase_locks($locks);
+}
+
+/**
+ * @return array<string, bool>
+ */
+function default_create_claude_phase_locks(): array
+{
+    $locks = default_claude_phase_locks();
     foreach ($locks as $phaseKey => $_) {
         $locks[$phaseKey] = true;
     }
@@ -111,6 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $status = normalize_status($_POST['status'] ?? 'inactive');
         $role = normalize_role($_POST['role'] ?? 'user');
         $phaseLocks = collect_phase_locks_from_post($phaseOptions);
+        $claudePhaseLocks = collect_claude_phase_locks_from_post($claudePhaseOptions);
         $lessonWeekLocks = collect_lesson_week_locks_from_post($lessonWeekOptions);
 
         if ($lineName === '' || $email === '' || $password === '') {
@@ -139,6 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'status' => $status,
                     'role' => $role,
                     'phase_locks' => $phaseLocks,
+                    'claude_phase_locks' => $claudePhaseLocks,
                     'lesson_week_locks' => $lessonWeekLocks,
                 ];
                 save_users($users);
@@ -157,6 +187,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $status = normalize_status($_POST['status'] ?? 'inactive');
         $role = normalize_role($_POST['role'] ?? 'user');
         $phaseLocks = collect_phase_locks_from_post($phaseOptions);
+        $claudePhaseLocks = collect_claude_phase_locks_from_post($claudePhaseOptions);
         $lessonWeekLocks = collect_lesson_week_locks_from_post($lessonWeekOptions);
 
         if ($lineName === '' || $email === '') {
@@ -187,6 +218,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $user['status'] = $status;
                     $user['role'] = $role;
                     $user['phase_locks'] = $phaseLocks;
+                    $user['claude_phase_locks'] = $claudePhaseLocks;
                     $user['lesson_week_locks'] = $lessonWeekLocks;
                     if ($password !== '') {
                         $user['password'] = $password;
@@ -236,6 +268,7 @@ $currentPage = max(1, min($currentPage, $totalPages));
 $offset = ($currentPage - 1) * $perPage;
 $usersOnPage = array_slice($filteredUsers, $offset, $perPage);
 $createDefaultPhaseLocks = default_create_phase_locks();
+$createDefaultClaudePhaseLocks = default_create_claude_phase_locks();
 $createDefaultLessonWeekLocks = default_create_lesson_week_locks();
 
 function page_link(int $page, string $lineName, string $realName, string $email): string
@@ -327,6 +360,19 @@ function page_link(int $page, string $lineName, string $realName, string $email)
                 ?>
               </div>
               <div class="user-password">
+                Claudeロック中:
+                <?php
+                $lockedClaudeLabels = [];
+                $userClaudeLocks = normalize_claude_phase_locks($user['claude_phase_locks'] ?? null);
+                foreach ($claudePhaseOptions as $phaseKey => $phaseLabel) {
+                    if (($userClaudeLocks[$phaseKey] ?? false) === true) {
+                        $lockedClaudeLabels[] = $phaseLabel;
+                    }
+                }
+                echo h($lockedClaudeLabels === [] ? 'なし' : implode(', ', $lockedClaudeLabels));
+                ?>
+              </div>
+              <div class="user-password">
                 ロック中:
                 <?php
                 $lockedLabels = [];
@@ -362,6 +408,7 @@ function page_link(int $page, string $lineName, string $realName, string $email)
                   data-status="<?= h((string)$user['status']) ?>"
                   data-role="<?= h((string)($user['role'] ?? 'user')) ?>"
                   data-phase-locks='<?= h(json_encode(normalize_phase_locks($user["phase_locks"] ?? null), JSON_UNESCAPED_UNICODE) ?: "{}") ?>'
+                  data-claude-phase-locks='<?= h(json_encode(normalize_claude_phase_locks($user["claude_phase_locks"] ?? null), JSON_UNESCAPED_UNICODE) ?: "{}") ?>'
                   data-lesson-week-locks='<?= h(json_encode(normalize_lesson_week_locks($user["lesson_week_locks"] ?? null), JSON_UNESCAPED_UNICODE) ?: "{}") ?>'
                 >編集</button>
                 <button
@@ -441,6 +488,17 @@ function page_link(int $page, string $lineName, string $realName, string $email)
               </label>
             <?php endforeach; ?>
           </div>
+        </fieldset>
+        <fieldset>
+          <legend>Claudeフェーズ閲覧ロック（チェックで閉場）</legend>
+          <div class="permission-grid">
+            <?php foreach ($claudePhaseOptions as $phaseKey => $phaseLabel): ?>
+              <label class="permission-item">
+                <span class="lock_label"><?= h($phaseLabel) ?></span>
+                <input type="checkbox" id="create-claude-lock-<?= h($phaseKey) ?>" name="claude_lock_<?= h($phaseKey) ?>" value="1">
+              </label>
+            <?php endforeach; ?>
+          </div>
         </fieldset> 
       </div>
       <div>
@@ -496,6 +554,17 @@ function page_link(int $page, string $lineName, string $realName, string $email)
             <?php endforeach; ?>
           </div>
         </fieldset>
+        <fieldset id="edit-claude-phase-locks">
+          <legend>Claudeフェーズ閲覧ロック（チェックで閉場）</legend>
+          <div class="permission-grid">
+            <?php foreach ($claudePhaseOptions as $phaseKey => $phaseLabel): ?>
+              <label class="permission-item">
+                <span class="lock_label"><?= h($phaseLabel) ?></span>
+                <input type="checkbox" id="edit-claude-lock-<?= h($phaseKey) ?>" name="claude_lock_<?= h($phaseKey) ?>" value="1">
+              </label>
+            <?php endforeach; ?>
+          </div>
+        </fieldset>
         </div>
       <button type="submit">更新</button>
     </form>
@@ -521,6 +590,12 @@ function page_link(int $page, string $lineName, string $realName, string $email)
       const createPhaseCheckbox<?= h($phaseKey) ?> = document.getElementById('create-lock-<?= h($phaseKey) ?>');
       if (createPhaseCheckbox<?= h($phaseKey) ?> instanceof HTMLInputElement) {
         createPhaseCheckbox<?= h($phaseKey) ?>.checked = <?= $isLocked ? 'true' : 'false' ?>;
+      }
+      <?php endforeach; ?>
+      <?php foreach ($createDefaultClaudePhaseLocks as $phaseKey => $isLocked): ?>
+      const createClaudeCheckbox<?= h($phaseKey) ?> = document.getElementById('create-claude-lock-<?= h($phaseKey) ?>');
+      if (createClaudeCheckbox<?= h($phaseKey) ?> instanceof HTMLInputElement) {
+        createClaudeCheckbox<?= h($phaseKey) ?>.checked = <?= $isLocked ? 'true' : 'false' ?>;
       }
       <?php endforeach; ?>
       <?php foreach ($createDefaultLessonWeekLocks as $weekKey => $isLocked): ?>
@@ -564,11 +639,18 @@ function page_link(int $page, string $lineName, string $realName, string $email)
             statusInput.value = openButton.dataset.status ?? 'inactive';
             roleInput.value = openButton.dataset.role ?? 'user';
             let phaseLocks = {};
+            let claudePhaseLocks = {};
             let lessonWeekLocks = {};
             try {
               phaseLocks = JSON.parse(openButton.dataset.phaseLocks ?? '{}');
             } catch (error) {
               phaseLocks = {};
+            }
+
+            try {
+              claudePhaseLocks = JSON.parse(openButton.dataset.claudePhaseLocks ?? '{}');
+            } catch (error) {
+              claudePhaseLocks = {};
             }
 
             try {
@@ -581,6 +663,14 @@ function page_link(int $page, string $lineName, string $realName, string $email)
               const checkbox = editForm.querySelector('input[name="lock_<?= h($phaseKey) ?>"]');
               if (checkbox instanceof HTMLInputElement) {
                 checkbox.checked = Boolean(phaseLocks['<?= h($phaseKey) ?>']);
+              }
+            }
+            <?php endforeach; ?>
+            <?php foreach (array_keys($claudePhaseOptions) as $phaseKey): ?>
+            {
+              const checkbox = editForm.querySelector('input[name="claude_lock_<?= h($phaseKey) ?>"]');
+              if (checkbox instanceof HTMLInputElement) {
+                checkbox.checked = Boolean(claudePhaseLocks['<?= h($phaseKey) ?>']);
               }
             }
             <?php endforeach; ?>
