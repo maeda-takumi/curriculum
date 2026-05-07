@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>3-4. 文章×画像×動画をつなぐ"設計思考"</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">3-4. 文章×画像×動画をつなぐ"設計思考"</span></h1>
+<hr class="divider">
+<span class="label">フェーズ3｜ライティングを『武器』にする応用編</span>
+</div>
+<div class="card">
+<h2><span class="gradient-text">はじめに：「書ける人」から「設計できる人」へ</span></h2>
+<p>ここまでのフェーズ3で、あなたは多くのスキルを身につけました。セールスライティングの基本構造、LPの設計、SNS・動画台本・広告文への横展開…。一つ一つが、AI副業で稼ぐための「武器」です。</p>
+<p>しかし、ここで一度立ち止まって考えてみてください。あなたが提供しているのは、本当に「文章」だけでしょうか？</p>
+<div class="callout-box"><p>クライアントが本当に欲しいのは、「文章」ではありません。「売上」であり、「集客」であり、「ブランド構築」です。文章は、その目的を達成するための「手段の一つ」に過ぎません。</p></div>
+<p>ここに、多くのライターが気づいていない「大きなチャンス」があります。クライアントは本来、文章・画像・デザイン・動画・SNS投稿・広告、それらすべてが「一貫した戦略のもとに設計されている状態」を望んでいます。しかし現実には、文章はAさんに、デザインはBさんに、動画はCさんにとバラバラに外注している。</p>
+<p> </p>
+<p><strong>【設計思考とは】</strong></p>
+<p>設計思考とは、「文章」「画像」「動画」をバラバラに考えるのではなく、クライアントの目的達成のために「統合的に設計する」思考法です。LPの文章だけでなく、デザインの方向性も提案する。SNS投稿の文章だけでなく、画像の構成も考える。動画台本だけでなく、サムネイルやタイトルとの連携も設計する。「書く人」から「設計する人」へ。この進化が、あなたの市場価値を大きく高めます。</p>
+<p> </p>
+<p>⚠ 注意：この章で扱うのは、あくまで「ライティング（言語設計）」の視点から、画像・動画・SNSとの連携を設計するノウハウです。YouTubeチャンネルの伸ばし方、SNSのフォロワーの増やし方、動画編集テクニックなど「各プラットフォーム固有の運用ノウハウ」は本スクールの範囲外となります。</p>
+<p> </p>
+<p><strong>【なぜ設計思考が重要なのか】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>① 単価が上がる：「文章だけ」より「文章＋画像構成案」の方が高単価。設計を含めると単価は2〜3倍に</li><li>② クライアントの満足度が上がる：一貫した設計の方が成果が出る。「この人に任せれば安心」と思われる</li><li>③ 継続案件・紹介が増える：「設計できる人」は希少。一度信頼されると長期的なパートナーになれる</li><li>④ 自分のビジネスにも活かせる：独立・起業の土台になる</li></ul>
+<p> </p>
+<p><strong>【この章の目標】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>文章・画像・動画を「統合的に設計する」視点を身につける</li><li>クライアントに「設計案」として提案できるようになる</li><li>「書く人」から「設計する人」へと進化する</li><li>設計込みの案件を獲得し、単価を上げる</li><li>Claudeを活用して設計業務を効率化する方法を学ぶ</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第1章：設計思考の基本</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-1. 「作業者」と「設計者」の違い</span></h2>
+<p><strong>【作業者の仕事】</strong></p>
+<p>● 	指示された文章を書く / 指定されたフォーマットで納品する / 言われたことをやる / 修正依頼があれば対応する</p>
+<p>作業者の特徴：単価が上がりにくい / 替えがきく / 価格競争に巻き込まれやすい</p>
+<p> </p>
+<p><strong>【設計者の仕事】</strong></p>
+<p>● 	クライアントの目的を理解する / 目的達成のための全体設計を考える / 文章だけでなく、画像の方向性や動画構成の「言語設計」まで提案する / 成果にコミットする / 改善提案まで行う</p>
+<p>設計者の特徴：単価が高い / 替えがきかない（この人でないとダメ）/ 継続的な仕事が生まれやすい / 価値で選ばれる</p>
+<p> </p>
+<div class="callout-box"><p>重要なのは、設計者になるために「デザインの技術」や「動画編集の技術」は必要ないということです。設計者に求められるのは、技術ではなく「思考」と「言語化力」です。</p></div>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-2. 設計思考の3つの視点</span></h2>
+<p><strong>【視点①：目的から逆算する】</strong></p>
+<p>作業者は「LPを書いてください」→「わかりました、書きます」。設計者は「このLPの目的は何ですか？」「ターゲットは誰ですか？」「どこからの流入を想定していますか？」「LPの前後の導線はどうなっていますか？」と確認してから設計を始める。</p>
+<p><strong>【視点②：全体を俯瞰する】</strong></p>
+<p>「LP」が全体の中でどう位置づけられるかを見る。広告→LP→購入の流れ、SNS→LP→メルマガ登録の流れ。LP単体ではなく、前後の導線も含めて考える。</p>
+<p><strong>【視点③：要素の連携を考える】</strong></p>
+<p>文章とデザインのトーンは一貫しているか / SNSの投稿文と画像上のテキストはマッチしているか / 動画の台本とサムネイル上の文言は連動しているか / 広告のコピーとLP冒頭のメッセージは統一されているか。「一貫性を言葉で設計する」ことがライターにしかできない設計思考の核心です。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-3. 設計者に求められるスキル</span></h2>
+<p><strong>【設計者に必要な5つのスキル】</strong></p>
+<p>1.	ヒアリング力：クライアントの目的、課題を引き出す / 言語化されていないニーズを把握する</p>
+<p>2.	構造化力：情報を整理し、全体像を描く / 目的→戦略→施策の流れを設計する</p>
+<p>3.	言語化力：設計意図を言葉で説明できる / デザイナーや動画編集者に意図を正確に伝える指示書を書ける</p>
+<p>4.	連携力：文章・画像・動画を「言葉のトーン」で統一する / 各メディアごとの文章の書き分け</p>
+<p>5.	改善力：成果を踏まえて文章の改善案を出す / 仮説を立てて検証するプロセスを実行する</p>
+<p> </p>
+<p>これらのスキルはすべて「言語」がベースになっています。つまり、ライティングスキルを持っている人は、設計者になるための素地をすでに持っているのです。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第2章：文章と画像の連携設計</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-1. LPにおける文章と画像の関係</span></h2>
+<p><strong>【LPでの役割分担】</strong></p>
+<p>【文章の役割】論理的な説明 / 詳細な情報提供 / 感情に訴えるストーリー / 行動を促すCTA</p>
+<p>【画像・デザインの役割】第一印象を決める / 読みやすさを左右する / 感情的なインパクト / 信頼感の演出</p>
+<p>【連携のポイント（ライターが設計するべき部分）】文章とデザインのトーンを「言葉で」指定する / デザイナーに伝わる「言語化された画像指示」を作成する</p>
+<p> </p>
+<p>人間がLPにアクセスしたとき、最初に目に入るのは「画像」であり、次に「見出し（大きな文字）」、最後に「本文」です。この「視覚→文字」の順番を理解した上で、両者の「言葉のトーン」を設計するのが設計思考です。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-2. トーン＆マナーを「言語で」統一する</span></h2>
+<p><strong>【トーン＆マナー設計の具体例】</strong></p>
+<p><strong>【例①：高級感を出したいLP】</strong></p>
+<p>文章のトーン：フォーマルな敬語、専門用語を適度に使用 / 例：「厳選された素材を、匠の技で仕上げました」</p>
+<p>画像への指示：モノトーン基調、余白多め、洗練されたセリフ体フォント / 色味：黒、金、白、ダークネイビー</p>
+<p><strong>【例②：親しみやすさを出したいLP】</strong></p>
+<p>文章のトーン：カジュアルな口語体、語りかけるような文体 / 例：「え、まだ知らないの？これ、マジでいいよ！」</p>
+<p>画像への指示：明るい色、丸みのあるイラスト、手書き風フォント / 色味：パステルカラー、暖色系</p>
+<p><strong>【例③：信頼感・実績を強調したいLP】</strong></p>
+<p>文章のトーン：データを多用、数値で説得 / 例：「導入企業3,200社。顧客満足度97.3%」</p>
+<p>画像への指示：グラフ、チャート、企業ロゴの並び / 色味：青系、白、グレー</p>
+<p><strong>【NGパターン】</strong></p>
+<p>文章：カジュアルで親しみやすい + 画像：高級感のあるモノトーン → チグハグな印象、信頼感が下がる</p>
+<p> </p>
+<p>トーン＆マナーを統一するコツは、最初に「このLP全体のペルソナ」を言葉で定義することです。「もしこのLPが人だったら、どんな人物か？」この「ペルソナ定義文」をクライアントやデザイナーと共有すれば、全員が同じ方向を向いて制作できます。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-3. ライターが提案できる「画像指示書」</span></h2>
+<p><strong>【ライターが提案できること】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>画像の配置場所（どの文章の横に画像を入れるか）</li><li>画像の内容（何を見せるべきか ─ 言葉で説明）</li><li>画像のトーン（明るい/落ち着いた/高級感など ─ 言葉で指定）</li><li>テキストを載せる場合の文言（コピーライティングの領域）</li><li>参考イメージのURL（競合やPinterestから）</li><li>人物写真のイメージ（性別、年齢層、表情、服装 ─ 言葉で描写）</li></ul>
+<p> </p>
+<p>「画像はデザイナーさんにお任せします」ではなく、「こんな画像が効果的だと思います。指示書を作りました」と提案する。この一言の違いが、「作業者」と「設計者」の違いを作ります。</p>
+<p> </p>
+<p><strong>【LP画像指示書の例】</strong></p>
+<p>【ファーストビュー】・メイン画像：30代男性がパソコンに向かって笑顔で作業している写真 ・キャッチコピーをオーバーレイ：「未経験から3ヶ月で月10万」 ・文字色は白、背景は暗めのトーン ・CTAボタン：オレンジ系、テキスト「無料で始める」</p>
+<p>【問題提起セクション】・イメージ：頭を抱える人のシルエット ・背景を薄いグレーにして重苦しさを演出 ・「こんなお悩みありませんか？」の吹き出しデザイン</p>
+<p>【解決策セクション】・明るいトーンに切り替え（問題提起セクションとの対比）・「3つの特徴」をアイコン＋短文で表示（アイコンは丸型、青系）</p>
+<p>【お客様の声セクション】・人物写真＋星評価のアイコン ・引用符（"）デザインで信頼感を演出</p>
+<p>【料金セクション】・カード型デザインで3プランを横並び ・おすすめプランに「BEST」バッジ ・特典はチェックマークアイコン付き</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-4. SNS投稿における文章と画像の連携</span></h2>
+<p>⚠ 注意：ここで解説するのは、SNS投稿における「テキスト（キャプション・画像上の文言）をどう書くか」というライティング視点のノウハウです。SNSのフォロワーを増やすアルゴリズム攻略や、リーチを伸ばすための運用ノウハウは本講座の範囲外です。</p>
+<p> </p>
+<p><strong>【Instagramカルーセル投稿の「テキスト設計」】</strong></p>
+<p>【1枚目（表紙）】タイトルは15文字以内で「フック」を入れる。例：「知らなきゃ損！副業で月10万稼ぐ5つのコツ」 / 背景色とのコントラストを確保する旨をデザイナーに指示</p>
+<p>【2〜9枚目（本文）】1スライド1メッセージ（30〜50文字）/ ナンバリング（①②③）で構造化 / テキストの配置は中央揃え、余白は十分に取る旨を指示</p>
+<p>【10枚目（CTA）】行動を促す一言：「保存してね」「フォローしてね」/ プロフィールリンクへの誘導文を含める</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-5. Claudeで画像指示書を効率的に作成する</span></h2>
+<p><strong>【プロンプト例：LP画像指示書の生成】</strong></p>
+<blockquote><p><em>あなたはWebマーケティングのプロのライターです。以下のLPについて、デザイナーに渡す「画像指示書」を作成してください。</em></p><p><em>【LP概要】・商品：副業ライター養成講座 ・ターゲット：30代会社員、副業を始めたい ・トーン：信頼感がありつつも親しみやすい</em></p><p><em>【出力形式】各セクションごとに：画像の内容（言葉で具体的に）/ トーン・色味の指定 / 画像上に載せるテキスト（コピー）/ テキストの配置やサイズの方向性 / デザイナーへの注意事項</em></p></blockquote>
+<p> </p>
+<p><strong>【プロンプト例：Instagram画像テキスト指示書】</strong></p>
+<blockquote><p><em>以下のInstagramカルーセル投稿について、各スライドの「画像上テキスト」と「キャプション」を作成してください。</em></p><p><em>【投稿内容】テーマ：副業ライターが最初の1万円を稼ぐロードマップ / 形式：カルーセル10枚</em></p><p><em>【出力形式】各スライドごとに：画像上テキスト（30字以内）/ 補足テキスト（15字以内）/ トーン・色味の指定 / 最後に：キャプション（400文字以内）/ ハッシュタグ10個</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第3章：文章と動画の連携設計 ─ ライターの領域</span></h2>
+<p>⚠ 注意：ここで解説するのは、動画における「台本の書き方」「タイトルの付け方」「サムネイル上のテキスト設計」など、あくまでライティング（言語設計）の観点からのノウハウです。撮影技術、動画編集テクニック、YouTubeチャンネルを伸ばすためのアルゴリズム攻略などは本講座の範囲外となります。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-1. YouTube動画の「言語設計」要素</span></h2>
+<p><strong>【ライターが担当できる動画の言語設計要素】</strong></p>
+<p>【台本】話す内容の構成と文章 / 冒頭15秒のフック / 途中の「引き」 / CTA文言 / テロップ用のキーフレーズ</p>
+<p>【タイトル】検索キーワードを含んだ魅力的なタイトル / クリックを促す言葉選び / サムネイルとの「補完関係」を意識したタイトル設計</p>
+<p>【サムネイル上のテキスト】一瞬で内容が伝わる短いコピー（6〜12文字）/ 感情を動かす言葉選び / 文字の配置・サイズの方向性をデザイナーに指示</p>
+<p>【概要欄の文章】動画の要約文 / 関連リンクの整理 / LP・SNSへの誘導テキスト</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-2. サムネイルテキスト・タイトル・台本の一貫性</span></h2>
+<p><strong>【良い例：言葉のメッセージが一貫している場合】</strong></p>
+<p>サムネイルテキスト：「月10万」（大きく太文字）/ タイトル：「副業で月10万稼ぐ方法｜初心者向け完全解説」/ 台本冒頭：「今日は副業で月10万稼ぐ具体的な方法を解説します」→ すべてが「月10万」というコアメッセージで統一</p>
+<p><strong>【悪い例：メッセージがバラバラの場合】</strong></p>
+<p>サムネイルテキスト：「副業で稼ぐ」（漠然）/ タイトル：「ライター講座のご紹介」/ 台本冒頭：「今日は私の経歴を紹介します」→ 視聴者が「思ってたのと違う」と感じて即離脱</p>
+<p><strong>【ライターとして意識すべきこと】</strong></p>
+<p>サムネイルテキストとタイトルは「補完関係」にする。サムネイル＋タイトルで1つの完全なメッセージを形成する。例：サムネイル「月10万」＋タイトル「副業ライター初心者が稼ぐ完全ロードマップ」</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-3. 「コアメッセージ先行」の同時設計フレームワーク</span></h2>
+<p><strong>【同時設計の4ステップ】</strong></p>
+<p>【STEP1】コアメッセージを1文で決める：「この動画を一言で言うと？」例：「副業ライターが最短で月10万稼ぐ方法」</p>
+<p>【STEP2】コアメッセージからサムネイルテキストを設計：大きく見せるテキスト「月10万」/ 補足テキスト「副業ライター」/ デザイナーへの指示：驚き表情の人物写真、黄色×黒の配色</p>
+<p>【STEP3】コアメッセージからタイトルを設計：キーワード：副業、ライター、月10万、稼ぐ / タイトル案：「【副業】ライター初心者が月10万稼ぐ完全ロードマップ」</p>
+<p>【STEP4】コアメッセージから台本の骨子を設計：冒頭フック「副業で月10万稼ぎたい人、この動画を見れば具体的なステップが全部わかります」/ 本編構成：月10万達成のステップを5つに分けて解説</p>
+<p> </p>
+<p>ライターが台本だけでなくタイトルやサムネイルテキストまで提案すると、クライアントは「台本だけ頼んだのに、ここまで考えてくれた」と感動します。追加で提案しているのは「テキスト」であって、画像制作ではないため、ライティングスキルの延長で自然にできることです。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第4章：LP・SNS・動画を「言語」で統合設計する</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-1. コアメッセージを軸にした統合設計</span></h2>
+<p><strong>【メディアごとの「書き分け」設計例】</strong></p>
+<p><strong>【コアメッセージ】「未経験から3ヶ月で月10万稼げる副業ライター講座」</strong></p>
+<p>【LP】5,000〜10,000文字の説得力ある長文 / ベネフィット、お客様の声、料金を詳述 / CTA：「今すぐ申し込む」/ 画像指示書を添付 / トーン：信頼感＋期待感</p>
+<p>【YouTube台本】3,000〜5,000文字（10〜15分動画）/ 「月10万稼ぐ方法」を一部無料公開 / サムネイルテキスト＋タイトル案を添付 / トーン：親近感＋専門性</p>
+<p>【Instagram投稿文】キャプション100〜300文字 / 画像上テキスト30文字以内×10枚 / 「月10万稼ぐコツ」を小分けに発信 / トーン：カジュアル＋共感</p>
+<p>【広告文】30〜100文字の短文勝負 / 「月10万」を軸にした訴求 / 複数バリエーション（A/Bテスト用）/ トーン：具体的＋緊急性</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-2. 導線設計を「テキスト」で可視化する</span></h2>
+<p><strong>【導線設計テキストの例】</strong></p>
+<p>①YouTube概要欄：「この動画で紹介した講座の詳細はこちら → [LP URL] 今なら無料体験レッスンを実施中です」</p>
+<p>②Instagramプロフィール：「未経験→月10万のロードマップ公開中👇」</p>
+<p>③Instagram投稿のCTA：「もっと詳しく知りたい方はプロフィールのリンクから！」</p>
+<p>④広告文のCTA：「今すぐ無料体験を予約 →」</p>
+<p>⑤LP冒頭ファーストビュー：各流入元との一貫性を意識（YouTube経由：「動画でお伝えした内容をさらに詳しく」/ 広告経由：「広告で見たあの講座の全貌がわかります」）</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-3. 統合設計の提案書フォーマット</span></h2>
+<p><strong>【クライアントへの統合設計提案書】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>目的：〇〇講座の集客・販売 / 月間申込数を10件→30件に増加</li><li>コアメッセージ：「未経験から3ヶ月で月10万稼げる」</li><li>施策設計（ライティング納品物）：1.LP原稿＋画像指示書（セールスライティング原稿5,000文字＋各セクションの画像指示書）/ 2.YouTube動画×3本分のライティングセット（台本＋タイトル案＋サムネイルテキスト案＋概要欄テキスト）/ 3.Instagram投稿×10本のライティングセット / 4.広告文（リスティング×3セット＋SNS広告×3セット）</li><li>スケジュール：第1週：ヒアリング、コアメッセージ＆全体設計 / 第2週：LP原稿・画像指示書 / 第3週：YouTube台本・SNS原稿 / 第4週：広告文作成、全体確認、納品</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第5章：クライアントへの提案方法</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-1. 提案の基本姿勢</span></h2>
+<p><strong>【設計者の対応】</strong></p>
+<p>クライアント「LP書いてください」→ 設計者：「このLPの目的は何ですか？」「ターゲットはどんな方ですか？」「LPと連動したSNSの投稿文や広告文も一緒に設計しましょうか？テキストのトーンを統一した方が成果が出やすいので」→ 成果を出すための情報を引き出し、「ライティングの範囲を広げる」提案をする</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-2. ヒアリングチェックリスト</span></h2>
+<p><strong>【必ず確認すること】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>□ 目的（売上UP？リード獲得？ブランディング？）</li><li>□ ターゲット（誰に届けたいか）</li><li>□ 商品・サービスの強み</li><li>□ 競合との違い</li><li>□ 流入経路（どこから人が来るか）</li><li>□ 前後の導線（LPの前後に何があるか）</li><li>□ 予算感 / スケジュール</li></ul>
+<p> </p>
+<p><strong>【追加で確認すると提案の幅が広がること】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>□ 過去の施策で効果があったもの・なかったもの</li><li>□ デザインの好み、参考イメージ</li><li>□ 現在の数値（月間PV、CVR、フォロワー数等）</li><li>□ 社内の意思決定プロセス</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-3. 提案書の作り方</span></h2>
+<p><strong>【提案書のサンプル】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>1. 目的：〇〇講座の新規申込数を月10件→30件に増加</li><li>2. 現状の課題：①LPの文章が弱く、成約率が低い（現状1%）②SNSの投稿文とLPのトーンが統一されていない ③広告文とLPの冒頭メッセージにズレがある</li><li>3. ご提案：施策①LP原稿の全面リライト（セールスライティングの観点から構成を再設計＋画像指示書）/ 施策②Instagram投稿テキスト20本（LP連動のキャプション＋画像上テキスト）/ 施策③広告文の作成（リスティング3セット＋SNS広告3セット）</li><li>4. 納品物：LP原稿（約5,000文字）＋画像指示書 / Instagram投稿テキスト×20本 / 広告文×6セット / トーン＆マナー定義書</li><li>5. スケジュール：1週目ヒアリング・全体設計 / 2〜3週目原稿作成 / 4週目修正・納品</li><li>6. 料金：総額150,000円（税別）LP原稿・画像指示書：80,000円 / Instagram投稿テキスト×20本：50,000円 / 広告文×6セット：20,000円</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-4. 提案時のトーク例</span></h2>
+<p><strong>【提案トークスクリプト】</strong></p>
+<p><em>【導入】「今回、LP制作のご依頼をいただきありがとうございます。いくつか確認させていただき、最適なご提案をさせてください」</em></p>
+<p><em>【ヒアリング後】「お話を伺って、LPの文章だけでなく、SNSの投稿文や広告文も含めてテキスト全体のトーンを統一した方が効果が出ると感じました」</em></p>
+<p><em>【提案】「LP原稿に加えて、Instagram投稿のテキストと広告文もセットでご提案させてください。同じコアメッセージをベースに書き分けることで、お客様がどの入口から来ても一貫した体験になります」</em></p>
+<p><em>【クロージング】「もちろん、LPだけでも承ります。ただ、テキストの一貫性を取った方が成果が出やすいのでおすすめです。ご予算に合わせてプランを調整できますので、いかがでしょうか」</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第6章：設計者としての単価設定</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-1. 作業者と設計者の単価比較</span></h2>
+<table><thead><tr><th><p><strong>案件タイプ</strong></p></th><th><p><strong>文章のみ</strong></p></th><th><p><strong>文章＋設計（指示書込み）</strong></p></th><th><p><strong>倍率</strong></p></th></tr><tr><th><p>LP原稿</p></th><th><p>30,000〜50,000円</p></th><th><p>80,000〜150,000円</p></th><th><p>2〜3倍</p></th></tr><tr><th><p>Instagram投稿20本</p></th><th><p>20,000〜60,000円</p></th><th><p>50,000〜100,000円</p></th><th><p>2〜3倍</p></th></tr><tr><th><p>YouTube台本1本</p></th><th><p>5,000〜10,000円</p></th><th><p>20,000〜50,000円</p></th><th><p>2〜5倍</p></th></tr><tr><th><p>統合ライティング設計</p></th><th><p>対応不可</p></th><th><p>150,000〜300,000円</p></th><th><p>－</p></th></tr><tr><th><p>月額ライティング顧問</p></th><th><p>対応不可</p></th><th><p>50,000〜200,000円/月</p></th><th><p>－</p></th></tr></thead></table>
+<p> </p>
+<p><strong>【なぜ設計込みだと単価が上がるのか】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>① 提供価値が違う：文章だけ→テキストの品質のみ / 設計込み→メッセージの一貫性、導線テキスト設計、画像指示書まで含めた「成果につながる言語設計」</li><li>② 手間が違う：文章だけ→書くだけ / 設計込み→ヒアリング、コアメッセージ設計、メディアごとの書き分け、指示書作成</li><li>③ 希少性が違う：文章だけ→できる人は多い（Claudeでさらに増加）/ 設計込み→できる人は少ない</li><li>④ 責任範囲が違う：文章だけ→文章の品質のみ / 設計込み→テキストの一貫性、デザイナーへの指示品質まで責任を持つ</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-2. 段階的な提案（松竹梅方式）</span></h2>
+<p><strong>【3プラン方式の例】</strong></p>
+<p>【Aプラン】LP原稿のみ：50,000円（LP原稿作成 約5,000文字 / 修正2回まで）</p>
+<p>【Bプラン】LP＋画像指示書：80,000円（LP原稿作成 / 画像指示書（各セクション）/ トーン＆マナー定義書 / 修正2回まで）</p>
+<p>【Cプラン・おすすめ】統合ライティング設計：150,000円（LP原稿＋画像指示書 / Instagram投稿テキスト×10本 / 広告文×6セット / 導線テキスト設計 / トーン＆マナー定義書 / 修正3回まで）</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-3. 継続案件への発展</span></h2>
+<p><strong>【単発→継続への流れ】</strong></p>
+<p>STEP1：単発でLP原稿を受注→期待を超える品質で納品→画像指示書を「おまけ」で添付</p>
+<p>STEP2：追加のライティングを提案→「LPと連動したSNSの投稿テキストも作りましょうか」</p>
+<p>STEP3：継続契約の提案→「月額〇万円で、SNS投稿テキスト＋LP改善を担当します」</p>
+<p>継続契約の料金例：SNS投稿テキスト月間10本＋改善提案：月額50,000〜80,000円 / コンテンツライティング顧問：月額100,000〜200,000円</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第7章：Claudeを使った設計業務の効率化</span></h2>
+<p>設計業務は範囲が広いため、Claudeを活用して叩き台を作り、ライターとしての判断で編集・仕上げるプロセスが効果的です。設計者としてのライティング業務に特化したプロンプト集を紹介します。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-1. Claudeが得意な設計ライティング業務</span></h2>
+<p><strong>【Claudeに叩き台を任せる】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>ヒアリング項目の洗い出し</li><li>コアメッセージの複数案生成</li><li>LP構成案のドラフト</li><li>画像指示書のテンプレ生成</li><li>提案書のドラフト</li><li>各メディア向けテキストのバリエーション生成</li></ul>
+<p> </p>
+<p><strong>【自分（ライター）が判断する】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>コアメッセージの最終決定</li><li>トーン＆マナーの方向性</li><li>クライアントの意図との整合性チェック</li><li>テキスト全体の一貫性の最終確認</li><li>「刺さる表現」の選定と磨き込み</li><li>クライアントへの提案方法の判断</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-2. 設計ライティング用プロンプト集</span></h2>
+<p><strong>【プロンプト①：ヒアリング項目生成】</strong></p>
+<blockquote><p><em>あなたはマーケティングに精通したライターです。以下の案件について、クライアントにヒアリングすべき項目を網羅的にリストアップしてください。</em></p><p><em>【案件概要】・業種：〇〇 ・依頼内容：LP制作＋SNSテキスト ・目的：新規顧客獲得</em></p><p><em>【出力形式】カテゴリ別に整理 / 各項目に「なぜ聞くべきか」の理由も付記</em></p></blockquote>
+<p> </p>
+<p><strong>【プロンプト②：コアメッセージ生成】</strong></p>
+<blockquote><p><em>以下の商品について、マーケティングのコアメッセージを10パターン考えてください。</em></p><p><em>【商品】〇〇 【ターゲット】〇〇 【強み】〇〇 【競合との違い】〇〇</em></p><p><em>【出力形式】各メッセージごとに：メッセージ（20文字以内）/ このメッセージが刺さる理由 / LP/SNS/広告/動画それぞれでの表現バリエーション</em></p></blockquote>
+<p> </p>
+<p><strong>【プロンプト③：画像指示書の自動生成】</strong></p>
+<blockquote><p><em>あなたはLP制作のディレクターです。以下のLPについて、デザイナーに渡す画像指示書を作成してください。</em></p><p><em>【LP概要】・商品：〇〇 ・ターゲット：〇〇 ・トーン：〇〇</em></p><p><em>【出力形式】各セクションごとに：画像の内容（言葉で描写）/ 色味・トーンの指定 / 画像上に載せるテキスト（コピー）/ レイアウトの方向性</em></p></blockquote>
+<p> </p>
+<p><strong>【プロンプト④：統合ライティング設計案】</strong></p>
+<blockquote><p><em>以下の商品について、LP・SNS・広告のテキストを統合設計してください。</em></p><p><em>【商品】〇〇 【ターゲット】〇〇 【コアメッセージ】〇〇 【目的】月間申込数〇件</em></p><p><em>【出力形式】1.トーン＆マナー定義 / 2.LP原稿の構成案 / 3.Instagram投稿テキスト案（10本のテーマ＋画像上テキスト）/ 4.広告文案 / 5.導線上のCTAテキスト</em></p></blockquote>
+<p> </p>
+<p><strong>【プロンプト⑤：提案書ドラフト】</strong></p>
+<blockquote><p><em>以下の情報を元に、クライアントへの提案書を作成してください。</em></p><p><em>【クライアント情報】・業種：〇〇 ・課題：〇〇 ・予算：〇〇</em></p><p><em>【提案内容】・LP原稿＋画像指示書 ・SNS投稿テキスト ・広告文</em></p><p><em>【出力形式】1.目的の確認 / 2.課題の整理（3つ以内）/ 3.提案内容 / 4.納品物一覧 / 5.スケジュール / 6.料金（3プラン：松竹梅）/ 7.期待される効果</em></p></blockquote>
+<p> </p>
+<p>これらのプロンプトで叩き台をClaudeで素早く作り、自分のライティングスキルと判断力で「編集・磨き上げ」する。このプロセスが、設計者としての生産性を劇的に高めます。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">まとめ：設計思考の第一歩</span></h2>
+<p><strong>【この章で学んだこと】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>「作業者」と「設計者」の根本的な違い</li><li>設計思考の3つの視点（目的逆算、全体俯瞰、要素連携）</li><li>設計者に必要な5つのスキル（すべて言語力がベース）</li><li>トーン＆マナーを「言語で」定義し統一する方法</li><li>ライターが作成できる「画像指示書」の具体例</li><li>SNS投稿における「テキスト設計」の方法</li><li>動画の「言語設計」要素（台本・タイトル・サムネイルテキスト）</li><li>コアメッセージ先行の同時設計フレームワーク</li><li>複数メディアを「テキストの一貫性」で統合設計する方法</li><li>クライアントへの提案方法（ヒアリング、提案書、トーク）</li><li>設計者としての単価設定と見積もりの作り方</li><li>Claudeを使った設計ライティングの効率化プロンプト集</li></ul>
+<p> </p>
+<p><strong>【設計思考の本質】</strong></p>
+<div class="callout-box"><p>設計思考とは、「クライアントの目的達成のために、すべてのテキストを統合的に設計する」という考え方です。文章、画像上のテキスト、動画の台本、広告文、CTAの文言、導線上の誘導文…すべての「言葉」に一貫性を持たせること。これはライターだからこそできる仕事です。</p></div>
+<p> </p>
+<p><strong>【今日から実践できるアクション】</strong></p>
+<p>6.	次の案件で「設計者の問い」を1つ追加する：「このコンテンツの目的は何ですか？」</p>
+<p>7.	納品時に画像指示書を「おまけ」で添付する：Claudeで10分あれば叩き台が作れます</p>
+<p>8.	既存クライアントに「テキストの統一設計」を提案してみる：「SNSの投稿テキストもトーンを揃えて作りましょうか？」</p>
+<p> </p>
+<p>次章「3-5. 『書ける人』から『全体を設計できる人』へ」では、この設計思考をさらに深め、あなた自身のポジショニングとキャリア戦略について学びます。</p>
+<p> </p>
+<p>「書ける人」はたくさんいます。しかし、「全体を設計できる人」は希少です。次章で、その希少な存在への道を開きましょう。</p>
+<p> </p>
+<p><strong><em>― 3-4. 文章×画像×動画をつなぐ"設計思考"　完 ―</em></strong></p>
+</div>
+</div>
+</body>
+</html>

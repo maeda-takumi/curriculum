@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>1-4. STP・4P・AIDMAを「ライティング視点」で理解する</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">1-4. STP・4P・AIDMAを「ライティング視点」で理解する</span></h1>
+<hr class="divider">
+<span class="label">フェーズ1｜Claude×ライティング基礎構築編</span>
+</div>
+<div class="card">
+<h2><span class="gradient-text">はじめに：なぜライターがマーケティングを学ぶのか</span></h2>
+<blockquote><p>「マーケティング？ライターには関係ないでしょ」</p></blockquote>
+<p>もしそう思っているなら、この章で考えが変わります。</p>
+<div class="callout-box"><p>結論から言います。マーケティングを知らないライターは、永遠に「作業者」のままです。</p></div>
+<p>なぜなら、クライアントが本当に求めているのは「文章」ではなく「成果」だからです。商品が売れること、問い合わせが増えること、ブランドが認知されること。これらの成果を出すためには、マーケティングの知識が不可欠です。</p>
+<p><strong>【マーケティングを知らないライターの限界】</strong></p>
+<blockquote><p><em>クライアント：「40代女性向けのダイエットサプリの記事をお願いします」</em></p></blockquote>
+<p> </p>
+<p><em>マーケティングを知らないライター：</em></p>
+<p><em>→「ダイエットサプリ」について調べて記事を書く</em></p>
+<p><em>→ 誰にでも当てはまる一般的な内容になる</em></p>
+<p><em>→ クライアントから「もっとターゲットに刺さる内容に」と修正依頼</em></p>
+<p><em>→ どう修正すればいいかわからない</em></p>
+<p> </p>
+<p><em>マーケティングを知っているライター：</em></p>
+<p><em>→「40代女性」のペルソナを設定（STP）</em></p>
+<p><em>→ 競合との差別化ポイントを確認（4P）</em></p>
+<p><em>→ 購買心理に沿った構成を設計（AIDMA）</em></p>
+<p><em>→ 最初から「刺さる」記事を書ける</em></p>
+<p><em>→ クライアントから「さすがです！」と高評価</em></p>
+<p> </p>
+<div class="callout-box"><p>この差が、単価1文字0.5円のライターと、単価1文字5円のライターを分けます。</p></div>
+<p>この章では、マーケティングの基本フレームワーク「STP」「4P」「AIDMA」を、ライティングに直結する形で解説します。</p>
+<p>難しそうに見えますが、安心してください。一度理解すれば、すべてのライティングで使える「武器」になります。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第1章：STP分析 ─ 「誰に書くか」を決める技術</span></h2>
+<p>STP分析とは、マーケティングの最も基本的なフレームワークの一つです。</p>
+<p>ライターにとってのSTPは、「誰に向けて書くかを明確にする技術」です。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-1. STPとは何か</span></h2>
+<p><strong>【STPの3要素】</strong></p>
+<p>S ＝ Segmentation（セグメンテーション）：市場を細分化する。「ダイエットに興味がある人」を、さらに細かく分ける。</p>
+<p>T ＝ Targeting（ターゲティング）：狙う市場を決める。細分化した中から、最も狙うべきセグメントを選ぶ。</p>
+<p>P ＝ Positioning（ポジショニング）：競合との違いを明確にする。選んだターゲットに対して、どんな立ち位置で訴求するか決める。</p>
+<p> </p>
+<p>これをライティングに置き換えると、こうなります：</p>
+<ul class="bullet-list" class="bullet-list"><li>Segmentation → 読者を細かく分類する</li><li>Targeting → 誰に向けて書くか決める</li><li>Positioning → どんな切り口で書くか決める</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-2. Segmentation（セグメンテーション）─ 読者を分類する</span></h2>
+<p>「ダイエットに興味がある人」と一口に言っても、実は様々な人がいます。</p>
+<p><strong>【ダイエット市場のセグメンテーション例】</strong></p>
+<p><em>【年代で分ける】</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>・20代：美容目的、見た目重視</em></li><li><em>・30代：産後ダイエット、体型維持</em></li><li><em>・40代：健康目的、代謝低下への対応</em></li><li><em>・50代以上：生活習慣病予防、医師の指導</em></li></ul>
+<p><em>【悩みで分ける】</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>・運動する時間がない人</em></li><li><em>・食事制限が続かない人</em></li><li><em>・リバウンドを繰り返している人</em></li><li><em>・特定の部位（お腹、太もも等）が気になる人</em></li></ul>
+<p><em>【ライフスタイルで分ける】</em></p>
+<p><em>・忙しい会社員 / ・子育て中の主婦 / ・在宅ワーカー / ・健康意識の高い人</em></p>
+<p> </p>
+<p>このように細分化することで、「誰に」書くべきかが明確になります。</p>
+<p><strong>【セグメンテーションしないとどうなるか】</strong></p>
+<p><em>「ダイエットに興味がある人」全員に向けて書こうとすると…</em></p>
+<p><em>→ 20代の悩みも、50代の悩みも、すべてカバーしようとする</em></p>
+<p><em>→ どの年代にも「ちょっと違う」と感じられる</em></p>
+<p><em>→ 結局、誰にも刺さらない文章になる</em></p>
+<p><em>これが「読まれない文章」の根本原因です。</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-3. Targeting（ターゲティング）─ 狙う読者を決める</span></h2>
+<p>セグメンテーションで分類したら、次は「誰を狙うか」を決めます。</p>
+<p>ここで重要なのは、「絞る勇気」です。「みんなに読んでもらいたい」という欲を捨て、一つのセグメントに絞ります。</p>
+<p><strong>【ターゲティングの判断基準】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>市場規模：十分な数の読者がいるか</li><li>到達可能性：そのターゲットに情報を届けられるか</li><li>競合状況：競合が少ない、または差別化できるか</li><li>自社（クライアント）の強み：その層に訴求できる強みがあるか</li></ul>
+<p> </p>
+<p><strong>【ターゲット設定の具体例】</strong></p>
+<p><em>【クライアント】ダイエットサプリメーカー</em></p>
+<p><em>【商品の特徴】代謝アップ成分配合、運動なしでOK</em></p>
+<p><em>【ターゲティングの思考プロセス】</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>・20代 → 運動や食事制限を頑張れる層が多い。「運動なし」は刺さりにくい</em></li><li><em>・30代 → 産後ダイエット需要。時間がない層に「運動なし」は刺さる</em></li><li><em>・40代 → 代謝低下が深刻。「代謝アップ」が最も刺さる</em></li><li><em>・50代以上 → 医師の指導を重視。サプリだけでは不安を感じる層が多い</em></li></ul>
+<p><em>【結論】ターゲットは「40代・働く女性・運動する時間がない層」に決定。</em></p>
+<p> </p>
+<p>ターゲットが決まると、文章の方向性が一気に明確になります。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-4. Positioning（ポジショニング）─ 競合との違いを出す</span></h2>
+<p>同じターゲットを狙う競合は、必ず存在します。その中で選ばれるには、「この商品（記事）ならでは」の立ち位置を明確にする必要があります。</p>
+<p><strong>【ポジショニングの考え方】</strong></p>
+<blockquote><p><em>【競合A】「1ヶ月で-10kg！劇的ダイエットサプリ」 → 短期間で大きな効果を訴求</em></p><p><em>【競合B】「医師監修の安心サプリ」 → 安全性・信頼性を訴求</em></p><p><em>【競合C】「芸能人愛用のプレミアムサプリ」 → ステータス・高級感を訴求</em></p><p><em>【自社のポジショニング】「40代の体に合わせた、無理しない代謝改善サプリ」 → 年代特化・継続しやすさを訴求</em></p></blockquote>
+<p><em>競合が「劇的な効果」「安心」「高級感」で争っている中、「40代特化」「無理しない」という独自のポジションを取る。</em></p>
+<p> </p>
+<p>ポジショニングが決まると、文章で「何を強調すべきか」が明確になります。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-5. STPをライティングに活かす実践法</span></h2>
+<p><strong>【STP活用の3ステップ】</strong></p>
+<p>Step 1：クライアントにSTPを確認する</p>
+<p><em>「ターゲットは誰ですか？」「競合との違いは何ですか？」と質問する。明確な答えがなければ、一緒に考えることを提案する。</em></p>
+<p>Step 2：ペルソナを作成する</p>
+<p><em>ターゲットを、一人の具体的な人物像に落とし込む。名前、年齢、職業、悩み、理想の状態などを設定する。</em></p>
+<p>Step 3：ペルソナに向けて書く</p>
+<p><em>「この人に向けて書いている」という意識を常に持つ。迷ったら「この人なら、どう感じるか？」と自問する。</em></p>
+<p> </p>
+<p><strong>【ペルソナシートの例】</strong></p>
+<p><em>【名前】山田佳子（仮名）　【年齢】43歳　【職業】事務職（正社員）</em></p>
+<p><em>【家族】夫、中学生の娘　【年収】400万円（世帯年収800万円）</em></p>
+<p><em>【悩み】</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>・40歳を過ぎてから、体重が落ちにくくなった</em></li><li><em>・仕事と家事で忙しく、運動する時間がない</em></li><li><em>・食事制限を何度も試したが、続かない</em></li><li><em>・健康診断で「要注意」が増えてきた</em></li><li><em>・お気に入りの服が入らなくなった</em></li></ul>
+<p><em>【理想の状態】</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>・無理なく、健康的に痩せたい</em></li><li><em>・家族に「きれいになったね」と言われたい</em></li><li><em>・自分に自信を持ちたい</em></li></ul>
+<p><em>【情報収集の方法】Instagram、YouTube、ママ友からの口コミ、健康系のWebメディア</em></p>
+<p><em>【購入の決め手】口コミ評価が高い / 安全性が確認できる / 価格が続けられる範囲</em></p>
+<p> </p>
+<p>このペルソナを設定すると、「山田佳子さんに向けて書く」という意識で文章が書けます。結果として、ターゲットに「刺さる」文章になります。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第2章：4P分析 ─ 「何を伝えるか」を決める技術</span></h2>
+<p>4P分析は、マーケティングミックスとも呼ばれる、商品・サービスの訴求ポイントを整理するフレームワークです。</p>
+<p>ライターにとっての4Pは、「文章で何を伝えるべきかを整理する技術」です。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-1. 4Pとは何か</span></h2>
+<p><strong>【4Pの4要素】</strong></p>
+<p>Product（製品）：何を売るのか。商品・サービスの特徴、機能、品質、デザインなど。</p>
+<p>Price（価格）：いくらで売るのか。価格設定、割引、支払い方法など。</p>
+<p>Place（流通）：どこで売るのか。販売チャネル、店舗、オンラインなど。</p>
+<p>Promotion（販促）：どう知らせるのか。広告、PR、キャンペーンなど。</p>
+<p> </p>
+<p>これをライティングに置き換えると、こうなります：</p>
+<ul class="bullet-list" class="bullet-list"><li>Product → 商品の「何を」伝えるか</li><li>Price → 価格の「見せ方」をどうするか</li><li>Place → 読者が「どこで」行動するか</li><li>Promotion → 「どんな訴求」で惹きつけるか</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-2. Product（製品）─ 何を伝えるか</span></h2>
+<p>商品の特徴を整理し、「何を伝えるべきか」を決めます。重要なのは、「特徴」と「ベネフィット」を分けて考えることです。</p>
+<p><strong>【特徴とベネフィットの違い】</strong></p>
+<p>特徴（Feature）：商品が「持っている」もの。成分、機能、スペックなど。</p>
+<p>ベネフィット（Benefit）：顧客が「得られる」もの。結果、変化、感情など。</p>
+<p><strong>【特徴→ベネフィット変換の例】</strong></p>
+<p><em>【特徴】ビタミンC 1,000mg配合 → 【ベネフィット】肌のハリ・ツヤがアップ、若々しい印象に</em></p>
+<p><em>【特徴】24時間サポート対応 → 【ベネフィット】深夜でも安心、いつでも相談できる</em></p>
+<p><em>【特徴】重量わずか500g → 【ベネフィット】持ち運びラクラク、外出先でも使える</em></p>
+<p><em>【特徴】AI自動分析機能 → 【ベネフィット】専門知識なしでもプロ並みの分析ができる</em></p>
+<p> </p>
+<p>ライティングでは、「特徴」だけでなく「ベネフィット」まで伝えることが重要です。</p>
+<p><strong>【特徴だけを並べた文章の問題点】</strong></p>
+<blockquote><p><em>「このサプリには、ビタミンC、ビタミンE、コエンザイムQ10が配合されています。」</em></p><p><em>読者の反応：「で？それが私に何の関係があるの？」</em></p></blockquote>
+<p><em>→ 特徴だけでは、読者は「自分ごと」として捉えられない。</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-3. Price（価格）─ 価格の見せ方</span></h2>
+<p>同じ価格でも、見せ方によって印象は大きく変わります。ライターは、価格を「高い」と感じさせない工夫を文章で表現する必要があります。</p>
+<p><strong>【価格の見せ方テクニック】</strong></p>
+<p>テクニック1：分割して見せる　「月額3,000円」→「1日たった100円」</p>
+<p>テクニック2：比較で見せる　「ジム会費1万円/月の代わりに、このサプリ3,000円/月」</p>
+<p>テクニック3：価値で見せる　「3,000円で、10万円相当のノウハウを公開」</p>
+<p>テクニック4：投資として見せる　「この3,000円が、あなたの健康と自信を取り戻します」</p>
+<p>テクニック5：リスクを下げる　「30日間返金保証付き。効果を感じなければ全額返金」</p>
+<p><strong>【価格訴求の文章例】</strong></p>
+<blockquote><p><em>【悪い例】「価格は月額3,000円です。」</em></p><p><em>【良い例】「1日あたり、たったの100円。缶コーヒー1本分の投資で、20代の頃のような『燃える体』が手に入ります。しかも、初回は50%OFFの1,500円。30日間の返金保証付きなので、まずは1ヶ月、リスクなしでお試しいただけます。」</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-4. Place（流通）─ どこで行動させるか</span></h2>
+<p>読者に「どこで」「どうやって」行動してもらうかを明確にします。ライティングでは、「次のアクション」を具体的に示すことが重要です。</p>
+<p><strong>【行動導線の書き方】</strong></p>
+<blockquote><p><em>【曖昧な導線】「興味のある方は、お問い合わせください。」→ どこに？どうやって？わからない。</em></p><p><em>【明確な導線】「今すぐ、下の青いボタンをクリックしてください。申込フォームが開きます。お名前とメールアドレスを入力するだけ。3分で完了します。」→ 具体的で迷わない。</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-5. Promotion（販促）─ どんな訴求で惹きつけるか</span></h2>
+<p>どんな切り口で商品を訴求するかを決めます。訴求軸を明確にすることで、文章全体の方向性が決まります。</p>
+<p><strong>【主な訴求軸】</strong></p>
+<p>機能訴求：「業界最高レベルの○○機能を搭載」</p>
+<p>価格訴求：「今だけ50%OFF」「業界最安値」</p>
+<p>品質訴求：「職人が一つひとつ手作り」「厳選素材のみ使用」</p>
+<p>実績訴求：「累計100万個突破」「顧客満足度98%」</p>
+<p>権威訴求：「医師監修」「有名人愛用」</p>
+<p>限定訴求：「先着100名様限定」「今日だけの特別価格」</p>
+<p>感情訴求：「家族の笑顔を守る」「自分へのご褒美に」</p>
+<p><strong>【訴求軸を決めるときの考え方】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li><em>・競合が「機能訴求」で争っている場合 → 同じ土俵で戦っても埋もれる → 「感情訴求」や「実績訴求」など、別の軸を選ぶ</em></li><li><em>・ターゲットが「価格」を重視している場合 → 「価格訴求」を軸にする → ただし、安さだけでなく「コスパ」として見せる</em></li><li><em>・商品に明確な強みがある場合 → その強みに合った訴求軸を選ぶ → 例：医師監修なら「権威訴求」</em></li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-6. 4Pをライティングに活かす実践法</span></h2>
+<p><strong>【4P整理シートの例】</strong></p>
+<p><em>【Product（製品）】</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>・特徴：代謝アップ成分配合、1日1粒でOK</em></li><li><em>・ベネフィット：運動なしで脂肪燃焼、忙しくても続けられる</em></li></ul>
+<p><em>【Price（価格）】</em></p>
+<p><em>・通常価格：3,000円/月　・初回価格：1,500円（50%OFF）　・見せ方：「1日50円で理想の体型へ」</em></p>
+<p><em>【Place（流通）】</em></p>
+<p><em>・販売チャネル：公式サイト限定　・行動導線：LP→申込フォーム→決済→商品発送</em></p>
+<p><em>【Promotion（販促）】</em></p>
+<p><em>・訴求軸：「40代特化」×「無理しない」　・キャンペーン：初回50%OFF、30日間返金保証</em></p>
+<p> </p>
+<p>このシートを元に文章を書くと、伝えるべきことが整理された状態で書き始められます。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第3章：AIDMA ─ 「どう伝えるか」を決める技術</span></h2>
+<p>AIDMAは、消費者の購買心理プロセスを表すモデルです。1-2でも触れましたが、ここではより深く、ライティングへの活用法を解説します。</p>
+<p>ライターにとってのAIDMAは、「読者の心を動かす順番を設計する技術」です。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-1. AIDMAとは何か（復習）</span></h2>
+<p><strong>【AIDMAの5段階】</strong></p>
+<p>A ＝ Attention（注意）：まず、注意を引く。存在を認知してもらう。</p>
+<p>I ＝ Interest（関心）：興味を持たせる。「もっと知りたい」と思わせる。</p>
+<p>D ＝ Desire（欲求）：欲しいと思わせる。「これが必要だ」と感じさせる。</p>
+<p>M ＝ Memory（記憶）：記憶に残す。後で思い出してもらう。</p>
+<p>A ＝ Action（行動）：行動させる。購入、申込、問い合わせなどを促す。</p>
+<p> </p>
+<p>この5段階を意識して文章を構成することで、読者を自然と「行動」へ導けます。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-2. 各段階の詳細とライティング手法</span></h2>
+<h3>【Attention】注意を引く</h3>
+<p>読者の注意を引かなければ、どんなに良い内容も読まれません。最初の3秒で「続きを読みたい」と思わせることが勝負です。</p>
+<p><strong>【Attentionを獲得するテクニック】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>数字を使う：「97%の人が知らない」「3分でわかる」</li><li>疑問を投げかける：「なぜ、あなたは痩せないのか？」</li><li>意外性を出す：「ダイエットの常識は、間違いだらけ」</li><li>ターゲットを名指しする：「40代女性のあなたへ」</li><li>ベネフィットを予告する：「この記事を読めば、〇〇がわかります」</li></ul>
+<p> </p>
+<p><strong>【Attention獲得の文章例】</strong></p>
+<blockquote><p><em>【タイトル・見出し】「40歳を過ぎたら、ダイエットの常識は捨ててください」</em></p><p><em>【リード文】あなたは、まだ「食べる量を減らせば痩せる」と思っていませんか？実は、40代以降の体には、それが逆効果になることがあります。この記事では、40代の体に合った「新しいダイエット法」をお伝えします。</em></p></blockquote>
+<p> </p>
+<h3>【Interest】関心を持たせる</h3>
+<p>注意を引いたら、次は「興味を持続」させます。「もっと知りたい」「続きが気になる」と思わせることが目標です。</p>
+<p><strong>【Interestを維持するテクニック】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>好奇心を刺激する：「その秘密は、意外なところにありました」</li><li>共感を示す：「私も同じ悩みを抱えていました」</li><li>権威を借りる：「ハーバード大学の研究によると…」</li><li>問題を深掘りする：「なぜ、これまでの方法では失敗したのか」</li><li>ストーリーを語る：「3ヶ月前の私は…」</li></ul>
+<p> </p>
+<p><strong>【Interest維持の文章例】</strong></p>
+<blockquote><p><em>「なぜ、40代になると痩せにくくなるのか？」</em></p><p><em>その答えは、「基礎代謝の低下」にあります。</em></p><p><em>20代の頃、何もしなくても消費していたカロリー。それが、40代では約200kcal/日も減少しています。つまり、同じ食事をしていても、毎日おにぎり1個分、余分に太るのです。</em></p><p><em>「でも、代謝を上げるなんて、難しいんじゃ…」そう思いますよね。私もそう思っていました。でも、ある方法を知ってから、その考えは変わりました。</em></p></blockquote>
+<p> </p>
+<h3>【Desire】欲しいと思わせる</h3>
+<p>関心を持った読者に、「これが欲しい」「これが必要だ」と感じさせます。ここでは「ベネフィット」を徹底的に伝えることが重要です。</p>
+<p><strong>【Desireを喚起するテクニック】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>Before/Afterを見せる：変化を具体的にイメージさせる</li><li>感情に訴える：「自信を取り戻す」「家族に褒められる」</li><li>社会的証明を示す：「10万人が選んだ」「口コミ評価4.8」</li><li>限定性を出す：「今だけ」「先着100名」</li><li>リスクを下げる：「返金保証付き」「初回無料」</li></ul>
+<p> </p>
+<p><strong>【Desire喚起の文章例】</strong></p>
+<blockquote><p><em>このサプリを3ヶ月続けた方からは、こんな声が届いています。</em></p><p><em>「お気に入りのスカートが、また履けるようになりました」（43歳・主婦）</em></p><p><em>「健康診断の数値が、すべて正常範囲に」（47歳・会社員）</em></p><p><em>「夫に『最近、きれいになったね』と言われました」（41歳・パート）</em></p><p><em>想像してみてください。3ヶ月後、鏡の前で笑顔になれる自分を。「あの時、始めてよかった」と思える未来を。</em></p><p><em>今なら、初回50%OFFでお試しいただけます。30日間の返金保証付き。リスクはありません。</em></p></blockquote>
+<p> </p>
+<h3>【Memory】記憶に残す</h3>
+<p>読者がすぐに行動しない場合でも、後で思い出してもらう必要があります。「覚えやすいキーワード」や「印象的なフレーズ」を残すことが重要です。</p>
+<p><strong>【Memoryを強化するテクニック】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>キャッチフレーズを作る：「40代からの、燃える体づくり」</li><li>繰り返す：重要なメッセージを文章内で繰り返す</li><li>比喩を使う：「体の中の『エンジン』を入れ替える」</li><li>数字で印象づける：「3ヶ月で-5kg」「1日100円」</li><li>感情に紐づける：「家族の笑顔のために」</li></ul>
+<p> </p>
+<p><strong>【Memory強化の文章例】</strong></p>
+<blockquote><p><em>覚えておいてください。</em></p><p><em>40代のダイエットは、「減らす」ではなく「燃やす」。</em></p><p><em>食べる量を減らすのではなく、燃やす力を取り戻す。</em></p><p><em>これが、40代からの新常識です。</em></p><p><em>「燃やすダイエット」、今日から始めてみませんか？</em></p></blockquote>
+<p> </p>
+<h3>【Action】行動させる</h3>
+<p>最後に、具体的な行動を促します。「何を」「どこで」「どうやって」行動すればいいか、迷わせないことが重要です。</p>
+<p><strong>【Actionを促すテクニック】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>具体的な行動を指示：「下のボタンをクリック」</li><li>簡単さをアピール：「3分で完了」「入力はたったの3項目」</li><li>緊急性を出す：「本日23:59まで」「残り12個」</li><li>不安を取り除く：「いつでも解約OK」「返金保証付き」</li><li>背中を押す：「今日が、新しい自分への第一歩です」</li></ul>
+<p> </p>
+<p><strong>【Action促進の文章例】</strong></p>
+<blockquote><p><em>【今すぐ、始める方へ】</em></p><p><em>下の緑色のボタンをクリックしてください。申込フォームが開きます。</em></p><p><em>入力は「お名前」「メールアドレス」「お届け先」の3つだけ。2分で完了します。</em></p><p><em>今なら初回50%OFF。この価格で試せるのは、今月末までです。</em></p><p><em>さあ、「燃える体」を手に入れる第一歩を、今すぐ踏み出しましょう。</em></p><p><em>▼ 今すぐ申し込む ▼</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-3. AIDMAの発展形：AISAS</span></h2>
+<p>インターネット時代に合わせて、AIDMAを発展させた「AISAS」というモデルもあります。</p>
+<p><strong>【AISASの5段階】</strong></p>
+<p>A ＝ Attention（注意）：注意を引く（AIDMAと同じ）</p>
+<p>I ＝ Interest（関心）：興味を持たせる（AIDMAと同じ）</p>
+<p>S ＝ Search（検索）：検索して調べる（ネット時代特有）</p>
+<p>A ＝ Action（行動）：購入する</p>
+<p>S ＝ Share（共有）：SNSで共有する、口コミを書く</p>
+<p> </p>
+<p>Web記事やSNS向けのライティングでは、「Search」と「Share」を意識した設計が重要です。</p>
+<p><strong>【AISASを意識したライティング】</strong></p>
+<p><em>【Search対策】</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>・読者が検索しそうなキーワードを文章に含める</em></li><li><em>・「よくある質問」や「比較」など、検索ニーズに応える内容を入れる</em></li></ul>
+<p><em>【Share促進】</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>・「シェアしたくなる」要素を入れる（驚きの数字、共感できる内容）</em></li><li><em>・「この記事が役に立ったら、シェアしてください」と促す</em></li><li><em>・SNSシェアボタンの位置を意識した文章構成にする</em></li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第4章：3つのフレームワークを統合する</span></h2>
+<div class="callout-box"><p>STP、4P、AIDMAは、それぞれ独立したものではありません。3つを統合して使うことで、「誰に」「何を」「どう伝えるか」が一貫した文章が書けます。</p></div>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-1. 統合の考え方</span></h2>
+<p><strong>【3フレームワークの役割】</strong></p>
+<p>STP → 「誰に」を決める：ターゲットを明確にし、ペルソナを設定する</p>
+<p>4P → 「何を」を決める：伝えるべき内容（製品、価格、場所、訴求）を整理する</p>
+<p>AIDMA → 「どう」を決める：伝える順番・流れを設計する</p>
+<p><strong>【統合の流れ】</strong></p>
+<p><em>Step 1【STP】ターゲットを決める</em></p>
+<p><em>「40代・働く女性・運動する時間がない層」に決定</em></p>
+<p><em>Step 2【4P】伝える内容を整理する</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>・Product：代謝アップサプリ、1日1粒</em></li><li><em>・Price：初回1,500円（1日50円）</em></li><li><em>・Place：公式サイト限定</em></li><li><em>・Promotion：「40代特化」×「無理しない」</em></li></ul>
+<p><em>Step 3【AIDMA】伝える順番を設計する</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>・A（注意）：「40歳を過ぎたら、ダイエットの常識は捨ててください」</em></li><li><em>・I（関心）：基礎代謝低下のメカニズムを説明</em></li><li><em>・D（欲求）：口コミ、Before/After、ベネフィット</em></li><li><em>・M（記憶）：「燃やすダイエット」というキーワード</em></li><li><em>・A（行動）：初回50%OFF、今すぐ申込</em></li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-2. 統合シートを作る</span></h2>
+<p>ライティングを始める前に、「統合シート」を作成しましょう。これがあれば、迷うことなく書き進められます。</p>
+<p><strong>【統合シートのテンプレート】</strong></p>
+<p><em>【案件名】○○サプリ紹介記事</em></p>
+<p> </p>
+<p><em>━━━━━━━━━━━━━━━━━━━━</em></p>
+<p><em>■ STP（誰に書くか）</em></p>
+<p><em>━━━━━━━━━━━━━━━━━━━━</em></p>
+<p><em>ターゲット：</em></p>
+<p><em>ペルソナ名：　年齢・性別：　職業・ライフスタイル：</em></p>
+<p><em>悩み：　理想の状態：　ポジショニング：</em></p>
+<p> </p>
+<p><em>━━━━━━━━━━━━━━━━━━━━</em></p>
+<p><em>■ 4P（何を伝えるか）</em></p>
+<p><em>━━━━━━━━━━━━━━━━━━━━</em></p>
+<p><em>Product：特徴：　ベネフィット：</em></p>
+<p><em>Price：価格：　見せ方：</em></p>
+<p><em>Place：行動導線：</em></p>
+<p><em>Promotion：訴求軸：</em></p>
+<p> </p>
+<p><em>━━━━━━━━━━━━━━━━━━━━</em></p>
+<p><em>■ AIDMA（どう伝えるか）</em></p>
+<p><em>━━━━━━━━━━━━━━━━━━━━</em></p>
+<p><em>Attention：　Interest：　Desire：　Memory：　Action：</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第5章：Claudeでフレームワークを活用する</span></h2>
+<p>STP、4P、AIDMAをClaudeで活用する方法を解説します。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-1. STPを整理するプロンプト</span></h2>
+<p><strong>【ターゲット設定プロンプト】</strong></p>
+<blockquote><p><em>以下の商品について、STP分析を行ってください。</em></p><p><em>【商品情報】</em></p><p><em>商品名：○○ダイエットサプリ　特徴：代謝アップ成分配合、1日1粒でOK　価格：月額3,000円</em></p><p><em>【出力形式】</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■ Segmentation（市場の細分化）年齢、性別、ライフスタイル、悩みで市場を分類してください。</em></li><li><em>■ Targeting（ターゲット選定）上記セグメントから、最も狙うべきターゲットを1つ選び、理由を説明してください。</em></li><li><em>■ Positioning（差別化）選んだターゲットに対して、どのような立ち位置で訴求すべきか提案してください。</em></li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-2. ペルソナを作成するプロンプト</span></h2>
+<p><strong>【ペルソナ作成プロンプト】</strong></p>
+<blockquote><p><em>以下のターゲットについて、詳細なペルソナを作成してください。</em></p><p><em>【ターゲット】40代・働く女性・運動する時間がない層</em></p><p><em>【出力形式】名前（仮名）/ 年齢 / 職業 / 家族構成 / 年収 / 1日のスケジュール / 悩み（5つ以上）/ 理想の状態 / 情報収集の方法 / 購入を決めるときの判断基準</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-3. 4Pを整理するプロンプト</span></h2>
+<p><strong>【4P整理プロンプト】</strong></p>
+<blockquote><p><em>以下の商品について、4P分析を行い、ライティングで伝えるべきポイントを整理してください。</em></p><p><em>【商品情報】（商品の情報を入力）</em></p><p><em>【ターゲット】（STPで決めたターゲットを入力）</em></p></blockquote>
+<p><em>【出力形式】</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■ Product（製品）：特徴を5つ / 各特徴に対応するベネフィット</em></li><li><em>■ Price（価格）：価格の見せ方を3パターン提案</em></li><li><em>■ Place（流通）：読者に取ってほしい行動の導線</em></li><li><em>■ Promotion（販促）：最も効果的な訴求軸とその理由</em></li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-4. AIDMAで構成を作るプロンプト</span></h2>
+<p><strong>【AIDMA構成プロンプト】</strong></p>
+<blockquote><p><em>以下の情報を元に、AIDMA構成で記事の構成案を作成してください。</em></p><p><em>【ターゲット】（ペルソナ情報を入力）</em></p><p><em>【4P情報】（4P分析の結果を入力）</em></p></blockquote>
+<p><em>【出力形式】</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■ Attention（注意）：タイトル案を3つ / リード文の方向性</em></li><li><em>■ Interest（関心）：読者の興味を引く情報は何か / どんなストーリーや根拠を示すか</em></li><li><em>■ Desire（欲求）：どんなベネフィットを強調するか / どんな社会的証明（口コミ、実績）を入れるか</em></li><li><em>■ Memory（記憶）：記憶に残すキーワード・フレーズ</em></li><li><em>■ Action（行動）：具体的なCTA（行動喚起）の文言</em></li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-5. 統合シートを作成するプロンプト</span></h2>
+<p><strong>【統合シート作成プロンプト】</strong></p>
+<blockquote><p><em>以下の案件について、ライティング前の「統合シート」を作成してください。</em></p><p><em>【案件情報】クライアント：○○株式会社 / 商品：○○ダイエットサプリ / 目的：商品購入につなげるLP用の文章作成 / 商品特徴：（特徴を入力）/ 価格：（価格情報を入力）/ 競合：（わかれば入力）</em></p><p><em>【出力形式】STP、4P、AIDMAの各要素を埋めた統合シートを作成してください。各項目について、具体的な内容を提案してください。</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第6章：実践ワーク</span></h2>
+<p>ここまで学んだフレームワークを、実際に使って練習しましょう。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">演習1：STP分析を行う</span></h2>
+<p><strong>【課題】</strong></p>
+<p>以下の商品について、STP分析を行い、ターゲットを設定してください。</p>
+<p><strong>【商品情報】</strong></p>
+<p><em>商品名：オンライン英会話サービス「EnglishMaster」</em></p>
+<p><em>特徴：24時間いつでもレッスン可能 / 1レッスン25分、月額6,000円 / ネイティブ講師在籍 / ビジネス英語コースあり / 初心者向けコースあり</em></p>
+<p><strong>【出力すべき内容】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>Segmentation：市場をどう細分化するか（最低5つのセグメント）</li><li>Targeting：どのセグメントを狙うか（理由も含めて）</li><li>Positioning：競合との違いをどう打ち出すか</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">演習2：ペルソナを作成する</span></h2>
+<p><strong>【課題】</strong></p>
+<p>演習1で決めたターゲットについて、詳細なペルソナシートを作成してください。</p>
+<p><strong>【含める項目】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>名前（仮名）、年齢、性別</li><li>職業、家族構成、年収</li><li>1日のスケジュール</li><li>悩み（5つ以上）</li><li>理想の状態</li><li>情報収集の方法</li><li>購入の決め手</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">演習3：4P分析を行う</span></h2>
+<p><strong>【課題】</strong></p>
+<p>「EnglishMaster」について、4P分析を行ってください。</p>
+<p><strong>【出力すべき内容】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>Product：特徴5つと、それぞれのベネフィット</li><li>Price：価格の見せ方を3パターン</li><li>Place：読者に取ってほしい行動の導線</li><li>Promotion：最も効果的な訴求軸</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">演習4：AIDMA構成で記事を書く</span></h2>
+<p><strong>【課題】</strong></p>
+<p>演習1〜3の結果を使って、「EnglishMaster」の紹介記事をAIDMA構成で書いてください。</p>
+<p><strong>【条件】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>文字数：800〜1,000文字</li><li>AIDMAの各段階が明確にわかるように書く</li><li>演習2で作成したペルソナに向けて書く</li><li>演習3で整理した4Pを盛り込む</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">演習5：統合シートを完成させる</span></h2>
+<p><strong>【課題】</strong></p>
+<p>演習1〜4の内容をまとめて、「統合シート」を完成させてください。</p>
+<p><strong>【テンプレート】</strong></p>
+<p><em>【案件名】EnglishMaster紹介記事</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■ STP　ターゲット：　ペルソナ名：　悩み：　理想：　ポジショニング：</em></li><li><em>■ 4P　Product：　Price：　Place：　Promotion：</em></li><li><em>■ AIDMA　Attention：　Interest：　Desire：　Memory：　Action：</em></li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">まとめ：フレームワークは「武器」になる</span></h2>
+<p>この章では、STP、4P、AIDMAの3つのマーケティングフレームワークを、ライティング視点で学びました。</p>
+<p><strong>【STP ─ 「誰に書くか」を決める】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>Segmentation：市場を細分化する</li><li>Targeting：狙うセグメントを選ぶ</li><li>Positioning：競合との違いを明確にする</li><li>→ ペルソナを設定し、「その人に向けて」書く</li></ul>
+<p> </p>
+<p><strong>【4P ─ 「何を伝えるか」を決める】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>Product：特徴とベネフィットを整理する</li><li>Price：価格の見せ方を工夫する</li><li>Place：行動導線を明確にする</li><li>Promotion：最も効果的な訴求軸を選ぶ</li></ul>
+<p> </p>
+<p><strong>【AIDMA ─ 「どう伝えるか」を決める】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>Attention：注意を引く</li><li>Interest：関心を持たせる</li><li>Desire：欲しいと思わせる</li><li>Memory：記憶に残す</li><li>Action：行動させる</li></ul>
+<p> </p>
+<p>これらのフレームワークは、最初は「面倒」に感じるかもしれません。しかし、使い続けるうちに「思考の型」として身についていきます。</p>
+<p>フレームワークを使いこなせるようになると、クライアントから「この人は違う」と思われるライターになれます。</p>
+<p>次の章では、「Claudeに狙った文章を書かせる指示の出し方」を学びます。ここまでの知識を活かして、さらに実践的なスキルを身につけましょう。</p>
+<p> </p>
+<p><strong><em>― 1-4. STP・4P・AIDMAを「ライティング視点」で理解する　完 ―</em></strong></p>
+</div>
+</div>
+</body>
+</html>

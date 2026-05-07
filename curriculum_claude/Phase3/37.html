@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>3-7. 実践：複数ジャンルに応用するライティング設計</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">3-7. 実践：複数ジャンルに応用するライティング設計</span></h1>
+<hr class="divider">
+<span class="label">フェーズ3｜ライティングを『武器』にする応用編</span>
+</div>
+<div class="card">
+<h2><span class="gradient-text">はじめに：Claudeで「どんな業種でも即対応できる人」になる</span></h2>
+<p>フェーズ3もいよいよ最終章です。これまでセールスライティングの型、LP設計、SNS・動画台本・広告文への横展開、設計思考、キャリア戦略と学んできました。</p>
+<p>しかし、ここまでの知識を「自分の頭だけ」で全部やろうとすると、膨大な時間がかかります。本業を持ちながら副業でライティングをしているあなたには、そんな余裕はないはずです。</p>
+<p><strong>だから、Claudeを使うのです。</strong></p>
+<p>この章の目的は明確です。Claudeを使って、未経験の業種・メディアであっても短時間で高品質な納品物を仕上げるワークフローを、実際に手を動かして身につけてもらいます。具体的には、1つの架空案件を題材に、Claudeへの指示（プロンプト）でLP原稿、SNS投稿、広告文、YouTube台本、メルマガまでを一気通貫で制作します。さらに、その「プロンプトの型」を別の業種に使い回すことで、どんな業種の案件が来ても即対応できる再現性を手に入れます。</p>
+<p> </p>
+<p><strong>【この章で手に入るもの】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>未経験の業種でも2〜3時間で納品物一式を仕上げるワークフロー</li><li>コピペで使える「業種変換プロンプト」のテンプレート集</li><li>Claudeの出力を「副業として通用するレベル」に仕上げる編集チェックリスト</li><li>3業種（教育・美容・BtoB）で実際に出力→編集を体験した経験値</li><li>フェーズ3全体の学びを「稼ぐ力」として統合した実感</li></ul>
+<p> </p>
+<p><strong>【この章のルール】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>① すべての制作はClaudeとの協働で行う（ゼロから手書きしない）</li><li>② 「プロンプトを投げる→出力を確認→人間が判断・編集する」の3ステップを守る</li><li>③ 作業時間を必ず計測する（副業は「時間あたりの稼ぎ」がすべて）</li><li>④ 完璧を目指さず「納品できるレベル」を最短で仕上げる</li></ul>
+<p> </p>
+<p>⚠ 注意：この章は「読む」だけでは意味がありません。実際にClaudeを開き、プロンプトを入力し、出力を確認してください。1回やれば体感できます。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第1章：副業ライターの「Claude実戦ワークフロー」</span></h2>
+<p>まず、副業としてクライアントワークを回すための「Claudeとの協働ワークフロー」を固めましょう。このワークフローは、どんな業種・どんなメディアの案件でも同じ手順で使えます。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-1. 全案件共通の「5ステップ・ワークフロー」</span></h2>
+<p>【STEP1：情報インプット（10〜15分）】クライアントからもらった情報を整理し、Claudeに渡す「ブリーフィング文」を作る。「情報整理に10分かける」と「いきなりプロンプトを投げる」では出力の品質が3倍違う。</p>
+<p>【STEP2：Claudeに叩き台を出させる（15〜30分）】整理した情報をプロンプトに含め、各メディアの叩き台を一気に生成する。「コアメッセージ→LP構成→LP各セクション→SNS→広告文」と段階的に出させる。前のステップの出力を次のプロンプトに含めることで、一貫性のある納品物が仕上がる。</p>
+<p>【STEP3：人間が判断・編集する（20〜40分）】Claudeの出力を「プロの目」で編集し、納品レベルに仕上げる。ここが最重要ステップ。Claudeの出力をそのまま納品するライターは、すぐに淘汰される。「Claudeの70点を90点に引き上げる力」が、あなたの副業ライターとしての価値。</p>
+<p>【STEP4：Claudeにセルフレビューさせる（5〜10分）】編集後の原稿をClaudeに戻し、「プロのコピーライターとして厳しくレビューして。改善点を5つ、具体的な修正案付きで指摘して」と依頼する。出てきた指摘のうち「確かに」と思ったものだけを反映する。最終判断は人間。</p>
+<p>【STEP5：品質チェック＋納品（10分）】最終チェックリストで確認し納品。チェック項目：コアメッセージの統一 / ターゲットへの刺さり具合 / 数字・固有名詞の事実確認 / 法規制抵触の有無 / Claudeの「嘘」混入チェック / 誤字脱字 / クライアント要望の反映</p>
+<p> </p>
+<p>💡 副業の鉄則：案件ごとに「何に何分かかったか」を記録してください。LP原稿1本にかかった時間が3時間なら、報酬5万円÷3時間＝時給16,666円。Claudeの活用が上手くなるほど、この時間単価が上がっていきます。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-2. Claudeの出力を「そのまま使ってはいけない」5つの理由</span></h2>
+<p>【理由①：嘘が混ざる】Claudeは「それっぽい嘘」を堂々と出力する。「導入企業2,500社」→実績は1,200社かもしれない。数字・実績は必ずクライアントに確認。</p>
+<p>【理由②：いい子すぎる文章になる】当たり障りのない、誰にも刺さらないコピーになりやすい。「高品質なサービスでお客様の満足を追求」的な文章は全削除。</p>
+<p>【理由③：トーンが均一になる】美容もITも教育も、同じような丁寧な説明口調になりがち。プロンプトでトーンを具体指定し、出力後に人間が調整する。</p>
+<p>【理由④：構成が冗長になる】情報を網羅しようとして長くなる。副業クライアントが求めるのは「刺さる文章」であって「情報の網羅」ではない。バッサリ削る。</p>
+<p>【理由⑤：競合と同じ文章になる】同じプロンプトなら誰でも同じ出力。「あなたの判断」で編集することが唯一の差別化。</p>
+<p> </p>
+<p><strong>Claudeは「材料を用意するシェフ」。あなたは「料理を仕上げるシェフ」。材料がいくら良くても、仕上げが雑なら客は二度と来ない。</strong></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第2章：演習① 教育業界 ── Claudeで一式制作する</span></h2>
+<p>ここからは実際にClaudeを使って、案件一式を制作します。プロンプトをそのままコピペして使えるように設計していますので、実際にClaudeに投げてみてください。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-1. クライアント情報</span></h2>
+<p>【会社名】スキルアップラボ株式会社 / 【サービス】Webデザイナー転職コース / 【価格】298,000円（税込）/ 6ヶ月間</p>
+<p>【特徴】受講生の85%が未経験 / 現役フリーランスがマンツーマン指導 / 転職成功率78% / ポートフォリオ5作品完成 / 分割月額49,600円 / 14日間全額返金保証</p>
+<p>【ターゲット】25〜35歳の会社員。現職に将来性を感じず「手に職をつけたい」。デザインに興味はあるが不安。</p>
+<p>【差別化】マンツーマン指導×転職成功率78%×全額返金保証</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-2. プロンプト①：コアメッセージ生成</span></h2>
+<p><strong>【コアメッセージ生成プロンプト（コピペ用）】</strong></p>
+<blockquote><p><em>あなたはセールスコピーライターです。以下のサービスのコアメッセージ（キャッチコピー）を10案出してください。【サービス情報】（ここにクライアント情報を貼り付け）</em></p><p><em>【条件】・1案あたり20文字以内 ・ターゲットの「不安」と「希望」の両方が含まれていること ・具体的な数字が含まれていること ・「ありがちな表現」を避け、記憶に残るフレーズにすること</em></p><p><em>10案出力後、「最も反応率が高いと予測されるもの」を1つ選び、その理由を説明してください。</em></p></blockquote>
+<p> </p>
+<p><strong>【人間の判断ポイント】</strong></p>
+<p>Claudeが10案出したら、以下で自分が「これだ」と思う1つを選ぶ。①ターゲットが「自分のことだ」と感じるか？ ②具体性があるか？ ③差別化ポイントが入っているか？ ④声に出して読んだとき、リズムが良いか？</p>
+<p>Claudeの「おすすめ」を鵜呑みにしない。Claudeは「平均的に良いもの」を選ぶが、実際に刺さるコピーは「尖ったもの」であることが多い。この判断力が、あなたがクライアントに提供する価値。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-3. プロンプト②③：LP原稿を段階的に生成する</span></h2>
+<p>ポイントは「構成案→各セクション」の2段階で出させること。1回で全部出そうとすると品質が下がります。</p>
+<p><strong>【LP構成案 生成プロンプト（コピペ用）】</strong></p>
+<blockquote><p><em>あなたはLPのセールスコピーライターです。以下のサービスのLP構成案を作成してください。【サービス情報】（貼り付け）【コアメッセージ】（STEP1で決めたもの）【ターゲット】（貼り付け）</em></p><p><em>【条件】全体で8〜10セクション / 各セクションに「目的」と「見出し案」を記載 / 読者の心理変化に沿った順番 / ファーストビューは特に詳細に / 「お客様の声」3名分の設定 / 「よくある質問」5問</em></p></blockquote>
+<p> </p>
+<p><strong>【LP各セクション文章 生成プロンプト（コピペ用）】</strong></p>
+<blockquote><p><em>上記の構成案に基づいて、セクション[番号]の本文を書いてください。</em></p><p><em>【条件】文体：です/ます調、語りかけトーン / 二人称「あなた」を適度に使用 / 各段落3〜4行以内 / 具体的な数字を積極的に使用 / 抽象的な美辞麗句は禁止 / 差別化ポイント（マンツーマン・成功率78%・全額返金）を自然に織り込む</em></p></blockquote>
+<p> </p>
+<p><strong>【LP出力後の人間編集チェック】</strong></p>
+<p>①嘘チェック：Claudeが勝手に追加した数字・実績がないか→クライアントにない情報は全部削除</p>
+<p>②刺さるかチェック：ファーストビューを声に出して読む→自分がターゲットなら読み進めるか？</p>
+<p>③冗長チェック：長すぎるセクションを半分に削る→Claudeは書きすぎる。バッサリ削ってよい</p>
+<p>④CTA明確さチェック：「何をすればいいか」が1秒でわかるか</p>
+<p>⑤トーン統一：前半と後半でトーンがブレていないか→長文だとClaudeはトーンが変わりやすい</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-4. プロンプト④⑤⑥：SNS・広告文・台本を一気に生成</span></h2>
+<p>LPが完成したら、同じ情報ベースでSNS投稿、広告文、YouTube台本を出させます。「LPで確定した原稿」を次のプロンプトに含めることで、全メディアの一貫性が保たれます。</p>
+<p><strong>【Instagram投稿テキスト 生成プロンプト】</strong></p>
+<blockquote><p><em>あなたはSNSマーケティングのコピーライターです。以下のサービスのInstagramカルーセル投稿を設計してください。【サービス情報】（貼り付け）【確定済みコアメッセージ】（貼り付け）【確定済みLPファーストビュー】（LPの文章を貼り付け）</em></p><p><em>【条件】カルーセル10枚の画像上テキスト（各25文字以内）/ 各スライドの目的を説明 / 10枚目はCTA / キャプション300文字以内 / ハッシュタグ10個 / 1枚目は「スクロールを止める」フックが最優先 / LPとトーン統一</em></p></blockquote>
+<p> </p>
+<p><strong>【広告文3パターン 生成プロンプト】</strong></p>
+<blockquote><p><em>以下のサービスのWeb広告文を3パターン作成してください。【サービス情報】（貼り付け）【コアメッセージ】（貼り付け）</em></p><p><em>パターン1：リスティング広告（タイトル30字＋説明文90字）ベネフィット直球型 / パターン2：SNS広告（本文80字以内）共感型 / パターン3：SNS広告（本文80字以内）社会的証明型</em></p><p><em>制約：LPとメッセージ統一 / 「今すぐ行動したい」と思わせるCTA / 誇大表現禁止</em></p></blockquote>
+<p> </p>
+<p><strong>【YouTube台本 生成プロンプト】</strong></p>
+<blockquote><p><em>以下のサービスの紹介動画（10分程度）のYouTube台本を作成してください。【サービス情報】（貼り付け）【コアメッセージ】（貼り付け）</em></p><p><em>【条件】話し言葉で書く / 冒頭15秒のフックに力を入れる / 構成：フック→橋渡し→本編3〜5パート→まとめ→CTA / サムネイルテキスト案3案 / 概要欄テキスト（タイムスタンプ付き）/ 文字数3,000〜4,000字</em></p></blockquote>
+<p> </p>
+<p><strong>【全メディア横断チェック（人間が行う最重要作業）】</strong></p>
+<p>全メディアの出力が揃ったら「横断チェック」を行う。□ コアメッセージが全メディアで統一されているか？ □ ターゲット像がブレていないか？ □ 数字・事実が全メディアで一致しているか？ □ CTAの導線（SNS→LP→申込）がスムーズか？</p>
+<p>この横断チェックはClaudeにはできない。Claudeは各プロンプトを独立した依頼として処理するから。「全体の一貫性を見る目」が人間の最大の価値。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第3章：演習② 美容業界 ── 「業種変換プロンプト」で即対応</span></h2>
+<p>2つ目の演習では、教育業界で使ったプロンプトの「型」をそのまま使い、業種だけを変えます。ここで体験してほしいのは、プロンプトの型は使い回せるということ。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-1. クライアント情報（美容業界）</span></h2>
+<p>【ブランド名】HARUMI / 【商品】オーガニック美容液「ハルミ プレミアムセラム」/ 【価格】通常8,800円→初回3,980円（定期購入初回）</p>
+<p>【特徴】100%国産オーガニック / 合成香料・着色料・パラベン不使用 / ヒト幹細胞エキス配合 / 使用者92%が「肌の調子が良くなった」と回答 / 初回60%OFF＋送料無料＋いつでも解約OK</p>
+<p>【ターゲット】30〜45歳女性。乾燥・くすみ・小ジワが気になる。忙しくスキンケアに時間をかけられない。</p>
+<p>【差別化】100%国産オーガニック×ヒト幹細胞×初回60%OFF</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-2. 業種変換のカギ：「追加指示」を差し込むだけ</span></h2>
+<p>教育業界のプロンプト①〜⑥は、クライアント情報を差し替えるだけで美容業界にも使えます。ただし、業種ごとに「追加指示」を入れることで、出力の精度が格段に上がります。</p>
+<p><strong>【業種別追加指示：美容業界】</strong></p>
+<blockquote><p><em>【重要な追加条件】・薬機法を遵守。「シミが消える」「シワがなくなる」等の断定的効果表現は禁止 ・「実感」「サポート」「ケア」等のソフトな表現を使用 ・お客様の声には「※個人の感想です」を必ず付記 ・訴求の型は「感情訴求」を主軸 ・文体は「親しい友人がおすすめする」トーン ・五感に訴える描写を入れる（テクスチャーの触感、香り、朝のスキンケアの情景等）</em></p></blockquote>
+<p> </p>
+<p>教育業界のプロンプト①＋クライアント情報を美容に差替え＋美容の追加指示＝美容のコアメッセージが出力。この「プロンプトの型＋業種別追加指示」の組み合わせを保存しておけば、どんな業種の案件が来ても30分以内に制作を開始できる。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-3. 主要6業種の「追加指示テンプレート」一覧</span></h2>
+<p><strong>【IT/SaaS（BtoB）】</strong></p>
+<p><em>ターゲットは法人担当者。その先に上司への報告・稟議がある / 訴求は感情ではなく課題解決＋ROI / 導入事例（業種・規模・課題・効果）を重視 / CTAは「無料トライアル」「資料DL」/ 文体は「信頼できるビジネスパートナー」トーン</em></p>
+<p><strong>【不動産】</strong></p>
+<p><em>最重要価値は信頼感・安心感 / 物件スペックを「暮らしのイメージ」に変換する描写 / 宅建業法の広告規制を遵守 / CTAは「まず相談」/ 文体は「丁寧で堅実な不動産のプロ」トーン</em></p>
+<p><strong>【飲食・店舗】</strong></p>
+<p><em>五感に訴える「シズル感」描写が最重要 / テキストは写真を補完する役割 / 季節感、限定感を積極的に使う / 文体は「活気があり食欲をそそる」トーン</em></p>
+<p><strong>【士業（税理士・弁護士等）】</strong></p>
+<p><em>専門用語を一般の人でもわかる言葉に翻訳 / 最重要は「この先生なら安心」という信頼感 / 見込み客は不安な状態→まず安心させる / 曖昧な法律解釈は絶対に書かない / 文体は「正確だが親しみやすい専門家」トーン</em></p>
+<p><strong>【EC・物販】</strong></p>
+<p><em>購入は比較が前提。競合との差別化を明確に / スペックを「ベネフィット」に翻訳 / 使用シーン描写で「自分の生活で使うイメージ」を喚起 / 限定・残りわずか・今だけの緊急性演出 / 文体は「テンポ良く具体的で行動を促す」トーン</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-4. Claude出力の「Before/After」── 人間の編集で何が変わるか</span></h2>
+<p><strong>【Claudeの典型出力（美容LP冒頭）】</strong></p>
+<blockquote><p><em>「お肌のお悩み、ありませんか？年齢とともに気になる乾燥やくすみ。ハルミ プレミアムセラムは、100%国産オーガニック原料でお肌に優しく、ハリと潤いをサポートします。今なら初回60%OFF。お試しください。」→ まあまあだが「刺さらない」。ありがちなコスメ広告と同じ。差別化ゼロ。</em></p></blockquote>
+<p><strong>【人間が編集した後】</strong></p>
+<blockquote><p><em>「40歳。鏡を見るのが、また好きになった」</em></p><p><em>ふと鏡に映った自分の顔に、ため息をついたのはいつからですか。ファンデーションの量が増え、夕方の肌のくすみが気になる──でも、忙しい毎日に丁寧なスキンケアの余裕なんてない。</em></p><p><em>ハルミ プレミアムセラムは、洗顔後これ1本。たった30秒で完了するオーガニック美容液です。</em></p><p><em>使い始めて2週間。「あれ、今日ちょっと肌の調子いいかも」その小さな変化が、あなたの毎日を少し明るくします。</em></p><p><em>初回60%OFF 3,980円。いつでも解約OK。まずは1ヶ月お試しください。※効果には個人差があります。</em></p></blockquote>
+<p><strong>【何を変えたか】</strong></p>
+<p>①冒頭を情景の一言に→記憶に残る ②抽象表現→具体的な日常シーン ③「ハリと潤い」→「今日ちょっと調子いいかも」④薬機法対応の注記追加 ⑤トーンを「広告」から「友人のおすすめ」に転換</p>
+<p> </p>
+<div class="callout-box"><p>この「Claudeの70点→人間の90点」の差分こそが、あなたの副業ライターとしての報酬の根拠です。Claudeだけで済むなら、クライアントはライターに発注しません。</p></div>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第4章：演習③ IT/SaaS（BtoB）── BtoCとの決定的な違い</span></h2>
+<p>3つ目の演習はBtoB案件です。教育・美容とは「Claudeへの指示の仕方」が根本的に変わります。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-1. クライアント情報</span></h2>
+<p>【商品名】CloudBoard（クラウド型プロジェクト管理ツール）/ 【価格】月額800円/ユーザー</p>
+<p>【特徴】タスク管理＋チャット＋ファイル共有が一体化 / 導入企業3,200社 / 会議時間平均30%削減 / 定着率87% / 30日間無料トライアル</p>
+<p>【ターゲット】従業員50〜300人の中小企業。情シス担当者or経営層。Excel＋メール＋チャットで情報が散らばっている。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-2. BtoCとBtoBでプロンプトの「何が変わるか」</span></h2>
+<table><thead><tr><th><p><strong>要素</strong></p></th><th><p><strong>BtoC（教育・美容）</strong></p></th><th><p><strong>BtoB（IT/SaaS）</strong></p></th></tr><tr><th><p>意思決定者</p></th><th><p>読者本人が即決定</p></th><th><p>読者が稟議→上司が決裁</p></th></tr><tr><th><p>動機</p></th><th><p>感情（不安・憧れ）</p></th><th><p>論理（課題・効率・ROI）</p></th></tr><tr><th><p>証拠</p></th><th><p>体験談・口コミ</p></th><th><p>導入事例・数値データ</p></th></tr><tr><th><p>CTA</p></th><th><p>購入・申込・体験</p></th><th><p>無料トライアル・資料DL</p></th></tr><tr><th><p>プロンプト追加指示</p></th><th><p>感情描写を求める</p></th><th><p>数字とROIを求める</p></th></tr><tr><th><p>ClaudeのNGパターン</p></th><th><p>データだけで冷たい</p></th><th><p>感情的すぎる</p></th></tr></thead></table>
+<p> </p>
+<p><strong>【BtoB出力で特に注意すべきClaudeの癖】</strong></p>
+<p>①盛りすぎ問題：「導入後、生産性が300%向上」等の誇大数字をClaudeが勝手に入れる→クライアント提供の正確な数字だけ使う</p>
+<p>②BtoCっぽいトーン問題：「あなたも今日から生産性UP！」→「御社の課題解決に貢献します」に修正</p>
+<p>③機能羅列問題：機能を並べるだけ→ベネフィットに翻訳（×「ガントチャート搭載」○「進捗が一画面で把握でき会議時間30%削減」）</p>
+<p>④意思決定者の多層性無視：担当者向けと経営層向けが混在→LP上部は担当者向け、下部は決裁者向けと分ける</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-3. BtoB特有の制作物：ホワイトペーパーとステップメール</span></h2>
+<p>BtoB案件では、LP以外にも「ホワイトペーパー」「商談設定用ステップメール」の需要が大きく、これらをセットで提案できると案件単価が跳ね上がります。</p>
+<p><strong>【ホワイトペーパー企画 生成プロンプト】</strong></p>
+<blockquote><p><em>あなたはBtoBマーケティングのコンテンツストラテジストです。以下のSaaSツールのリード獲得用ホワイトペーパーの企画案を作成してください。【商品情報】（貼り付け）【ターゲット】（貼り付け）</em></p><p><em>【条件】タイトル案3案 / 全体構成（8〜10セクション）/ 各セクションの概要（100字程度）/ 想定ページ数：10〜15ページ / 最終セクションはCTA（無料トライアルへの誘導）/ 単なる製品カタログにならないよう、業界データや課題分析を含める</em></p></blockquote>
+<p> </p>
+<p><strong>【BtoBステップメール5通 生成プロンプト】</strong></p>
+<blockquote><p><em>上記ホワイトペーパーをダウンロードした見込み客に送るステップメール5通を設計してください。</em></p><p><em>【条件】配信間隔：Day1/Day3/Day5/Day8/Day12 / 各メールの件名＋本文概要（200字）＋目的を記載 / Day1〜3は「有益情報の提供」（売り込まない）/ Day5で「事例紹介」、Day8で「比較コンテンツ」/ Day12で初めて「商談設定」のCTA / 文体はBtoBにふさわしい落ち着いたトーン</em></p></blockquote>
+<p> </p>
+<div class="callout-box"><p>LP＋ホワイトペーパー＋ステップメール5通のセット提案ができると、LP単体5万円の案件が15〜20万円のパッケージになります。Claudeがあれば、追加の作業時間は2〜3時間程度。時間単価が一気に上がる、副業ライターにとって最も効率の良い戦略の1つです。</p></div>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-4. 3業種の出力を並べて比較する</span></h2>
+<table><thead><tr><th><p><strong>要素</strong></p></th><th><p><strong>教育業界</strong></p></th><th><p><strong>美容業界</strong></p></th><th><p><strong>IT/SaaS（BtoB）</strong></p></th></tr><tr><th><p>フックの切り口</p></th><th><p>将来への問いかけ</p></th><th><p>日常の情景描写</p></th><th><p>業務課題の言語化</p></th></tr><tr><th><p>訴求の型</p></th><th><p>論理＋共感</p></th><th><p>感情＋体験</p></th><th><p>論理＋データ</p></th></tr><tr><th><p>証拠の見せ方</p></th><th><p>転職成功率78%</p></th><th><p>92%が実感（体験談）</p></th><th><p>導入3,200社・30%削減</p></th></tr><tr><th><p>CTAの型</p></th><th><p>無料カウンセリング</p></th><th><p>初回限定お試し</p></th><th><p>30日間無料トライアル</p></th></tr><tr><th><p>トーン</p></th><th><p>信頼できる先輩</p></th><th><p>親しい友人</p></th><th><p>ビジネスパートナー</p></th></tr><tr><th><p>Claude追加指示のキモ</p></th><th><p>変化ストーリー重視</p></th><th><p>薬機法＋感情訴求</p></th><th><p>ROI＋稟議対応</p></th></tr><tr><th><p>人間の編集で最も注意</p></th><th><p>数字の正確性</p></th><th><p>法規制チェック</p></th><th><p>盛りすぎチェック</p></th></tr></thead></table>
+<p> </p>
+<p>この表を自分の案件ごとに埋めていく習慣をつけてください。5業種分たまれば、あなただけの「業種別攻略チートシート」が完成します。経験を積むほど、対応スピードと品質が上がり、時給が右肩上がりになる。これが「副業としてスケールする」仕組みです。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-5. メルマガ・ステップメールのClaude活用</span></h2>
+<p><strong>【メルマガ/ステップメール 生成プロンプト（汎用）】</strong></p>
+<blockquote><p><em>あなたはメールマーケティングの専門家です。以下の商品/サービスのステップメールを設計してください。【商品情報】（貼り付け）【ターゲット】（貼り付け）【確定済みコアメッセージ】（貼り付け）</em></p><p><em>【条件】各メールの配信タイミング、件名、本文概要（200字）、目的を記載 / 件名は「開封率を最大化する」ことを最優先 / 最初の数通は価値提供（売り込まない）、後半で行動を促す / LPおよびSNSとトーンを統一</em></p></blockquote>
+<p> </p>
+<p><strong>【メルマガのClaude出力で人間が特に注意すべきこと】</strong></p>
+<p>①件名のチェック：Claudeは「無難な件名」を出しやすい。件名は開封率の9割を決めるので、もっと尖らせる。×「お役立ち情報のお届け」○「9割の人がやってる間違ったスキンケア」</p>
+<p>②配信タイミング：BtoCは毎日〜隔日OK。BtoBは間隔を空ける（Day1/3/5/8/12等）。Claudeが適切な間隔を出していない場合は修正。</p>
+<p>③売り込みの温度感：Claudeは各メールにCTAを入れがちだが、最初の数通は「純粋な価値提供」に徹するべき。</p>
+<p>④パーソナライズ感：Claudeの出力は「テンプレ感」が出やすい。「○○さん」等の変数指定や「流れ」を人間が追加する。</p>
+<p> </p>
+<p>メルマガ・ステップメールは「継続案件」になりやすいのがポイント。月額5〜10万円の継続契約につながるケースも多く、副業の収入安定に大きく貢献します。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第5章：3業種を横断して見えた「プロンプトの法則」</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-1. プロンプトの「変わらない構造」と「変わる部分」</span></h2>
+<p><strong>【変わらない構造（全業種共通）】</strong></p>
+<blockquote><p>[役割指定] あなたは○○のコピーライターです / [情報提供] サービス情報、ターゲット情報、競合情報 / [タスク指定] 何を出力してほしいか / [条件指定] 文字数、トーン、構成の制約 / [品質指定] 避けるべき表現、重視すべきポイント</p><p><strong>【変わる部分（3つだけ）】</strong></p><p>①情報の中身（クライアント情報・ターゲット情報）→当然、業種ごとに異なる</p><p>②「追加指示」の内容→美容なら薬機法＋感情訴求、BtoBならROI＋導入事例</p><p>③トーン指定→美容「親しい友人」、教育「信頼できる先輩」、BtoB「ビジネスパートナー」</p></blockquote>
+<p>つまり、プロンプト①〜⑥の「型」を1回作れば、あとは①②③を差し替えるだけで、どんな業種にも対応できる。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-2. あなた専用「プロンプト・テンプレート集」を作る</span></h2>
+<p><strong>【テンプレート集の推奨構成】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>共通プロンプト（全業種で使用）：コアメッセージ生成 / LP構成案生成 / LP各セクション文章生成 / Instagram投稿テキスト生成 / 広告文3パターン生成 / YouTube台本生成 / メルマガ/ステップメール生成 / 画像指示書生成 / セルフレビュー依頼</li><li>業種別追加指示テンプレート（7業種分）</li><li>編集チェックリスト</li><li>案件ごとの作業時間記録テンプレート</li></ul>
+<p>このテンプレート集を育てるほど、あなたの対応スピードと品質が上がり、時間単価が右肩上がりになる。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-3. 副業としての収支シミュレーション</span></h2>
+<table><thead><tr><th><p><strong>制作物</strong></p></th><th><p><strong>Claudeなし</strong></p></th><th><p><strong>Claude活用</strong></p></th><th><p><strong>短縮率</strong></p></th></tr><tr><th><p>コアメッセージ策定</p></th><th><p>1〜2時間</p></th><th><p>15〜20分</p></th><th><p>約80%短縮</p></th></tr><tr><th><p>LP原稿（全体）</p></th><th><p>8〜15時間</p></th><th><p>2〜3時間</p></th><th><p>約75%短縮</p></th></tr><tr><th><p>Instagram投稿5本</p></th><th><p>3〜5時間</p></th><th><p>40分〜1時間</p></th><th><p>約80%短縮</p></th></tr><tr><th><p>広告文3パターン</p></th><th><p>2〜3時間</p></th><th><p>20〜30分</p></th><th><p>約85%短縮</p></th></tr><tr><th><p>YouTube台本</p></th><th><p>4〜6時間</p></th><th><p>1〜2時間</p></th><th><p>約70%短縮</p></th></tr><tr><th><p>案件一式（上記全部）</p></th><th><p>20〜30時間</p></th><th><p>5〜8時間</p></th><th><p>約75%短縮</p></th></tr></thead></table>
+<p> </p>
+<p><strong>【副業の収支計算】</strong></p>
+<p>例：LP＋SNS5本＋広告文3パターンのセット案件、報酬80,000円</p>
+<p>Claudeなし：作業15時間→時給5,333円</p>
+<p>Claude活用：作業4時間→時給20,000円</p>
+<p>時給が約4倍。しかも空いた11時間で別案件を受けられる。</p>
+<p>月に同様の案件3件→Claudeなし：45時間で24万円（副業にはきつい）</p>
+<p>Claude活用：12時間で24万円（副業で十分回せる）</p>
+<div class="callout-box"><p>「Claudeを使って効率的に稼ぐ」が、このスクールの副業モデルの核心。</p></div>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-4. プロンプトを「育てる」── 出力品質を上げる3つのテクニック</span></h2>
+<p><strong>【テクニック①：「悪い例」を先に見せる】</strong></p>
+<p>Claudeに「良い文章を書いて」と言うだけでは、平凡な出力になりがちです。代わりに「こういう文章はNG」という悪い例を先に見せると、それを避けた出力をしてくれます。</p>
+<blockquote><p><em>プロンプト追加例：「以下のようなありがちなコピーは避けてください：×「高品質なサービスで満足をお届けします」 ×「豊富な実績と経験で対応」。これらは抽象的で誰にでも当てはまるため刺さりません。具体的な数字、具体的なシーン、具体的な変化を使ってください」</em></p></blockquote>
+<p><strong>【テクニック②：「ペルソナを演じさせる」】</strong></p>
+<p>『コピーライターとして書いて』より、もっと具体的なペルソナを演じさせると効果的です。</p>
+<blockquote><p><em>プロンプト追加例：「あなたは年収2,000万円のフリーランスコピーライターです。大手企業のLP制作を100本以上担当し、平均CVRが業界平均の2.3倍の実績があります。そのレベルのプロとして書いてください」</em></p></blockquote>
+<p>Claudeは「役割設定」に強く反応します。具体的で野心的なペルソナを与えるほど、出力の品質が上がります。</p>
+<p><strong>【テクニック③：「段階的にフィードバックする」】</strong></p>
+<p>1回のプロンプトで完璧を目指さず、「叩き台→フィードバック→修正版→フィードバック」と2〜3回のやり取りで仕上げる方が、最終品質が高くなります。</p>
+<blockquote><p>1回目：「LP構成案を出して」→ 2回目：「セクション3の共感パートが弱い。日常の不満をもっと具体的に描写して」→ 3回目：「文末が全部『〜です』で単調。リズムを変えて」</p></blockquote>
+<p>この「対話的な仕上げ」が、Claudeの出力をプロレベルに引き上げるコツです。1回で完璧を求めるより、3回で磨く方が結果的に速い。</p>
+<p> </p>
+<p>💡 副業ライターのプロンプト管理術：Notion、Googleドキュメント等に「マイ・プロンプト集」を作り、うまくいったプロンプトを常にアップデートしていきましょう。案件のたびに「今回のプロンプトで良かった点・改善点」を1行メモするだけで、3ヶ月後にはあなただけの「最強のプロンプト集」が完成します。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第6章：総仕上げワーク ── あなたの案件で実践する</span></h2>
+<p>最後に、あなた自身の実際の案件（または受注したい案件）で、同じワークフローを実践します。</p>
+<p><strong>【総仕上げワーク（所要時間目安：2〜4時間）】</strong></p>
+<p>STEP1：クライアント情報を整理する（15分）</p>
+<p>STEP2：業種別追加指示テンプレートを選ぶ（5分）</p>
+<p>STEP3：プロンプト①でコアメッセージ生成、1つ選ぶ（15分）</p>
+<p>STEP4：プロンプト②③でLP原稿を生成（30分）</p>
+<p>STEP5：プロンプト④⑤⑥でSNS・広告・台本を生成（30分）</p>
+<p>STEP6：全出力を人間が編集する（30〜60分）</p>
+<p>STEP7：Claudeにセルフレビューさせる（10分）</p>
+<p>STEP8：品質チェック＋完成（15分）</p>
+<p>作業時間を記録し、「報酬÷作業時間＝時給」を計算してください。</p>
+<p> </p>
+<p><strong>【クライアント情報整理シート】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>基本情報：クライアント名 / 商品/サービス名 / 価格 / 特徴（3〜5つ）/ 差別化ポイント</li><li>ターゲット：年齢層・性別・職業 / 最大の悩み / 理想の状態 / 購入の障壁</li><li>制作物と報酬：今回制作するもの / 報酬：　　円 / 納期</li><li>業種（追加指示テンプレート選択用）□美容 □IT/SaaS □教育 □不動産 □飲食 □士業 □EC □その他</li></ul>
+<p> </p>
+<p><strong>【納品前チェックリスト】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>事実チェック（最重要）</li><li>□ Claudeが勝手に追加した数字・実績がないか</li><li>□ クライアント提供情報と矛盾がないか</li><li>□ 法規制に抵触する表現がないか</li><li>一貫性チェック</li><li>□ コアメッセージが全メディアで統一</li><li>□ ターゲット像が全メディアでブレていない</li><li>□ トーンが全メディアで統一</li><li>品質チェック</li><li>□ ファーストビューで「自分ごと」と感じるか</li><li>□ CTAが明確で1秒でわかるか</li><li>□ 冗長な部分がないか</li><li>□ 誤字脱字がないか</li><li>副業プロチェック</li><li>□ 「Claudeが書きました」感が消えているか</li><li>□ クライアントが「またこの人に頼みたい」と思う品質か</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第7章：フェーズ3の振り返りと、フェーズ4への準備</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-1. フェーズ3で身につけたスキル</span></h2>
+<ul class="bullet-list" class="bullet-list"><li>3-1 セールスライティングの型をClaudeに指示できる</li><li>3-2 LP全体構成＋各セクション文章をClaudeで生成＋編集できる</li><li>3-3 1つのコアメッセージから複数メディアをClaudeで展開できる</li><li>3-4 画像指示書・台本のテキスト設計をClaudeで生成できる</li><li>3-5 作業者ではなく設計者として、提案型の関わり方ができる</li><li>3-6 業種×メディア×関わり方の戦略的展開ができる</li><li>3-7 プロンプト・テンプレート集を使い、どんな業種でも短時間で納品物一式を仕上げられる</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-2. 到達度チェック</span></h2>
+<ul class="bullet-list" class="bullet-list"><li>□ ClaudeにLP原稿を出させ、編集して納品レベルに仕上げられる</li><li>□ 業種が変わってもプロンプトの型を使い回せる</li><li>□ Claude出力の嘘を見抜き、修正できる</li><li>□ SNS・広告文・台本をClaudeで生成できる</li><li>□ 全メディアの一貫性を人間の目でチェックできる</li><li>□ 新業種の案件を受けたとき2〜3時間で制作開始できる</li><li>□ 自分専用のプロンプト・テンプレート集を持っている</li><li>□ 既存クライアントに追加メディアの提案ができる</li><li>□ 副業として時給1万円以上の見込みがある</li><li>□ Claudeをただ使うだけのライターではない自覚がある</li></ul>
+<p> </p>
+<p>8以上→フェーズ4準備完了 / 5〜7→弱い項目を復習 / 4以下→再実施</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-3. フェーズ3で確立した「AI副業ライターの武器」まとめ</span></h2>
+<table><thead><tr><th><p><strong>武器</strong></p></th><th><p><strong>何ができるか</strong></p></th><th><p><strong>副業での活用シーン</strong></p></th><th><p><strong>目安報酬</strong></p></th></tr><tr><th><p>セールスの型</p></th><th><p>AIDMA等でClaudeに指示</p></th><th><p>LP・セールスレター制作</p></th><th><p>3〜8万円/本</p></th></tr><tr><th><p>LP設計力</p></th><th><p>構成＋文章をClaudeで一気生成</p></th><th><p>LP制作案件</p></th><th><p>5〜15万円/本</p></th></tr><tr><th><p>メディア横展開</p></th><th><p>LP→SNS→広告→台本を一貫制作</p></th><th><p>セット提案で単価UP</p></th><th><p>8〜20万円/案件</p></th></tr><tr><th><p>テキスト設計思考</p></th><th><p>画像指示書・トーン定義を作成</p></th><th><p>設計込み提案で差別化</p></th><th><p>月15〜30万円</p></th></tr><tr><th><p>キャリア戦略</p></th><th><p>業種×メディア×関わり方の展開</p></th><th><p>依存分散・収入安定化</p></th><th><p>月20〜50万円</p></th></tr><tr><th><p>プロンプトの型</p></th><th><p>業種変換で即対応</p></th><th><p>未経験業種でも受注可能</p></th><th><p>対応業種の数だけ増収</p></th></tr><tr><th><p>編集力</p></th><th><p>Claude70点→90点に仕上げる</p></th><th><p>全案件の品質保証</p></th><th><p>リピート率UP</p></th></tr></thead></table>
+<p> </p>
+<p><strong>【フェーズ3完了。おめでとうございます。】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>セールスライティングの型をClaudeで自在に使う力</li><li>LP、SNS、広告文、台本を一気通貫で制作できるワークフロー</li><li>どんな業種でも対応できるプロンプト・テンプレート集</li><li>Claudeの出力をプロレベルに仕上げる編集力</li><li>クライアントに追加提案できる設計者としての視点</li></ul>
+<p> </p>
+<p>あなたはもう「文章を書くだけの人」ではありません。Claudeを武器に、どんな業種のクライアントにも価値を提供できるAI時代のライターです。フェーズ4で、この力をさらに効率化していきましょう。</p>
+<p> </p>
+<p><strong><em>── 3-7. 実践：複数ジャンルに応用するライティング設計　完 ──</em></strong></p>
+<p><strong>── フェーズ3｜ライティングを『武器』にする応用編　完 ──</strong></p>
+</div>
+</div>
+</body>
+</html>

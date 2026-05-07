@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>3-2. LP・セールス文章をClaudeで設計する</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">3-2. LP・セールス文章をClaudeで設計する</span></h1>
+<hr class="divider">
+<span class="label">フェーズ3｜ライティングを『武器』にする応用編</span>
+</div>
+<div class="card">
+<h2><span class="gradient-text">はじめに：LPは「設計図」で決まる</span></h2>
+<p>前章では、セールスライティングの「基本構造」を学びました。この章では、その理論を「実践」に落とし込みます。</p>
+<p>具体的には、「LP（ランディングページ）」と「セールス文章」を、Claudeを活用しながら設計・作成する方法を学びます。</p>
+<p> </p>
+<p><strong>【LPとは何か】</strong></p>
+<p>LP（Landing Page：ランディングページ）とは、広告やリンクをクリックした人が「最初に着地するページ」のことです。一般的には、1つの商品・サービスを売るために作られた「縦長の1ページ完結型のWebページ」を指します。LPの目的は「訪問者に行動を起こさせること」です。</p>
+<p> </p>
+<p><strong>【なぜLPを学ぶのか】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>① 高単価案件の代表格：LP制作は、1本5万円〜50万円という高単価案件が多い</li><li>② あらゆるセールス文章の基礎：LPが書ければ、広告文、メール、SNSなど、あらゆるセールス文章に応用できる</li><li>③ Claudeとの相性が良い：構造が明確なため、Claudeを活用しやすい</li><li>④ 成果が数字で見える：コンバージョン率という形で、成果が明確にわかる</li></ul>
+<p> </p>
+<p><strong>【この章の目標】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>LPの基本構造を完全に理解する</li><li>Claudeを使ってLP原稿を効率的に作成できる</li><li>クライアントに提案できるレベルのLP設計ができる</li><li>実際にLP原稿を1本完成させる</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第1章：LPの基本構造</span></h2>
+<p>LPには、長年の研究と実践で確立された「黄金構造」があります。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-1. LPの全体構成</span></h2>
+<p><strong>【LPの基本パーツ】</strong></p>
+<p>1.	ファーストビュー（FV）→ 最初に目に入る部分。キャッチコピー、メイン画像</p>
+<p>2.	問題提起・共感 → 読者の悩みに共感し、問題を明確化</p>
+<p>3.	解決策の提示 → 商品・サービスを解決策として提示</p>
+<p>4.	ベネフィット → 得られる未来、メリットを伝える</p>
+<p>5.	商品・サービス説明 → 具体的な内容、特徴を説明</p>
+<p>6.	実績・証拠 → お客様の声、データ、メディア掲載など</p>
+<p>7.	料金・オファー → 価格、特典、保証を提示</p>
+<p>8.	よくある質問（FAQ）→ 購入前の不安を解消</p>
+<p>9.	クロージング・CTA → 行動を促す最後の一押し</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-2. 各パーツの役割と目的</span></h2>
+<p><strong>【① ファーストビュー（FV）】</strong></p>
+<p>役割：読者の注意を引く / 「自分に関係がある」と思わせる / 続きを読みたいと思わせる</p>
+<p>含まれる要素：キャッチコピー（最重要）/ サブキャッチ / メイン画像 / CTAボタン（任意）</p>
+<p><strong>【② 問題提起・共感】</strong></p>
+<p>役割：読者の悩みを言語化する / 「この人は私のことをわかっている」と思わせる / 問題の深刻さを認識させる</p>
+<p><strong>【③ 解決策の提示】</strong></p>
+<p>役割：悩みを解決する方法があることを伝える / 商品・サービスを「解決策」として位置づける / 期待感を高める</p>
+<p><strong>【④ ベネフィット】</strong></p>
+<p>役割：商品を使った後の「理想の未来」を見せる / 「欲しい」という感情を高める / 行動する理由を与える</p>
+<p><strong>【⑤ 商品・サービス説明】</strong></p>
+<p>役割：具体的な内容を伝える / 「何が含まれているか」を明確にする / 論理的な判断材料を提供する</p>
+<p><strong>【⑥ 実績・証拠】</strong></p>
+<p>役割：信頼性を高める / 「本当に効果がある」と納得させる / NOT BELIEVEの壁を超える</p>
+<p><strong>【⑦ 料金・オファー】</strong></p>
+<p>役割：価格を提示する / お得感を感じさせる / 今買う理由を作る</p>
+<p><strong>【⑧ よくある質問（FAQ）】</strong></p>
+<p>役割：購入前の不安、疑問を解消する / 最後の障壁を取り除く / 信頼感を高める</p>
+<p><strong>【⑨ クロージング・CTA】</strong></p>
+<p>役割：最後の一押しをする / 具体的な行動を促す / NOT ACTの壁を超える</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第2章：LP設計の5ステップ</span></h2>
+<p>LPを作成する前に、「設計」が必要です。設計なしに書き始めると、まとまりのない文章になってしまいます。</p>
+<p><strong>【LP設計の5ステップ】</strong></p>
+<p>STEP 1：ターゲットを明確にする / STEP 2：商品・サービスを整理する / STEP 3：ベネフィットを洗い出す / STEP 4：構成（ワイヤーフレーム）を作る / STEP 5：各パーツの原稿を作成する</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-1. STEP1：ターゲットを明確にする</span></h2>
+<p>ターゲット設定で決めること：① 基本属性（年齢、性別、職業、年収）② 悩み・課題（今の悩み・感情・過去に試した解決策）③ 願望・理想（なりたい自分・実現したい生活）④ 購買状況（商品を知ったきっかけ・躊躇する理由）</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-2. STEP2：商品・サービスを整理する</span></h2>
+<p>商品情報の整理項目：① 基本情報（商品名・価格・提供形態）② 内容・特徴（含まれるもの・他社との違い・独自の強み）③ 実績（販売数・満足度・メディア掲載）④ 保証・サポート（返金保証・アフターサポート）</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-3. STEP3：ベネフィットを洗い出す</span></h2>
+<p>商品の「特徴（フィーチャー）」を「ベネフィット」に変換します。「だから何？」と自問を繰り返すことで、読者にとっての価値を見つけます。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-4. STEP4：構成（ワイヤーフレーム）を作る</span></h2>
+<p>ターゲット・商品情報・ベネフィットが整理できたら、LPの構成を決めます。9つのパーツ（FV→問題提起→解決策→ベネフィット→商品説明→実績→料金→FAQ→クロージング）の順で組み立てます。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-5. STEP5：各パーツの原稿を作成する</span></h2>
+<p>構成が決まったら、各パーツの原稿を作成します。ここからが、Claudeの出番です。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第3章：Claudeでファーストビューを作る</span></h2>
+<p>ファーストビュー（FV）は、LPの「顔」です。ここで読者の心をつかめなければ、その先は読まれません。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-1. キャッチコピーの重要性</span></h2>
+<div class="callout-box"><p>キャッチコピーの目的は、ただ1つ。「次の1行を読ませること」。3秒で「読むか読まないか」が決まります。</p></div>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-2. Claudeでキャッチコピーを量産する</span></h2>
+<p>Claudeを使えば、キャッチコピーのアイデアを大量に出すことができます。</p>
+<p><strong>【プロンプト例①：基本形】</strong></p>
+<blockquote><p><em>あなたはプロのコピーライターです。以下の商品のキャッチコピーを20個考えてください。</em></p><p><em>【商品】ビジネス英語オンライン講座 【ターゲット】35歳男性、海外案件担当になったが英語に自信がない 【ベネフィット】3ヶ月で海外クライアントと自信を持って会話できる 【価格】98,000円</em></p><p><em>以下の切り口で、各4個ずつ作成してください：① ターゲットの悩みに呼びかける ② ベネフィットを直接伝える ③ 好奇心を刺激する ④ 数字を使う ⑤ 恐怖・損失回避に訴える</em></p></blockquote>
+<p> </p>
+<p><strong>【プロンプト例②：型を指定】</strong></p>
+<blockquote><p><em>以下の「型」を使って、キャッチコピーを作成してください。</em></p><p><em>型①「○○で悩んでいませんか？」/ 型②「○○する方法」/ 型③「なぜ○○は△△なのか」/ 型④「○○だけが知っている」/ 型⑤「たった○○で△△できる」/ 型⑥「○○しなくても△△できる」/ 型⑦「○○年間で○○人が実証した」</em></p><p><em>各型で2パターンずつ、合計14個作成してください。</em></p></blockquote>
+<p> </p>
+<p><strong>【プロンプト例③：既存コピーの改善】</strong></p>
+<blockquote><p><em>以下のキャッチコピーを、より効果的なものに改善してください。</em></p><p><em>【現在のコピー】「ビジネス英語が身につくオンライン講座」</em></p><p><em>【改善の方向性】・より具体的に ・ベネフィットを明確に ・ターゲットの悩みに寄り添う</em></p><p><em>5パターンの改善案を出してください。それぞれ、なぜその改善が効果的か説明も付けてください。</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-3. キャッチコピーの選び方</span></h2>
+<p><strong>【良いキャッチコピーの5つの条件】</strong></p>
+<p>10.  ターゲットが「自分のことだ」と感じる → 悩み、願望が具体的に表現されている</p>
+<p>11.  ベネフィットが明確 → 読むと何が得られるかわかる</p>
+<p>12.  具体的で信憑性がある → 数字、期間など具体性がある</p>
+<p>13.  好奇心を刺激する → 「どういうこと？」と思わせる</p>
+<p>14.  短くてわかりやすい → 一瞬で理解できる</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-4. サブキャッチとその他の要素</span></h2>
+<p><strong>【プロンプト例：サブキャッチ作成】</strong></p>
+<blockquote><p><em>以下のキャッチコピーに合うサブキャッチを5個考えてください。</em></p><p><em>キャッチコピー：「海外会議で、堂々と発言できる自分へ」</em></p><p><em>サブキャッチには以下を含めてください：・具体的な期間や数字 ・信頼性を高める要素 ・ターゲットを明確にする言葉</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第4章：Claudeで問題提起・共感パートを作る</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-1. 問題提起・共感パートの役割</span></h2>
+<p>このパートの役割は、読者に「この人は私のことをわかっている」と思わせることです。</p>
+<p>15.  読者の悩みを言語化する → 「そうそう、まさにそれ！」と思わせる</p>
+<p>16.  問題の深刻さを認識させる → 「このままじゃまずい」と感じさせる</p>
+<p>17.  共感・信頼を築く → 「この人はわかってくれる」と思わせる</p>
+<p>18.  解決策への期待を高める → 「どうすればいいの？」と思わせる</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-2. Claudeで悩みリストを作る</span></h2>
+<p><strong>【プロンプト例：悩みリスト作成】</strong></p>
+<blockquote><p><em>あなたはプロのコピーライターです。以下のターゲットが抱えている「悩み」を30個リストアップしてください。</em></p><p><em>【ターゲット】・35歳男性、IT企業の営業課長 ・海外案件の担当になったが、英語に自信がない ・過去に英会話スクールに通ったが、続かなかった</em></p><p><em>以下のカテゴリに分けて出力してください：① 仕事での具体的な困りごと（10個）② それによる感情・心理（10個）③ 将来への不安（10個）</em></p><p><em>各悩みは、ターゲットが「そうそう！」と共感する具体的な表現で書いてください。</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-3. 共感パートの文章を作る</span></h2>
+<p><strong>【プロンプト例：共感パート作成】</strong></p>
+<blockquote><p><em>以下の悩みリストを元に、LPの「問題提起・共感」パートを作成してください。</em></p><p><em>【悩みリスト】・海外クライアントとのオンライン会議が憂鬱でたまらない ・言いたいことがあるのに、英語で出てこない ・上司から「英語力上げろ」とプレッシャーをかけられる ・会議中、発言できない自分が恥ずかしい ・後輩に追い抜かれるかもしれない焦り</em></p><p><em>【書き方の指示】・「こんなお悩みありませんか？」から始める ・悩みは箇条書きで5〜7個 ・その後、共感のメッセージを2〜3文 ・「実は、私も同じでした」という共感ストーリーを100文字程度 ・最後に「でも、大丈夫です」という希望のメッセージ</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-4. 問題を深掘りする</span></h2>
+<p><strong>【プロンプト例：問題の深掘り】</strong></p>
+<blockquote><p><em>以下の悩みを放置すると、どんな「最悪の未来」が待っているか、5つのシナリオを具体的に描写してください。</em></p><p><em>【悩み】海外案件担当なのに、英語に自信がない</em></p><p><em>・具体的で生々しい描写 ・ただし、過度に恐怖を煽らない ・最後は「でも、そうならないための方法があります」で締める</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第5章：Claudeで解決策・ベネフィットパートを作る</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-1. 解決策パートの作り方</span></h2>
+<p><strong>【プロンプト例：解決策パート】</strong></p>
+<blockquote><p><em>以下の情報を元に、LPの「解決策の提示」パートを作成してください。</em></p><p><em>【商品】ビジネス英語マスター講座 【ターゲットの悩み】海外会議で英語が話せない</em></p><p><em>【書き方の指示】・「その悩み、○○で解決できます」から始める ・なぜ解決できるのか、3つの理由を説明 ・各理由は見出し＋3〜4文の説明 ・読者が「これなら解決できそう」と期待を持てる内容</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-2. ベネフィットパートの作り方</span></h2>
+<p><strong>【プロンプト例：ベネフィットパート】</strong></p>
+<blockquote><p><em>以下の商品のベネフィットを、LPの「ベネフィット」パートとして作成してください。</em></p><p><em>【商品】ビジネス英語マスター講座 【ターゲット】35歳男性、海外案件担当、英語に自信がない</em></p><p><em>【書き方の指示】・「受講後、あなたはこう変わります」という見出し ・各ベネフィットを「Before → After」形式で表現 ・具体的な場面を描写 ・感情的な変化も含める</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-3. Before/Afterストーリーを作る</span></h2>
+<p><strong>【プロンプト例：Before/Afterストーリー】</strong></p>
+<blockquote><p><em>以下のターゲットの「Before/Afterストーリー」を作成してください。</em></p><p><em>【ターゲット】・35歳男性、IT企業の営業課長 ・海外案件担当になったが、英語に自信がない</em></p><p><em>【書き方の指示】・Beforeパート（200文字）：悩んでいる時の具体的な場面 ・転機パート（50文字）：講座に出会ったきっかけ ・Afterパート（200文字）：3ヶ月後の変化</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第6章：Claudeで商品説明・実績パートを作る</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-1. 商品説明パートの作り方</span></h2>
+<p><strong>【プロンプト例：商品説明パート】</strong></p>
+<blockquote><p><em>以下の商品情報を元に、LPの「商品説明」パートを作成してください。</em></p><p><em>【商品情報】・商品名：ビジネス英語マスター講座 ・期間：3ヶ月 ・内容：動画講座36本（1本15分）/ 週1回オンライングループレッスン（60分）/ 専用チャットで質問し放題 / オリジナルテキスト（PDF）・講師：外資系企業で10年勤務した現役ビジネスパーソン</em></p><p><em>【書き方の指示】・「講座内容」という見出し ・各コンテンツをわかりやすく説明 ・ベネフィットと紐づけて説明する</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-2. 実績・証拠パートの作り方</span></h2>
+<p><strong>【プロンプト例：お客様の声】</strong></p>
+<blockquote><p><em>以下の情報を元に、LPに掲載する「お客様の声」を3名分作成してください。</em></p><p><em>【商品】ビジネス英語マスター講座 【ターゲット】35歳男性、海外案件担当、英語に自信がない</em></p><p><em>【書き方の指示】・各150〜200文字 ・Before→Afterの変化を含める ・具体的なエピソードを入れる ・3名は異なる属性（年齢、業界、悩み）にする ・名前、年齢、職業を設定（架空でOK）</em></p></blockquote>
+<p><em>※注意：これは例として作成するものです。実際のLPでは、本物のお客様の声を使用してください。</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-3. データ・実績の見せ方</span></h2>
+<p><strong>【プロンプト例：実績データの文章化】</strong></p>
+<blockquote><p><em>以下の実績データを、LPで効果的に見せる文章に変換してください。</em></p><p><em>【実績データ】・累計受講者数：1,200名 ・受講者満足度：96% ・TOEIC平均スコアアップ：150点 ・受講継続率：94% ・日経新聞掲載</em></p><p><em>【書き方の指示】・数字を目立たせる ・信頼性を高める補足を入れる ・ターゲットが「自分もこうなれる」と思える表現</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第7章：Claudeで料金・オファーパートを作る</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-1. 料金提示の心理学</span></h2>
+<p>① 価格の妥当性を説明する ② 比較で安く見せる ③ 分割で心理的負担を下げる ④ 特典で価値を積み上げる ⑤ 保証でリスクを取り除く</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-2. Claudeで料金パートを作る</span></h2>
+<p><strong>【プロンプト例：料金パート】</strong></p>
+<blockquote><p><em>以下の情報を元に、LPの「料金・オファー」パートを作成してください。</em></p><p><em>【価格情報】・通常価格：128,000円 ・今回限定価格：98,000円 ・分割払い：月々8,500円×12回</em></p><p><em>【特典】・特典①：ビジネス英語フレーズ集（PDF）・特典②：発音矯正動画講座 ・特典③：修了後の1ヶ月延長サポート</em></p><p><em>【保証】・30日間全額返金保証</em></p><p><em>【書き方の指示】・価格の妥当性を説明（英会話スクールとの比較など）・特典の価値を金額で表現 ・分割払いで心理的負担を下げる表現 ・保証で安心感を与える ・「今すぐ」申し込む理由を作る</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-3. 限定性・緊急性の作り方</span></h2>
+<p><strong>【プロンプト例：限定性・緊急性】</strong></p>
+<blockquote><p><em>以下の商品の「限定性・緊急性」を訴求する文章を作成してください。</em></p><p><em>【商品】ビジネス英語マスター講座 【価格】98,000円（期間限定）</em></p><p><em>【限定要素】・先着30名様限定 ・今月末までの申し込み限定 ・次回募集は3ヶ月後</em></p><p><em>【書き方の指示】・なぜ限定なのか、理由を説明（説得力を持たせる）・煽りすぎず、事実として伝える ・ただし、嘘の限定性は絶対にNG</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第8章：ClaudeでFAQ・クロージングを作る</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">8-1. FAQの作り方</span></h2>
+<p><strong>【プロンプト例：FAQ作成】</strong></p>
+<blockquote><p><em>以下の商品について、LPに掲載する「よくある質問（FAQ）」を10個作成してください。</em></p><p><em>【商品】ビジネス英語マスター講座 【ターゲット】35歳男性、海外案件担当、英語に自信がない 【価格】98,000円</em></p><p><em>【書き方の指示】・購入を検討している人が抱く疑問 ・ネガティブな質問にも正直に答える ・回答で不安を解消し、安心感を与える</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">8-2. クロージングの作り方</span></h2>
+<p><strong>【プロンプト例：クロージング】</strong></p>
+<blockquote><p><em>以下の情報を元に、LPの「クロージング」パートを作成してください。</em></p><p><em>【商品】ビジネス英語マスター講座 【ターゲット】35歳男性、海外案件担当、英語に自信がない 【ベネフィット】3ヶ月で海外クライアントと自信を持って会話できる</em></p><p><em>【書き方の指示】・最後の背中を押すメッセージ ・ベネフィットを再度強調 ・行動しないリスクも伝える ・明確なCTA（申し込みボタンの文言）・追伸（P.S.）で重要ポイントを念押し</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">8-3. CTAボタンの文言</span></h2>
+<p><strong>【ベネフィット訴求型】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>「3ヶ月後の自分を変える」</li><li>「英語力を手に入れる」</li><li>「海外会議で活躍する自分になる」</li></ul>
+<p><strong>【安心感訴求型】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>「30日間リスクなしで試す」</li><li>「まずは無料で相談する」</li></ul>
+<p><strong>【緊急性訴求型】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>「期間限定価格で申し込む」</li><li>「残り○席、今すぐ確保する」</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第9章：LP全体をClaudeで作成する</span></h2>
+<p>ここまで、各パーツの作り方を学びました。この章では、LP全体を一気に作成するプロンプトを紹介します。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-1. LP全体作成プロンプト</span></h2>
+<p><strong>【マスタープロンプト】</strong></p>
+<blockquote><p><em>あなたはプロのセールスコピーライターです。以下の情報を元に、LP（ランディングページ）の原稿を作成してください。</em></p><p><em>【商品情報】・商品名：[商品名を入力] ・価格：[価格を入力] ・内容：[内容を入力] ・特徴：[特徴を入力] ・実績：[実績を入力]</em></p><p><em>【ターゲット情報】・ターゲット：[ターゲットを入力] ・悩み：[悩みを入力] ・願望：[願望を入力]</em></p><p><em>【LP構成】以下の構成で作成してください：</em></p><p><em>1. ファーストビュー：キャッチコピー（20文字以内）/ サブキャッチ（40文字以内）</em></p><p><em>2. 問題提起・共感（300文字）：「こんなお悩みありませんか？」/ 悩みリスト5〜7個 / 共感メッセージ</em></p><p><em>3. 解決策の提示（400文字）：解決できる理由3つ</em></p><p><em>4. ベネフィット（300文字）：得られる未来5つ（Before→After形式）</em></p><p><em>5. 商品説明（400文字）：内容詳細</em></p><p><em>6. 実績・証拠（300文字）：お客様の声2名分 / データ</em></p><p><em>7. 料金・オファー（300文字）：価格、特典、保証</em></p><p><em>8. FAQ（5問）</em></p><p><em>9. クロージング（200文字）：最後のメッセージ / CTA / 追伸</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-2. 作成したLPのチェックポイント</span></h2>
+<p><strong>【LPチェックリスト】</strong></p>
+<p>【ファーストビュー】□ キャッチコピーは目を引くか □ ターゲットが「自分のことだ」と感じるか □ 続きを読みたくなるか</p>
+<p>【問題提起・共感】□ ターゲットの悩みを言語化できているか □ 共感を感じる文章になっているか □ 問題の深刻さが伝わるか</p>
+<p>【解決策・ベネフィット】□ なぜ解決できるか、理由が明確か □ ベネフィットは具体的か □ 読者が「こうなりたい」と思えるか</p>
+<p>【商品説明・実績】□ 何が含まれているか明確か □ 信頼性を高める証拠があるか □ お客様の声は具体的か</p>
+<p>【料金・オファー】□ 価格の妥当性が説明されているか □ 特典で価値が積み上げられているか □ リスクを取り除く保証があるか</p>
+<p>【FAQ・クロージング】□ 購入前の不安を解消できているか □ 最後の一押しができているか □ CTAは明確か</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-3. Claude出力の修正ポイント</span></h2>
+<p><strong>【Claude出力の注意点】</strong></p>
+<p>19.  具体性を追加する：Claudeの出力は抽象的になりがち。数字、固有名詞、具体的なエピソードを追加</p>
+<p>20.  AIっぽい表現を修正：「〜することができます」→「〜できます」/ 不自然な言い回しを自然な日本語に</p>
+<p>21.  ターゲットに合わせる：Claudeは一般的な表現になりがち。ターゲットが使う言葉、響く表現に調整</p>
+<p>22.  事実確認：数字、データ、実績は必ず確認。嘘の情報がないかチェック</p>
+<p>23.  法律チェック：誇大広告になっていないか。薬機法、景品表示法に違反していないか</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第10章：実践ワーク</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">ワーク①：ターゲット設定</span></h2>
+<p>【基本属性】年齢：　　性別：　　職業：　　年収：　　居住地：</p>
+<p>【悩み・課題】今抱えている悩み：　　その悩みによる感情：　　過去に試した解決策：　　それがうまくいかなかった理由：</p>
+<p>【願望・理想】なりたい自分：　　実現したい生活：</p>
+<p>【購買状況】商品を知ったきっかけ：　　購入を躊躇する理由：</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">ワーク②：商品情報整理</span></h2>
+<p>【基本情報】商品名：　　価格：　　提供形態：</p>
+<p>【内容・特徴】含まれるもの：　　他社との違い：　　独自の強み：</p>
+<p>【実績】販売数、利用者数：　　満足度、リピート率：　　メディア掲載、受賞歴：</p>
+<p>【保証・サポート】返金保証：　　アフターサポート：</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">ワーク③：ベネフィット洗い出し</span></h2>
+<p>【フィーチャー①】　→ ベネフィット：</p>
+<p>【フィーチャー②】　→ ベネフィット：</p>
+<p>【フィーチャー③】　→ ベネフィット：</p>
+<p>【フィーチャー④】　→ ベネフィット：</p>
+<p>【フィーチャー⑤】　→ ベネフィット：</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">ワーク④：LP構成作成</span></h2>
+<p>1. ファーストビュー：キャッチコピー：　　サブキャッチ：</p>
+<p>2. 問題提起・共感：悩みリスト：</p>
+<p>3. 解決策の提示：解決できる理由3つ：</p>
+<p>4. ベネフィット：得られる未来5つ：</p>
+<p>5. 商品説明：内容の概要：</p>
+<p>6. 実績・証拠：掲載する証拠：</p>
+<p>7. 料金・オファー：価格、特典、保証：</p>
+<p>8. FAQ：質問5つ：</p>
+<p>9. クロージング：最後のメッセージ：</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">ワーク⑤：LP原稿作成（Claudeを使って）</span></h2>
+<p>Claudeを使って、LP原稿を作成してください。</p>
+<p><strong>【作成手順】</strong></p>
+<p>24.  ワーク①〜④の内容をまとめる</p>
+<p>25.  Claudeにマスタープロンプトを入力</p>
+<p>26.  出力された原稿をコピー</p>
+<p>27.  チェックリストで確認</p>
+<p>28.  修正・加筆</p>
+<p>29.  最終版を完成させる</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">まとめ：LPは「設計」で決まる</span></h2>
+<p>この章では、LP・セールス文章をClaudeで設計する方法を学びました。</p>
+<p><strong>【この章で学んだこと】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>LPの基本構造（9つのパーツ）</li><li>LP設計の5ステップ</li><li>Claudeでファーストビューを作る方法</li><li>Claudeで問題提起・共感パートを作る方法</li><li>Claudeで解決策・ベネフィットパートを作る方法</li><li>Claudeで商品説明・実績パートを作る方法</li><li>Claudeで料金・オファーパートを作る方法</li><li>ClaudeでFAQ・クロージングを作る方法</li><li>LP全体を一気に作成するプロンプト</li><li>Claude出力のチェック・修正方法</li></ul>
+<p> </p>
+<p><strong>【LP作成の心構え】</strong></p>
+<div class="callout-box"><p>LPは「書く」のではなく「設計する」ものです。設計 ＝ ターゲット × 商品 × 構造。この3つが揃えば、Claudeを活用して効率的に高品質なLPを作成できます。ただし、Claudeの出力をそのまま使わないこと。必ず人間の目でチェックし、修正することが重要です。</p></div>
+<p> </p>
+<p>次章「3-3. SNS・動画台本・広告文への横展開」では、LPで学んだセールスライティングの技術を、SNS、動画台本、広告文などに応用する方法を学びます。</p>
+<p> </p>
+<p>LPが書ければ、あらゆるセールス文章が書けます。この章で学んだことを土台に、収益を拡大していきましょう。</p>
+<p>フェーズ3の学びを通じて、あなたの「書く力」を「売る力」へと進化させましょう。</p>
+</div>
+</div>
+</body>
+</html>

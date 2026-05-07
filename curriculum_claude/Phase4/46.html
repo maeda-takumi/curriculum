@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>4-6. 時間単価を上げるための仕組み設計</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">4-6. 時間単価を上げるための仕組み設計</span></h1>
+<hr class="divider">
+<span class="label">フェーズ4｜再現性・自動化・仕組み化編</span>
+</div>
+<div class="card">
+<p>このマニュアルを読み終える頃には</p>
+<p><strong>「時給1,500円→3,000円」への具体的な道筋が見えています</strong></p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">はじめに：なぜ「時間単価」にこだわるのか</span></h2>
+<p>4-5までで、効率的に案件をこなす仕組みが完成しました。4-6では、その仕組みを活かして「時間単価」を上げていきます。</p>
+<p> </p>
+<p><strong>【時間単価が収入を決める理由】</strong></p>
+<p>月収 ＝ 時間単価 × 稼働時間</p>
+<p>・時給1,500円 × 20時間 ＝ 月収30,000円 / ・時給2,500円 × 20時間 ＝ 月収50,000円 / ・時給4,000円 × 20時間 ＝ 月収80,000円</p>
+<div class="callout-box"><p>副業は「稼働時間に限界」があります。本業・家事・育児があるので月20〜40時間が現実的な上限。だから「時間単価を上げる」ことこそが収入アップの鍵なのです。</p></div>
+<p> </p>
+<p><strong>【時間単価を上げる「3つの方向性」】</strong></p>
+<table><thead><tr><th><p><strong>方向性</strong></p></th><th><p><strong>内容</strong></p></th><th><p><strong>この章での扱い</strong></p></th></tr><tr><th><p>①効率を上げる</p></th><th><p>同じ報酬をより短時間で稼ぐ</p></th><th><p>4-2〜4-5で実践済み</p></th></tr><tr><th><p>②単価を上げる</p></th><th><p>同じ作業でより高い報酬を得る</p></th><th><p>この章で詳しく解説</p></th></tr><tr><th><p>③高単価な仕事にシフト</p></th><th><p>そもそも単価の高い仕事を取る</p></th><th><p>この章で詳しく解説</p></th></tr></thead></table>
+<p> </p>
+<p><strong>【シナリオ：「月5万円の壁」を突破したい】</strong></p>
+<p>月の売上：約65,000円 / 稼働時間：約38時間/月 / 案件内訳：A様（美容）月5本×7,000円＝35,000円 / B様（転職）月3本×6,000円＝18,000円 / C様（副業）月2本×6,000円＝12,000円</p>
+<p>計算すると：65,000円 ÷ 38時間 ＝ 時給1,710円。これ以上案件を増やすのは時間的に厳しい。月10万円を目指すには「時間単価を上げるしかない」と気づいた。</p>
+<p> </p>
+<p><strong>【この章で完成するもの】</strong></p>
+<p>【第1章】時間単価の現状把握シート / 【第2章】実績・ポートフォリオ / 【第3章】専門特化戦略シート / 【第4章】サービスメニュー表（松竹梅プラン）/ 【第5章】継続契約・顧問契約の提案書 / 【第6章】外注化の設計図 / 所要時間：約3時間</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第1章：時間単価の現状を把握する【所要時間30分】</span></h2>
+<p>💰 この章で得られる収益効果：自分の「本当の時給」がわかる / どこを改善すれば単価が上がるか明確になる / 目標設定が具体的にできるようになる</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-1. 「思っている時給」と「本当の時給」は違う</span></h2>
+<p>「1記事7,000円で、2時間半で書けるから、時給2,800円だ！」という勘違い。</p>
+<p>実際の作業時間を分解すると：①案件獲得（営業）35分 / ②ヒアリング・準備65分 / ③執筆110分 / ④納品・修正45分 / ⑤事務処理5分 = 合計260分＝4時間20分</p>
+<div class="callout-box"><p>本当の時給：7,000円 ÷ 4.33時間 ＝ 1,617円。「2時間半で時給2,800円」のつもりが「4時間20分で時給1,617円」だった！</p></div>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-2. 【実践】時間単価計算シートを作る</span></h2>
+<p>STEP1：Googleスプレッドシートを新規作成し「時間単価分析シート」に名前変更。チェック：□</p>
+<p> </p>
+<p>STEP2：列の構成（A:案件名 / B:クライアント / C:報酬 / D:新規/リピート）を作成し、過去1ヶ月の完了案件を入力。チェック：□</p>
+<p> </p>
+<p>STEP3：E列〜K列に作業時間（分）を追加：E:営業時間 / F:準備時間 / G:執筆時間 / H:納品・修正時間 / I:合計時間（分）＝E+F+G+H / J:合計時間（時間）＝I÷60 / K:時間単価＝C÷J</p>
+<p>入力例：A様スキンケア順番（リピート）→ 準備50分 + 執筆100分 + 納品30分 = 180分 = 3時間 → 時給7,000÷3＝2,333円</p>
+<p>全案件を入力したらチェック：□</p>
+<p> </p>
+<p>STEP4：分析サマリーをまとめる：月間売上合計 / 月間作業時間合計 / 平均時間単価 / 新規 vs リピートの比較 / クライアント別平均 / 時間単価ランキング。チェック：□</p>
+<p> </p>
+<p>STEP5：改善ポイントと目標設定：現在の平均時間単価1,710円 → 3ヶ月後2,200円 → 6ヶ月後2,800円 → 1年後3,500円。チェック：□</p>
+<p> </p>
+<p>💡 時間単価が低くなる原因と対策：</p>
+<p>原因1：新規案件の営業時間 → リピート率60%以上に 効果：+15%</p>
+<p>原因2：ヒアリング不足による修正 → ヒアリングシートを徹底 効果：+10%</p>
+<p>原因3：そもそもの単価が低い → 単価交渉 or 高単価案件にシフト 効果：+30%</p>
+<p>原因4：効率の悪い作業 → Claudeプロジェクト・テンプレートで自動化（4-5で実施済み）効果：+40%</p>
+<p>原因5：単価の低いクライアントに依存 → クライアントポートフォリオを分散 効果：+20%</p>
+<p> </p>
+<p><strong>【第1章 チェックポイント】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>□ 時間単価分析シートを作成した</li><li>□ 過去1ヶ月の案件を入力した</li><li>□ 分析結果をまとめた</li><li>□ 改善ポイントと目標を設定した</li></ul>
+<p>所要時間目安：30分 実際にかかった時間：＿＿分</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第2章：実績・ポートフォリオを整える【所要時間35分】</span></h2>
+<p>💰 この章で得られる収益効果：高単価案件に応募できるようになる / 単価交渉の根拠ができる / 直接依頼が来るようになる</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-1. なぜポートフォリオが単価アップにつながるか</span></h2>
+<p>ポートフォリオなし：文字単価0.8〜1.2円でスタート / ポートフォリオあり：文字単価1.5〜2.0円でスタート。同じ実力でも1.5〜2倍違う！</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-2. ポートフォリオに載せるべき要素</span></h2>
+<table><thead><tr><th><p><strong>要素</strong></p></th><th><p><strong>内容</strong></p></th><th><p><strong>重要度</strong></p></th></tr><tr><th><p>自己紹介</p></th><th><p>名前、肩書き、経歴、得意分野</p></th><th><p>★★★</p></th></tr><tr><th><p>実績（数字）</p></th><th><p>執筆本数、検索順位、PV等</p></th><th><p>★★★</p></th></tr><tr><th><p>執筆サンプル</p></th><th><p>実際の記事（3〜5本）</p></th><th><p>★★★</p></th></tr><tr><th><p>対応可能業務</p></th><th><p>SEO記事、LP、SNS等</p></th><th><p>★★☆</p></th></tr><tr><th><p>料金目安</p></th><th><p>文字単価、記事単価</p></th><th><p>★★☆</p></th></tr><tr><th><p>お問い合わせ先</p></th><th><p>メール、SNS等</p></th><th><p>★★★</p></th></tr></thead></table>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-3. 【実践】ポートフォリオを作成する</span></h2>
+<p><strong>【STEP1：掲載できる実績を洗い出す】</strong></p>
+<p>実績棚卸しシート：累計執筆本数 / 月間執筆本数 / 継続クライアント数 / ライター歴 / 検索順位の実績 / 公開OKの記事URL（1〜3本）。洗い出したらチェック：□</p>
+<p> </p>
+<p><strong>【STEP2：クライアントに掲載許可を取る】</strong></p>
+<blockquote><p><em>「〇〇様 私のポートフォリオに〇〇様のメディアでの執筆実績を掲載させていただくことは可能でしょうか？【掲載イメージ】・「美容系Webメディアにて、SEO記事を月5本継続執筆」・記事タイトルは伏せ、ジャンルと概要のみ記載・メディア名・URLは非公開。ご都合が悪ければ掲載いたしません。」</em></p></blockquote>
+<p>許可を取ったらチェック：□</p>
+<p> </p>
+<p><strong>【STEP3：Notionでポートフォリオを作成する】</strong></p>
+<p>ポートフォリオ構成：1.自己紹介（名前・肩書き・ライター歴・得意ジャンル）/ 2.実績（累計執筆本数・検索順位・リピート率）/ 3.執筆サンプル（3本）/ 4.対応可能な業務 / 5.料金目安（SEO記事3,000字：8,000円〜、コラム2,000字：6,000円〜）/ 6.お問い合わせ先</p>
+<p>作成したらチェック：□</p>
+<p> </p>
+<p><strong>【STEP4：執筆サンプルがない場合→自分で作る】</strong></p>
+<p>得意にしたいジャンルのキーワードを調べ、本気で1記事（3,000〜4,000文字）を書き、noteに公開してポートフォリオに掲載。</p>
+<p>noteの使い方：https://note.com にアクセス → アカウント作成 → 「投稿」→「テキスト」→ 記事を作成して公開 → 公開URLをポートフォリオに記載。チェック：□</p>
+<p> </p>
+<p><strong>【第2章 チェックポイント】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>□ 実績棚卸しシートを作成した</li><li>□ クライアントに掲載許可を取った</li><li>□ Notionでポートフォリオを作成した</li></ul>
+<p>所要時間目安：35分 実際にかかった時間：＿＿分</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第3章：「専門特化」で単価を上げる【所要時間30分】</span></h2>
+<p>💰 この章で得られる収益効果：文字単価1円 → 2〜3円へアップ（2〜3倍）/ 「あなたに頼みたい」と指名される / 価格競争から脱出</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-1. 専門特化がもたらす「単価の差」</span></h2>
+<table><thead><tr><th><p><strong>ライターの種類</strong></p></th><th><p><strong>文字単価の相場</strong></p></th><th><p><strong>3000字の報酬</strong></p></th></tr><tr><th><p>汎用ライター</p></th><th><p>0.8〜1.5円</p></th><th><p>2,400〜4,500円</p></th></tr><tr><th><p>ジャンル特化ライター</p></th><th><p>1.5〜3.0円</p></th><th><p>4,500〜9,000円</p></th></tr><tr><th><p>専門資格＋特化</p></th><th><p>3.0〜5.0円</p></th><th><p>9,000〜15,000円</p></th></tr><tr><th><p>業界経験＋特化</p></th><th><p>3.0〜10.0円</p></th><th><p>9,000〜30,000円</p></th></tr></thead></table>
+<div class="callout-box"><p>同じ3,000文字の記事でも、専門性の有無で報酬が3〜6倍違う！</p></div>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-2. 高単価が狙えるジャンル</span></h2>
+<p>高単価（文字単価2〜5円以上）：金融・投資 / 不動産 / 医療・健康 / 法律 / BtoB SaaS / 転職・キャリア（専門職向け）</p>
+<p>中単価（1.5〜2.5円）：美容・コスメ / IT・プログラミング / 副業・フリーランス / 教育・学習</p>
+<p>注意：医療・健康はYMYL領域。法律・金融は資格がないと書けない内容も。自分の経験・知識と照らし合わせて選ぶ。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-3. 【実践】専門特化する分野を決める</span></h2>
+<p><strong>【STEP1：3つの軸で候補を洗い出す】</strong></p>
+<p>軸1（過去の経験・知識）：本業での経験、学んだこと、趣味で詳しいこと（例：営業職5年→転職・営業スキル）</p>
+<p>軸2（興味・関心がある分野）：これから詳しくなりたい分野（例：投資に興味→金融・投資）</p>
+<p>軸3（市場ニーズが高い分野）：高単価ジャンルの中で狙えそうなもの</p>
+<p>3つの軸が重なる分野 ＝ 最適な専門分野。洗い出したらチェック：□</p>
+<p> </p>
+<p><strong>【STEP2：専門分野を1つ決定する】</strong></p>
+<p>選んだ専門分野 / 選んだ理由（経験・興味・市場ニーズ）/ この分野での「自分だけの強み」/ 書けるテーマ例10個 / 想定クライアント。決定したらチェック：□</p>
+<p> </p>
+<p><strong>【STEP3：専門性を高める「90日プラン」を作る】</strong></p>
+<p>毎日5〜10分：業界ニュースサイトチェック / 業界用語を1つ覚える</p>
+<p>週1回30〜60分：専門書を読む / 専門分野の記事を1本書く</p>
+<p>30日目：基礎知識インプット / サンプル記事2本作成 / ポートフォリオを「〇〇専門」に更新</p>
+<p>60日目：専門分野の案件に5件以上応募 / 2件以上獲得</p>
+<p>90日目：専門分野で月3本以上の継続案件 / 「〇〇専門ライター」としての実績確立 / 単価交渉。計画を立てたらチェック：□</p>
+<p> </p>
+<p><strong>【第3章 チェックポイント】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>□ 3つの軸で候補を洗い出した</li><li>□ 専門分野を1つ決定した</li><li>□ 専門性強化90日プランを作成した</li></ul>
+<p>所要時間目安：30分 実際にかかった時間：＿＿分</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第4章：サービスを「メニュー化」する【所要時間30分】</span></h2>
+<p>💰 この章で得られる収益効果：「何を頼めるか」が明確で依頼されやすい / 松竹梅で「高単価メニュー」に誘導 / 価格交渉が減る</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-1. 「メニュー化」の心理効果</span></h2>
+<p>松竹梅の法則：3つの選択肢を提示すると多くの人が「真ん中」を選ぶ。例：梅5,000円 / 竹8,000円（← 多数が選ぶ）/ 松15,000円。価格交渉が減り、高単価メニューを自然に見せられ、安売り防止にもなる。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-2. 【実践】サービスメニュー表を作成する</span></h2>
+<p><strong>【STEP1：提供サービスを整理する】</strong></p>
+<p>記事執筆：SEO記事 / コラム/オピニオン記事 / LP原稿 / How-to/解説記事 / まとめ/比較記事</p>
+<p>関連業務：構成案作成 / キーワードリサーチ / WordPress入稿 / 校正/リライト</p>
+<p>付加価値：メタディスクリプション / タイトル案 / SNSシェア用テキスト。チェックしたらチェック：□</p>
+<p> </p>
+<p><strong>【STEP2：松竹梅の3プランを設計する】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■ ライトプラン（梅）5,000円〜：SEO記事執筆、〜2,500文字、構成案はクライアント支給、修正1回、納期5営業日</em></li><li><em>■ スタンダードプラン（竹）★おすすめ 8,000円〜：SEO記事執筆＋構成案作成込み、〜3,500文字、修正2回、納期7営業日、キーワード調査込み</em></li><li><em>■ プレミアムプラン（松）15,000円〜：SEO記事執筆＋構成案＋WordPress入稿込み、〜5,000文字、修正3回、納期10営業日。付加価値：メタディスクリプション・タイトル案3パターン・SNSシェア用テキスト・内部リンク提案</em></li></ul>
+<p>設計したらチェック：□</p>
+<p> </p>
+<p><strong>【STEP3：継続プランを設計する】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■ ライト月額（月3本）：スタンダード×3本 通常24,000円 → 月額20,000円（17%オフ）特典：優先対応</em></li><li><em>■ スタンダード月額（月5本）★人気：スタンダード×5本 通常40,000円 → 月額32,000円（20%オフ）特典：優先対応・月1回MTG</em></li><li><em>■ プレミアム月額（月10本）：スタンダード×10本 通常80,000円 → 月額60,000円（25%オフ）</em></li></ul>
+<p><em>オプション：特急対応+50% / 追加文字数(500字)+1,000円 / 追加修正(1回)+1,500円 / 画像選定(5枚)+1,000円</em></p>
+<p>設計したらチェック：□</p>
+<p> </p>
+<p><strong>【STEP4：メニュー表を作成する】</strong></p>
+<p>Googleドキュメント・Notion・Canvaなどでメニュー表を作成。構成：ヘッダー / 自己紹介 / 得意ジャンル / 料金プラン（松竹梅）/ 月額プラン / オプション / ご依頼の流れ / よくある質問 / お問い合わせ先</p>
+<p>デザインのポイント：おすすめプランに「★おすすめ」 / 「こんな方に」で選びやすく。作成したらチェック：□</p>
+<p> </p>
+<p><strong>【第4章 チェックポイント】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>□ 提供サービスを整理した</li><li>□ 松竹梅の3プランを設計した</li><li>□ 月額継続プランを設計した</li><li>□ メニュー表を作成した</li></ul>
+<p>所要時間目安：30分 実際にかかった時間：＿＿分</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第5章：継続契約を獲得する【所要時間30分】</span></h2>
+<p>💰 この章で得られる収益効果：毎月の収入が安定（営業不要）/ 月額32,000円の継続契約が1件あれば月5万円達成が見えてくる</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-1. 継続契約がもたらす「安定」</span></h2>
+<p>単発案件だけ：毎月「来月の案件はあるかな…」と不安 / 営業に時間を取られる / 収入の波が激しい</p>
+<p>継続契約がある：毎月〇〇円が確定 / 営業時間がほぼゼロ / 収入が安定し計画が立てられる</p>
+<p>理想のクライアント構成：継続契約70〜80% + 単発案件20〜30%</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-2. 【シナリオ】Aさんに継続契約を提案する</span></h2>
+<p>Aさん（美容メディア）はすでに月5本のリピートがあります。ここで継続契約を正式に提案しましょう。</p>
+<p><strong>【STEP1：提案のタイミングを確認する】</strong></p>
+<p>チェック：□ リピート回数5回以上 / □ 関係性良好 / □ 今後も継続需要あり / □ 満足度高い。すべてOKなら提案してよいタイミング。チェック：□</p>
+<p> </p>
+<p><strong>【STEP2：継続契約の提案メッセージを作成する】</strong></p>
+<blockquote><p><em>A様 おかげさまで5本目を納品させていただきました。今後も継続的にご依頼いただけるようでしたら、「月額プラン」のご検討はいかがでしょうか？</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■ 内容：SEO記事×5本/月 + 構成案作成込み + WordPress入稿込み + 修正2回まで/本</em></li><li><em>■ 料金：単発8,000円×5本=40,000円/月 → 月額プラン32,000円/月（20%オフ）</em></li><li><em>■ 特典：優先対応（7営業日→5営業日）/ 月1回オンラインMTG（任意）/ 記事の効果測定レポート（希望時）</em></li><li><em>■ 契約期間：最低3ヶ月〜、その後1ヶ月単位で更新、解約は1ヶ月前にご連絡</em></li></ul>
+<p>保存したらチェック：□</p>
+<p> </p>
+<p><strong>【STEP3：断られた場合の返信を準備する】</strong></p>
+<blockquote><p><em>A様 ご検討いただきありがとうございます。引き続き、単発でのご依頼も喜んでお受けいたします。また状況が変わりましたら、お気軽にご相談ください。</em></p></blockquote>
+<p>断られる理由と対策：予算がない→より安いプラン提案 / まだ様子を見たい→時期を置く / 契約の形式が嫌→口約束でもOKと伝える。保存したらチェック：□</p>
+<p> </p>
+<p><strong>【STEP4：顧問契約の提案書を作成する】</strong></p>
+<p><em>【〇〇ライター 顧問契約プラン】こんな企業様に：コンテンツ戦略の相談もしたい / SEO改善のアドバイスがほしい / ライターを「チームの一員」として活用したい</em></p>
+<p><em>内容：①定期執筆（月5本程度）②コンテンツ戦略MTG（月1回60分）③チャットでの相談し放題④既存記事のSEO改善提案（月3本まで）⑤緊急時の優先対応⑥競合分析レポート（四半期ごと）</em></p>
+<p><em>料金：月額55,000円（税込）/ 契約期間：6ヶ月〜、その後3ヶ月単位で更新</em></p>
+<p>保存したらチェック：□</p>
+<p> </p>
+<p><strong>【第5章 チェックポイント】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>□ 提案タイミングを確認した</li><li>□ 継続契約提案メッセージを作成した</li><li>□ 断られた場合の返信を準備した</li><li>□ 顧問契約提案書を作成した</li></ul>
+<p>所要時間目安：30分 実際にかかった時間：＿＿分</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第6章：外注化で「時間を買う」【所要時間30分】</span></h2>
+<p>💰 この章で得られる収益効果：自分の時間を「高単価な仕事」に集中 / 受注できる案件数が2〜3倍に / 「仕組みで稼ぐ」へシフト</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-1. 外注化で「時給」が上がる仕組み</span></h2>
+<p>外注なし：案件単価10,000円 / 作業時間4時間 / 時給2,500円</p>
+<p>外注あり：案件単価10,000円 / 外注費5,000円 / 自分の作業（ディレクション）1時間 / 利益5,000円 / 時給5,000円 → 時給が2倍に！</p>
+<p>空いた3時間で：さらに案件を受注 / 高単価案件の営業 / 専門性を高める勉強 → さらに収入アップ</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-2. 外注化する「タイミング」</span></h2>
+<p>まだ早いケース：月の案件数が5件以下 / 自分の時給が2,000円以下 / 品質チェックができるレベルにない</p>
+<p>始めてもいいケース：□ 月の案件数が10件以上 / □ これ以上増やすのは時間的に限界 / □ 記事の品質チェックができる</p>
+<p>シナリオの場合：月10件・時間的に限界・品質チェックできる → 外注化を検討してもいい段階</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-3. 【実践】外注化を設計する</span></h2>
+<p><strong>【STEP1：外注する作業を決める】</strong></p>
+<p>自分が必ずやるべき作業：クライアントとのやり取り / 案件の受注・見積もり / 構成案の作成・最終確認 / 品質チェック（最終校正）/ 納品・請求</p>
+<p>外注できる作業：リサーチ / 本文執筆（下書き）/ 一次校正 / WordPress入稿 / 画像選定</p>
+<p>最初に外注する作業 → 本文執筆（最も時間がかかるため）。整理したらチェック：□</p>
+<p> </p>
+<p><strong>【STEP2：外注費と利益をシミュレーションする】</strong></p>
+<p>A様の案件で計算：外注なし→時給2,286円 / 外注あり→外注費4,000円・自分の作業1.25時間・時給3,200円</p>
+<p>月間比較：外注なし月10本 時給1,842円 / 外注あり（5本外注）外注費20,000円・時給2,128円 + 空いた14.5時間で新規5本追加→合計利益70,000円。チェック：□</p>
+<p> </p>
+<p><strong>【STEP3：外注募集文を作成する】</strong></p>
+<p><em>【タイトル】【継続/美容ライター募集】文字単価1.2円〜/週2〜3本</em></p>
+<p><em>内容：SEO記事本文執筆 / 文字数3,000〜4,000文字 / 構成案は私が作成 / 一次校正まで</em></p>
+<p><em>報酬：文字単価1.2円 / 3,000文字の場合3,600円</em></p>
+<p><em>求める人材：Webライティング経験1年以上 / 美容・健康ジャンルに興味 / 納期を守れる / 長期的なお付き合いができる方</em></p>
+<p><em>・Claude等のAIツールを活用できる方歓迎</em></p>
+<p><em>応募方法：自己紹介 / ライティング経験 / 週に対応可能な本数 / 過去の執筆サンプル（1〜2本）</em></p>
+<p>保存したらチェック：□</p>
+<p> </p>
+<p><strong>【STEP4：外注マニュアルを作成する】</strong></p>
+<p>4-3で作成した「外注用マニュアル」をベースにカスタマイズします。</p>
+<p>構成：1.はじめに / 2.案件の流れ（構成案送付→執筆→一次校正→納品→チェック→完了）/ 3.執筆ルール（文体ガイドライン・禁止表現・SEOのポイント）</p>
+<p>執筆ルールに含める：Claude使用時の注意（事実確認を必ず行う・クライアント固有情報は入力しない）</p>
+<p>4.納品形式（Googleドキュメントで共有）/ 5.報酬とお支払い（月末締め翌月15日払い）/ 6.連絡方法（Chatwork or Slack）。作成したらチェック：□</p>
+<p> </p>
+<p>💡 外注を成功させる5つのポイント：①最初は1人・少量から / ②構成案は必ず自分で作る / ③フィードバックは丁寧に / ④良い外注さんは「仲間」として大切に / ⑤品質チェックは必ず自分で</p>
+<p> </p>
+<p><strong>【第6章 チェックポイント】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>□ 外注する作業を決めた</li><li>□ 外注費と利益をシミュレーションした</li><li>□ 外注募集文を作成した</li><li>□ 外注マニュアルを作成した</li></ul>
+<p>所要時間目安：30分 実際にかかった時間：＿＿分</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第7章：総仕上げ ── 時間単価アップのロードマップ</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-1. この章で作成したもの一覧</span></h2>
+<p>【第1章：現状把握】□ 時間単価分析シート</p>
+<p>【第2章：ポートフォリオ】□ 実績棚卸しシート / □ ポートフォリオページ</p>
+<p>【第3章：専門特化】□ 専門特化候補シート / □ 専門特化決定シート / □ 専門性強化90日プラン</p>
+<p>【第4章：メニュー化】□ サービスメニュー表（松竹梅プラン）</p>
+<p>【第5章：継続契約】□ 継続契約提案メッセージ / □ 顧問契約提案書</p>
+<p>【第6章：外注化】□ 作業分担シート / □ 外注収支シミュレーション / □ 外注募集文 / □ 外注マニュアル</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-2. 時間単価アップのロードマップ</span></h2>
+<table><thead><tr><th><p><strong>期間</strong></p></th><th><p><strong>目標時給</strong></p></th><th><p><strong>主なアクション</strong></p></th></tr><tr><th><p>現在</p></th><th><p>1,500〜2,000円</p></th><th><p>時間単価を計測、課題を把握</p></th></tr><tr><th><p>1〜3ヶ月後</p></th><th><p>2,000〜2,500円</p></th><th><p>ポートフォリオ整備、単価交渉</p></th></tr><tr><th><p>3〜6ヶ月後</p></th><th><p>2,500〜3,500円</p></th><th><p>専門特化、メニュー化、継続契約1件</p></th></tr><tr><th><p>6〜12ヶ月後</p></th><th><p>3,500〜5,000円</p></th><th><p>継続契約2〜3件、外注化開始</p></th></tr></thead></table>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-3. 月収10万円達成の3つのパターン</span></h2>
+<p>パターン1（高単価シフト型）：時給3,000円 × 35時間 ＝ 105,000円 → 専門特化＋単価アップで達成</p>
+<p>パターン2（継続契約型）：継続A：32,000円 ＋ 継続B：28,000円 ＋ 単発：40,000円 ＝ 100,000円 → 安定収入を確保して達成</p>
+<p>パターン3（外注活用型）：受注額150,000円 - 外注費50,000円 ＝ 100,000円 / 自分の稼働：25時間（時給4,000円）→ 仕組みで稼いで達成</p>
+<p>おすすめ：パターン2（継続契約）を軸に、パターン1（高単価シフト）を組み合わせる。月15万円以上を目指す段階でパターン3（外注化）へ。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-4. 今後のアクションプラン</span></h2>
+<p>【今週やること】□ 時間単価分析シートを作成し現状を把握 / □ ポートフォリオを作成 / □ 専門特化する分野を決める</p>
+<p>【今月やること】□ サービスメニュー表を作成 / □ 既存クライアントに継続契約を1件提案 / □ 専門分野の知識インプットを開始</p>
+<p>【3ヶ月後の目標】□ 平均時間単価2,500円以上を達成 / □ 継続契約を1件以上獲得 / □ 専門特化ライターとしてのポジションを確立 / □ 月収8万円以上</p>
+<p>【6ヶ月後の目標】□ 平均時間単価3,500円以上を達成 / □ 継続契約を2件以上獲得 / □ 月収10万円を安定して達成 / □ 外注化の検討・開始</p>
+</div>
+</div>
+</body>
+</html>

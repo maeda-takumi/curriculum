@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>6-4. Claude×画像生成AIで「素材を自作」する実践フロー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">6-4. Claude×画像生成AIで「素材を自作」する実践フロー</span></h1>
+<hr class="divider">
+<span class="label">フェーズ6｜ライティング以外のAI副業展開編</span>
+</div>
+<div class="card">
+<p><strong>画像生成AIを使いこなし、オリジナル素材を自由自在に作れるようになります</strong></p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">はじめに：なぜ「画像生成AI」が副業の武器になるのか</span></h2>
+<p>6-3でCanvaを使ったビジュアル制作を学びました。Canvaは便利ですが、使える素材は「Canvaの素材ライブラリ」か「自分で撮影した写真」に限られます。</p>
+<div class="callout-box"><p>画像生成AIを使えば、「こんな画像が欲しい」と思ったものを、何でも作れるようになります。世界に一つだけのオリジナル素材が、数十秒で手に入る──これが画像生成AIの威力です。</p></div>
+<p><strong>🎨 画像生成AIでできること</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>イメージ通りのイラストを生成する</li><li>商品の使用シーンを想像で作り出す</li><li>SNS投稿用のオリジナル背景を作る</li><li>ブログやnoteのアイキャッチ画像を作る</li><li>ストックフォトサイトで素材を販売する</li><li>LINEスタンプ用のイラストを作る</li></ul>
+<p> </p>
+<p><strong>💰 この章で得られる効果</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>主要な画像生成AIの特徴と使い分けがわかる</li><li>DALL-E（OpenAI製）の使い方を完全マスターできる</li><li>思い通りの画像を生成するプロンプトが書けるようになる</li><li>生成した画像をCanvaと組み合わせて活用できる</li><li>画像素材の販売で収益化する方法がわかる</li></ul>
+<p> </p>
+<p>📚 この章の構成：第1章：画像生成AIとは何か〔25分〕/ 第2章：DALL-E（OpenAI）で画像生成を始める〔35分〕/ 第3章：思い通りの画像を作る「プロンプト」の書き方〔45分〕/ 第4章：Claudeでプロンプトを自動生成する〔30分〕/ 第5章：生成画像の編集・加工テクニック〔35分〕/ 第6章：Canva×画像生成AIの組み合わせ活用法〔30分〕/ 第7章：画像生成AIで稼ぐ5つの収益化ルート〔40分〕/ 第8章：著作権・商用利用の注意点〔20分〕/ 第9章：実践ワーク：オリジナル素材を10点作成する〔40分〕/ 合計：約5時間</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第1章：画像生成AIとは何か──基礎知識と主要ツール比較〔25分〕</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-1. 画像生成AIの仕組み</span></h2>
+<p>【Step1】プロンプトを入力 → 「海辺でコーヒーを飲む女性、夕日、写真風」など</p>
+<p>【Step2】AIが画像を生成 → 数秒〜数十秒で画像が完成</p>
+<p>【Step3】結果を確認・調整 → 気に入らなければプロンプトを修正して再生成</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-2. 主要な画像生成AIツール比較</span></h2>
+<table><thead><tr><th><p><strong>ツール名</strong></p></th><th><p><strong>料金</strong></p></th><th><p><strong>特徴</strong></p></th><th><p><strong>おすすめ度</strong></p></th></tr><tr><th><p>DALL-E 3（OpenAI製）</p></th><th><p>OpenAI提供（月$20）</p></th><th><p>日本語OK、使いやすい、高品質</p></th><th><p>★★★★★</p></th></tr><tr><th><p>Midjourney</p></th><th><p>月$10〜</p></th><th><p>アート系に強い、高品質</p></th><th><p>★★★★☆</p></th></tr><tr><th><p>Stable Diffusion</p></th><th><p>無料（PC必要）</p></th><th><p>完全無料、カスタマイズ性高</p></th><th><p>★★★☆☆</p></th></tr><tr><th><p>Adobe Firefly</p></th><th><p>無料枠あり</p></th><th><p>商用利用安心、Adobe連携</p></th><th><p>★★★★☆</p></th></tr><tr><th><p>Canva AI</p></th><th><p>Canva Pro内</p></th><th><p>Canva内で完結、手軽</p></th><th><p>★★★☆☆</p></th></tr></thead></table>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-3. 初心者におすすめ：DALL-E 3（OpenAI製）</span></h2>
+<p><strong>✨ DALL-E 3をおすすめする理由</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>理由1：日本語でプロンプトが書ける → 英語が苦手でもOK</li><li>理由2：ChatGPT（OpenAI）と一体化している → 会話しながら画像を調整できる。「もう少し明るく」「人物を左に」など自然言語で指示</li><li>理由3：品質が高い → 商用利用に耐えるクオリティ</li><li>理由4：Claudeと組み合わせてプロンプトを自動生成できる → Claudeでプロンプトを作り、DALL-E で画像生成する効率的なフローが作れる</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-4. 各ツールの得意分野</span></h2>
+<table><thead><tr><th><p><strong>用途</strong></p></th><th><p><strong>最適なツール</strong></p></th><th><p><strong>理由</strong></p></th></tr><tr><th><p>SNS投稿用イラスト</p></th><th><p>DALL-E 3</p></th><th><p>日本語OK、手軽、高品質</p></th></tr><tr><th><p>アート作品</p></th><th><p>Midjourney</p></th><th><p>芸術的な表現が得意</p></th></tr><tr><th><p>大量生成</p></th><th><p>Stable Diffusion</p></th><th><p>無料で無制限に生成可能</p></th></tr><tr><th><p>商用素材（安心重視）</p></th><th><p>Adobe Firefly</p></th><th><p>著作権クリアな学習データ</p></th></tr><tr><th><p>Canvaデザインとの連携</p></th><th><p>Canva AI</p></th><th><p>Canva内で完結</p></th></tr></thead></table>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第2章：DALL-E（OpenAI）で画像生成を始める〔35分〕</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-1. DALL-E 3を使うための準備</span></h2>
+<p><strong>✅ DALL-E 3を使う条件</strong></p>
+<p>【必要なもの】OpenAI ChatGPT Plus（月額$20 ≒ 約3,000円）または ChatGPT Team/Enterprise</p>
+<p>【無料版では使えない？】ChatGPT無料版ではDALL-E 3は使用不可。代替：Bing Image Creator（無料）でDALL-E 3が使える → https://www.bing.com/create → Microsoftアカウントでログインして使用</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-2. OpenAI ChatGPTでDALL-E 3を使う手順</span></h2>
+<p>Step1：ChatGPTにログイン → https://chat.openai.com にアクセス → ChatGPT Plusアカウントでログイン</p>
+<p>Step2：新しいチャットを開始 → 左上の「New chat」をクリック</p>
+<p>Step3：画像生成を依頼 → 日本語で「〇〇の画像を作って」と入力。例：「海辺でコーヒーを飲む女性の写真を作って」</p>
+<p>Step4：画像が生成される → 数秒〜十数秒で画像が表示される</p>
+<p>Step5：ダウンロード → 画像をクリック→ダウンロードボタン</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-3. 最初の画像を生成してみよう</span></h2>
+<p><strong>🎨 最初に試すプロンプト例</strong></p>
+<p><em>【例1】シンプルな依頼：「かわいい猫のイラストを作って」</em></p>
+<p><em>【例2】少し具体的な依頼：「カフェでノートパソコンを使っている女性の写真風画像を作って」</em></p>
+<p><em>【例3】スタイルを指定：「水彩画風の富士山と桜の風景を作って」</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-4. 生成された画像の調整</span></h2>
+<p>方法1：追加指示を出す（「背景をもっと明るくして」「人物を左側に配置して」「もう少しポップな雰囲気にして」）</p>
+<p>方法2：バリエーションを依頼（「同じテーマで違うパターンを3つ作って」「色違いのバージョンを作って」）</p>
+<p>方法3：部分修正を依頼（「空の色だけ夕焼け色に変えて」「テキストを削除して」）</p>
+<p>※会話形式なので、自然な日本語で指示できます</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-5. Bing Image Creator（無料代替）の使い方</span></h2>
+<p>Step1：Bing Image Creatorにアクセス → https://www.bing.com/create</p>
+<p>Step2：Microsoftアカウントでログイン（アカウントがなければ無料で作成）</p>
+<p>Step3：プロンプトを入力 → 英語推奨（日本語も可）→「Create」ボタンをクリック</p>
+<p>Step4：4枚の画像が生成される → 気に入った画像をクリックしてダウンロード</p>
+<p>注意点：1日の生成回数に制限あり / 商用利用の可否はMicrosoftの規約を確認</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第3章：思い通りの画像を作る「プロンプト」の書き方〔45分〕</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-1. プロンプトの基本構造</span></h2>
+<p>良いプロンプトには「型」があります：【被写体】＋【行動/状態】＋【場所/背景】＋【スタイル】＋【その他詳細】</p>
+<blockquote><p><em>例：「おしゃれなカフェでコーヒーを飲んでいる30代の日本人女性。写真風、自然光、暖かい雰囲気、笑顔。」</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-2. スタイル指定のキーワード</span></h2>
+<table><thead><tr><th><p><strong>スタイル</strong></p></th><th><p><strong>キーワード例</strong></p></th><th><p><strong>特徴</strong></p></th></tr><tr><th><p>写真風</p></th><th><p>写真、フォトリアリスティック、一眼レフ風</p></th><th><p>リアルな写真のような仕上がり</p></th></tr><tr><th><p>イラスト風</p></th><th><p>イラスト、アニメ風、漫画風</p></th><th><p>イラストタッチの仕上がり</p></th></tr><tr><th><p>水彩画風</p></th><th><p>水彩画、ウォーターカラー</p></th><th><p>柔らかい水彩タッチ</p></th></tr><tr><th><p>ミニマル</p></th><th><p>ミニマル、シンプル、フラット</p></th><th><p>シンプルでモダンな仕上がり</p></th></tr><tr><th><p>ポップ</p></th><th><p>ポップ、カラフル、ビビッド</p></th><th><p>明るく楽しい雰囲気</p></th></tr></thead></table>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-3. 品質を上げるキーワード</span></h2>
+<p>【高品質】高品質、高解像度、4K、8K / プロフェッショナル、スタジオ撮影 / 詳細な、精密な、緻密な</p>
+<p>【照明・光】自然光、ソフトライト、バックライト / ゴールデンアワー（夕方の光）/ ドラマチックライティング</p>
+<p>【構図】正面から、横から、上から / クローズアップ、全身、バストアップ / 中央配置、三分割構図</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-4. 用途別プロンプト例</span></h2>
+<p><strong>🛒 楽天ROOM・商品紹介用</strong></p>
+<blockquote><p><em>「白い背景の上に置かれたおしゃれなマグカップ。温かいコーヒーが入っている。湯気が立っている。商品撮影風、スタジオライティング、高品質、シンプル。」</em></p></blockquote>
+<p> </p>
+<p><strong>📱 SNS投稿・背景用</strong></p>
+<blockquote><p><em>「パステルカラーのグラデーション背景。ピンクから水色へのグラデーション。柔らかい雰囲気、ミニマル、テキストスペースあり、Instagram投稿向け。」</em></p></blockquote>
+<p> </p>
+<p><strong>📝 ブログ・note用</strong></p>
+<blockquote><p><em>「ノートパソコンとコーヒーがある木目調のデスク。上から見た構図。ビジネス、副業、在宅ワークのイメージ。明るい自然光、クリーンな雰囲気、ブログのアイキャッチ向け。」</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-5. 避けるべきNGプロンプト</span></h2>
+<p>NG1：有名人・著名人の名前を使う（肖像権、パブリシティ権の侵害になる可能性）→ 代わりに特徴を説明</p>
+<p>NG2：著作権のあるキャラクター（「ピカチュウ」「ミッキーマウス」等）→ オリジナルキャラクターとして説明</p>
+<p>NG3：暴力的・性的な内容 → AIが生成を拒否、またはアカウント停止のリスク</p>
+<p>NG4：曖昧すぎるプロンプト（「いい感じの画像」）→ 具体的に説明することで精度UP</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第4章：Claudeでプロンプトを自動生成する〔30分〕</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-1. Claudeにプロンプトを考えてもらう</span></h2>
+<p>画像生成AIのプロンプトを考えるのが難しい場合、Claudeにプロンプト自体を考えてもらうことができます。</p>
+<p><strong>🤖 プロンプト生成を依頼する</strong></p>
+<blockquote><p><em>「あなたは画像生成AIのプロンプト作成の専門家です。以下の用途に最適なDALL-E 3用のプロンプトを作成してください。【用途】楽天ROOMで化粧品を紹介するための画像 / 【イメージ】おしゃれで高級感のある雰囲気 / 【被写体】リップスティック / 【背景】シンプル、ピンク系 / 【スタイル】商品撮影風、高品質。日本語でプロンプトを作成し、そのまま画像生成に使える形で出力してください。」</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-2. 複数バリエーションを一度に生成</span></h2>
+<p><strong>🤖 複数パターンのプロンプト生成</strong></p>
+<blockquote><p><em>「以下の商品紹介画像のプロンプトを、5パターン作成してください。【商品】オーガニックハンドクリーム / 【用途】Instagram投稿用 / 【ターゲット】30代女性。【出力形式】パターン1：（プロンプト）/ パターン2：（プロンプト）...各プロンプトは異なるシチュエーション、異なるスタイルで作成してください。」</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-3. 画像の説明からプロンプトを逆生成</span></h2>
+<p><strong>🤖 参考画像からプロンプトを作成</strong></p>
+<blockquote><p><em>「以下のような画像を生成したいです。プロンプトを作成してください。【作りたい画像の説明】白いテーブルの上にコーヒーと本が置いてある / 窓から自然光が入っている / 観葉植物が少し見える / 落ち着いた雰囲気 / Instagramで見かけるようなおしゃれな構図。DALL-E 3で使える形式でプロンプトを出力してください。」</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-4. プロンプトの改善を依頼</span></h2>
+<p><strong>🤖 プロンプトの改善を依頼</strong></p>
+<blockquote><p><em>「以下のプロンプトで画像を生成しましたが、イメージと違いました。プロンプトを改善してください。【元のプロンプト】カフェでコーヒーを飲む女性 / 【問題点】女性の顔が不自然だった / 背景がごちゃごちゃしていた / 全体的に暗かった / 【理想のイメージ】顔は写さない（後ろ姿か手元のみ）/ 背景はシンプルでおしゃれなカフェ / 明るく温かい雰囲気。改善したプロンプトを出力してください。」</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-5. スタイル参考付きプロンプト生成</span></h2>
+<p><strong>🤖 スタイルを指定してプロンプト生成</strong></p>
+<blockquote><p><em>「以下のスタイルで画像生成AIのプロンプトを作成してください。【スタイル参考】北欧インテリア風のミニマルな写真 / 白とグレーを基調とした色使い / 自然光を活かした柔らかい雰囲気 / 【被写体】ノートとペン / 【用途】ブログのアイキャッチ。上記のスタイルを再現できるプロンプトを作成してください。」</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-6. 効率的なワークフロー</span></h2>
+<p><strong>🔄 Claude×画像生成の効率的なフロー</strong></p>
+<p>Step1：Claudeに用途と希望を伝える（「楽天ROOM用の商品画像を作りたい」など）</p>
+<p>Step2：プロンプトを生成してもらう（複数パターン作ってもらうと選択肢が増える）</p>
+<p>Step3：生成されたプロンプトでDALL-E等を使って画像を作成</p>
+<p>Step4：フィードバックして改善（「もう少し明るく」「背景をシンプルに」など）</p>
+<p>Step5：完成したら保存（プロンプトも一緒にメモしておくと再利用できる）</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第5章：生成画像の編集・加工テクニック〔35分〕</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-1. 生成画像をそのまま使えない場合</span></h2>
+<table><thead><tr><th><p><strong>よくある問題</strong></p></th><th><p><strong>対処法</strong></p></th></tr><tr><th><p>サイズが合わない</p></th><th><p>Canvaでリサイズ、または再生成時にサイズ指定</p></th></tr><tr><th><p>一部だけ修正したい</p></th><th><p>Canvaで上から要素を重ねる、または再生成</p></th></tr><tr><th><p>テキストを入れたい</p></th><th><p>Canvaで文字を追加</p></th></tr><tr><th><p>背景を変えたい</p></th><th><p>Canvaの背景削除機能を使う</p></th></tr><tr><th><p>複数画像を組み合わせたい</p></th><th><p>Canvaでコラージュ</p></th></tr></thead></table>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-2. Canvaで生成画像を編集する</span></h2>
+<p>Step1：Canvaで新規デザインを作成（用途に合ったサイズを選択）</p>
+<p>Step2：生成画像をアップロード（左メニュー「アップロード」→画像をドラッグ&amp;ドロップ）</p>
+<p>Step3：画像を配置・調整（サイズ調整、トリミング、位置調整）</p>
+<p>Step4：テキストや装飾を追加（キャッチコピー、ロゴ、フレームなど）</p>
+<p>Step5：ダウンロード（完成したらPNG形式でダウンロード）</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-3. 背景削除テクニック</span></h2>
+<p>方法1：Canva Proの背景リムーバー（画像を選択→「画像を編集」→「背景リムーバー」/ ワンクリックで背景が削除 / ※Canva Pro有料機能）</p>
+<p>方法2：無料ツール「remove.bg」（https://www.remove.bg / 画像をアップロード→自動で背景が削除→ダウンロードしてCanvaに取り込む）</p>
+<p>方法3：画像生成時に白背景で生成（プロンプトに「白い背景」「transparent background」を追加）</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-4. 画像のアップスケール（高解像度化）</span></h2>
+<p>ツール1：Upscayl（無料・PC用）https://upscayl.org → AIを使って画像を高解像度化</p>
+<p>ツール2：waifu2x（無料・Web）https://waifu2x.io → イラスト向けの高解像度化ツール / ブラウザ上で使用可能</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-5. 生成画像の色調補正（Canva）</span></h2>
+<p>Canvaで画像を選択 → 上部メニュー「画像を編集」→「調整」を選択 → 明るさ / コントラスト / 彩度 / 色温度 を調整</p>
+<p>おすすめ調整：SNS用：明るさ+10、彩度+15で華やかに / 商品撮影風：コントラスト+5、彩度-5で落ち着いた印象に</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第6章：Canva×画像生成AIの組み合わせ活用法〔30分〕</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-1. なぜ組み合わせるのか</span></h2>
+<table><thead><tr><th><p><strong>ツール</strong></p></th><th><p><strong>得意なこと</strong></p></th><th><p><strong>苦手なこと</strong></p></th></tr><tr><th><p>画像生成AI</p></th><th><p>オリジナル画像の生成</p></th><th><p>テキスト配置、レイアウト調整</p></th></tr><tr><th><p>Canva</p></th><th><p>レイアウト、テキスト追加</p></th><th><p>オリジナル画像の生成</p></th></tr></thead></table>
+<div class="callout-box"><p>→ 画像生成AIで素材を作り、Canvaで仕上げる、が最強の組み合わせ</p></div>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-2〜6-4. 活用パターン</span></h2>
+<p>パターン①：背景素材として使う → 画像生成AIで背景画像を生成（「パステルカラーの抽象的な背景、グラデーション」）→ Canvaで新規デザインを作成 → 生成画像を背景に配置 → テキストや商品画像を上に配置</p>
+<p>パターン②：イラスト素材として使う → 画像生成AIでイラストを生成（「コーヒーカップのシンプルなイラスト、フラットデザイン、白背景」）→ 背景を削除（remove.bg等）→ Canvaにアップロードして配置</p>
+<p>パターン③：商品イメージ画像を作る → 画像生成AIで使用シーンを生成（「木目調のテーブルの上にハンドクリームが置かれている」等）→ Canvaで編集・テキスト追加 → 楽天ROOMやSNSに投稿。注意：「イメージ画像」と明記推奨</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-5. 作業効率化のコツ</span></h2>
+<ul class="bullet-list" class="bullet-list"><li>よく使うプロンプトを保存する（メモアプリやスプレッドシートにまとめておく）</li><li>生成画像をフォルダ整理（用途別にフォルダを作成：背景、イラスト、商品など）</li><li>Canvaテンプレートと組み合わせる（6-3で作ったテンプレートに、AI生成画像を当てはめる）</li><li>バッチ処理で一気に生成（週に1回、まとめて10〜20枚生成しておく）</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第7章：画像生成AIで稼ぐ5つの収益化ルート〔40分〕</span></h2>
+<table><thead><tr><th><p><strong>収益化ルート</strong></p></th><th><p><strong>収益の目安</strong></p></th><th><p><strong>難易度</strong></p></th><th><p><strong>始めやすさ</strong></p></th></tr><tr><th><p>①自分の副業に活用</p></th><th><p>間接的に売上UP</p></th><th><p>★☆☆☆☆</p></th><th><p>今すぐ可能</p></th></tr><tr><th><p>②ストック素材販売</p></th><th><p>月数千〜数万円</p></th><th><p>★★☆☆☆</p></th><th><p>審査あり</p></th></tr><tr><th><p>③ココナラで制作販売</p></th><th><p>1件1,000〜5,000円</p></th><th><p>★★★☆☆</p></th><th><p>実績必要</p></th></tr><tr><th><p>④LINEスタンプ販売</p></th><th><p>月数百〜数千円</p></th><th><p>★★★☆☆</p></th><th><p>審査あり</p></th></tr><tr><th><p>⑤NFTアート販売</p></th><th><p>0〜数万円以上</p></th><th><p>★★★★☆</p></th><th><p>知識必要</p></th></tr></thead></table>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-2. ルート①：自分の副業に活用</span></h2>
+<div class="callout-box"><p>楽天ROOMのオリジナル画像 → クリック率UP → 売上UP / SNS投稿の画像 → エンゲージメントUP → フォロワー増 / noteのアイキャッチ → 読まれる率UP → 売上UP</p></div>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-3. ルート②：ストック素材サイトで販売</span></h2>
+<p>販売できるサイト：PIXTA（日本最大級、審査あり）/ Adobe Stock（グローバル）/ Shutterstock（海外大手）/ photoAC（日本向け）</p>
+<p>注意点：AI生成であることの申告が必要な場合あり / 各サイトの規約を必ず確認 / 人物の顔が含まれる画像は要注意</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-4. ルート③：ココナラで制作サービスを販売</span></h2>
+<p>サービス例：「AI画像でSNS用アイコンを作ります」「ブログ用のオリジナルアイキャッチを作成します」</p>
+<p>価格設定：画像1枚 1,000〜2,000円 / 画像5枚セット 3,000〜5,000円</p>
+<p>売れるコツ：サンプル画像を充実させる / 用途を具体的に絞る / 納期を早めに設定（即日〜3日以内）</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-5. ルート④：LINEスタンプ販売</span></h2>
+<p>作成の流れ：画像生成AIでキャラクターを生成 → 表情違いを量産 → 背景を透過処理 → 指定サイズにリサイズ（370×320px等）→ LINE Creators Marketで申請 → 審査通過後、販売開始</p>
+<p>収益の目安：1ダウンロードあたり約35円 / 人気スタンプは月数千〜数万円</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第8章：著作権・商用利用の注意点〔20分〕</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">8-1. AI生成画像の著作権</span></h2>
+<p>日本の現状：AIが自動生成した画像には著作権が発生しない可能性が高い。ただし、プロンプトの工夫や編集を加えた場合は創作性が認められる可能性あり。法律の解釈はまだ確定していない。</p>
+<p>実務上の注意：他人のAI生成画像を無断で使わない / 自分で生成した画像は基本的に自由に使える / ただし各ツールの利用規約を必ず確認</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">8-2. 各ツールの商用利用ルール</span></h2>
+<table><thead><tr><th><p><strong>ツール</strong></p></th><th><p><strong>商用利用</strong></p></th><th><p><strong>注意点</strong></p></th></tr><tr><th><p>DALL-E 3（OpenAI製）</p></th><th><p>OK</p></th><th><p>OpenAIの利用規約に従う</p></th></tr><tr><th><p>Midjourney</p></th><th><p>有料プランはOK</p></th><th><p>無料トライアルは商用不可</p></th></tr><tr><th><p>Stable Diffusion</p></th><th><p>OK</p></th><th><p>モデルによって異なる場合あり</p></th></tr><tr><th><p>Adobe Firefly</p></th><th><p>OK</p></th><th><p>商用利用を前提に設計</p></th></tr><tr><th><p>Bing Image Creator</p></th><th><p>要確認</p></th><th><p>Microsoft規約を確認</p></th></tr></thead></table>
+<p>※規約は変更される可能性があるため、使用前に最新の規約を確認してください。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">8-3. やってはいけないこと</span></h2>
+<p>NG1：有名人・著名人の画像を生成して使う（肖像権・パブリシティ権の侵害になる可能性）</p>
+<p>NG2：既存のキャラクターを模倣して生成（著作権侵害になる可能性）</p>
+<p>NG3：他人が生成した画像を自分の作品として販売</p>
+<p>NG4：実在の商品・ブランドのロゴを生成して使用（商標権侵害になる可能性）</p>
+<p>NG5：違法・有害なコンテンツの生成（アカウント停止、法的責任の可能性）</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">8-4. 安全に使うためのチェックリスト</span></h2>
+<ul class="bullet-list" class="bullet-list"><li>□ 使用するツールの利用規約を読んだ</li><li>□ 商用利用が許可されていることを確認した</li><li>□ 有名人・著名人の名前は使っていない</li><li>□ 既存のキャラクター・ブランドを模倣していない</li><li>□ 人物の顔がある場合、架空の人物であることを明記</li><li>□ 販売する場合、AI生成であることを必要に応じて開示</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第9章：実践ワーク：オリジナル素材を10点作成する〔40分〕</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-1. ワーク概要</span></h2>
+<p>このワークのゴール：画像生成AIの操作に慣れる / プロンプトの書き方を実践で身につける / すぐに使えるオリジナル素材を10点作る / Canvaとの組み合わせを体験する</p>
+<p>【作成する10点の内訳】背景素材：3点 / 商品イメージ：3点 / SNS用イラスト：2点 / アイキャッチ用：2点</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-2. 事前準備</span></h2>
+<ul class="bullet-list" class="bullet-list"><li>□ DALL-E 3（ChatGPT Plus）または Bing Image Creator にログインできる</li><li>□ Canvaにログインできる</li><li>□ 作りたい画像のイメージを決めた</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-3. ワーク①：背景素材を3点作成</span></h2>
+<blockquote><p><em>【プロンプト例1：グラデーション背景】「パステルピンクからパステルブルーへのグラデーション背景。柔らかい雰囲気、ミニマル、SNS投稿用」</em></p><p><em>【プロンプト例2：テクスチャ背景】「大理石風のテクスチャ背景。白とグレー、高級感、商品撮影の背景として使える」</em></p><p><em>【プロンプト例3：自然背景】「ボケた緑の葉っぱの背景。自然光、爽やかな雰囲気、被写体が映えるシンプルな構図」</em></p></blockquote>
+<p>● 	□ 3点とも生成できたらダウンロードして保存</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-4. ワーク②：商品イメージ素材を3点作成</span></h2>
+<blockquote><p><em>【プロンプト例1：コスメ】「白い大理石の上に置かれたリップスティック。ピンクの花びらが散らばっている。商品撮影風、高級感」</em></p><p><em>【プロンプト例2：ファッション】「おしゃれなカフェでコーヒーを持つ女性の手元。アクセサリーが見える。写真風、暖かい雰囲気」</em></p><p><em>【プロンプト例3：インテリア】「北欧風のシンプルな部屋。白い棚に観葉植物と本。自然光、ミニマル、Instagram風」</em></p></blockquote>
+<p>● 	□ 3点とも生成できたらダウンロードして保存</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-5. ワーク③：SNS用イラストを2点作成</span></h2>
+<blockquote><p><em>【例1：アイコン的イラスト】「コーヒーカップのシンプルなイラスト。フラットデザイン、パステルカラー、白背景」</em></p><p><em>【例2：キャラクター的イラスト】「本を読んでいるかわいい猫のイラスト。柔らかいタッチ、温かい色使い、白背景」</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li>□ 2点とも生成できたらダウンロードして保存</li><li>□ 背景が白の場合、remove.bgで背景を透過処理</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-6. ワーク④：アイキャッチ用素材を2点作成</span></h2>
+<blockquote><p><em>【例1：ビジネス系】「ノートパソコンとスマートフォンがあるデスク。コーヒーとメモ帳。上から見た構図。明るい自然光、すっきりとした雰囲気」</em></p><p><em>【例2：ライフスタイル系】「窓辺で本を読む人のシルエット。夕日の光、温かい雰囲気、リラックス」</em></p></blockquote>
+<p>● 	□ 2点とも生成できたらダウンロードして保存</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-7. ワーク⑤：Canvaで仕上げる</span></h2>
+<ul class="bullet-list" class="bullet-list"><li>□ 生成した10点をCanvaにアップロード</li><li>□ 背景素材を使って、テキスト入りの画像を1点作成（キャッチコピーを配置）</li><li>□ 商品イメージ素材に、価格や商品名を追加して1点作成</li><li>□ イラスト素材を使って、SNS投稿用画像を1点作成（背景＋イラスト＋テキストの組み合わせ）</li><li>□ 3点以上の完成画像をダウンロード</li><li>□ 楽天ROOMまたはSNSに1点以上投稿</li></ul>
+<p> </p>
+<p><strong>🚀 次のステップ</strong></p>
+<p>画像生成AIの基本をマスターしたら、6-5へ進みましょう。</p>
+<p>6-5. 楽天ROOM以外への「横展開」モデル → Amazonアソシエイト、他のASPアフィリエイトなど、楽天ROOM以外のプラットフォームへの展開方法を学びます。</p>
+</div>
+</div>
+</body>
+</html>

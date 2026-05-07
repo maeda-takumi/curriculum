@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>1-5. Claudeに「狙った文章」を書かせる指示の出し方</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">1-5. Claudeに「狙った文章」を書かせる指示の出し方</span></h1>
+<hr class="divider">
+<span class="label">フェーズ1｜Claude×ライティング基礎構築編</span>
+</div>
+<div class="card">
+<h2><span class="gradient-text">はじめに：プロンプトが9割</span></h2>
+<p>ここまで、ライティングの「型」「読まれる文章の特徴」「マーケティングフレームワーク」を学んできました。</p>
+<p>この章では、それらの知識をClaudeに「正確に伝える」技術を学びます。</p>
+<div class="callout-box"><p>結論から言います。Claudeの出力品質の9割は、プロンプト（指示文）で決まります。</p></div>
+<p>同じClaudeを使っても、プロンプト次第で「使えない文章」にも「即納品できる文章」にもなります。この差を生むのが、「プロンプトエンジニアリング」のスキルです。</p>
+<p><strong>【プロンプトの違いによる出力の差】</strong></p>
+<blockquote><p><em>【素人のプロンプト】「ダイエットサプリの記事を書いて」</em></p><p><em>→ Claudeの出力：「ダイエットサプリは、健康的な体重管理をサポートするために設計された栄養補助食品です。市場には様々な種類のサプリメントがあり、それぞれが異なるアプローチで…」</em></p></blockquote>
+<p><em>→ 一般的で誰にも刺さらない文章。そのまま使えない。</em></p>
+<p> </p>
+<p><em>【プロのプロンプト】</em></p>
+<blockquote><p><em>「あなたはセールスライティングのプロです。以下の条件で、ダイエットサプリの紹介文を書いてください。</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■ターゲット：40代女性、働いている、運動する時間がない</em></li><li><em>■構成：PASONAの法則で書く</em></li><li><em>■各パートの内容：P：代謝低下による体重増加の悩み / A：同じ悩みを持っていた経験を交える / S：代謝アップ成分の効果と科学的根拠 / O：初回50%OFF、30日返金保証 / N：先着100名限定 / A：今すぐ申込ボタンをクリック</em></li><li><em>■トーン：共感的で、押しつけがましくない</em></li><li><em>■文字数：800文字程度」</em></li></ul>
+<p><em>→ Claudeの出力：ターゲットに刺さる、構成が整った、すぐに使える文章が出てくる。</em></p>
+<p> </p>
+<p>この差は、才能やセンスではありません。「プロンプトの書き方」を知っているかどうかの差です。</p>
+<p>この章を学び終える頃には、あなたはClaudeから「狙い通りの文章」を引き出せるようになります。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第1章：プロンプトの基本構造</span></h2>
+<p>良いプロンプトには、共通する「構造」があります。この構造を理解すれば、どんな文章でも「狙い通り」に出力させられます。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-1. プロンプトの5つの要素</span></h2>
+<p>プロンプトは、以下の5つの要素で構成します。</p>
+<p><strong>【プロンプトの5要素】</strong></p>
+<p>① 役割（Role）：Claudeに「誰として」書くかを指定する。「あなたは〇〇のプロです」</p>
+<p>② 文脈（Context）：背景情報を提供する。ターゲット、目的、商品情報など。</p>
+<p>③ 指示（Instruction）：何をしてほしいかを明確に伝える。「〇〇を書いてください」</p>
+<p>④ 形式（Format）：出力の形式を指定する。構成、文字数、トーンなど。</p>
+<p>⑤ 例示（Example）：具体例を示す。「こんな感じで」「この文章を参考に」</p>
+<p> </p>
+<p>これらの要素をすべて含める必要はありませんが、含める要素が多いほど、出力の精度は上がります。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-2. 各要素の詳細と書き方</span></h2>
+<h3>① 役割（Role）の設定</h3>
+<p>Claudeに「専門家の視点」で書かせるために、役割を設定します。役割を設定することで、専門的で質の高い出力が得られます。</p>
+<p><strong>【役割設定の例】</strong></p>
+<blockquote><p><em>「あなたはセールスライティングのプロです。」</em></p><p><em>「あなたは10年の経験を持つWebライターです。」</em></p><p><em>「あなたはマーケティングコンサルタントです。」</em></p><p><em>「あなたは40代女性向け美容メディアの編集長です。」</em></p><p><em>「あなたは読者の心を動かすコピーライターです。」</em></p></blockquote>
+<p><strong>【役割設定がない場合の問題】</strong></p>
+<blockquote><p><em>役割設定なしのプロンプト：「ダイエットサプリの記事を書いて」</em></p></blockquote>
+<p><em>→ Claudeは「誰として」書けばいいかわからない → 一般的な説明文になりがち</em></p>
+<blockquote><p><em>役割設定ありのプロンプト：「あなたはセールスライティングのプロです。ダイエットサプリの記事を書いてください」</em></p></blockquote>
+<p><em>→「セールス」の視点で、購買を促す文章を書く</em></p>
+<p> </p>
+<h3>② 文脈（Context）の提供</h3>
+<p>Claudeに「前提情報」を与えることで、的確な出力が得られます。</p>
+<p><strong>【文脈として伝えるべき情報】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>ターゲット：誰に向けた文章か</li><li>目的：何のための文章か（販売、認知、教育など）</li><li>商品・サービス情報：特徴、価格、競合との違い</li><li>媒体：どこに掲載するか（Web、SNS、メルマガなど）</li><li>読者の状態：すでに興味があるか、まだ認知していないか</li></ul>
+<p> </p>
+<p><strong>【文脈提供の例】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■ターゲット：40代女性 / 働いている（フルタイム）/ 運動する時間がない / 過去にダイエットに失敗した経験がある</em></li><li><em>■目的：商品購入につなげるLP用の文章</em></li><li><em>■商品情報：商品名：スリムアップサポート / 特徴：代謝アップ成分配合、1日1粒でOK / 価格：月額3,000円（初回1,500円）/ 強み：40代の体に特化した成分設計</em></li><li><em>■掲載媒体：公式サイトのランディングページ</em></li></ul>
+<p> </p>
+<h3>③ 指示（Instruction）の明確化</h3>
+<p>「何をしてほしいか」を具体的に伝えます。</p>
+<p><strong>【曖昧な指示の問題】</strong></p>
+<blockquote><p><em>曖昧な指示：「いい感じの記事を書いて」「読者に刺さる文章にして」「もっと良くして」</em></p></blockquote>
+<p><em>→ Claudeは「何をすればいいか」わからない → 期待と違う出力が返ってくる</em></p>
+<p><strong>【具体的な指示の例】</strong></p>
+<blockquote><p><em>「PASONAの法則に従って、導入文を書いてください」</em></p><p><em>「Problem部分を、より共感を呼ぶ表現にリライトしてください」</em></p><p><em>「冒頭の3行を、問いかけ型で書き直してください」</em></p><p><em>「ベネフィットを3つ追加してください」</em></p><p><em>「一文を50文字以内に分割してください」</em></p></blockquote>
+<p> </p>
+<p>指示は「動詞」で終わるように書くと明確になります。「〇〇してください」「〇〇を書いてください」</p>
+<p> </p>
+<h3>④ 形式（Format）の指定</h3>
+<p>出力の「形式」を指定することで、意図通りの出力が得られます。</p>
+<p><strong>【形式で指定できること】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>構成：PASONA、PREP、AIDMAなどの型</li><li>文字数：「800文字程度」「500〜700文字」</li><li>段落数：「3段落で」「見出し4つで」</li><li>トーン：「カジュアル」「フォーマル」「共感的」</li><li>語尾：「です・ます調」「だ・である調」</li><li>禁止事項：「専門用語を使わない」「箇条書きは使わない」</li></ul>
+<p> </p>
+<p><strong>【形式指定の例】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■構成：PASONAの法則で書く</em></li><li><em>■文字数：800文字程度（±100文字は許容）</em></li><li><em>■トーン：共感的で、優しい / 押しつけがましくない / 読者と同じ目線で語りかける</em></li><li><em>■語尾：です・ます調</em></li><li><em>■禁止事項：専門用語を使わない / 「絶対」「必ず」などの断言表現を避ける / 価格を強調しすぎない</em></li></ul>
+<p> </p>
+<h3>⑤ 例示（Example）の活用</h3>
+<p>具体例を示すことで、Claudeの理解度が大幅に上がります。</p>
+<p><strong>【例示の方法】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>良い例を示す：「このような文章を書いてください」</li><li>悪い例を示す：「このような文章は避けてください」</li><li>参考文章を示す：「この文章のトーンを参考にしてください」</li><li>フォーマットを示す：「出力はこの形式で」</li></ul>
+<p> </p>
+<p><strong>【例示を含むプロンプト例】</strong></p>
+<blockquote><p><em>以下の「良い例」を参考に、導入文を書いてください。</em></p><p><em>【良い例】「40歳を過ぎてから、何をしても痩せなくなった…」もし、あなたがそう感じているなら、この記事はあなたのために書きました。実は、40代のダイエットには、20代・30代とは全く違う「コツ」があるのです。</em></p></blockquote>
+<p><em>【良い点】ターゲットの悩みを具体的に描写している / 「あなたのため」と個人に語りかけている / 「コツがある」と続きを読みたくなる仕掛けがある</em></p>
+<p><em>この要素を含んだ導入文を書いてください。</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第2章：プロンプトテンプレート集</span></h2>
+<p>ここからは、すぐに使えるプロンプトテンプレートを紹介します。これらをベースに、案件に合わせてカスタマイズしてください。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-1. LP・セールス文章用テンプレート</span></h2>
+<p><strong>【PASONA構成テンプレート】</strong></p>
+<blockquote><p><em>あなたはセールスライティングのプロです。</em></p><p><em>以下の条件で、[商品名]の紹介文を書いてください。</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■ターゲット：[ターゲットの詳細を記載]</em></li><li><em>■構成：PASONAの法則で書く</em></li><li><em>■各パートの内容</em></li></ul>
+<blockquote><p><em>P（Problem）：[読者の悩みを具体的に描写]</em></p><p><em>A（Affinity）：[悩みへの共感を示す]</em></p><p><em>S（Solution）：[解決策として商品を提示]</em></p><p><em>O（Offer）：[具体的な提案・特典]</em></p><p><em>N（Narrowing）：[限定性・緊急性]</em></p><p><em>A（Action）：[具体的な行動を促す]</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■商品情報：商品名：/ 特徴：/ 価格：/ 強み：</em></li><li><em>■トーン：[文章のトーン]</em></li><li><em>■文字数：[目安の文字数]</em></li><li><em>■注意事項：誇大表現は避ける / 「絶対」「必ず」などの断言は使わない</em></li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-2. ブログ記事用テンプレート</span></h2>
+<p><strong>【SEO記事テンプレート】</strong></p>
+<blockquote><p><em>あなたはSEOに強いWebライターです。</em></p><p><em>以下の条件で、[テーマ]に関する記事を書いてください。</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■狙うキーワード：メイン：[キーワード] / サブ：[関連キーワード]</em></li><li><em>■ターゲット：[ターゲットの詳細] / 検索意図：[なぜこのキーワードで検索するか]</em></li><li><em>■記事構成</em></li></ul>
+<blockquote><p><em>導入：読者の悩みに共感し、記事で得られる価値を伝える</em></p><p><em>本文：見出し1：[内容] / 見出し2：[内容] / 見出し3：[内容]</em></p><p><em>まとめ：要点を整理し、次のアクションを促す</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■トーン：親しみやすい、わかりやすい</em></li><li><em>■文字数：[目安の文字数]</em></li><li><em>■SEO上の注意：キーワードは自然に含める / 見出しにキーワードを適度に入れる / 読者の疑問に先回りして答える</em></li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-3. SNS投稿用テンプレート</span></h2>
+<p><strong>【X（Twitter）投稿テンプレート】</strong></p>
+<blockquote><p><em>あなたはSNSマーケティングの専門家です。</em></p><p><em>以下の条件で、X（Twitter）用の投稿文を5パターン作成してください。</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■テーマ：[投稿のテーマ]</em></li><li><em>■目的：[投稿の目的：認知拡大、商品PR、リンク誘導など]</em></li><li><em>■ターゲット：[フォロワー層の特徴]</em></li><li><em>■条件：140文字以内 / ハッシュタグ2〜3個 / 絵文字は1〜2個まで</em></li><li><em>■パターン</em></li></ul>
+<blockquote><p><em>1. 共感型：読者の悩みに寄り添う</em></p><p><em>2. ノウハウ型：有益な情報を提供</em></p><p><em>3. 問いかけ型：読者に質問を投げかける</em></p><p><em>4. 驚き型：意外な事実を伝える</em></p><p><em>5. 体験談型：実体験をシェア</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-4. リライト・修正用テンプレート</span></h2>
+<p><strong>【共感強化リライトテンプレート】</strong></p>
+<blockquote><p><em>以下の文章を、より共感を呼ぶ表現にリライトしてください。</em></p><p><em>【元の文章】[リライトしたい文章を貼り付け]</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■改善の方向性</em></li><li><em>・読者が「私のことだ」と思える具体的な描写を加える</em></li><li><em>・事実の羅列ではなく、読者の実感に寄り添う</em></li><li><em>・感情を動かす表現を使う</em></li><li><em>■ターゲット：[誰に向けた文章か]</em></li><li><em>■トーン：[維持したいトーン]</em></li><li><em>■文字数：元の文章の[1.5倍程度 / 同程度 / 半分程度]</em></li></ul>
+<p> </p>
+<p><strong>【具体化リライトテンプレート】</strong></p>
+<blockquote><p><em>以下の文章に、具体性を追加してリライトしてください。</em></p><p><em>【元の文章】[リライトしたい文章を貼り付け]</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■追加してほしい具体性</em></li><li><em>・数字（人数、割合、期間など）</em></li><li><em>・具体的なシチュエーション</em></li><li><em>・実際の声（イメージで作成OK）</em></li><li><em>・Before/Afterの描写</em></li><li><em>■注意事項：誇張しすぎない / 信頼性を損なわない範囲で</em></li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-5. 見出し・タイトル生成テンプレート</span></h2>
+<p><strong>【タイトル生成テンプレート】</strong></p>
+<blockquote><p><em>以下の記事に対して、クリックしたくなるタイトルを10個提案してください。</em></p><p><em>【記事の内容】[記事内容の要約]</em></p><p><em>【ターゲット】[ターゲットの特徴]</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■タイトルの条件：30文字以内 / 数字を入れる / ベネフィットが伝わる / 意外性または好奇心を刺激する</em></li><li><em>■参考パターン</em></li><li><em>・問いかけ型：「〜していませんか？」</em></li><li><em>・数字型：「〇つの方法」「〇日で」</em></li><li><em>・意外性型：「〜は間違い」「〜の新常識」</em></li><li><em>・方法型：「〜する方法」「〜のコツ」</em></li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第3章：出力を改善する修正テクニック</span></h2>
+<p>Claudeの出力が期待通りでない場合、適切な修正指示で改善できます。この章では、よくある問題と修正方法を解説します。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-1. 問題別の修正プロンプト</span></h2>
+<p><strong>【問題1：内容が一般的すぎる】</strong></p>
+<p><strong>【修正プロンプト】</strong></p>
+<blockquote><p><em>この文章は一般的すぎます。以下の点を改善してください。</em></p><p><em>1. ターゲット（[具体的なターゲット]）に特化した内容にする</em></p><p><em>2. 具体的な数字やデータを追加する</em></p><p><em>3. [ターゲット]ならではの悩みや状況を描写する</em></p><p><em>特に冒頭を「読者が自分のことだと感じる」内容に書き換えてください。</em></p></blockquote>
+<p> </p>
+<p><strong>【問題2：トーンが合っていない】</strong></p>
+<p><strong>【修正プロンプト】</strong></p>
+<blockquote><p><em>この文章のトーンを調整してください。</em></p><p><em>【現状】堅い、説明調、距離感がある</em></p><p><em>【目標】親しみやすい、共感的、友達に話すような</em></p><p><em>具体的には：読者に語りかける表現を増やす / 「〜である」→「〜なんです」/ 短い文を混ぜてリズムを良く</em></p><p><em>内容は変えず、トーンだけを調整してください。</em></p></blockquote>
+<p> </p>
+<p><strong>【問題3：構成が崩れている】</strong></p>
+<p><strong>【修正プロンプト】</strong></p>
+<blockquote><p><em>この文章をPASONAの構成に整理し直してください。</em></p><p><em>現状の文章を以下の形式で再構成してください：</em></p><p><em>【P：Problem】（300文字）/ 【A：Affinity】（150文字）/ 【S：Solution】（300文字）/ 【O：Offer】（150文字）/ 【N：Narrowing】（100文字）/ 【A：Action】（100文字）</em></p><p><em>各パートの内容は現状から抽出し、足りない部分は追加してください。</em></p></blockquote>
+<p> </p>
+<p><strong>【問題4：文字数が合わない】</strong></p>
+<p><strong>【短縮する場合】</strong></p>
+<blockquote><p><em>この文章を[目標文字数]文字以内に短縮してください。</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■残すべき内容（優先度順）：1. ターゲットの悩みへの共感 / 2. 主要ベネフィット / 3. CTA</em></li><li><em>■削ってよい内容：詳細な説明 / 重複している部分 / 冗長な表現</em></li></ul>
+<p> </p>
+<p><strong>【拡張する場合】</strong></p>
+<blockquote><p><em>この文章を[目標文字数]文字程度に拡張してください。</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■追加してほしい要素：具体例やエピソード / 読者の悩みの詳細な描写 / ベネフィットの深掘り</em></li><li><em>■注意：水増しではなく、価値ある情報を追加 / 全体のバランスを維持</em></li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-2. 段階的改善のフレームワーク</span></h2>
+<p>一度で完璧を求めず、段階的に改善するアプローチが効果的です。</p>
+<p><strong>【4段階改善フレームワーク】</strong></p>
+<p>Step 1：全体を出力させる　まず大まかな指示で全体像を出力。細かい調整は後で。</p>
+<p>Step 2：構成を確認・修正　流れ、各パートの役割が正しいか確認。問題があれば修正指示。</p>
+<p>Step 3：内容を改善　各パートの内容をチェック。具体性、説得力を高める。</p>
+<p>Step 4：表現を磨く　トーン、言葉選び、リズムを調整。最終仕上げ。</p>
+<p><strong>【実践例】</strong></p>
+<blockquote><p><em>【Step 1】「ダイエットサプリの紹介文をPASONAで800文字で書いてください」</em></p><p><em>【Step 2】「構成を確認しました。Problem部分が弱いので、もっと具体的な悩みの描写を追加してください」</em></p><p><em>【Step 3】「Solution部分に、なぜ代謝アップが効果的なのか、理由を1つ追加してください」</em></p><p><em>【Step 4】「全体のトーンをもう少しカジュアルに。友達に勧めるような温かみを出してください」</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第4章：プロンプトを資産化する</span></h2>
+<p>良いプロンプトは、何度も使える「資産」です。効率的に再利用するための整理・保存方法を解説します。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-1. プロンプトライブラリの作り方</span></h2>
+<p>よく使うプロンプトをライブラリとして整理しましょう。</p>
+<p><strong>【ライブラリの分類例】</strong></p>
+<p><em>プロンプトライブラリ/</em></p>
+<p><em>├── セールス系/ PASONA_LP用.txt / AIDMA_認知向け.txt / 商品説明_EC用.txt</em></p>
+<p><em>├── 記事系/ SEO記事_標準.txt / ハウツー記事.txt / 比較記事.txt</em></p>
+<p><em>├── SNS系/ Twitter投稿.txt / Instagram投稿.txt / LINE配信.txt</em></p>
+<p><em>├── メール系/ メルマガ_情報提供.txt / メルマガ_セール告知.txt</em></p>
+<p><em>└── リライト系/ 共感強化.txt / 具体化.txt / 短縮.txt</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-2. プロンプトの変数化</span></h2>
+<p>プロンプトの「変わる部分」を変数化すると、使い回しが楽になります。</p>
+<p><strong>【変数化の例】</strong></p>
+<blockquote><p><em>あなたは{役割}です。</em></p><p><em>{商品名}について、{構成}の法則で紹介文を書いてください。</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■ターゲット {ターゲット詳細}</em></li><li><em>■商品情報：商品名：{商品名} / 特徴：{特徴} / 価格：{価格}</em></li><li><em>■トーン：{トーン}</em></li><li><em>■文字数：{文字数}文字程度</em></li></ul>
+<blockquote><p><em>---【使用時の記入例】</em></p><p><em>{役割}=セールスコピーライター / {商品名}=スリムサポートサプリ / {構成}=PASONA</em></p><p><em>{ターゲット詳細}=40代女性、働いている、運動時間がない</em></p><p><em>{特徴}=代謝アップ成分配合、1日1粒 / {価格}=3,000円/月、初回1,500円</em></p><p><em>{トーン}=共感的、押しつけがましくない / {文字数}=800</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-3. 改善記録をつける</span></h2>
+<p>プロンプトを使うたびに、改善点を記録しましょう。</p>
+<p><strong>【改善記録フォーマット】</strong></p>
+<p><em>━━━━━━━━━━━━━━━━━━━━</em></p>
+<p><em>プロンプト名：PASONA_LP用　バージョン：v1.3　最終更新：2024/XX/XX</em></p>
+<p><em>━━━━━━━━━━━━━━━━━━━━</em></p>
+<p><em>■改善履歴</em></p>
+<p><em>v1.0（2024/1/1）初版作成</em></p>
+<p><em>v1.1（2024/1/15）「誇大表現を避ける」を追加　理由：出力に「絶対痩せる」が含まれていた</em></p>
+<p><em>v1.2（2024/2/1）口コミの書き方を具体化　追加：「年齢・職業・具体的な変化を含める」</em></p>
+<p><em>v1.3（2024/2/15）各パートの文字数目安を追加　理由：全体のバランスが悪かった</em></p>
+<p><em>■次回の改善候補：導入文のパターンを複数指定できるように</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第5章：よくある失敗と対策</span></h2>
+<p>プロンプトでよくある失敗パターンと対策を紹介します。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">失敗1：指示が曖昧</span></h2>
+<p><strong>【失敗例】</strong></p>
+<blockquote><p><em>「もっと良くして」「いい感じに」「刺さる文章に」→ 何を改善すべきかわからない</em></p></blockquote>
+<p><strong>【対策】</strong></p>
+<p>「何を」「どのように」を具体的に。</p>
+<blockquote><p><em>×「もっと良くして」　○「冒頭3行を、問いかけ型に書き換えてください」</em></p><p><em>×「刺さる文章に」　○「40代女性が『自分のことだ』と感じる悩みの描写を追加」</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">失敗2：情報の詰め込みすぎ</span></h2>
+<p><strong>【失敗例】</strong></p>
+<blockquote><p><em>ターゲットの情報を文章でダラダラ書く → Claudeが混乱し、焦点がぼやける</em></p></blockquote>
+<p><strong>【対策】</strong></p>
+<blockquote><p>情報は箇条書きで整理。優先順位をつける。</p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">失敗3：一度で完璧を求める</span></h2>
+<p><strong>【失敗例】</strong></p>
+<blockquote><p><em>「完璧な記事を一発で書いて」→ 無難な出力になる。修正しづらい</em></p></blockquote>
+<p><strong>【対策】</strong></p>
+<blockquote><p>段階的に進める。構成→各パート→仕上げ。</p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">失敗4：出力をそのまま使う</span></h2>
+<p><strong>【失敗例】</strong></p>
+<blockquote><p><em>Claudeの出力をそのままコピペ納品 → 「AIっぽい」文章。クライアントに見抜かれる</em></p></blockquote>
+<p><strong>【対策】</strong></p>
+<blockquote><p>出力は「下書き」。必ず人間がチェック・編集する。</p></blockquote>
+<p><strong>【チェックポイント】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>ターゲットに刺さる具体性があるか</li><li>「AIっぽい」表現が残っていないか</li><li>情報は正確か</li><li>クライアントのトーンに合っているか</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第6章：実践ワーク</span></h2>
+<p>学んだ内容を、実際に手を動かして練習しましょう。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">演習1：5要素を含むプロンプトを作成する</span></h2>
+<p><strong>【課題】</strong></p>
+<p>以下の案件に対して、プロンプトの5要素をすべて含むプロンプトを作成してください。</p>
+<p><strong>【案件情報】</strong></p>
+<p><em>商品：オンライン英会話「EnglishMaster」</em></p>
+<p><em>特徴：24時間対応、1レッスン25分、月額6,000円</em></p>
+<p><em>目的：無料体験への申し込み促進</em></p>
+<p><em>媒体：LP</em></p>
+<p><em>ターゲット：30代ビジネスパーソン、英語が必要だが時間がない</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">演習2：修正プロンプトを書く</span></h2>
+<p><strong>【課題】</strong></p>
+<p>以下の出力を改善する修正プロンプトを書いてください。</p>
+<p><strong>【Claudeの出力（問題あり）】</strong></p>
+<blockquote><p><em>「英語学習は、グローバル化が進む現代において重要なスキルです。ビジネスシーンでも英語力が求められる場面が増えています。効率的に学ぶ方法を見つけることが大切です。」</em></p></blockquote>
+<p><strong>【問題点】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>一般的すぎる</li><li>具体性がない</li><li>ターゲットに刺さらない</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">演習3：段階的に改善する</span></h2>
+<p><strong>【課題】</strong></p>
+<p>演習1のプロンプトでClaudeに出力させ、4段階で改善してください。</p>
+<p>1.	全体を出力させる</p>
+<p>2.	構成を確認・修正する</p>
+<p>3.	内容を改善する</p>
+<p>4.	表現を磨く</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">演習4：プロンプトライブラリを作成する</span></h2>
+<p><strong>【課題】</strong></p>
+<p>以下の3種類のプロンプトテンプレートを作成してください。</p>
+<p>5.	LP用（PASONA構成）</p>
+<p>6.	ブログ記事用（SEO対応）</p>
+<p>7.	SNS投稿用（Twitter）</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">まとめ：プロンプトは「第二の文章力」</span></h2>
+<p>この章では、Claudeから「狙った文章」を引き出すプロンプト技術を学びました。</p>
+<p>重要なポイントを振り返りましょう。</p>
+<p><strong>【プロンプトの5要素】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>役割（Role）：誰として書くか</li><li>文脈（Context）：背景情報を提供</li><li>指示（Instruction）：何をしてほしいか</li><li>形式（Format）：出力の形式を指定</li><li>例示（Example）：具体例を示す</li></ul>
+<p> </p>
+<p><strong>【修正テクニック】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>問題点を具体的に指摘する</li><li>「何を」「どのように」を明確に</li><li>段階的に改善する</li><li>出力は下書きとして扱う</li></ul>
+<p> </p>
+<p><strong>【プロンプトの資産化】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>ライブラリとして整理</li><li>変数化で再利用しやすく</li><li>改善記録をつける</li></ul>
+<p> </p>
+<p>「良い文章を書く力」と「良いプロンプトを書く力」は、これからのライターの両輪です。</p>
+<div class="callout-box"><p>プロンプト力は、「第二の文章力」と言っても過言ではありません。</p></div>
+<p>次の章では、「短文・長文・SNS・セールスでの使い分け」を学びます。場面に応じた最適なライティングをマスターしましょう。</p>
+<p> </p>
+<p><strong><em>― 1-5. Claudeに「狙った文章」を書かせる指示の出し方　完 ―</em></strong></p>
+</div>
+</div>
+</body>
+</html>

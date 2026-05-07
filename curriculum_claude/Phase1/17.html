@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>1-7. 実践：Claudeで「使える文章」を量産する</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">1-7. 実践：Claudeで「使える文章」を量産する</span></h1>
+<hr class="divider">
+<span class="label">フェーズ1｜Claude×ライティング基礎構築編</span>
+</div>
+<div class="card">
+<h2><span class="gradient-text">はじめに：知識を「稼ぐ力」に変える</span></h2>
+<p>おめでとうございます。ここまでフェーズ1の学習を進めてきたあなたは、すでに多くの知識を身につけています。</p>
+<div class="callout-box"><p>しかし、知識だけでは1円も稼げません。</p><p>知識を「稼ぐ力」に変えるのは、「実践」です。</p></div>
+<p>この章では、これまで学んだすべてを統合し、実際にClaudeで「使える文章」を量産する実践ワークに取り組みます。</p>
+<p><strong>【この章の位置づけ】</strong></p>
+<p><em>フェーズ1で学んだこと：</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>・1-1：Claudeの基本操作</em></li><li><em>・1-2：売れる文章の型（PASONA、AIDMA、PREP等）</em></li><li><em>・1-3：読まれる文章と読まれない文章の違い</em></li><li><em>・1-4：STP・4P・AIDMAのマーケティング視点</em></li><li><em>・1-5：Claudeへの指示の出し方（プロンプト技術）</em></li><li><em>・1-6：短文・長文・SNS・セールスの使い分け</em></li></ul>
+<p><em>この章（1-7）では：</em></p>
+<p><em>→ すべてを統合して「実際に文章を作る」実践を行う</em></p>
+<p><em>→ 「知っている」を「できる」に変える</em></p>
+<p> </p>
+<p>この章を終える頃には、あなたは自信を持って「Claudeを使って文章を書けます」と言えるようになります。</p>
+<p>それでは、実践ワークを始めましょう。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第1章：実践の前に ― 量産ワークフローの全体像</span></h2>
+<p>まず、Claudeで文章を「量産」するためのワークフローを理解しましょう。このワークフローを身につければ、どんな案件でも効率的に対応できます。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-1. 量産ワークフロー5ステップ</span></h2>
+<p><strong>【ワークフロー全体像】</strong></p>
+<p>Step 1：要件整理　何を、誰に、何のために書くのか整理する</p>
+<p>Step 2：構成設計　どんな構成（型）で書くか決める</p>
+<p>Step 3：プロンプト作成　Claudeへの指示を作成する</p>
+<p>Step 4：出力＆修正　Claudeに出力させ、フィードバックで改善する</p>
+<p>Step 5：仕上げ＆納品　人間の目でチェックし、最終仕上げを行う</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-2. 各ステップの詳細</span></h2>
+<h3>Step 1：要件整理</h3>
+<p>最初に、以下の情報を整理します。これが曖昧だと、どんなに良いプロンプトでも「使えない文章」になります。</p>
+<p><strong>【要件整理シート】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■基本情報　・成果物：何を作るか（LP、ブログ記事、SNS投稿など）　・文字数：目安の文字数　・納期：いつまでに必要か</em></li><li><em>■ターゲット情報　・誰に向けて書くか　・ターゲットの悩み・課題　・ターゲットの理想の状態</em></li><li><em>■商品/サービス情報　・商品名　・特徴（3〜5つ）　・価格　・競合との違い　・強み</em></li><li><em>■目的　・読者にどんな行動を取ってほしいか　・この文章のゴールは何か</em></li></ul>
+<p> </p>
+<h3>Step 2：構成設計</h3>
+<p>要件に合った「型」を選び、構成を設計します。</p>
+<p><strong>【型の選び方】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■セールス系（LP、商品紹介）→ PASONA、QUEST</em></li><li><em>■情報提供系（ブログ、コラム）→ PREP、起承転結</em></li><li><em>■認知向け（広告、SNS）→ AIDMA</em></li><li><em>■論理的説明（提案書、ビジネス文書）→ PREP</em></li></ul>
+<p> </p>
+<h3>Step 3：プロンプト作成</h3>
+<p>要件と構成を元に、Claudeへのプロンプトを作成します。</p>
+<p><strong>【プロンプトに含める5要素】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>役割（Role）：誰として書くか</li><li>文脈（Context）：ターゲット、商品情報など</li><li>指示（Instruction）：何をしてほしいか</li><li>形式（Format）：構成、文字数、トーンなど</li><li>例示（Example）：参考例があれば</li></ul>
+<p> </p>
+<h3>Step 4：出力＆修正</h3>
+<p>Claudeに出力させ、必要に応じて修正指示を出します。</p>
+<p><strong>【修正の観点】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>構成は指定通りか</li><li>ターゲットに刺さる内容か</li><li>具体性は十分か</li><li>トーンは合っているか</li><li>文字数は適切か</li></ul>
+<p> </p>
+<h3>Step 5：仕上げ＆納品</h3>
+<p>Claudeの出力をそのまま使わず、必ず人間がチェック・編集します。</p>
+<p><strong>【最終チェックリスト】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>誤字脱字はないか</li><li>事実誤認はないか</li><li>「AIっぽい」表現が残っていないか</li><li>クライアントの要件を満たしているか</li><li>自分の言葉で書き直したい部分はないか</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第2章：実践ワーク① ― LP文章を作る</span></h2>
+<p>最初の実践ワークは、LP（ランディングページ）用の文章作成です。セールスライティングの基本であり、高単価案件も多いジャンルです。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-1. 案件設定</span></h2>
+<p><strong>【クライアント情報】</strong></p>
+<p><em>クライアント：株式会社ヘルシーライフ　業種：健康食品メーカー　依頼内容：新商品のダイエットサプリLPの文章作成</em></p>
+<p><strong>【商品情報】</strong></p>
+<p><em>商品名：バーンアップサポート</em></p>
+<p><em>価格：月額3,980円（定期購入）、初回1,980円（50%OFF）</em></p>
+<p><em>特徴：・40代以降の代謝低下に着目した成分設計　・Lカルニチン、CoQ10、αリポ酸を独自配合　・1日1粒で続けやすい　・国内GMP認定工場で製造　・90日間返金保証付き</em></p>
+<p><em>ターゲット：・40代〜50代女性　・運動する時間がない　・食事制限が続かない　・過去にダイエットで挫折経験あり　・健康診断の数値が気になり始めた</em></p>
+<p><strong>【LP構成の指定】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li><em>・ヘッドライン：30文字以内　・リード：300文字　・問題提起：400文字　・解決策提示：400文字</em></li><li><em>・商品紹介：500文字　・お客様の声：3名分、各100文字　・オファー：300文字　・CTA：150文字</em></li></ul>
+<p><em>合計：約2,500文字</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-2. ワーク手順</span></h2>
+<h3>手順1：要件整理シートを埋める</h3>
+<p>まず、上記の情報を元に、要件整理シートを完成させてください。</p>
+<p><strong>【要件整理シート（記入用）】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■基本情報　・成果物：　・文字数：　・納期：</em></li><li><em>■ターゲット情報　・誰に：　・悩み：　・理想：</em></li><li><em>■商品情報　・商品名：　・特徴：　・価格：　・強み：</em></li><li><em>■目的　・読者に取ってほしい行動：</em></li></ul>
+<p> </p>
+<h3>手順2：構成を決める</h3>
+<p>この案件に最適な「型」を選び、各セクションの役割を明確にしてください。</p>
+<p><strong>【構成設計（記入用）】</strong></p>
+<p><em>使用する型：</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■ヘッドライン　役割：　■リード　役割：　含める要素：</em></li><li><em>■問題提起　役割：　含める要素：　■解決策提示　役割：　含める要素：</em></li><li><em>■商品紹介　役割：　含める要素：　■お客様の声　役割：　含める要素：</em></li><li><em>■オファー　役割：　含める要素：　■CTA　役割：　含める要素：</em></li></ul>
+<p> </p>
+<h3>手順3：プロンプトを作成する</h3>
+<p>以下のテンプレートを参考に、Claude用のプロンプトを作成してください。</p>
+<p><strong>【プロンプトテンプレート】</strong></p>
+<blockquote><p><em>あなたはセールスコピーライターです。</em></p><p><em>以下の条件で、ダイエットサプリのLP文章を作成してください。</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■商品情報（商品情報を記載）</em></li><li><em>■ターゲット（ターゲット情報を記載）</em></li><li><em>■構成と各セクションの文字数（構成を記載）</em></li><li><em>■各セクションの役割と含める要素（詳細を記載）</em></li><li><em>■トーン：共感的で、読者に寄り添う / 押しつけがましくない / 信頼感のある</em></li><li><em>■注意事項：「絶対」「必ず」などの誇大表現は避ける / 科学的な内容は、わかりやすい言葉で説明する / お客様の声は、年齢・状況・具体的な変化を含める</em></li></ul>
+<p> </p>
+<h3>手順4：Claudeに出力させ、修正する</h3>
+<p>作成したプロンプトでClaudeに出力させ、以下の観点で確認・修正してください。</p>
+<p><strong>【修正チェックポイント】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>ヘッドラインは興味を引くか</li><li>リードでターゲットが「自分のことだ」と感じるか</li><li>問題提起で「このままじゃマズい」と思わせるか</li><li>解決策提示で「これなら解決できそう」と思わせるか</li><li>商品紹介で「欲しい」と思わせるか</li><li>お客様の声で「私もできそう」と思わせるか</li><li>オファーで「お得」と感じさせるか</li><li>CTAで「今すぐ行動しよう」と思わせるか</li></ul>
+<p> </p>
+<h3>手順5：最終仕上げ</h3>
+<p><strong>【最終チェックリスト】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>誤字脱字はないか</li><li>「AIっぽい」表現はないか</li><li>流れは自然か</li><li>文字数は指定範囲内か</li><li>トーンは一貫しているか</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第3章：実践ワーク② ― ブログ記事を作る</span></h2>
+<p>次の実践ワークは、SEOを意識したブログ記事の作成です。情報提供型の記事は、ライター案件の中で最も多いジャンルの一つです。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-1. 案件設定</span></h2>
+<p><strong>【クライアント情報】</strong></p>
+<p><em>クライアント：美容系オウンドメディア運営会社　メディア名：「キレイのヒント」　依頼内容：SEO記事の執筆</em></p>
+<p><strong>【記事要件】</strong></p>
+<p><em>キーワード：「40代 ダイエット 成功」　想定読者：40代女性、ダイエットに何度も挫折している</em></p>
+<p><em>記事の目的：読者の悩み解決＋サイト内の関連記事への誘導　文字数：3,000文字程度</em></p>
+<p><em>構成の指示：タイトル：32文字以内、キーワードを含む / 導入文：300文字 / 見出し：4〜5個 / 各見出しの本文：400〜600文字 / まとめ：200文字</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-2. ワーク手順</span></h2>
+<h3>手順1：キーワードから検索意図を考える</h3>
+<p>「40代 ダイエット 成功」で検索する人は、何を知りたいのかを考えます。</p>
+<p><strong>【検索意図の分析（記入用）】</strong></p>
+<p><em>このキーワードで検索する人は…</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■知りたいこと：・　・　・</em></li><li><em>■抱えている悩み：・　・　・</em></li><li><em>■記事を読んだ後の理想の状態：・</em></li></ul>
+<p> </p>
+<h3>手順2：構成案を作成する</h3>
+<p>検索意図に答える構成を設計します。</p>
+<p><strong>【構成案テンプレート】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■タイトル（32文字以内）</em></li><li><em>■導入文（300文字）で伝えること：読者の悩みへの共感 / この記事で得られる情報 / 読むべき理由</em></li><li><em>■見出し1：（この見出しで伝えること）</em></li><li><em>■見出し2：（この見出しで伝えること）</em></li><li><em>■見出し3：（この見出しで伝えること）</em></li><li><em>■見出し4：（この見出しで伝えること）</em></li><li><em>■まとめ（200文字）で伝えること：要点の整理 / 読者へのエール / 次のアクション</em></li></ul>
+<p> </p>
+<h3>手順3：プロンプトを作成する</h3>
+<p><strong>【ブログ記事用プロンプトテンプレート】</strong></p>
+<blockquote><p><em>あなたはSEOに強いWebライターです。以下の条件で、ブログ記事を書いてください。</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■キーワード「40代 ダイエット 成功」</em></li><li><em>■想定読者（読者情報を記載）</em></li><li><em>■検索意図（分析した検索意図を記載）</em></li><li><em>■構成（作成した構成案を記載）</em></li><li><em>■トーン：親しみやすく、読者に寄り添う / 専門用語は使わず、わかりやすく / 「〜しましょう」など、読者を応援する</em></li><li><em>■SEO上の注意：キーワードは自然に含める（詰め込みすぎない）/ 見出しにキーワードを適度に入れる / 読者の疑問に先回りして答える</em></li><li><em>■文字数　合計3,000文字程度</em></li></ul>
+<p> </p>
+<h3>手順4：セクションごとに出力＆修正</h3>
+<p>長文は、セクションごとに分けて出力させると品質が上がります。</p>
+<p><strong>【分割出力の指示例】</strong></p>
+<p><em>まず、導入文だけを書いてください。</em></p>
+<p><em>【条件】・300文字程度 ・読者の悩みに共感する ・この記事で得られる情報を伝える ・「続きを読みたい」と思わせる</em></p>
+<p><em>書き終わったら、見出し1に進みます。</em></p>
+<p> </p>
+<h3>手順5：最終仕上げ</h3>
+<p><strong>【ブログ記事チェックリスト】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>タイトルにキーワードが含まれているか</li><li>導入文で読者の悩みに共感しているか</li><li>見出しだけで記事の内容がわかるか</li><li>各見出しで一つのテーマを扱っているか</li><li>具体例やデータが含まれているか</li><li>まとめで行動を促しているか</li><li>全体の流れは自然か</li><li>「AIっぽい」表現はないか</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第4章：実践ワーク③ ― SNS投稿を作る</span></h2>
+<p>3つ目の実践ワークは、SNS投稿の作成です。短文で「刺さる」コンテンツを作るスキルを磨きます。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-1. 案件設定</span></h2>
+<p><strong>【クライアント情報】</strong></p>
+<p><em>クライアント：パーソナルトレーニングジム　アカウント：@fitness_master　フォロワー：1.2万人</em></p>
+<p><em>目的：無料カウンセリングへの誘導</em></p>
+<p><strong>【依頼内容】</strong></p>
+<p><em>1週間分のX（Twitter）投稿を作成　・1日2投稿 × 7日 ＝ 14投稿</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>・ターゲット：30〜40代、運動習慣がない、ダイエットしたい</em></li><li><em>・トーン：親しみやすい、専門家としての信頼感</em></li><li><em>・含めてほしい要素：運動Tips、モチベーション、ジムの魅力</em></li></ul>
+<p><em>投稿パターン：有益情報型：7投稿 / 共感・モチベーション型：4投稿 / ジムPR型：3投稿</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-2. ワーク手順</span></h2>
+<h3>手順1：投稿カレンダーを作成する</h3>
+<p><strong>【1週間投稿カレンダー（記入用）】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■月曜日　朝：有益情報（テーマ：　　）　夜：共感型（テーマ：　　）</em></li><li><em>■火曜日　朝：有益情報（テーマ：　　）　夜：ジムPR（テーマ：　　）</em></li><li><em>■水曜日　朝：有益情報（テーマ：　　）　夜：モチベーション（テーマ：　　）</em></li><li><em>■木曜日　朝：有益情報（テーマ：　　）　夜：共感型（テーマ：　　）</em></li><li><em>■金曜日　朝：有益情報（テーマ：　　）　夜：ジムPR（テーマ：　　）</em></li><li><em>■土曜日　朝：有益情報（テーマ：　　）　夜：モチベーション（テーマ：　　）</em></li><li><em>■日曜日　朝：有益情報（テーマ：　　）　夜：ジムPR（テーマ：　　）</em></li></ul>
+<p> </p>
+<h3>手順2：パターン別にプロンプトを作成する</h3>
+<p><strong>【有益情報型プロンプト】</strong></p>
+<blockquote><p><em>あなたはパーソナルトレーナーです。以下の条件で、X（Twitter）の投稿文を作成してください。</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■テーマ [具体的なテーマ：例「自宅でできる腹筋トレーニング」]</em></li><li><em>■ターゲット　30〜40代、運動習慣がない、ダイエットしたい</em></li><li><em>■投稿タイプ　有益情報型（読者が「役に立った」と感じる内容）</em></li><li><em>■条件：140文字以内 / 専門用語は使わない / すぐに実践できる内容 / 最後に行動を促す</em></li></ul>
+<p> </p>
+<p><strong>【共感・モチベーション型プロンプト】</strong></p>
+<blockquote><p><em>あなたはパーソナルトレーナーです。以下の条件で、X（Twitter）の投稿文を作成してください。</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■テーマ [具体的なテーマ：例「ダイエットが続かない人へ」]</em></li><li><em>■ターゲット　30〜40代、運動習慣がない、ダイエットで挫折経験あり</em></li><li><em>■投稿タイプ　共感・モチベーション型（読者を励まし、やる気を引き出す）</em></li><li><em>■条件：140文字以内 / 読者の悩みに寄り添う / 「あなたは一人じゃない」というメッセージ / 押しつけがましくない</em></li></ul>
+<p> </p>
+<p><strong>【ジムPR型プロンプト】</strong></p>
+<blockquote><p><em>あなたはパーソナルトレーナーです。以下の条件で、X（Twitter）の投稿文を作成してください。</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■テーマ [具体的なテーマ：例「無料カウンセリングの案内」]</em></li><li><em>■ターゲット　ジムに興味があるが、一歩踏み出せない人</em></li><li><em>■投稿タイプ　ジムPR型（無料カウンセリングへの誘導）</em></li><li><em>■条件：140文字以内 / 売り込み感を出しすぎない / 「気軽に」「まずは話を聞くだけでも」という姿勢 / 行動のハードルを下げる</em></li></ul>
+<p> </p>
+<h3>手順3：14投稿を一気に作成する</h3>
+<p>投稿カレンダーに沿って、14投稿すべてを作成してください。</p>
+<h3>手順4：チェック＆調整</h3>
+<p><strong>【SNS投稿チェックリスト】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>140文字以内に収まっているか</li><li>最初の1行で興味を引けるか</li><li>ターゲットに刺さる内容か</li><li>売り込み感が強すぎないか</li><li>7日間で内容にバリエーションがあるか</li><li>トーンは一貫しているか</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第5章：実践ワーク④ ― メルマガを作る</span></h2>
+<p>4つ目の実践ワークは、メルマガ（メールマガジン）の作成です。既存顧客との関係構築やリピート購入促進に使われる重要なツールです。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-1. 案件設定</span></h2>
+<p><strong>【クライアント情報】</strong></p>
+<p><em>クライアント：オンライン英会話サービス「EnglishMaster」</em></p>
+<p><em>メルマガ読者：無料会員登録済み、まだ有料プランに申し込んでいない</em></p>
+<p><em>目的：有料プラン（月額6,000円）への申し込み促進</em></p>
+<p><strong>【メルマガ要件】</strong></p>
+<p><em>形式：1通のメルマガ　文字数：500〜700文字　件名：30文字以内</em></p>
+<p><em>目的：有料プランへの申し込み促進（期間限定キャンペーン）</em></p>
+<p><em>キャンペーン内容：初月50%OFF（6,000円→3,000円）/ 今週末まで限定 / 申し込みはメール内のリンクから</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-2. ワーク手順</span></h2>
+<h3>手順1：メルマガの構成を設計する</h3>
+<p><strong>【メルマガ構成】</strong></p>
+<p><em>1. 件名（30文字以内）→ 開封したくなるタイトル</em></p>
+<p><em>2. 冒頭挨拶（50文字）→ 親しみのある挨拶、今日のテーマ予告</em></p>
+<p><em>3. 本文：価値提供（200文字）→ 読者にとって有益な情報を先に提供</em></p>
+<p><em>4. 本文：キャンペーン案内（200文字）→ 自然な流れでキャンペーンを紹介</em></p>
+<p><em>5. CTA（100文字）→ 具体的な行動を促す</em></p>
+<p><em>6. 追伸（100文字）→ 背中を押す一言</em></p>
+<p> </p>
+<h3>手順2：プロンプトを作成する</h3>
+<p><strong>【メルマガ用プロンプト】</strong></p>
+<blockquote><p><em>あなたはメールマーケティングの専門家です。以下の条件で、メルマガを作成してください。</em></p></blockquote>
+<ul class="bullet-list" class="bullet-list"><li><em>■サービス情報　サービス名：EnglishMaster（オンライン英会話）　通常価格：月額6,000円　キャンペーン：初月50%OFF（3,000円）、今週末まで</em></li><li><em>■読者情報：無料会員登録済み / まだ有料プランに申し込んでいない / 英語学習に興味はあるが、一歩踏み出せていない</em></li><li><em>■構成</em></li></ul>
+<p><em>1. 件名（30文字以内）：開封率を上げる工夫を</em></p>
+<p><em>2. 冒頭挨拶（50文字）：親しみやすく</em></p>
+<p><em>3. 価値提供（200文字）：英語学習のTipsを1つ紹介</em></p>
+<p><em>4. キャンペーン案内（200文字）：自然な流れで</em></p>
+<p><em>5. CTA（100文字）：具体的な行動指示</em></p>
+<p><em>6. 追伸（100文字）：背中を押す</em></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■トーン：親しみやすい、1対1で話しかけるように / 売り込み感を出しすぎない / 読者の立場に立って</em></li><li><em>■注意：メールは読み流されがち。短い文で、改行を多めに / 「今週末まで」の緊急性を自然に伝える</em></li></ul>
+<p> </p>
+<h3>手順3：出力＆修正</h3>
+<p><strong>【メルマガチェックリスト】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>件名は開封したくなるか</li><li>冒頭で「読む価値がある」と感じさせるか</li><li>価値提供が先にあるか（売り込みが先ではない）</li><li>キャンペーンへの流れは自然か</li><li>CTAは具体的か（何をクリックすればいいかわかるか）</li><li>追伸で背中を押せているか</li><li>全体のトーンは一貫しているか</li><li>読みやすい長さ、改行になっているか</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第6章：量産スピードを上げるテクニック</span></h2>
+<p>実践ワークで基本を身につけたら、次は「スピード」を上げていきましょう。量産スピードが上がれば、時給も上がります。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-1. テンプレート化する</span></h2>
+<p>よく使うプロンプトは、テンプレート化して再利用します。</p>
+<p><strong>【テンプレート管理の方法】</strong></p>
+<p><em>プロンプトテンプレート/</em></p>
+<p><em>├── LP・セールス/ PASONA_基本.txt / LP_ヘッドライン.txt / LP_CTA.txt</em></p>
+<p><em>├── ブログ記事/ SEO記事_基本.txt / ハウツー記事.txt / 比較記事.txt</em></p>
+<p><em>├── SNS/ Twitter_有益情報.txt / Twitter_共感型.txt / Instagram_基本.txt</em></p>
+<p><em>└── メルマガ/ セール告知.txt / 情報提供.txt</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-2. 「型」を体に染み込ませる</span></h2>
+<p>PASONAやPREPなどの型を、考えなくても使えるレベルにします。</p>
+<p><strong>【型を身につける練習法】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>毎日1つ、PASONAで短い文章を書く</li><li>目にする広告を「この型は何か」と分析する</li><li>自分のSNS投稿を型に当てはめて書いてみる</li><li>Claudeに「この文章は何の型か」を聞いてみる</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-3. 並行作業で効率化</span></h2>
+<p>Claudeの出力を待つ間に、別の作業を進めます。</p>
+<p><strong>【並行作業の例】</strong></p>
+<p><em>【タスクA】LP文章作成</em></p>
+<p><em>1. プロンプトを投げる → 出力待ち</em></p>
+<p><em>2. 待っている間に、タスクBの要件整理を行う</em></p>
+<p><em>3. タスクAの出力を確認、修正指示を投げる → 出力待ち</em></p>
+<p><em>4. 待っている間に、タスクBのプロンプトを作成</em></p>
+<p><em>5. タスクAの修正出力を確認、仕上げ</em></p>
+<p><em>6. タスクBのプロンプトを投げる → 出力待ち（以下繰り返し）</em></p>
+<p><em>→ 待ち時間を有効活用することで、単位時間あたりの生産量がアップ</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-4. チェックリストで品質を担保</span></h2>
+<p>スピードを上げても、品質を落としては意味がありません。チェックリストで品質を担保します。</p>
+<p><strong>【万能チェックリスト】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■構成チェック</em></li><li><em>□ 指定された構成（型）通りになっているか　□ 各セクションの役割を果たしているか　□ 流れは自然か</em></li><li><em>■内容チェック</em></li><li><em>□ ターゲットに刺さる内容か　□ 具体性は十分か（数字、事例、エピソード）　□ ベネフィットは明確か　□ CTAは具体的か</em></li><li><em>■表現チェック</em></li><li><em>□ トーンは一貫しているか　□ 一文は長すぎないか（50文字以内目安）　□ 「AIっぽい」表現はないか　□ 誤字脱字はないか</em></li><li><em>■クライアント要件チェック</em></li><li><em>□ 文字数は指定範囲内か　□ 指定された要素はすべて含まれているか　□ 禁止事項に違反していないか</em></li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-5. フィードバックを蓄積する</span></h2>
+<p>クライアントからのフィードバックを蓄積し、次に活かします。</p>
+<p><strong>【フィードバック記録シート】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■案件名：〇〇〇〇　■クライアント：〇〇〇〇　■納品日：2024/XX/XX</em></li><li><em>■クライアントからのフィードバック　・良かった点：　・改善点：　・修正依頼の内容：</em></li><li><em>■自分の気づき　・うまくいったこと：　・次回改善すること：</em></li><li><em>■プロンプトへの反映　・追加すべき指示：　・削除すべき指示：</em></li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第7章：フェーズ1修了課題</span></h2>
+<p>最後に、フェーズ1の総まとめとして、修了課題に取り組みましょう。この課題をクリアすれば、あなたはフェーズ2に進む準備ができています。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">修了課題：総合ライティング課題</span></h2>
+<p><strong>【課題概要】</strong></p>
+<p>架空のクライアントから依頼を受けた設定で、以下の4つの成果物を作成してください。</p>
+<p><strong>【クライアント情報】</strong></p>
+<p><em>クライアント：オンライン料理教室「CookMaster」</em></p>
+<p><em>サービス内容：プロの料理人によるオンラインレッスン / 月額4,980円で受け放題 / 初心者向け〜上級者向けまでコースあり / 録画視聴もOK</em></p>
+<p><em>ターゲット：30〜40代女性 / 料理のレパートリーを増やしたい / 料理教室に通う時間がない / 自宅で本格的な料理を作りたい</em></p>
+<p><em>強み：現役シェフが直接指導 / 質問し放題 / 毎月100以上の新レッスン追加</em></p>
+<p> </p>
+<p><strong>【提出物1：LP文章（1,500文字）】</strong></p>
+<p>PASONAの構成で、サービス紹介のLP文章を作成してください。</p>
+<p><strong>【要件】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>ヘッドライン：30文字以内</li><li>リード：200文字</li><li>問題提起：300文字</li><li>解決策：300文字</li><li>サービス紹介：400文字</li><li>オファー：200文字（初月無料キャンペーン）</li><li>CTA：100文字</li></ul>
+<p> </p>
+<p><strong>【提出物2：ブログ記事（2,000文字）】</strong></p>
+<p>SEOを意識した情報提供記事を作成してください。</p>
+<p><strong>【要件】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>キーワード：「料理 上達 コツ」</li><li>タイトル：32文字以内</li><li>導入：200文字</li><li>見出し：4つ</li><li>各見出しの本文：400文字程度</li><li>まとめ：200文字（サービスへの自然な誘導を含む）</li></ul>
+<p> </p>
+<p><strong>【提出物3：SNS投稿（7投稿）】</strong></p>
+<p>1週間分のX（Twitter）投稿を作成してください。</p>
+<p><strong>【要件】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>各投稿：140文字以内</li><li>有益情報型：4投稿</li><li>共感型：2投稿</li><li>サービスPR型：1投稿</li></ul>
+<p> </p>
+<p><strong>【提出物4：メルマガ（500文字）】</strong></p>
+<p>無料会員向けの、有料プラン促進メルマガを作成してください。</p>
+<p><strong>【要件】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>件名：30文字以内</li><li>本文：500文字程度</li><li>キャンペーン：初月無料</li><li>期限：今週末まで</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">評価基準</span></h2>
+<p><strong>【チェックポイント】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>ターゲットに刺さる内容になっているか</li><li>指定された構成・文字数を守っているか</li><li>各媒体の特性に合った書き方ができているか</li><li>CTAは明確か</li><li>トーンは一貫しているか</li><li>「AIっぽさ」がなく、自然な文章か</li><li>誤字脱字がないか</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">まとめ：あなたは「使える文章」を書けるライターになった</span></h2>
+<p>この章では、フェーズ1で学んだすべてを統合し、実践ワークに取り組みました。</p>
+<p>あなたは今、以下のことができるようになっています：</p>
+<p><strong>【身についたスキル】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>ターゲットを分析し、刺さる文章を設計できる</li><li>PASONA、PREP等の型を使いこなせる</li><li>Claudeに適切な指示を出し、狙った文章を出力させられる</li><li>LP、ブログ、SNS、メルマガなど、媒体に応じた書き分けができる</li><li>出力をチェックし、品質を担保できる</li></ul>
+<p> </p>
+<div class="callout-box"><p>これらのスキルは、すべて「稼ぐ力」に直結します。</p></div>
+<p>もちろん、まだ完璧ではないかもしれません。実際の案件をこなす中で、スキルはさらに磨かれていきます。大切なのは、「やりながら学ぶ」姿勢です。</p>
+<p>フェーズ1、修了おめでとうございます！フェーズ2では、実際の案件獲得と、より実践的なスキルアップに取り組んでいきましょう。</p>
+<p> </p>
+<p><strong><em>― 1-7. 実践：Claudeで「使える文章」を量産する　完 ―</em></strong></p>
+<p><strong>フェーズ1 完了</strong></p>
+</div>
+</div>
+</body>
+</html>

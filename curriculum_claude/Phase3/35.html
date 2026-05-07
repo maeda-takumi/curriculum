@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>3-5. 「書ける人」から「全体を設計できる人」へ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">3-5. 「書ける人」から「全体を設計できる人」へ</span></h1>
+<hr class="divider">
+<span class="label">フェーズ3｜ライティングを『武器』にする応用編</span>
+</div>
+<div class="card">
+<h2><span class="gradient-text">はじめに：なぜ「書けるだけ」では生き残れないのか</span></h2>
+<p>前章では、文章×画像×動画をつなぐ「設計思考」の基本を学びました。しかし、ここで一つの残酷な真実をお伝えしなければなりません。</p>
+<p>「文章が書ける人」は、これからどんどん増えていきます。</p>
+<p>生成AIの登場により、「そこそこの文章」を書くこと自体のハードルは劇的に下がりました。クラウドソーシングサイトには、AIを使って文章を量産する人が日々増え続けています。SEO記事の単価は下落し、「3,000文字の記事を500円で書きます」という出品が当たり前になりつつあります。</p>
+<p>つまり、「書ける」というだけでは、もはや武器にならない時代が来ているのです。では、どうすればいいのか？</p>
+<div class="callout-box"><p><strong>答えは、「書ける人」から「全体を設計できる人」へと進化することです。</strong></p></div>
+<p>「全体を設計できる人」とは、文章を書くだけでなく、クライアントのビジネス全体を理解し、マーケティング戦略を描き、文章・画像・動画・SNS・広告を統合的にプロデュースできる存在のことです。</p>
+<p> </p>
+<p><strong>【この章で手に入るもの】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>「書ける人」の限界と、その突破方法</li><li>「全体設計者」に必要な思考フレームワーク</li><li>クライアントから「この人に任せたい」と指名される存在になる方法</li><li>月収30万→50万→100万へのキャリアロードマップ</li><li>Claudeを使って設計業務を10倍速くする方法</li><li>今日から始められる実践ワーク</li></ul>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第1章：「書ける人」が必ずぶつかる壁</span></h2>
+<p>「文章が書けるようになった」―これは、副業の世界において非常に大きな一歩です。しかし、多くのライターがある段階で成長の壁にぶつかります。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-1. 「書ける人」が陥る3つの壁</span></h2>
+<p><strong>【壁①：単価の天井】</strong></p>
+<p>「文章を書く」仕事の単価には、明確な天井があります。</p>
+<ul class="bullet-list" class="bullet-list"><li>SEO記事（3,000文字）：3,000円〜10,000円</li><li>SNS投稿文：500円〜2,000円/本</li><li>YouTube台本：3,000円〜10,000円/本</li><li>メルマガ原稿：2,000円〜5,000円/通</li></ul>
+<p> </p>
+<p>たとえスキルが上がっても、「書く」だけの仕事では、SEO記事1本の単価は15,000円〜20,000円が限界。月収20万円を目指すなら、月に20本以上の記事を書く必要があります。これは、副業では現実的に厳しい数字です。</p>
+<p>なぜこうなるのか？「文章を書く」という作業は、クライアントから見ると「替えがきく」仕事だからです。あなたが書かなくても、他の誰かが書けます。そして生成AIが登場した今、その「誰か」の数は爆発的に増えています。</p>
+<p> </p>
+<p><strong>【壁②：作業量の限界】</strong></p>
+<p>単価が頭打ちになると、収入を増やす方法は「もっとたくさん書く」しかなくなります。しかし、人間が1日に書ける文章量には物理的な限界があります。</p>
+<p>● 	平日：2〜3時間 / 休日：5〜6時間 / 月間稼働：約80〜100時間</p>
+<div class="callout-box"><p>文字単価1.5円、月間10万文字を書いたとして、月収は約15万円。これ以上稼ぐには、睡眠時間を削るか、本業に支障が出るレベルまで働くしかありません。「たくさん書く」は戦略ではなく、消耗戦です。</p></div>
+<p> </p>
+<p><strong>【壁③：キャリアの行き詰まり】</strong></p>
+<p>「ライター」というポジションだけでは、キャリアの選択肢が限られます。ずっと記事を書き続ける→消耗 / 専門ライターになる→市場が限定的 / メディア運営に移る→初期投資が必要。「書く」の延長線上では、劇的なキャリアアップは難しいのです。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-2. なぜ「書くだけ」では市場価値が上がらないのか</span></h2>
+<p><strong>【バリューチェーンにおけるライターの位置】</strong></p>
+<p>【上流】戦略策定 → マーケティング設計 → 施策設計 / 【中流】コンテンツ制作 → デザイン → 開発 / 【下流】運用 → 分析 → 改善</p>
+<p>多くのライターが担当しているのは【中流】の「コンテンツ制作」のみ。バリューチェーンの一般原則として、上流に行くほど報酬は高くなります。</p>
+<p> </p>
+<p><strong>【市場価値の構造】</strong></p>
+<p>【市場価値が低い仕事】指示された内容を書く（替えがきく）/ フォーマット通りに埋める（誰でもできる）/ 言われた修正をする（AIでもできる）</p>
+<p>【市場価値が高い仕事】何を書くべきか考える（戦略的判断）/ どう伝えるか設計する（全体設計）/ 成果が出る仕組みを作る（ビジネス設計）/ クライアントの課題を発見する（コンサル的思考）</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-3. クライアントが本当に求めている人材像</span></h2>
+<p><strong>【クライアントの本音】</strong></p>
+<blockquote><p><em>「正直、文章だけ書いてくれるライターさんは足りてます。欲しいのは、うちの商品のことを理解して、LP・SNS・メルマガを一貫した流れで設計してくれる人。バラバラに外注すると、トーンがバラバラになるんです」（化粧品EC企業マーケティング部長）</em></p><p><em>「LPを書いてもらったんですが、SNSとの連携が取れてなくて、ほとんど集客できませんでした。LPだけじゃなくて、全体の流れを一緒に考えてくれる人がいたら…」（個人事業主・コーチング業）</em></p><p><em>「マーケティングのことがよくわからないので、文章を書いてもらうだけじゃなくて、何をどうすればいいか、一緒に考えてくれる人がありがたい。そういう人には、正直もっとお金を払いたい」（中小企業社長）</em></p></blockquote>
+<p> </p>
+<div class="callout-box"><p>クライアントが求めているのは「書ける人」ではなく、「全体を設計できるパートナー」なのです。そして、この「全体を設計できる人」は、圧倒的に不足しています。ここにあなたのチャンスがあります。</p></div>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第2章：「全体設計者」の思考フレームワーク</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-1. 点の仕事・線の仕事・面の仕事</span></h2>
+<p><strong>【点の仕事】「頼まれたものを、頼まれた通りに作る」</strong></p>
+<p>例：SEO記事を1本書く / Instagram投稿文を10本書く。特徴：単価は低い / 替えがきく / クライアントとの関係：作業者</p>
+<p><strong>【線の仕事】「前後の流れを考えて、つながりを設計する」</strong></p>
+<p>例：広告→LP→購入の流れを設計する / SNS投稿10本を、一貫したストーリーで設計する。特徴：単価は中〜高 / クライアントとの関係：アドバイザー</p>
+<p><strong>【面の仕事】「ビジネス全体を俯瞰して、統合的に設計する」</strong></p>
+<p>例：クライアントのマーケティング全体を設計する / LP × SNS × 動画 × メルマガ × 広告を統合設計する。特徴：単価は高い / 替えがきかない / クライアントとの関係：パートナー</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-2. 「鳥の目」「虫の目」「魚の目」で見る</span></h2>
+<p><strong>【鳥の目：全体を俯瞰する視点】</strong></p>
+<p>クライアントのビジネスモデル / ターゲット顧客の所在 / 競合の動き / マーケティング全体の流れ / 文章の前後に何があるか。「このLP、流入元を考えるとファーストビューのメッセージを変えた方がいい」という判断ができるようになる。</p>
+<p><strong>【虫の目：細部を精密に見る視点】</strong></p>
+<p>このコピーは心に刺さるか / CTAの文言は行動を促せるか / 文章のリズムは読みやすいか / ターゲットの言葉遣いに合っているか。多くのライターは「虫の目」が得意です。これは素晴らしい強みです。ただし、虫の目だけでは全体最適ができません。</p>
+<p><strong>【魚の目：流れ・トレンドを読む視点】</strong></p>
+<p>業界トレンドの変化 / ターゲットの悩みの変化 / 競合の新しい施策 / 新しい技術やツールの登場。「今この施策をやるべき」「この流れは今後こうなるから、先手を打ちましょう」という提案ができる。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-3. クライアントのビジネスを理解するためのフレームワーク</span></h2>
+<p><strong>【ビジネス理解の5層モデル】</strong></p>
+<p>【第1層：誰に売るか（ターゲット）】ペルソナの明確化 / ターゲットが抱える悩み、欲求 / 情報収集の行動パターン / 意思決定のプロセス</p>
+<p>【第2層：何を売るか（商品・サービス）】商品の特徴と強み / 競合との違い / 価格帯とその根拠 / 購入後に得られる変化</p>
+<p>【第3層：どこで出会うか（チャネル）】ターゲットがいる場所 / 各チャネルの特性 / チャネルごとの最適なコンテンツ形式</p>
+<p>【第4層：どう購入するか（導線）】認知→興味→検討→購入の流れ / 各段階で必要なコンテンツ / 離脱ポイントと対策</p>
+<p>【第5層：どう継続するか（LTV）】リピート購入の仕組み / 紹介・口コミの設計 / 顧客との長期的な関係構築</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-4. 全体設計者に必要な「問い」の技術</span></h2>
+<p><strong>【作業者の問い vs 設計者の問い】</strong></p>
+<p>【作業者が立てる問い】この記事、何文字書けばいいですか？ / キーワードは何ですか？ / 納期はいつですか？ → 「作業の範囲」に関する問い</p>
+<p>【設計者が立てる問い】このコンテンツで達成したい目的は何ですか？ / この商品を最も必要としているのは誰ですか？ / 競合と比べたとき、最も強い差別化ポイントは何ですか？ / 今の集客の一番のボトルネックはどこですか？ → 「成果を出すため」の問い</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第3章：全体設計に必要な5つのスキルセット</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-1. スキル①：マーケティング全体像の理解</span></h2>
+<p><strong>【最低限理解すべきマーケティングの流れ】</strong></p>
+<p>【認知】ターゲットに存在を知ってもらう。手段：SNS発信、広告、SEO、YouTube</p>
+<p>【興味】「もっと知りたい」と思わせる。手段：SNS投稿、ブログ記事、YouTube動画</p>
+<p>【検討】「買おうかな」と比較検討させる。手段：LP、比較記事、口コミ</p>
+<p>【購入】実際に購入・申込させる。手段：LP、セールスページ、限定オファー</p>
+<p>【継続】リピート購入・長期利用させる。手段：メルマガ、LINE、アフターフォロー</p>
+<p>【紹介】他の人に勧めてもらう。手段：紹介プログラム、口コミ依頼</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-2. スキル②：顧客導線（カスタマージャーニー）の設計力</span></h2>
+<p><strong>【カスタマージャーニーマップの基本構造】</strong></p>
+<p>横軸：認知→興味→検討→購入→継続 / 縦軸：①顧客の行動 ②顧客の思考 ③顧客の感情 ④タッチポイント ⑤コンテンツ ⑥課題・障壁</p>
+<p>このマップを描けるようになると、「この段階で、このコンテンツが必要」「ここにボトルネックがあるから、ここを改善するコンテンツを作ろう」という判断ができるようになります。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-3. スキル③：メディア横断の統合設計力</span></h2>
+<table><thead><tr><th><p><strong>メディア</strong></p></th><th><p><strong>特性</strong></p></th><th><p><strong>向いている段階</strong></p></th><th><p><strong>コンテンツ形式</strong></p></th></tr><tr><th><p>Instagram</p></th><th><p>視覚的、日常的接点</p></th><th><p>認知・興味</p></th><th><p>画像、カルーセル、リール</p></th></tr><tr><th><p>YouTube</p></th><th><p>深い情報提供</p></th><th><p>興味・検討</p></th><th><p>解説動画、体験談</p></th></tr><tr><th><p>Twitter/X</p></th><th><p>速報性、拡散力</p></th><th><p>認知・興味</p></th><th><p>短文、スレッド</p></th></tr><tr><th><p>LP</p></th><th><p>集中的な説得</p></th><th><p>検討・購入</p></th><th><p>セールスライティング</p></th></tr><tr><th><p>メルマガ</p></th><th><p>継続的な関係構築</p></th><th><p>検討・継続</p></th><th><p>教育コンテンツ</p></th></tr><tr><th><p>LINE</p></th><th><p>即時性、開封率高い</p></th><th><p>購入・継続</p></th><th><p>クーポン、限定情報</p></th></tr><tr><th><p>ブログ/SEO</p></th><th><p>長期的な資産</p></th><th><p>認知・興味</p></th><th><p>記事コンテンツ</p></th></tr><tr><th><p>広告</p></th><th><p>即効性、スケール</p></th><th><p>認知</p></th><th><p>広告文、バナー</p></th></tr></thead></table>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-4. スキル④：ディレクション・チーム連携力</span></h2>
+<p><strong>【全体設計者のチーム構成イメージ】</strong></p>
+<p>【あなた（全体設計者）の役割】クライアントとの窓口 / 全体戦略の設計 / 各施策の方向性決め / クオリティチェック / 改善提案</p>
+<p>【チームメンバー（外注パートナー）】デザイナー / 動画編集者 / ライター / 広告運用者 / エンジニア</p>
+<p>全てを自分でやる必要はありません。「何を、誰に、どう頼むか」を設計するのが全体設計者の仕事です。</p>
+<p> </p>
+<p><strong>【ディレクションの基本手順】</strong></p>
+<p>STEP1：全体設計を作る（目的、ターゲット、コアメッセージを定める）</p>
+<p>STEP2：指示書を作る（各メンバーへの指示書を作成。「目的」「ターゲット」「トーン」「参考」を含める）</p>
+<p>STEP3：進捗を管理する（スケジュール共有、途中チェックポイント）</p>
+<p>STEP4：品質をチェックする（各成果物が全体設計と合っているか確認）</p>
+<p>STEP5：統合・調整する（全ての成果物を並べて統合性を確認、クライアントに納品）</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-5. スキル⑤：数値分析・改善提案力</span></h2>
+<p><strong>【知っておくべき基本指標】</strong></p>
+<p>【LP関連】CVR（コンバージョン率）目安1〜5% / 直帰率 目安40〜60% / スクロール率</p>
+<p>【SNS関連】エンゲージメント率 目安3〜10% / リーチ数 / プロフィールアクセス率</p>
+<p>【広告関連】CTR（クリック率）目安1〜3% / CPC（クリック単価）/ CPA（獲得単価）/ ROAS</p>
+<p> </p>
+<p><strong>【数値から改善を提案する実例】</strong></p>
+<blockquote><p><em>「LPのCVRが目標の2%に対して0.5%にとどまっています。分析の結果、ファーストビューでの離脱が70%と高く、ここが最大のボトルネックと考えます。改善案として3つ提案します。①キャッチコピーを、ターゲットの悩みに直結する表現に変更 ②ファーストビュー画像を、ターゲットが共感する人物写真に差替え ③CTAボタンの色と文言を、行動を促す表現に変更。この改善により、CVR 1.5〜2.0%への改善が期待できます」</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第4章：「設計者ポジション」の具体的な構築方法</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-1. ポートフォリオの組み方を変える</span></h2>
+<p><strong>【設計できる人のポートフォリオ（進化型）】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li><em>■ 提供サービス「文章×設計で、売上に直結するコンテンツを統合設計します」</em></li><li><em>■ 実績（成果ベース）</em></li></ul>
+<p><em>Case 1：オンライン講座の集客プロジェクト・課題：月間申込10件を30件に増やしたい ・施策：LP全面リニューアル＋Instagram投稿20本＋広告文設計 ・結果：CVR 0.8%→2.3%、月間申込35件達成 ・担当範囲：全体設計、LP原稿、SNS原稿、広告文、画像構成案</em></p>
+<p><em>■ 料金体系：統合設計パッケージ：150,000円〜 / LP＋画像構成案：80,000円〜 / コンテンツ顧問（月額）：50,000円〜</em></p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-2. 既存クライアントへのアップセル戦略</span></h2>
+<p><strong>【アップセルの具体的な手順】</strong></p>
+<p>STEP1：現在の仕事を完璧にこなす / STEP2：改善ポイントを見つける（「このLPの文章は良いけど、SNSとの連携がない」）/ STEP3：改善案を形にする（「追加料金はいりません、ちょっとした提案です」として提出）/ STEP4：成果を見せる / STEP5：次の案件から「設計込み」で提案する</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-3. 新規クライアントへの「設計者」としてのアプローチ</span></h2>
+<p><strong>【設計者の応募文】</strong></p>
+<blockquote><p><em>「はじめまして。〇〇です。ライティングをベースに、LP×SNS×広告の統合設計をしています。御社の〇〇について拝見しました。現状のLPは〇〇が課題ではないかと感じました。もしよろしければ、LP改善＋SNS連携の設計案をご提案させていただけないでしょうか。過去には、同業種のクライアント様でCVR 0.8%→2.3%に改善した実績があります。まずは30分のヒアリングから始められればと思います」</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-4. 単価交渉のフレームワーク</span></h2>
+<p><strong>【単価交渉の3つの原則】</strong></p>
+<p>【原則①：価格ではなく「価値」で語る】○「このLPで月10件の申込増加を目指します。年間120件×客単価3万円＝年間360万円の売上増。それに対して投資額は15万円です」→ 価格を「投資対効果」に変換する</p>
+<p>【原則②：選択肢を与える】Aプラン（LP原稿のみ）：5万円 / Bプラン（LP＋画像構成案）：10万円 / Cプラン（統合設計フルパッケージ）：15万円 → 比較対象を自分のプラン内に作る</p>
+<p>【原則③：リスクを下げる】「まず5万円でLP原稿を作成し、成果を確認した上で、追加施策を検討しましょう」→ 段階的な提案でリスクを下げる</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第5章：全体設計者のキャリアパスと収入ロードマップ</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-1. 収入ステージ別ロードマップ</span></h2>
+<p><strong>【ステージ1：月収5万〜10万円（副業開始期）】</strong></p>
+<p>期間：1〜3ヶ月目 / やること：クラウドソーシングで実績を積む、基本スキルを固める / 主な案件：SEO記事文字単価1〜2円、SNS投稿文1本1,000〜2,000円 / ポイント：この段階では「点の仕事」でOK。同時に、設計者の視点を持って仕事に取り組む</p>
+<p><strong>【ステージ2：月収10万〜30万円（設計者移行期）】</strong></p>
+<p>期間：3〜6ヶ月目 / やること：「点の仕事」に「線の仕事」を加える。設計込みの案件を1〜2件獲得する / 主な案件：LP原稿＋画像構成案5〜10万円、YouTube台本＋サムネ案1本2〜3万円</p>
+<p><strong>【ステージ3：月収30万〜50万円（設計者確立期）】</strong></p>
+<p>期間：6〜12ヶ月目 / やること：統合設計パッケージを商品化する、継続案件を獲得する / 主な案件：統合設計パッケージ15〜30万円、コンテンツ顧問（月額）5〜10万円</p>
+<p><strong>【ステージ4：月収50万〜100万円（プロデューサー期）】</strong></p>
+<p>期間：1年〜2年目 / やること：マーケティングパートナーとしてのポジション確立、チームを組んで大規模案件に対応 / 主な案件：マーケティング統合支援（月額）30〜50万円、プロジェクト型案件50〜100万円</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-2. 副業と本業のバランス設計</span></h2>
+<p><strong>【副業の時間配分モデル】</strong></p>
+<p>【フェーズA：平日夜＋休日（月40〜60時間）】平日夜2時間×5日 / 休日5時間×2日 / 月間約80時間。月収目標：5万〜15万円</p>
+<p>【フェーズB：効率化後（月30〜50時間で同等以上の収入）】Claudeで作業効率を2倍にする / テンプレート化で定型業務を短縮 / 設計込み案件で単価を上げる。月収目標：15万〜30万円</p>
+<p>【フェーズC：選択の時期（月収30万円〜）】副業継続 / フリーランスに転身 / 法人化を検討。自分のライフスタイルと価値観で決める。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-3. 自分自身のブランドを構築する</span></h2>
+<p><strong>【ブランド構築の4ステップ】</strong></p>
+<p>STEP1：専門領域を決める（「美容業界のマーケティング設計が得意です」「オンライン講座の集客設計が専門です」）</p>
+<p>STEP2：情報発信を始める（X：業界のノウハウを短文で / Instagram：実績やTipsをカルーセルで / note：詳しい事例分析）</p>
+<p>「自分が設計する側の仕事をしているのに、自分の集客を設計できない」は説得力がありません。</p>
+<p>STEP3：実績を可視化する（ビフォーアフターの数字を公開する / クライアントの声を集める）</p>
+<p>STEP4：コミュニティを作る（同業者とのつながり / 紹介が生まれる関係性の構築）</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第6章：Claudeで設計者業務を10倍速くする</span></h2>
+<p>全体設計者の業務は範囲が広いため、Claudeを最大限活用することで、生産性を飛躍的に高めることができます。ここでは、設計者業務に特化したClaudeの活用法とプロンプト集を紹介します。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-1. カスタマージャーニー設計プロンプト</span></h2>
+<p><strong>【プロンプト例】</strong></p>
+<blockquote><p><em>あなたは経験豊富なマーケティングコンサルタントです。以下のビジネスについて、カスタマージャーニーマップを作成してください。</em></p><p><em>【ビジネス概要】・業種：〇〇 ・商品/サービス：〇〇 ・価格帯：〇〇 ・ターゲット：〇〇</em></p><p><em>【出力形式】認知〜紹介の6段階で整理。各段階ごとに：顧客の行動 / 思考 / 感情 / タッチポイント / 必要なコンテンツ / ボトルネック / KPI</em></p><p><em>最後に、このジャーニーで最も重要な改善ポイントを3つ提案してください。</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-2. 競合分析・市場調査プロンプト</span></h2>
+<p><strong>【プロンプト例】</strong></p>
+<blockquote><p><em>あなたは市場調査の専門家です。以下のビジネスについて、競合分析を行ってください。</em></p><p><em>【自社情報】商品/サービス：〇〇 / 特徴：〇〇 / 価格：〇〇 / ターゲット：〇〇</em></p><p><em>【競合情報】競合A：〇〇 / 競合B：〇〇 / 競合C：〇〇</em></p><p><em>【分析項目】1.各社のポジショニング / 2.各社の強み・弱み / 3.各社のコンテンツ戦略 / 4.各社のLP・セールスの特徴 / 5.自社の差別化ポイント提案 / 6.自社が取るべきマーケティング戦略の方向性</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-3. 統合施策提案プロンプト</span></h2>
+<p><strong>【プロンプト例】</strong></p>
+<blockquote><p><em>あなたはマーケティング統合設計のプロフェッショナルです。以下の条件で、統合マーケティング施策を設計してください。</em></p><p><em>【プロジェクト概要】クライアント業種：〇〇 / 目標：月間〇〇件の申込（現状：〇〇件）/ 予算：月額〇〇万円 / 期間：〇ヶ月</em></p><p><em>【設計項目】1.コアメッセージ（3案）/ 2.LP設計案 / 3.SNS戦略 / 4.広告戦略 / 5.メールマーケティング設計 / 6.導線設計図 / 7.KPI設計 / 8.スケジュール</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-4. クライアント提案書生成プロンプト</span></h2>
+<p><strong>【プロンプト例】</strong></p>
+<blockquote><p><em>以下の情報を元に、クライアントへの提案書を作成してください。プロフェッショナルで説得力のある文体でお願いします。</em></p><p><em>【クライアント情報】業種：〇〇 / 現状の課題：〇〇 / 目標：〇〇 / 予算感：〇〇</em></p><p><em>【提案書の構成】1.エグゼクティブサマリー / 2.現状分析 / 3.提案コンセプト / 4.具体的な施策 / 5.期待される成果 / 6.納品物一覧 / 7.スケジュール / 8.料金（3プラン：松竹梅）/ 9.実績紹介 / 10.次のステップ</em></p></blockquote>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-5. 改善提案レポート生成プロンプト</span></h2>
+<p><strong>【プロンプト例】</strong></p>
+<blockquote><p><em>以下のデータを元に、改善提案レポートを作成してください。</em></p><p><em>【現在の数値】LP：PV〇〇、CVR〇〇% / SNS：フォロワー〇〇人、エンゲージメント率〇〇% / 広告：CTR〇〇%、CPC〇〇円</em></p><p><em>【出力形式】1.サマリー / 2.各施策の詳細分析 / 3.課題の特定 / 4.改善提案（優先順位付き）/ 5.次月のアクションプラン</em></p></blockquote>
+<p> </p>
+<p>これらのプロンプトを活用することで、設計者としての業務効率は劇的に向上します。重要なのは、Claudeの出力をそのまま使うのではなく、自分の経験と判断で「編集」することです。Claudeは叩き台を高速に作るツールであり、最終的な品質を決めるのはあなた自身です。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第7章：実践ワーク ― 今日から始める設計者への第一歩</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-1. ワーク①：自分のスキル棚卸し</span></h2>
+<p>以下のスキルリストについて、自分の習熟度を5段階で自己評価してください（1:未経験 → 5:得意）</p>
+<ul class="bullet-list" class="bullet-list"><li><strong>■ ライティングスキル</strong></li><li>SEOライティング / □ セールスライティング / □ SNSライティング / □ 動画台本ライティング / □ メルマガライティング / □ 広告コピーライティング</li><li><strong>■ 設計スキル</strong></li><li>マーケティング全体像の理解 / □ カスタマージャーニーの設計 / □ メディア横断の統合設計 / □ 導線設計 / □ コンテンツ戦略の立案</li><li><strong>■ ビジネススキル</strong></li><li>ヒアリング力 / □ 提案書の作成 / □ 数値分析・改善提案 / □ プロジェクト管理 / □ チームディレクション</li><li><strong>■ ツールスキル</strong></li><li>Claude活用 / □ Canva/画像制作 / □ アクセス解析（GA4など）/ □ SNS分析ツール / □ プロジェクト管理ツール</li></ul>
+<p> </p>
+<p>評価が3以上のスキルが「現在の強み」/ 評価が2以下のスキルが「伸ばすべき領域」。伸ばすべき領域から優先順位をつける（全部一度にやる必要はない）。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-2. ワーク②：設計者視点の提案書を書いてみる</span></h2>
+<p><strong>【お題：架空クライアントへの提案書】</strong></p>
+<p>業種：オンラインヨガ教室 / 商品：月額5,000円のオンラインヨガレッスン / ターゲット：30〜40代の働く女性 / 現状：LP（月間申込5件）、Instagram（フォロワー200人）、広告未実施 / 目標：月間申込30件 / 予算：月額20万円</p>
+<p><strong>【作成してほしいもの】</strong></p>
+<p>1.	現状分析（課題を3つ以内で整理）</p>
+<p>2.	提案コンセプト（全体の方向性を1文で）</p>
+<p>3.	具体的な施策（3つ）</p>
+<p>4.	導線設計図（テキストで表現）</p>
+<p>5.	スケジュール（3ヶ月分）</p>
+<p>6.	料金プラン（3段階）</p>
+<p>7.	期待される成果</p>
+<p> </p>
+<p>ポイント：Claudeで叩き台を作り、自分で編集する。「なぜその施策なのか」の根拠を必ず含める。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-3. ワーク③：既存案件を「設計者視点」で分析する</span></h2>
+<p>過去に自分が担当した案件（または公開されている事例）を選び、設計者の視点で再分析します。</p>
+<p><strong>■ 全体設計の観点</strong></p>
+<p>この案件の「目的」は何だったか？ / ターゲットは明確だったか？ / コアメッセージは一貫していたか？ / 前後の導線は設計されていたか？</p>
+<p><strong>■ メディア連携の観点</strong></p>
+<p>複数のメディアが連携していたか？ / 各メディアの役割は明確だったか？ / メディア間のメッセージは統一されていたか？</p>
+<p><strong>■ 改善の観点</strong></p>
+<p>もし設計者としてこの案件を担当していたら、何を追加提案するか？ / ボトルネックはどこにあったか？ / どの施策を追加すれば、成果は上がったか？</p>
+<p> </p>
+<p>分析結果を元に「改善提案書」を作成する：現状の課題（3つ）/ 改善提案（3つ）/ 期待される成果。これを繰り返すことで、設計者としての「分析眼」が鍛えられます。</p>
+<p> </p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">まとめ：「全体を設計できる人」への道は、今日始まる</span></h2>
+<p><strong>【この章で学んだこと】</strong></p>
+<ul class="bullet-list" class="bullet-list"><li>「書ける人」が必ずぶつかる3つの壁（単価の天井、作業量の限界、キャリアの行き詰まり）</li><li>バリューチェーンにおけるポジション移動の重要性</li><li>点の仕事→線の仕事→面の仕事へのシフト</li><li>鳥の目・虫の目・魚の目の3つの視点</li><li>ビジネス理解の5層モデル</li><li>全体設計に必要な5つのスキルセット</li><li>設計者ポジションの具体的な構築方法</li><li>収入ステージ別ロードマップ（月5万→100万）</li><li>Claudeで設計業務を加速するプロンプト集</li><li>今日から始められる3つの実践ワーク</li></ul>
+<p> </p>
+<p><strong>【最も重要なメッセージ】</strong></p>
+<p>全体設計者になるために、すべてのスキルを完璧にする必要はありません。必要なのは、「全体を見る視点」を持つこと。文章を書くとき、常にこう自問してください。「この文章は、全体の中でどんな役割を果たしているか？」</p>
+<p> </p>
+<p><strong>【明日からのアクションプラン】</strong></p>
+<p>【今日やること】ワーク①（スキル棚卸し）に取り組む / 自分が「設計者」として目指す方向性を1文で書く</p>
+<p>【今週やること】ワーク②（提案書作成）に取り組む / Claudeの設計プロンプトを試してみる</p>
+<p>【今月やること】既存クライアントに1つ、追加提案をしてみる / ポートフォリオを「成果ベース」に書き換え始める / ワーク③（既存案件の分析）に取り組む</p>
+<p>【3ヶ月後の目標】「設計込み」の案件を1件獲得する / その実績をポートフォリオに追加する / 設計者としてのポジションを確立し始める</p>
+<p> </p>
+<p>「書ける人」はたくさんいます。しかし、「全体を設計できる人」は圧倒的に不足しています。だからこそ、そのポジションを目指す価値があるのです。</p>
+<p>次章「3-6. クライアントワークの幅を広げる考え方」では、この設計者ポジションをベースに、実際のクライアントワークをどう拡大していくかを学びます。</p>
+<p> </p>
+<p><strong><em>― 3-5. 「書ける人」から「全体を設計できる人」へ　完 ―</em></strong></p>
+</div>
+</div>
+</body>
+</html>

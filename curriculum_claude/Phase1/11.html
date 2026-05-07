@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>1-1. Claudeを「ライティングアシスタント」にする基本操作</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="card card--title">
+    <div class="doc-subtitle"><span class="gradient-text">AI副業スクール｜フェーズ1：Claude×ライティング基礎構築編</span></div>
+    <h1><span class="gradient-text">1-1. Claudeを「ライティングアシスタント」にする基本操作</span></h1>
+    <hr class="divider">
+    <span class="label">フェーズ1</span>
+  </div>
+
+  <div class="card">
+    <h2><span class="gradient-text">はじめに：Claudeは「秘書」ではなく「アシスタント」</span></h2>
+    <p>フェーズ1へようこそ。ここからは、実際にClaudeを使ってライティングを行う実践編に入ります。</p>
+    <p>多くの人が最初に犯す間違いがあります。それは、Claudeを「秘書」のように扱うことです。</p>
+    <p>秘書とアシスタントの違いは何でしょうか？秘書は「丸投げして完成品を受け取る」存在です。一方、アシスタントは「一緒に作業する」パートナーです。Claudeは後者、つまり「ライティングアシスタント」として使うべきです。</p>
+
+    <h3>秘書として使った場合（失敗例）</h3>
+    <blockquote>
+      <p>ユーザー：「ダイエットサプリの記事を3,000文字で書いて」</p>
+      <p>Claude：（一般的な内容の記事を生成）</p>
+      <p>ユーザー：（そのまま納品）</p>
+      <p>結果：クライアントから「ネットにある内容と同じ。独自性がない」と却下される。</p>
+    </blockquote>
+
+    <h3>アシスタントとして使った場合（成功例）</h3>
+    <blockquote>
+      <p>ユーザー：「40代女性向けダイエットサプリの記事を書きたい。まず、ターゲットの悩みを5つリストアップして」</p>
+      <p>Claude：（5つの悩みをリスト化）</p>
+      <p>ユーザー：「この中の『代謝低下』に焦点を当てた構成案を3つ出して」</p>
+      <p>Claude：（3つの構成案を提示）</p>
+      <p>ユーザー：「構成案2を元に、導入部分だけ書いて」</p>
+      <p>Claude：（導入部分を生成）</p>
+      <p>ユーザー：（チェックして修正指示）</p>
+      <p>結果：クライアントから「ターゲットに刺さる内容。このまま使います」と高評価。</p>
+    </blockquote>
+
+    <div class="callout-box">
+      <p>アシスタントとして使う場合、あなたが「設計」し、Claudeが「実行」します。この役割分担が、プロとアマチュアの差を生みます。</p>
+    </div>
+
+    <p>この章では、Claudeを最高のライティングアシスタントにするための基本操作を学びます。具体的には以下の4つです。</p>
+    <ul class="bullet-list">
+      <li>Claudeの基本的な使い方（画面操作から設定まで）</li>
+      <li>ライティングに特化した使い方（7つの基本パターン）</li>
+      <li>実践ワーク（実際に手を動かして覚える）</li>
+      <li>よくある失敗と対処法</li>
+    </ul>
+    <p>この章を終える頃には、あなたはClaudeを自在に操り、質の高いライティングができるようになっています。準備はいいですか？それでは始めましょう。</p>
+  </div>
+
+
+
+<div class="card">
+  <h2><span class="gradient-text">第1章：Claudeの基本操作をマスターする</span></h2>
+  <p>まず、Claudeの基本的な使い方を確認しましょう。「もう知ってるよ」と思うかもしれませんが、プロとして使うための設定やテクニックは、意外と知られていません。</p>
+
+  <h3>1-1. アカウント設定と推奨プラン</h3>
+
+  <h3>無料版 vs 有料版（Claude Pro）</h3>
+  <p>結論から言うと、本気でライティングで稼ぐなら有料版（Claude Pro）は必須です。理由を説明します。</p>
+
+  <h3>無料版の制限</h3>
+  <ul class="bullet-list">
+    <li>利用回数に制限がある（1日あたりのメッセージ数に上限）</li>
+    <li>混雑時は制限がかかりやすい</li>
+    <li>高度なプロジェクト管理機能が使えない</li>
+    <li>Claudeの最新・最上位モデルへのアクセスが制限される</li>
+  </ul>
+
+  <h3>有料版（Claude Pro）のメリット</h3>
+  <ul class="bullet-list">
+    <li>利用回数の制限が大幅に緩い</li>
+    <li>優先アクセス（混雑時でも安定して使える）</li>
+    <li>プロジェクト機能でカスタム指示を設定できる</li>
+    <li>最新モデル（Claude Sonnet・Opus）を最大限に活用できる</li>
+  </ul>
+
+  <h3>投資対効果</h3>
+  <p>Claude Proは月額20ドル（約3,000円）です。これは高いでしょうか？考えてみてください：</p>
+  <ul class="bullet-list">
+    <li>1記事3,000円の案件なら、1件受注すれば回収できる</li>
+    <li>出力品質の差は、時給換算で3倍以上の効率化</li>
+    <li>クライアントに高品質な成果物を納品でき、継続依頼につながる</li>
+  </ul>
+
+  <div class="callout-box">
+    <p>月3,000円の投資で、月収が何万円も増える可能性があります。これは「コスト」ではなく<strong>「投資」</strong>です。</p>
+  </div>
+</div>
+<div class="card">
+  <h2><span class="gradient-text">1-2. 画面の見方と基本操作</span></h2>
+  <p>Claudeの画面は非常にシンプルですが、知っておくべきポイントがいくつかあります。</p>
+
+  <h3>画面の構成</h3>
+
+  <ol class="numbered-list">
+    <li>
+      <strong>左サイドバー（チャット履歴）</strong><br>
+      過去の会話が時系列で表示されます。重要な会話はタイトルを付けて分かりやすくしましょう。例：「ダイエットサプリ記事_田中様案件」のように、案件ごとに整理すると後で見返しやすいです。
+    </li>
+    <li>
+      <strong>プロジェクト機能</strong><br>
+      Claude Proでは「プロジェクト」として案件ごとにチャットをまとめて管理できます。同じプロジェクト内では過去の会話の文脈が引き継がれ、より一貫性のある出力が得られます。ライティング案件では必ずプロジェクトを活用してください。
+    </li>
+    <li>
+      <strong>入力欄（下部）</strong><br>
+      ここにあなたの指示（プロンプト）を入力します。Enterキーで送信、Shift+Enterで改行できます。長い指示を書く場合は、Shift+Enterで改行しながら整理して書きましょう。
+    </li>
+  </ol>
+
+  <h3>知っておくべき便利機能</h3>
+
+  <ul class="bullet-list">
+    <li>
+      <strong>コピーボタン：</strong>Claudeの回答の下に「コピー」ボタンがあります。これをクリックすると、回答がクリップボードにコピーされ、そのまま文書に貼り付けられます。
+    </li>
+    <li>
+      <strong>再生成（再試行）：</strong>回答が気に入らない場合、再試行することで別の回答を生成できます。ただし、プロは再生成に頼りません。なぜなら、指示を改善する方が効率的だからです。
+    </li>
+    <li>
+      <strong>会話の継続と修正：</strong>前の回答に対して追加指示を出すことができます。試行錯誤する際に非常に便利です。
+    </li>
+  </ul>
+
+  <div class="callout-box">
+    <p>💡 <strong>修正指示の例：</strong>「もう少し共感的なトーンで修正して」「第2段落だけ書き直して」のように、具体的な箇所と方向性を伝えると、より意図通りの出力が得られます。</p>
+  </div>
+</div>
+<div class="card">
+  <h2><span class="gradient-text">1-3. プロが必ず設定する3つのこと</span></h2>
+  <p>ライティングで稼ぐなら、以下の3つを必ず設定してください。</p>
+
+  <h3>設定1：モデルの選択</h3>
+  <p>Claudeには複数のモデルがあります。ライティングには最新の高性能モデル（Claude Sonnet以上）を使いましょう。モデルによる出力品質の差は想像以上に大きいです。</p>
+
+  <div class="callout-box">
+    <p><strong>【具体例】同じ指示でモデルを使い分けた場合</strong><br>
+    <em>指示：「40代女性向けダイエットサプリの導入文を200文字で書いて」</em></p>
+  </div>
+
+  <p><strong>軽量モデルの出力：</strong></p>
+  <blockquote>
+    <p>「ダイエットは大変ですよね。40代になると痩せにくくなります。でも、このサプリなら大丈夫です。」</p>
+  </blockquote>
+  <p>→ 一般的で平凡。独自性がない。</p>
+
+  <p><strong>高性能モデル（Claude Sonnet以上）の出力：</strong></p>
+  <blockquote>
+    <p>「40歳を過ぎたら、若い頃のように簡単に体重が落ちなくなった...そんな悩み、ありませんか？実は、40代の体重増加の最大の原因は『基礎代謝の低下』。でも、正しい方法を知れば、年齢に関係なく理想の体型を取り戻せます。」</p>
+  </blockquote>
+  <p>→ 具体的で共感を呼ぶ。ターゲットに刺さる。</p>
+
+  <h3>設定2：チャット履歴の整理ルールを決める</h3>
+  <p>案件ごとにチャットを分けましょう。推奨する命名ルールは以下の2パターンです。</p>
+  <ul class="bullet-list">
+    <li><strong>【案件名】＋【クライアント名】＋【作業内容】</strong><br>例：「ダイエットサプリ記事_田中様_導入部作成」</li>
+    <li><strong>【日付】＋【ジャンル】＋【内容】</strong><br>例：「2024-01-15_美容_Instagram投稿案」</li>
+  </ul>
+  <p>こうすることで、後で「あの時の指示、なんだっけ？」となった時に、すぐに見つけられます。</p>
+
+  <h3>設定3：プロジェクトのカスタム指示を活用する</h3>
+  <p>ClaudeのProプランでは「プロジェクト」機能でカスタム指示（システムプロンプト）を設定できます。これは、そのプロジェクト内の会話すべてに自動的に適用される指示です。</p>
+
+  <div class="callout-box">
+    <p><strong>【ライティング用のカスタム指示例】</strong><br>
+    <em>「私はプロのライターです。クライアントから依頼を受けて、様々なジャンルの記事やコンテンツを作成しています。専門的だが分かりやすい文章で回答してください。不必要な前置きは省略し、具体例を多く含めてください。文章は簡潔に、要点を明確にしてください。」</em></p>
+  </div>
+
+  <p>この設定をしておくと、Claudeはあなたがプロのライターであることを前提に回答します。初心者向けの説明が省略され、より実践的な回答が得られます。</p>
+</div>
+<div class="card">
+  <h2><span class="gradient-text">第2章：ライティングに特化した7つの基本パターン</span></h2>
+  <p>Claudeをライティングアシスタントとして使う場合、7つの基本パターンがあります。この7つを使いこなせば、ほとんどのライティング業務に対応できます。</p>
+
+  <h3>パターン1：アイデア出し</h3>
+
+  <p><strong>【使う場面】</strong></p>
+  <p>記事のテーマが決まらない、切り口が思いつかない、タイトル案を複数出したい、など。</p>
+
+  <div class="callout-box">
+    <p>❌ <strong>悪い指示の例</strong><br>「ダイエットの記事のアイデアを出して」<br><em>→ 抽象的すぎて、一般的なアイデアしか出ない。</em></p>
+  </div>
+
+  <div class="callout-box">
+    <p>✅ <strong>良い指示の例</strong><br>「40代女性向けのダイエットサプリの記事を書きます。以下の条件で、記事のタイトル案を10個出してください：</p>
+    <ul class="bullet-list">
+      <li>ターゲット：40代女性、運動苦手、食事制限したくない</li>
+      <li>訴求ポイント：代謝サポート、1日1粒、食事制限なし</li>
+      <li>目的：商品ページへの誘導</li>
+      <li>トーン：共感的、希望を与える</li>
+    </ul>
+    <p><em>→ 具体的な条件があるので、ターゲットに刺さるアイデアが出る。</em></p>
+  </div>
+
+  <p><strong>【実際の出力例】</strong></p>
+  <ol class="numbered-list">
+    <li>「40歳を過ぎたら痩せにくい...」は本当？代謝低下の真実と解決法</li>
+    <li>もう諦めない！40代からの無理しないダイエット成功法</li>
+    <li>食事制限なしで-6kg達成！40代女性が選ぶべきダイエット方法</li>
+    <li>「若い頃は痩せたのに...」その悩み、代謝サポートで解決できます</li>
+    <li>1日1粒で変わる！40代の体を内側から変えるダイエット習慣</li>
+  </ol>
+  <p>（以下省略）</p>
+</div>
+<div class="card">
+  <h2><span class="gradient-text">パターン2：構成案作成</span></h2>
+
+  <h3>【使う場面】</h3>
+  <p>記事の全体構成を考える、章立てを決める、論理的な流れを作る、など。</p>
+
+  <h3>【良い指示の例】</h3>
+  <blockquote>
+    <p>「以下のタイトルで3,000文字の記事を書きます。構成案を作ってください：</p>
+    <p>タイトル：『40歳を過ぎたら痩せにくい...』は本当？代謝低下の真実と解決法</p>
+    <p>ターゲット：40代女性<br>
+    目的：ダイエットサプリの商品ページへ誘導</p>
+    <p>構成の要件：<br>
+    ・導入で共感を得る<br>
+    ・問題の原因を科学的に説明<br>
+    ・解決策を3つ提示<br>
+    ・最後にCTAを配置<br>
+    ・各セクションの文字数の目安も示して」</p>
+  </blockquote>
+
+  <h3>【実際の出力例】</h3>
+  <div class="callout-box">
+    <p><strong>■ 導入（400文字）</strong><br>
+    ・40代の体重増加の悩みに共感<br>
+    ・「痩せにくい」は気のせいではないことを示唆</p>
+
+    <p><strong>■ 第1章：40代で痩せにくくなる本当の理由（800文字）</strong><br>
+    ・基礎代謝の低下について科学的に説明<br>
+    ・データや研究結果を引用<br>
+    ・「だから仕方ない」ではなく「対処できる」と希望を与える</p>
+
+    <p><strong>■ 第2章：代謝を上げる3つの方法（1,200文字）</strong><br>
+    　方法1：食事のタイミングと質（400文字）<br>
+    　方法2：日常的な運動習慣（400文字）<br>
+    　方法3：代謝サポート成分の活用（400文字）</p>
+
+    <p><strong>■ 第3章：無理なく続けるコツ（400文字）</strong><br>
+    ・完璧を目指さない / 小さな成功を積み重ねる / サポートツールを活用する</p>
+
+    <p><strong>■ まとめ＋CTA（200文字）</strong><br>
+    ・40代でも痩せられることを再確認<br>
+    ・今日から始められるアクションを提示<br>
+    ・商品ページへの自然な誘導</p>
+  </div>
+</div>
+<div class="card">
+  <h2><span class="gradient-text">パターン3：下書き生成</span></h2>
+
+  <h3>【使う場面】</h3>
+  <p>構成が決まったら、セクションごとに下書きを生成する。</p>
+
+  <h3>【重要なポイント】</h3>
+  <div class="callout-box">
+    <p>一度に全文を書かせない！セクションごとに生成し、チェックしながら進める。これがプロとアマの最大の違いです。</p>
+  </div>
+
+  <h3>【良い指示の例】</h3>
+  <blockquote>
+    <p>「先ほどの構成案の『導入（400文字）』部分を書いてください。</p>
+    <p>条件：</p>
+  </blockquote>
+  <ul class="bullet-list">
+    <li>40代女性の体重増加の悩みに共感する内容</li>
+    <li>「私のことだ」と思わせる具体的な描写</li>
+    <li>最後に「実は...」と続く展開で興味を引く</li>
+    <li>トーン：優しく、共感的に」</li>
+  </ul>
+</div>
+<div class="card">
+  <h2><span class="gradient-text">パターン4：リライト・改善</span></h2>
+
+  <h3>使う場面</h3>
+  <p>生成された文章を改善する、トーンを変える、分かりやすくする、など。</p>
+
+  <h3>良い指示の例</h3>
+  <blockquote>
+    <p>「以下の文章を、より共感を呼ぶ表現にリライトしてください：</p>
+    <p>『40代になると代謝が低下します。これが体重増加の原因です。』</p>
+    <p>改善の方向性：読者が「私のことだ」と思える具体的な描写を加える。「代謝が低下します」という事実の羅列ではなく、読者の実感に寄り添う。文章のリズムを良くする。」</p>
+  </blockquote>
+
+  <h3>実際の出力例</h3>
+  <div class="callout-box">
+    <p>「若い頃は、少し食事を減らせばすぐに体重が戻ったのに...。40歳を過ぎたら、何をしても痩せない。鏡を見るたびにため息が出る。実は、これ、あなたのせいではありません。40代の体は、20代とは根本的に違うのです。」</p>
+  </div>
+</div>
+<div class="card">
+  <h2><span class="gradient-text">パターン5：要約・抽出</span></h2>
+  <h3>【使う場面】</h3>
+  <p>長い文章を短くする、重要なポイントだけ抽出する、など。</p>
+  <h3>【良い指示の例】</h3>
+  <blockquote>
+    <p>「以下の3,000文字の記事を、SNS投稿用に200文字に要約してください：</p>
+    <p>（記事全文を貼り付け）</p>
+    <p>条件：</p>
+  </blockquote>
+  <ul class="bullet-list">
+    <li>最も重要なメッセージを残す</li>
+    <li>数字やデータがあれば必ず含める</li>
+    <li>最後に行動を促す一文を入れる」</li>
+  </ul>
+</div>
+<div class="card">
+  <h2><span class="gradient-text">パターン6：形式変換</span></h2>
+
+  <h3>【使う場面】</h3>
+  <p>ブログ記事をメルマガに、長文記事をSNS投稿に、など形式を変える。</p>
+
+  <h3>【良い指示の例】</h3>
+  <blockquote>
+    <p>「以下のブログ記事を、メルマガ形式に変換してください：</p>
+    <p>（記事全文を貼り付け）</p>
+    <p>変換の要件：</p>
+  </blockquote>
+  <ul class="bullet-list">
+    <li>冒頭に読者への呼びかけを追加</li>
+    <li>親しみやすいトーンに調整</li>
+    <li>最後にCTA（メールでの問い合わせ誘導）を追加</li>
+    <li>メルマガらしい「追伸」を入れる」</li>
+  </ul>
+
+  <div class="callout-box">
+    <p>📌 形式変換では「変換先の媒体の特徴」と「追加・調整すべき要素」を明示することで、媒体に合ったアウトプットが得られます。</p>
+  </div>
+</div>
+<div class="card">
+  <h2><span class="gradient-text">パターン7：校正・チェック</span></h2>
+
+  <h3>使う場面</h3>
+  <p>誤字脱字のチェック、文法の確認、表現の統一、など。</p>
+
+  <h3>良い指示の例</h3>
+  <blockquote>
+    <p>以下の文章をチェックしてください：<br>
+    （文章を貼り付け）<br><br>
+    チェック項目：<br>
+    ・誤字脱字<br>
+    ・文法の誤り<br>
+    ・表現の統一（ですます調/である調が混在していないか）<br>
+    ・分かりにくい表現<br>
+    ・冗長な部分<br><br>
+    問題があれば指摘し、修正案を提示してください。</p>
+  </blockquote>
+
+  <h2><span class="gradient-text">まとめ：7つのパターンの使い分け</span></h2>
+
+  <ol class="numbered-list">
+    <li><strong>アイデア出し</strong> → 最初のブレストに</li>
+    <li><strong>構成案作成</strong> → 全体の設計に</li>
+    <li><strong>下書き生成</strong> → セクションごとの執筆に</li>
+    <li><strong>リライト・改善</strong> → 質の向上に</li>
+    <li><strong>要約・抽出</strong> → 別用途への転用に</li>
+    <li><strong>形式変換</strong> → 媒体を変える時に</li>
+    <li><strong>校正・チェック</strong> → 最終確認に</li>
+  </ol>
+
+  <div class="callout-box">
+    <p>この7つを使い分けることで、ライティング業務のほとんどをカバーできます。</p>
+  </div>
+</div>
+<div class="card">
+  <h2><span class="gradient-text">第3章：実践ワーク ─ 実際に手を動かして覚える</span></h2>
+  <p>ここからは、実際にClaudeを使って、7つのパターンを体験します。読むだけでなく、必ず自分でも試してください。</p>
+
+  <h3>ワーク1：アイデア出しを実践する</h3>
+  <div class="callout-box">
+    <p>【課題】ダイエット記事のタイトル案を10個出す</p>
+  </div>
+  <p>実際にClaudeを開いて、以下の指示を入力してください。そして、出力結果を確認し、自分なりに改善点を考えてください。このプロセスを繰り返すことで、効果的な指示の出し方が身につきます。</p>
+  <h3>【推奨する指示文】</h3>
+  <blockquote>
+    <p>（ここに具体的な指示文の例を記載）</p>
+  </blockquote>
+  <h3>【ポイント】</h3>
+  <p>このワークで重要なのは、指示を具体的にすることです。抽象的な指示では、期待する出力は得られません。</p>
+
+  <h3>ワーク2：構成案作成を実践する</h3>
+  <div class="callout-box">
+    <p>【課題】3,000文字の記事構成を作る</p>
+  </div>
+  <p>実際にClaudeを開いて、以下の指示を入力してください。そして、出力結果を確認し、自分なりに改善点を考えてください。このプロセスを繰り返すことで、効果的な指示の出し方が身につきます。</p>
+  <h3>【推奨する指示文】</h3>
+  <blockquote>
+    <p>（ここに具体的な指示文の例を記載）</p>
+  </blockquote>
+  <h3>【ポイント】</h3>
+  <p>このワークで重要なのは、指示を具体的にすることです。抽象的な指示では、期待する出力は得られません。</p>
+</div>
+<div class="card">
+  <h2><span class="gradient-text">ワーク3：下書き生成を実践する</span></h2>
+  <h3>【課題】導入部分（400文字）を書く</h3>
+  <p>実際にClaudeを開いて、以下の指示を入力してください。そして、出力結果を確認し、自分なりに改善点を考えてください。このプロセスを繰り返すことで、効果的な指示の出し方が身につきます。</p>
+  <div class="callout-box">
+    <p><strong>【推奨する指示文】</strong><br>（ここに具体的な指示文の例を記載）</p>
+  </div>
+  <blockquote>
+    <p><strong>【ポイント】</strong>このワークで重要なのは、指示を具体的にすることです。抽象的な指示では、期待する出力は得られません。</p>
+  </blockquote>
+
+  <h2><span class="gradient-text">ワーク4：リライト・改善を実践する</span></h2>
+  <h3>【課題】平凡な文章を魅力的にする</h3>
+  <p>実際にClaudeを開いて、以下の指示を入力してください。そして、出力結果を確認し、自分なりに改善点を考えてください。このプロセスを繰り返すことで、効果的な指示の出し方が身につきます。</p>
+  <div class="callout-box">
+    <p><strong>【推奨する指示文】</strong><br>（ここに具体的な指示文の例を記載）</p>
+  </div>
+  <blockquote>
+    <p><strong>【ポイント】</strong>このワークで重要なのは、指示を具体的にすることです。抽象的な指示では、期待する出力は得られません。</p>
+  </blockquote>
+</div>
+<div class="card">
+  <h2><span class="gradient-text">ワーク5：要約・抽出を実践する</span></h2>
+  <h3>【課題】3,000文字を200文字に要約</h3>
+  <p>実際にClaudeを開いて、以下の指示を入力してください。そして、出力結果を確認し、自分なりに改善点を考えてください。このプロセスを繰り返すことで、効果的な指示の出し方が身につきます。</p>
+  <h3>【推奨する指示文】</h3>
+  <blockquote><p>（ここに具体的な指示文の例を記載）</p></blockquote>
+  <div class="callout-box"><p><strong>【ポイント】</strong>　このワークで重要なのは、指示を具体的にすることです。抽象的な指示では、期待する出力は得られません。</p></div>
+
+  <h2><span class="gradient-text">ワーク6：形式変換を実践する</span></h2>
+  <h3>【課題】ブログ記事をメルマガに変換</h3>
+  <p>実際にClaudeを開いて、以下の指示を入力してください。そして、出力結果を確認し、自分なりに改善点を考えてください。このプロセスを繰り返すことで、効果的な指示の出し方が身につきます。</p>
+  <h3>【推奨する指示文】</h3>
+  <blockquote><p>（ここに具体的な指示文の例を記載）</p></blockquote>
+  <div class="callout-box"><p><strong>【ポイント】</strong>　このワークで重要なのは、指示を具体的にすることです。抽象的な指示では、期待する出力は得られません。</p></div>
+</div>
+<div class="card">
+  <h2><span class="gradient-text">ワーク7：校正・チェックを実践する</span></h2>
+  <h3>【課題】誤字脱字と表現をチェック</h3>
+  <p>実際にClaudeを開いて、以下の指示を入力してください。そして、出力結果を確認し、自分なりに改善点を考えてください。このプロセスを繰り返すことで、効果的な指示の出し方が身につきます。</p>
+
+  <h3>【推奨する指示文】</h3>
+  <blockquote><p>（ここに具体的な指示文の例を記載）</p></blockquote>
+
+  <div class="callout-box">
+    <p><strong>【ポイント】</strong>このワークで重要なのは、指示を具体的にすることです。抽象的な指示では、期待する出力は得られません。</p>
+  </div>
+
+  <h2><span class="gradient-text">第4章：よくある失敗と対処法</span></h2>
+  <p>初心者が必ず陥る5つの失敗パターンと、その対処法を紹介します。</p>
+</div>
+<div class="card">
+  <h2><span class="gradient-text">失敗1：丸投げしてしまう</span></h2>
+  <p>多くの初心者がこの失敗をします。丸投げしてしまう状態では、質の高い成果物は作れません。</p>
+  <div class="callout-box">
+    <p><strong>【対処法】セクションごとに分けて指示する</strong></p>
+    <p>具体的には、（対処法の詳細説明）。この方法を使えば、確実に質が向上します。</p>
+  </div>
+
+  <h2><span class="gradient-text">失敗2：指示が抽象的すぎる</span></h2>
+  <p>多くの初心者がこの失敗をします。指示が抽象的すぎる状態では、質の高い成果物は作れません。</p>
+  <div class="callout-box">
+    <p><strong>【対処法】5W1Hを明確にする</strong></p>
+    <p>具体的には、（対処法の詳細説明）。この方法を使えば、確実に質が向上します。</p>
+  </div>
+
+  <h2><span class="gradient-text">失敗3：出力をそのまま使う</span></h2>
+  <p>多くの初心者がこの失敗をします。出力をそのまま使う状態では、質の高い成果物は作れません。</p>
+  <div class="callout-box">
+    <p><strong>【対処法】必ず自分でチェック・編集する</strong></p>
+    <p>具体的には、（対処法の詳細説明）。この方法を使えば、確実に質が向上します。</p>
+  </div>
+</div>
+<div class="card">
+  <h2><span class="gradient-text">失敗4：再生成ボタンに頼る</span></h2>
+  <p>多くの初心者がこの失敗をします。再生成ボタンに頼る状態では、質の高い成果物は作れません。</p>
+  <div class="callout-box"><p><strong>【対処法】指示を改善する</strong><br>具体的には、（対処法の詳細説明）。この方法を使えば、確実に質が向上します。</p></div>
+
+  <h2><span class="gradient-text">失敗5：会話の文脈を無視する</span></h2>
+  <p>多くの初心者がこの失敗をします。会話の文脈を無視する状態では、質の高い成果物は作れません。</p>
+  <div class="callout-box"><p><strong>【対処法】関連する情報を毎回含める</strong><br>具体的には、（対処法の詳細説明）。この方法を使えば、確実に質が向上します。</p></div>
+
+  <h2><span class="gradient-text">まとめ：Claudeは最高のアシスタント</span></h2>
+  <p>この章で学んだことを振り返りましょう：</p>
+  <ul class="bullet-list">
+    <li>Claudeは「秘書」ではなく「アシスタント」として使う</li>
+    <li>有料版（Claude Pro）は投資として必須</li>
+    <li>7つの基本パターンで99%の業務をカバーできる</li>
+    <li>具体的な指示が良い出力を生む</li>
+    <li>出力をそのまま使わず、必ず編集する</li>
+  </ul>
+  <p>次の章では、「売れる文章の型」を学びます。Claudeの使い方が分かったところで、何を書かせるかを学びましょう。</p>
+  <blockquote><p><em>─ 1-1章 完 ─</em></p></blockquote>
+  <h3>次章：1-2. 売れる文章の型（構造・流れ・役割）を理解する</h3>
+</div>
+</div>
+</body>
+</html>
