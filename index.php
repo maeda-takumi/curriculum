@@ -449,13 +449,7 @@ function phase_unlock_transition_map(string $curriculum): array
 
     return [
         '11' => ['unlock_param' => 'unlock_claude_phase1', 'from_page' => '08', 'phase_key' => 'phase1'],
-        '21' => ['unlock_param' => 'unlock_claude_phase2', 'from_page' => '17', 'phase_key' => 'phase2'],
-        '31' => ['unlock_param' => 'unlock_claude_phase3', 'from_page' => '28', 'phase_key' => 'phase3'],
-        '41' => ['unlock_param' => 'unlock_claude_phase4', 'from_page' => '37', 'phase_key' => 'phase4'],
-        '51' => ['unlock_param' => 'unlock_claude_phase5', 'from_page' => '47', 'phase_key' => 'phase5'],
-        '61' => ['unlock_param' => 'unlock_claude_phase6', 'from_page' => '57', 'phase_key' => 'phase6'],
-        '71' => ['unlock_param' => 'unlock_claude_phase7', 'from_page' => '67', 'phase_key' => 'phase7'],
-        '81' => ['unlock_param' => 'unlock_claude_phase8', 'from_page' => '77', 'phase_key' => 'phase8'],
+        '81' => ['unlock_param' => 'unlock_claude_phase8', 'from_page' => '78', 'phase_key' => 'phase8'],
     ];
 }
 
@@ -823,11 +817,11 @@ $claudePhases = [
         'label' => 'PHASE 0',
         'title' => 'フェーズ0｜思考OSのインストール編',
         'items' => [
-            ['num' => '0-1.', 'title' => 'はじめに：なぜ「軸」の話から始めるのか', 'page' => '01'],
+            ['num' => '0-1.', 'title' => '0-1. AI副業が乱立する時代に"軸"がないと起きること', 'page' => '01'],
             ['num' => '0-2.', 'title' => '0-2. すべてのAI副業に共通する「言語設計」という土台', 'page' => '02'],
             ['num' => '0-3.', 'title' => '0-3. 画像・動画・自動化・SNSの前に必ず存在する工程', 'page' => '03'],
             ['num' => '0-4.', 'title' => '0-4. このスクールで定義する「ライティング」とは何か', 'page' => '04'],
-            ['num' => '0-5.', 'title' => 'はじめに：「つぶしが効く」とはどういうことか', 'page' => '05'],
+            ['num' => '0-5.', 'title' => '0-5. ライティングが"つぶしが効くスキル"である理由', 'page' => '05'],
             ['num' => '0-6.', 'title' => '0-6. Claudeと人間の役割分担の考え方', 'page' => '06'],
             ['num' => '0-7.', 'title' => '0-7. 書く人ではなく価値を生む編集者になる思考', 'page' => '07'],
             ['num' => '0-8.', 'title' => '0-8. 実践ワーク：あらゆるコンテンツを"言語設計"で分解する', 'page' => '08'],
