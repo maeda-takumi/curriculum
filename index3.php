@@ -429,38 +429,73 @@ function resolve_lesson_week_key_from_page(string $page): ?string
 
     return null;
 }
-function maybe_unlock_phase_from_transition(string $currentPage): void
+
+/**
+ * @return array<string, array{unlock_param:string,from_page:string,phase_key:string}>
+ */
+function phase_unlock_transition_map(string $curriculum): array
 {
-
-    $unlockTransitions = [
-        [
-            'current_page' => '11',
-            'unlock_param' => 'unlock_phase1',
-            'from_page' => '08',
-            'phase_key' => 'phase1',
-        ],
-        [
-            'current_page' => '81',
-            'unlock_param' => 'unlock_phase8',
-            'from_page' => '77',
-            'phase_key' => 'phase8',
-        ],
+    $practiceTransitions = [
+        '11' => ['unlock_param' => 'unlock_phase1', 'from_page' => '08', 'phase_key' => 'phase1'],
+        '81' => ['unlock_param' => 'unlock_phase8', 'from_page' => '77', 'phase_key' => 'phase8'],
     ];
-
-    $transition = null;
-    foreach ($unlockTransitions as $candidate) {
-        if ($currentPage === $candidate['current_page']) {
-            $transition = $candidate;
-            break;
-        }
+    if ($curriculum === 'practice') {
+        return $practiceTransitions;
     }
+
+    if ($curriculum !== 'claude') {
+        return [];
+    }
+
+    return [
+        '11' => ['unlock_param' => 'unlock_claude_phase1', 'from_page' => '08', 'phase_key' => 'phase1'],
+        '21' => ['unlock_param' => 'unlock_claude_phase2', 'from_page' => '17', 'phase_key' => 'phase2'],
+        '31' => ['unlock_param' => 'unlock_claude_phase3', 'from_page' => '28', 'phase_key' => 'phase3'],
+        '41' => ['unlock_param' => 'unlock_claude_phase4', 'from_page' => '37', 'phase_key' => 'phase4'],
+        '51' => ['unlock_param' => 'unlock_claude_phase5', 'from_page' => '47', 'phase_key' => 'phase5'],
+        '61' => ['unlock_param' => 'unlock_claude_phase6', 'from_page' => '57', 'phase_key' => 'phase6'],
+        '71' => ['unlock_param' => 'unlock_claude_phase7', 'from_page' => '67', 'phase_key' => 'phase7'],
+        '81' => ['unlock_param' => 'unlock_claude_phase8', 'from_page' => '77', 'phase_key' => 'phase8'],
+    ];
+}
+
+/**
+ * @return array{unlock_param:string,from_page:string,phase_key:string}|null
+ */
+function resolve_phase_unlock_transition(string $curriculum, string $currentPage, ?string $fromPage = null): ?array
+{
+    $transition = phase_unlock_transition_map($curriculum)[$currentPage] ?? null;
+    if ($transition === null) {
+        return null;
+    }
+
+    if ($fromPage !== null && $transition['from_page'] !== $fromPage) {
+        return null;
+    }
+
+    return $transition;
+}
+
+function phase_unlock_query(string $curriculum, string $currentPage, string $fromPage): ?string
+{
+    $transition = resolve_phase_unlock_transition($curriculum, $currentPage, $fromPage);
+    if ($transition === null) {
+        return null;
+    }
+
+    return $transition['unlock_param'] . '=1&from=' . rawurlencode($fromPage);
+}
+
+function maybe_unlock_phase_from_transition(string $currentPage, string $curriculum): void
+{
+    $fromPage = (string)($_GET['from'] ?? '');
+    $transition = resolve_phase_unlock_transition($curriculum, $currentPage, $fromPage);
 
     if ($transition === null) {
         return;
     }
 
-    $shouldUnlock = (string)($_GET[$transition['unlock_param']] ?? '') === '1'
-        && (string)($_GET['from'] ?? '') === $transition['from_page'];
+    $shouldUnlock = (string)($_GET[$transition['unlock_param']] ?? '') === '1';
     if ($shouldUnlock === false) {
         return;
     }
@@ -472,6 +507,7 @@ function maybe_unlock_phase_from_transition(string $currentPage): void
 
     $users = load_users();
     $updated = false;
+    $lockField = $curriculum === 'claude' ? 'claude_phase_locks' : 'phase_locks';
 
     foreach ($users as &$user) {
         $email = trim((string)($user['email'] ?? ''));
@@ -479,10 +515,12 @@ function maybe_unlock_phase_from_transition(string $currentPage): void
             continue;
         }
 
-        $phaseLocks = normalize_phase_locks($user['phase_locks'] ?? null);
+        $phaseLocks = $curriculum === 'claude'
+            ? normalize_claude_phase_locks($user[$lockField] ?? null)
+            : normalize_phase_locks($user[$lockField] ?? null);
         if (($phaseLocks[$transition['phase_key']] ?? false) === true) {
             $phaseLocks[$transition['phase_key']] = false;
-            $user['phase_locks'] = $phaseLocks;
+            $user[$lockField] = $phaseLocks;
             $updated = true;
         }
         break;
@@ -906,6 +944,7 @@ $claudePhases = [
 $phaseLocks = [];
 $lockedPages = [];
 if ($isClaudeCurriculum) {
+    maybe_unlock_phase_from_transition($page, 'claude');
     $pagePhaseMap = build_page_phase_map($claudePhases);
     $phaseLocks = resolve_login_user_claude_phase_locks();
     foreach ($pagePhaseMap as $targetPage => $phaseKey) {
@@ -917,7 +956,7 @@ if ($isClaudeCurriculum) {
         exit;
     }
 } elseif (!$isLessonCurriculum) {
-    maybe_unlock_phase_from_transition($page);
+    maybe_unlock_phase_from_transition($page, 'practice');
     $pagePhaseMap = build_page_phase_map($practicePhases);
     $phaseLocks = resolve_login_user_phase_locks();
     foreach ($pagePhaseMap as $targetPage => $phaseKey) {
@@ -1838,18 +1877,12 @@ if ($nextNavigation !== null) {
 
     $assignmentConfig = $assignmentLinks[$page] ?? null;
     $nextLabelEscaped = htmlspecialchars($nextNavigation['label'], ENT_QUOTES, 'UTF-8');
-    $nextPageEscaped = htmlspecialchars($nextNavigation['page'], ENT_QUOTES, 'UTF-8');
     $nextIsLocked = (($lockedPages[$nextNavigation['page']] ?? false) === true);
 
-    $canAutoUnlockNext = (
-        ($page === '08' && $nextNavigation['page'] === '11')
-        || ($page === '77' && $nextNavigation['page'] === '81')
-    ) && $nextIsLocked && !$isLessonCurriculum && !$isClaudeCurriculum;
-    $autoUnlockQuery = ($page === '08' && $nextNavigation['page'] === '11')
-        ? 'unlock_phase1=1&from=08'
-        : 'unlock_phase8=1&from=77';
+    $autoUnlockQuery = phase_unlock_query($curriculum, $nextNavigation['page'], $page);
+    $canAutoUnlockNext = $autoUnlockQuery !== null && $nextIsLocked;
     $nextHref = $canAutoUnlockNext
-        ? $appEntryPath . '?page=' . $nextPageEscaped . '&' . $autoUnlockQuery
+        ? $appEntryPath . '?page=' . rawurlencode($nextNavigation['page']) . '&' . $autoUnlockQuery . curriculum_query_suffix($curriculum)
         : ($nextIsLocked ? lock_page_url($nextNavigation['page'], $curriculum) : curriculum_url($nextNavigation['page'], $curriculum));
     $showNextLockedState = $nextIsLocked && !$canAutoUnlockNext;
     $nextLinkMarkup = '<div class="page-actions">';
