@@ -8,6 +8,8 @@ $scriptName = isset($_SERVER['SCRIPT_NAME']) && is_string($_SERVER['SCRIPT_NAME'
 $scriptDir = str_replace('\\', '/', dirname($scriptName));
 $normalizedScriptDir = $scriptDir === '/' ? '/' : rtrim($scriptDir, '/');
 $appBasePath = ($normalizedScriptDir === '/' ? '' : $normalizedScriptDir) . '/';
+$scriptBaseName = basename($scriptName);
+$appEntryPath = $scriptBaseName === 'index.php' ? $appBasePath : $scriptName;
 
 if (isset($_SERVER['REQUEST_URI']) && is_string($_SERVER['REQUEST_URI'])) {
     $requestUri = $_SERVER['REQUEST_URI'];
@@ -29,16 +31,26 @@ require_once __DIR__ . '/login_check.php';
 
 function normalize_curriculum(string $curriculum): string
 {
-    return $curriculum === 'lesson' ? 'lesson' : 'practice';
+    return in_array($curriculum, ['lesson', 'claude'], true) ? $curriculum : 'practice';
+}
+
+function curriculum_query_suffix(string $curriculum): string
+{
+    return $curriculum === 'practice' ? '' : '&curriculum=' . rawurlencode($curriculum);
+}
+
+function curriculum_url(string $page, string $curriculum): string
+{
+    global $appEntryPath;
+
+    return $appEntryPath . '?page=' . rawurlencode($page) . curriculum_query_suffix($curriculum);
 }
 
 function invalid_page_fallback(string $curriculum, string $appBasePath): string
 {
-    if ($curriculum === 'lesson') {
-        return $appBasePath . '?page=index&curriculum=lesson';
-    }
+    global $appEntryPath;
 
-    return $appBasePath . '?page=index';
+    return $appEntryPath . '?page=index' . curriculum_query_suffix($curriculum);
 }
 
 function is_mobile_client(): bool
@@ -75,6 +87,7 @@ if (!isset($_SESSION['curriculum'])) {
 }
 $curriculum = normalize_curriculum((string)$_SESSION['curriculum']);
 $isLessonCurriculum = $curriculum === 'lesson';
+$isClaudeCurriculum = $curriculum === 'claude';
 
 $page = $_GET['page'] ?? 'index';
 if (!is_string($page) || trim($page) === '') {
@@ -86,7 +99,7 @@ if (!preg_match('/^[a-zA-Z0-9_-]+$/', $page)) {
     exit;
 }
 
-$includeDirectoryName = $isLessonCurriculum ? 'include_lesson' : 'include';
+$includeDirectoryName = $isLessonCurriculum ? 'include_lesson' : ($isClaudeCurriculum ? 'include_claude' : 'include');
 $includeDir = __DIR__ . '/' . $includeDirectoryName;
 $requested = $includeDir . '/' . $page . '.html';
 $realIncludeDir = realpath($includeDir);
@@ -107,7 +120,7 @@ $html = file_get_contents($realRequested);
  * @param array<string, bool> $lockedPhases
  * @param array<string, bool> $lockedPages
  */
-function renderHamburgerMenu(array $phases, string $currentPage, array $lockedPhases, array $lockedPages, bool $isLessonCurriculum = false): string
+function renderHamburgerMenu(array $phases, string $currentPage, array $lockedPhases, array $lockedPages, string $curriculum = 'practice'): string
 {
     global $appBasePath;
     $html = '<button class="hb-toggle" id="hb-toggle" type="button" aria-label="メニューを開く" aria-controls="hb-nav" aria-expanded="false">';
@@ -144,7 +157,7 @@ function renderHamburgerMenu(array $phases, string $currentPage, array $lockedPh
                 $isLockedPage = ($lockedPages[$item['page']] ?? false) === true;
                 $active = $currentPage === $item['page'] ? ' is-active' : '';
                 $lockClass = $isLockedPage ? ' is-locked' : '';
-                $targetHref = $isLockedPage ? lock_page_url($item['page'], $isLessonCurriculum) : $appBasePath . '?page=' . $target;
+                $targetHref = $isLockedPage ? lock_page_url($item['page'], $curriculum) : curriculum_url($item['page'], $curriculum);
                 $html .= '<a class="hb-link' . $active . $lockClass . '" href="' . htmlspecialchars($targetHref, ENT_QUOTES, 'UTF-8') . '"><span class="hb-num">' . $num . '</span>' . $title;
                 if ($isLockedPage) {
                     $html .= '<span class="hb-lock-overlay"><img src="img/lock.png" alt="ロック中"></span>';
@@ -162,12 +175,12 @@ function renderHamburgerMenu(array $phases, string $currentPage, array $lockedPh
     $html .= '</ul>';
     $html .= '<div class="hb-nav__footer">';
     $html .= '<div class="hb-nav__quick-links">';
-    $indexLink = $appBasePath . '?page=index' . ($isLessonCurriculum ? '&curriculum=lesson' : '');
-    $articleLink = $appBasePath . '?page=article' . ($isLessonCurriculum ? '&curriculum=lesson' : '');
+    $indexLink = curriculum_url('index', $curriculum);
+    $articleLink = curriculum_url('article', $curriculum);
     $html .= '<a class="hb-quick-link" href="' . htmlspecialchars($indexLink, ENT_QUOTES, 'UTF-8') . '">目次へ</a>';
     $html .= '<a class="hb-quick-link" href="' . htmlspecialchars($articleLink, ENT_QUOTES, 'UTF-8') . '">記事一覧へ</a>';
     $html .= '</div>';
-    $logoutHref = $appBasePath . 'login/logout.php' . ($isLessonCurriculum ? '?curriculum=lesson' : '');
+    $logoutHref = $appBasePath . 'login/logout.php' . ($curriculum === 'practice' ? '' : '?curriculum=' . rawurlencode($curriculum));
     $html .= '<div class="hb-nav__logout"><a class="hb-logout-link" href="' . htmlspecialchars($logoutHref, ENT_QUOTES, 'UTF-8') . '">ログアウト</a></div>';
     $html .= '</div>';
     $html .= '</nav>';
@@ -238,21 +251,18 @@ function build_sequential_next_navigation(array $phases): array
 
     return $map;
 }
-function lock_page_url(string $targetPage, bool $isLessonCurriculum = false): string
+function lock_page_url(string $targetPage, string $curriculum = 'practice'): string
 {
-    global $appBasePath;
+    global $appEntryPath;
 
-    $query = '?page=lock&target=' . rawurlencode($targetPage);
-    if ($isLessonCurriculum) {
-        $query .= '&curriculum=lesson';
-    }
+    $query = '?page=lock&target=' . rawurlencode($targetPage) . curriculum_query_suffix($curriculum);
 
-    return $appBasePath . $query;
+    return $appEntryPath . $query;
 }
 
-function with_lesson_curriculum_for_status_pages(string $url, bool $isLessonCurriculum): string
+function with_curriculum_for_status_pages(string $url, string $curriculum): string
 {
-    if (!$isLessonCurriculum) {
+    if ($curriculum === 'practice') {
         return $url;
     }
 
@@ -272,11 +282,11 @@ function with_lesson_curriculum_for_status_pages(string $url, bool $isLessonCurr
         return $url;
     }
 
-    if (($params['curriculum'] ?? null) === 'lesson') {
+    if (($params['curriculum'] ?? null) === $curriculum) {
         return $url;
     }
 
-    $params['curriculum'] = 'lesson';
+    $params['curriculum'] = $curriculum;
     $rebuilt = '';
     if (isset($parts['scheme'])) {
         $rebuilt .= $parts['scheme'] . '://';
@@ -364,6 +374,31 @@ function resolve_login_user_lesson_week_locks(): array
     return $default;
 }
 
+/**
+ * @return array<string, bool>
+ */
+function resolve_login_user_claude_phase_locks(): array
+{
+    $default = function_exists('default_claude_phase_locks') ? default_claude_phase_locks() : (function_exists('default_phase_locks') ? default_phase_locks() : []);
+    $loginEmail = trim((string)($_SESSION['login_email'] ?? ''));
+    if ($loginEmail === '') {
+        return $default;
+    }
+
+    foreach (load_users() as $user) {
+        $email = trim((string)($user['email'] ?? ''));
+        if ($email !== '' && hash_equals($email, $loginEmail)) {
+            if (function_exists('normalize_claude_phase_locks')) {
+                return normalize_claude_phase_locks($user['claude_phase_locks'] ?? null);
+            }
+
+            return normalize_phase_locks($user['phase_locks'] ?? null);
+        }
+    }
+
+    return $default;
+}
+
 function resolve_lesson_week_key_from_page(string $page): ?string
 {
     if (!preg_match('/^\d{2,3}$/', $page)) {
@@ -394,38 +429,73 @@ function resolve_lesson_week_key_from_page(string $page): ?string
 
     return null;
 }
-function maybe_unlock_phase_from_transition(string $currentPage): void
+
+/**
+ * @return array<string, array{unlock_param:string,from_page:string,phase_key:string}>
+ */
+function phase_unlock_transition_map(string $curriculum): array
 {
-
-    $unlockTransitions = [
-        [
-            'current_page' => '11',
-            'unlock_param' => 'unlock_phase1',
-            'from_page' => '08',
-            'phase_key' => 'phase1',
-        ],
-        [
-            'current_page' => '81',
-            'unlock_param' => 'unlock_phase8',
-            'from_page' => '77',
-            'phase_key' => 'phase8',
-        ],
+    $practiceTransitions = [
+        '11' => ['unlock_param' => 'unlock_phase1', 'from_page' => '08', 'phase_key' => 'phase1'],
+        '81' => ['unlock_param' => 'unlock_phase8', 'from_page' => '77', 'phase_key' => 'phase8'],
     ];
-
-    $transition = null;
-    foreach ($unlockTransitions as $candidate) {
-        if ($currentPage === $candidate['current_page']) {
-            $transition = $candidate;
-            break;
-        }
+    if ($curriculum === 'practice') {
+        return $practiceTransitions;
     }
+
+    if ($curriculum !== 'claude') {
+        return [];
+    }
+
+    return [
+        '11' => ['unlock_param' => 'unlock_claude_phase1', 'from_page' => '08', 'phase_key' => 'phase1'],
+        '21' => ['unlock_param' => 'unlock_claude_phase2', 'from_page' => '17', 'phase_key' => 'phase2'],
+        '31' => ['unlock_param' => 'unlock_claude_phase3', 'from_page' => '28', 'phase_key' => 'phase3'],
+        '41' => ['unlock_param' => 'unlock_claude_phase4', 'from_page' => '37', 'phase_key' => 'phase4'],
+        '51' => ['unlock_param' => 'unlock_claude_phase5', 'from_page' => '47', 'phase_key' => 'phase5'],
+        '61' => ['unlock_param' => 'unlock_claude_phase6', 'from_page' => '57', 'phase_key' => 'phase6'],
+        '71' => ['unlock_param' => 'unlock_claude_phase7', 'from_page' => '67', 'phase_key' => 'phase7'],
+        '81' => ['unlock_param' => 'unlock_claude_phase8', 'from_page' => '77', 'phase_key' => 'phase8'],
+    ];
+}
+
+/**
+ * @return array{unlock_param:string,from_page:string,phase_key:string}|null
+ */
+function resolve_phase_unlock_transition(string $curriculum, string $currentPage, ?string $fromPage = null): ?array
+{
+    $transition = phase_unlock_transition_map($curriculum)[$currentPage] ?? null;
+    if ($transition === null) {
+        return null;
+    }
+
+    if ($fromPage !== null && $transition['from_page'] !== $fromPage) {
+        return null;
+    }
+
+    return $transition;
+}
+
+function phase_unlock_query(string $curriculum, string $currentPage, string $fromPage): ?string
+{
+    $transition = resolve_phase_unlock_transition($curriculum, $currentPage, $fromPage);
+    if ($transition === null) {
+        return null;
+    }
+
+    return $transition['unlock_param'] . '=1&from=' . rawurlencode($fromPage);
+}
+
+function maybe_unlock_phase_from_transition(string $currentPage, string $curriculum): void
+{
+    $fromPage = (string)($_GET['from'] ?? '');
+    $transition = resolve_phase_unlock_transition($curriculum, $currentPage, $fromPage);
 
     if ($transition === null) {
         return;
     }
 
-    $shouldUnlock = (string)($_GET[$transition['unlock_param']] ?? '') === '1'
-        && (string)($_GET['from'] ?? '') === $transition['from_page'];
+    $shouldUnlock = (string)($_GET[$transition['unlock_param']] ?? '') === '1';
     if ($shouldUnlock === false) {
         return;
     }
@@ -437,6 +507,7 @@ function maybe_unlock_phase_from_transition(string $currentPage): void
 
     $users = load_users();
     $updated = false;
+    $lockField = $curriculum === 'claude' ? 'claude_phase_locks' : 'phase_locks';
 
     foreach ($users as &$user) {
         $email = trim((string)($user['email'] ?? ''));
@@ -444,10 +515,12 @@ function maybe_unlock_phase_from_transition(string $currentPage): void
             continue;
         }
 
-        $phaseLocks = normalize_phase_locks($user['phase_locks'] ?? null);
+        $phaseLocks = $curriculum === 'claude'
+            ? normalize_claude_phase_locks($user[$lockField] ?? null)
+            : normalize_phase_locks($user[$lockField] ?? null);
         if (($phaseLocks[$transition['phase_key']] ?? false) === true) {
             $phaseLocks[$transition['phase_key']] = false;
-            $user['phase_locks'] = $phaseLocks;
+            $user[$lockField] = $phaseLocks;
             $updated = true;
         }
         break;
@@ -745,10 +818,145 @@ $lessonPhases = [
     ],
 ];
 
+$claudePhases = [
+    [
+        'label' => 'PHASE 0',
+        'title' => 'フェーズ0｜思考OSのインストール編',
+        'items' => [
+            ['num' => '0-1.', 'title' => 'はじめに：なぜ「軸」の話から始めるのか', 'page' => '01'],
+            ['num' => '0-2.', 'title' => '0-2. すべてのAI副業に共通する「言語設計」という土台', 'page' => '02'],
+            ['num' => '0-3.', 'title' => '0-3. 画像・動画・自動化・SNSの前に必ず存在する工程', 'page' => '03'],
+            ['num' => '0-4.', 'title' => '0-4. このスクールで定義する「ライティング」とは何か', 'page' => '04'],
+            ['num' => '0-5.', 'title' => 'はじめに：「つぶしが効く」とはどういうことか', 'page' => '05'],
+            ['num' => '0-6.', 'title' => '0-6. Claudeと人間の役割分担の考え方', 'page' => '06'],
+            ['num' => '0-7.', 'title' => '0-7. 書く人ではなく価値を生む編集者になる思考', 'page' => '07'],
+            ['num' => '0-8.', 'title' => '0-8. 実践ワーク：あらゆるコンテンツを"言語設計"で分解する', 'page' => '08'],
+        ],
+    ],
+    [
+        'label' => 'PHASE 1',
+        'title' => 'フェーズ1｜Claudeライティング基礎編',
+        'items' => [
+            ['num' => '1-1.', 'title' => '1-1. Claudeを「ライティングアシスタント」にする基本操作', 'page' => '11'],
+            ['num' => '1-2.', 'title' => '1-2. 売れる文章の型（構造・流れ・役割）を理解する', 'page' => '12'],
+            ['num' => '1-3.', 'title' => '1-3. 読まれる文章と読まれない文章の決定的な違い', 'page' => '13'],
+            ['num' => '1-4.', 'title' => '1-4. STP・4P・AIDMAを「ライティング視点」で理解する', 'page' => '14'],
+            ['num' => '1-5.', 'title' => '1-5. Claudeに「狙った文章」を書かせる指示の出し方', 'page' => '15'],
+            ['num' => '1-6.', 'title' => '1-6. 短文・長文・SNS・セールスでの使い分け', 'page' => '16'],
+            ['num' => '1-7.', 'title' => '1-7. 実践：Claudeで「使える文章」を量産する', 'page' => '17'],
+        ],
+    ],
+    [
+        'label' => 'PHASE 2',
+        'title' => 'フェーズ2｜案件獲得・初収益編',
+        'items' => [
+            ['num' => '2-1.', 'title' => 'ゼロからはじめて、7日間で「自分の力で稼ぐ」を体験する完全ガイド', 'page' => '21'],
+            ['num' => '2-2.', 'title' => '2-2. 初心者が狙うべき「応募型ライティング案件」の見極め方', 'page' => '22'],
+            ['num' => '2-3.', 'title' => '2-3. Claude前提で成立する「低リスク・即金型」の稼ぎ方', 'page' => '23'],
+            ['num' => '2-4.', 'title' => 'AI副業スクール', 'page' => '24'],
+            ['num' => '2-5.', 'title' => '2-5. 実績ゼロでも通る「応募文＝営業ライティング」設計', 'page' => '25'],
+            ['num' => '2-6.', 'title' => '2-6.「作業者」で終わらないための納品コミュニケーション', 'page' => '26'],
+            ['num' => '2-7.', 'title' => '2-7. 単価が上がる人・上がらない人の分岐点', 'page' => '27'],
+            ['num' => '2-8.', 'title' => '2-8. 実践：案件応募→受注→納品→初収益まで', 'page' => '28'],
+        ],
+    ],
+    [
+        'label' => 'PHASE 3',
+        'title' => 'フェーズ3｜セールスライティング実践編',
+        'items' => [
+            ['num' => '3-1.', 'title' => '3-1. セールスライティングの基本構造', 'page' => '31'],
+            ['num' => '3-2.', 'title' => '3-2. LP・セールス文章をClaudeで設計する', 'page' => '32'],
+            ['num' => '3-3.', 'title' => '3-3. SNS・動画台本・広告文への横展開', 'page' => '33'],
+            ['num' => '3-4.', 'title' => '3-4. 文章×画像×動画をつなぐ"設計思考"', 'page' => '34'],
+            ['num' => '3-5.', 'title' => '3-5. 「書ける人」から「全体を設計できる人」へ', 'page' => '35'],
+            ['num' => '3-6.', 'title' => '3-6. クライアントワークの幅を広げる考え方', 'page' => '36'],
+            ['num' => '3-7.', 'title' => '3-7. 実践：複数ジャンルに応用するライティング設計', 'page' => '37'],
+        ],
+    ],
+    [
+        'label' => 'PHASE 4',
+        'title' => 'フェーズ4｜テンプレ化・効率化編',
+        'items' => [
+            ['num' => '4-1.', 'title' => '4-1. ライティングを『使い回す』という発想', 'page' => '41'],
+            ['num' => '4-2.', 'title' => '4-2. Claude×テンプレ化の考え方', 'page' => '42'],
+            ['num' => '4-3.', 'title' => '4-3. 自分専用プロンプトの作り方', 'page' => '43'],
+            ['num' => '4-4.', 'title' => '4-4. クライアント案件を効率化する設計', 'page' => '44'],
+            ['num' => '4-5.', 'title' => '4-5. 自動化ツールを「ライティング視点」で使う【ハンズオン実践版】', 'page' => '45'],
+            ['num' => '4-6.', 'title' => '4-6. 時間単価を上げるための仕組み設計', 'page' => '46'],
+            ['num' => '4-7.', 'title' => '4-7. 実践：自分の作業を半分に減らす【フェーズ4 総仕上げ編】', 'page' => '47'],
+        ],
+    ],
+    [
+        'label' => 'PHASE 5',
+        'title' => 'フェーズ5｜商品化・導線設計編',
+        'items' => [
+            ['num' => '5-1.', 'title' => '5-1. 自分のノウハウを商品化する考え方', 'page' => '51'],
+            ['num' => '5-2.', 'title' => 'AI副業スクール', 'page' => '52'],
+            ['num' => '5-3.', 'title' => '5-3. note／Kindle／楽天ROOMへの展開', 'page' => '53'],
+            ['num' => '5-4.', 'title' => '5-4. SNS・LINE・動画と組み合わせた導線設計', 'page' => '54'],
+            ['num' => '5-5.', 'title' => '5-5.「信用」を積み上げる発信戦略', 'page' => '55'],
+            ['num' => '5-6.', 'title' => '5-6. 教える側に回ると収益が安定する理由', 'page' => '56'],
+            ['num' => '5-7.', 'title' => '5-7. 実践：自分のAI副業ロードマップを完成させる', 'page' => '57'],
+        ],
+    ],
+    [
+        'label' => 'PHASE 6',
+        'title' => 'フェーズ6｜AIビジュアル副業展開編',
+        'items' => [
+            ['num' => '6-1.', 'title' => '6-1. ライティング以外で稼げるAI副業の全体マップ', 'page' => '61'],
+            ['num' => '6-2.', 'title' => '6-2. 楽天ROOM『収益安定化・自動化』実践編', 'page' => '62'],
+            ['num' => '6-3.', 'title' => '6-3. Claude×Canvaで「売れるビジュアル」を量産する設計', 'page' => '63'],
+            ['num' => '6-4.', 'title' => '6-4. Claude×画像生成AIで「素材を自作」する実践フロー', 'page' => '64'],
+            ['num' => '6-6.', 'title' => '6-6. 初心者でも再現できる「AI×ビジュアル副業」の案件化', 'page' => '66'],
+            ['num' => '6-7.', 'title' => '6-7. 実践：自分の「ライティング以外の収益ルート」を1本完成させる', 'page' => '67'],
+        ],
+    ],
+    [
+        'label' => 'PHASE 7',
+        'title' => 'フェーズ7｜AI使い分け戦略編「正しいAIに、正しい仕事を任せる」',
+        'items' => [
+            ['num' => '7-1.', 'title' => '7-1. なぜ「AI使い分け」が副業の天井を突き破るのか', 'page' => '71'],
+            ['num' => '7-2.', 'title' => '7-2. AI全体マップ：分野別「得意・苦手」を完全解説', 'page' => '72'],
+            ['num' => '7-3.', 'title' => '7-3. ChatGPT完全攻略：「発散・アイデア出し・スピード・汎用性」副業を加速させる最重要AI', 'page' => '73'],
+            ['num' => '7-4.', 'title' => '7-4. Gemini完全攻略：「Google連携×リアルタイム情報×画像理解」エコシステムが生む独占的価値', 'page' => '74'],
+            ['num' => '7-5.', 'title' => '7-5. Perplexity完全攻略：「出典付きリアルタイムリサーチ」で副業の情報精度を革命する', 'page' => '75'],
+            ['num' => '7-6.', 'title' => '7-6. 画像生成AI群の使い分け：DALL-E・Midjourney・Stable Diffusion・Canva AI──4つの使い分けで副業ビジュアルを制圧する', 'page' => '76'],
+            ['num' => '7-7.', 'title' => '7-7. 実践：「AI編成表」を作って副業効率を2倍にする', 'page' => '77'],
+        ],
+    ],
+    [
+        'label' => 'PHASE 8',
+        'title' => 'フェーズ8｜高単価Web制作編「ライティング力 × AIコード生成」で月収を1案件から跳ね上げる',
+        'items' => [
+            ['num' => '8-1.', 'title' => '8-1. なぜ「ライター × Claudeコード生成」が最強の高単価モデルなのか', 'page' => '81'],
+            ['num' => '8-2.', 'title' => '8-2. フェーズ0〜7の「ライティング資産」がWeb制作でどう活きるか', 'page' => '82'],
+            ['num' => '8-3.', 'title' => '8-3. ClaudeでHTMLを生成する基礎──コードを書かずにWebページを作る思考法', 'page' => '83'],
+            ['num' => '8-4.', 'title' => '8-4. LP制作完全実践──Claude × Nano Bananaで「売れるLP」を1日で作る', 'page' => '84'],
+            ['num' => '8-5.', 'title' => '8-5. HP制作完全実践──複数ページのコーポレートサイトを設計・構築する', 'page' => '85'],
+            ['num' => '8-6.', 'title' => '8-6. WordPressへの展開──生成したHTMLをCMSに組み込んで運用可能にする', 'page' => '86'],
+            ['num' => '8-7.', 'title' => '8-7. 高単価受注の営業設計──「AIライター × Web制作者」のポジショニングと提案術', 'page' => '87'],
+            ['num' => '8-8.', 'title' => '8-8. 実践：1案件10万円以上を受注して完納するフルワークフロー', 'page' => '88'],
+        ],
+    ],
+];
+
+
 $phaseLocks = [];
 $lockedPages = [];
-if (!$isLessonCurriculum) {
-    maybe_unlock_phase_from_transition($page);
+if ($isClaudeCurriculum) {
+    maybe_unlock_phase_from_transition($page, 'claude');
+    $pagePhaseMap = build_page_phase_map($claudePhases);
+    $phaseLocks = resolve_login_user_claude_phase_locks();
+    foreach ($pagePhaseMap as $targetPage => $phaseKey) {
+        $lockedPages[$targetPage] = ($phaseLocks[$phaseKey] ?? false) === true;
+    }
+
+    if ($page !== 'index' && $page !== 'lock' && (($lockedPages[$page] ?? false) === true)) {
+        header('Location: ' . lock_page_url($page, 'claude'));
+        exit;
+    }
+} elseif (!$isLessonCurriculum) {
+    maybe_unlock_phase_from_transition($page, 'practice');
     $pagePhaseMap = build_page_phase_map($practicePhases);
     $phaseLocks = resolve_login_user_phase_locks();
     foreach ($pagePhaseMap as $targetPage => $phaseKey) {
@@ -756,7 +964,7 @@ if (!$isLessonCurriculum) {
     }
 
     if ($page !== 'index' && $page !== 'lock' && (($lockedPages[$page] ?? false) === true)) {
-        header('Location: ' . lock_page_url($page, false));
+        header('Location: ' . lock_page_url($page, 'practice'));
         exit;
     }
 } else {
@@ -785,7 +993,7 @@ if (!$isLessonCurriculum) {
     }
     $lessonWeekKey = resolve_lesson_week_key_from_page($page);
     if ($page !== 'index' && $page !== 'lock' && $lessonWeekKey !== null && (($lessonWeekLocks[$lessonWeekKey] ?? false) === true)) {
-        header('Location: ' . lock_page_url($page, true));
+        header('Location: ' . lock_page_url($page, 'lesson'));
         exit;
     }
 }
@@ -1442,7 +1650,7 @@ if ($responsiveCssVersion !== '') {
 $responsiveCssTag = '<link rel="stylesheet" href="' . htmlspecialchars($responsiveCssHref, ENT_QUOTES, 'UTF-8') . '">';
 $loadingOverlayMarkup = '<div id="global-loading-overlay" class="is-visible" aria-hidden="false" role="status" aria-live="polite"><div class="global-loading-overlay__card"><div class="global-loading-overlay__spinner" aria-hidden="true"></div>読み込み中</div></div>';
 if ($html === false) {
-    header('Location: ' . $appBasePath . '?page=index');
+    header('Location: ' . invalid_page_fallback($curriculum, $appBasePath));
     exit;
 }
 
@@ -1456,11 +1664,11 @@ $rewriteRelativeAssetAttributes = static function (string $markup) use ($appBase
     ) ?? $markup;
 };
 $html = $rewriteRelativeAssetAttributes($html);
-if ($isLessonCurriculum) {
+if ($curriculum !== 'practice') {
     $html = preg_replace_callback(
         '/\b(href|action)\s*=\s*(["\'])([^"\']+)\2/i',
-        static function (array $matches): string {
-            $updatedUrl = with_lesson_curriculum_for_status_pages($matches[3], true);
+        static function (array $matches) use ($curriculum): string {
+            $updatedUrl = with_curriculum_for_status_pages($matches[3], $curriculum);
             return $matches[1] . '=' . $matches[2] . $updatedUrl . $matches[2];
         },
         $html
@@ -1570,8 +1778,8 @@ if (stripos($html, '</body>') !== false) {
     $html .= $loadingOverlayScript;
 }
 if ($page !== 'index') {
-    $menuPhases = $isLessonCurriculum ? $lessonPhases : $practicePhases;
-    $menuMarkup = renderHamburgerMenu($menuPhases, $page, $phaseLocks, $lockedPages, $isLessonCurriculum);
+    $menuPhases = $isLessonCurriculum ? $lessonPhases : ($isClaudeCurriculum ? $claudePhases : $practicePhases);
+    $menuMarkup = renderHamburgerMenu($menuPhases, $page, $phaseLocks, $lockedPages, $curriculum);
     if (stripos($html, '</head>') !== false) {
         $html = preg_replace('/<\/head>/i', $menuStyle . "\n</head>", $html, 1) ?? $html;
     } else {
@@ -1592,12 +1800,39 @@ if ($page !== 'index') {
 }
 
 $lessonNextNavigationMap = build_sequential_next_navigation($lessonPhases);
+$claudeNextNavigationMap = build_sequential_next_navigation($claudePhases);
 $nextNavigation = $isLessonCurriculum
     ? ($lessonNextNavigationMap[$page] ?? null)
-    : resolveNextNavigation($page);
+    : ($isClaudeCurriculum ? ($claudeNextNavigationMap[$page] ?? null) : resolveNextNavigation($page));
 if ($nextNavigation !== null) {
     $assignmentLinksByCurriculum = [
         'practice' => [
+            '17' => [
+                'label' => '課題提出',
+                'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=RnLvFk&ts=1774261663',
+            ],
+            '28' => [
+                'label' => '課題提出',
+                'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=vnO8Wj&ts=1774321859',
+            ],
+            '37' => [
+                'label' => '課題提出',
+                'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=M575d6&ts=1774406912',
+            ],
+            '47' => [
+                'label' => '課題提出',
+                'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=oGnIEp&ts=1774502845',
+            ],
+            '57' => [
+                'label' => '課題提出',
+                'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=rhR3BH&ts=1774407219',
+            ],
+            '67' => [
+                'label' => '課題提出',
+                'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=2rc3TF&ts=1774407208',
+            ],
+        ],
+        'claude' => [
             '17' => [
                 'label' => '課題提出',
                 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=RnLvFk&ts=1774261663',
@@ -1638,23 +1873,19 @@ if ($nextNavigation !== null) {
             '125' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=NuS7lw&ts=1776162709'],
         ],
     ];
-    $assignmentLinks = $assignmentLinksByCurriculum[$isLessonCurriculum ? 'lesson' : 'practice'] ?? [];
+    $assignmentLinks = $isClaudeCurriculum
+        ? []
+        : ($assignmentLinksByCurriculum[$isLessonCurriculum ? 'lesson' : 'practice'] ?? []);
 
     $assignmentConfig = $assignmentLinks[$page] ?? null;
     $nextLabelEscaped = htmlspecialchars($nextNavigation['label'], ENT_QUOTES, 'UTF-8');
-    $nextPageEscaped = htmlspecialchars($nextNavigation['page'], ENT_QUOTES, 'UTF-8');
     $nextIsLocked = (($lockedPages[$nextNavigation['page']] ?? false) === true);
 
-    $canAutoUnlockNext = (
-        ($page === '08' && $nextNavigation['page'] === '11')
-        || ($page === '77' && $nextNavigation['page'] === '81')
-    ) && $nextIsLocked && !$isLessonCurriculum;
-    $autoUnlockQuery = ($page === '08' && $nextNavigation['page'] === '11')
-        ? 'unlock_phase1=1&from=08'
-        : 'unlock_phase8=1&from=77';
+    $autoUnlockQuery = phase_unlock_query($curriculum, $nextNavigation['page'], $page);
+    $canAutoUnlockNext = $autoUnlockQuery !== null && $nextIsLocked;
     $nextHref = $canAutoUnlockNext
-        ? $appBasePath . '?page=' . $nextPageEscaped . '&' . $autoUnlockQuery
-        : ($nextIsLocked ? lock_page_url($nextNavigation['page'], $isLessonCurriculum) : $appBasePath . '?page=' . $nextPageEscaped);
+        ? $appEntryPath . '?page=' . rawurlencode($nextNavigation['page']) . '&' . $autoUnlockQuery . curriculum_query_suffix($curriculum)
+        : ($nextIsLocked ? lock_page_url($nextNavigation['page'], $curriculum) : curriculum_url($nextNavigation['page'], $curriculum));
     $showNextLockedState = $nextIsLocked && !$canAutoUnlockNext;
     $nextLinkMarkup = '<div class="page-actions">';
     if (is_array($assignmentConfig) && isset($assignmentConfig['label'], $assignmentConfig['href'])) {
