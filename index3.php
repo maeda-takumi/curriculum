@@ -1831,7 +1831,7 @@ if ($nextNavigation !== null) {
                 'label' => '課題提出',
                 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=2rc3TF&ts=1774407208',
             ],
-        ],
+        /* ],
         'claude' => [
             '17' => [
                 'label' => '課題提出',
@@ -1856,7 +1856,7 @@ if ($nextNavigation !== null) {
             '67' => [
                 'label' => '課題提出',
                 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=2rc3TF&ts=1774407208',
-            ],
+            ], */
         ],
         'lesson' => [
             '15' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=8vNpIx&ts=1776162709'],
@@ -1873,7 +1873,9 @@ if ($nextNavigation !== null) {
             '125' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=NuS7lw&ts=1776162709'],
         ],
     ];
-    $assignmentLinks = $assignmentLinksByCurriculum[$isLessonCurriculum ? 'lesson' : ($isClaudeCurriculum ? 'claude' : 'practice')] ?? [];
+    $assignmentLinks = $isClaudeCurriculum
+        ? []
+        : ($assignmentLinksByCurriculum[$isLessonCurriculum ? 'lesson' : 'practice'] ?? []);
 
     $assignmentConfig = $assignmentLinks[$page] ?? null;
     $nextLabelEscaped = htmlspecialchars($nextNavigation['label'], ENT_QUOTES, 'UTF-8');
