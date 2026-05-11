@@ -1873,9 +1873,7 @@ if ($nextNavigation !== null) {
             '125' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=NuS7lw&ts=1776162709'],
         ],
     ];
-    $assignmentLinks = $isClaudeCurriculum
-        ? []
-        : ($assignmentLinksByCurriculum[$isLessonCurriculum ? 'lesson' : 'practice'] ?? []);
+    $assignmentLinks = $assignmentLinksByCurriculum[$curriculum] ?? [];
 
     $assignmentConfig = $assignmentLinks[$page] ?? null;
     $nextLabelEscaped = htmlspecialchars($nextNavigation['label'], ENT_QUOTES, 'UTF-8');
