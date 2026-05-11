@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>8-6. WordPressへの展開</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">8-6. WordPressへの展開</span></h1>
+<hr class="divider">
+<span class="label">フェーズ8｜高単価Web制作編</span>
+</div>
+<div class="card">
+<p><strong>生成したHTMLをCMSに組み込み、クライアントが自分で更新できるサイトを作る</strong></p>
+<p>このマニュアルを読み終える頃には</p>
+<p><strong>WordPressの基本操作からHTML組み込み・CSS設定・プラグイン設定・</strong></p>
+<p><strong>クライアント引き渡しまで一通りできる状態になっています</strong></p>
+<table><tbody><tr><td><p><strong>💰 この章で得られる効果</strong></p><p>・「いつWordPressを使うか・いつ静的HTMLでいいか」の判断基準が明確になる</p><p>・WordPressの管理画面の構成と主要メニューの役割を完全に把握できる</p><p>・管理画面へのログイン・固定ページの作成・コードエディターへの切替という操作を習得できる</p><p>・ClaudeのHTML出力のbody部分をWordPressに貼り付ける手順を正確に理解できる</p><p>・TailwindとGoogle FontsをWordPressで読み込む方法をClaudeのコードで実装できる</p><p>・スラッグ設定・フロントページ設定・パーマリンク設定など初心者がつまずく設定を完全習得できる</p><p>・Contact Form 7でお問い合わせフォームを設定する操作手順を習得できる</p><p>・クライアントが自分でブログ記事を書いて更新できる状態で引き渡す手順がわかる</p><p>・継続サポート提案を使ったリピート収入の設計方法を習得できる</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第1章：WordPressを使う理由と使い分けの判断基準</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-1. WordPress対応が単価とリピート率を同時に上げる</span></h2>
+<div class="callout-box"><p>上のグラフを見てください。静的HTML（htmlファイルをサーバーにアップするだけ）の納品では平均単価が15万円程度ですが、WordPress組み込みになると30万円、さらに運用サポートを加えると45万円、定期更新代行まで含めると80万円まで単価が上昇します。そしてリピート率がより重要です。静的HTMLのみの納品では20%程度なのに対して、WordPressで運用サポートを組み込むと85%まで跳ね上がります。</p></div>
+<p>なぜここまでリピート率が違うのかというと、静的HTMLを納品した場合はクライアントが「あとは自分で管理します」となり、次の依頼はサイトのリニューアル時（数年後）になりがちです。一方WordPressで納品し月次の保守・更新サービスを提案した場合、継続的な関係が生まれます。「毎月ブログを2本書いてほしい」「新サービスのページを追加してほしい」という依頼が定期的に来るようになります。WordPress対応を習得することは、単に案件の幅が広がるだけでなく、副業の安定した月次収入モデルを作ることにも直結します。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-2. WordPress vs 静的HTML：どちらを選ぶかの判断マトリクス</span></h2>
+<p>上のマトリクスを見ると、WordPressと静的HTMLの使い分けが明確になります。「クライアントが自分でコンテンツを更新したい」「ブログや事例を継続的に追加したい」「SEOを本格強化したい」という条件が当てはまる場合はWordPressが適しています。反対に「LPのみの1〜2ページ」「納品後の更新がない」「スピード最優先」という場合は静的HTMLで十分です。</p>
+<p>実際の案件では最初のヒアリング時に「今後ご自身でブログや事例の更新をされたいですか？」という質問を一つ入れるだけで、ほとんどの場合どちらが適しているかが判断できます。「できれば自分で更新できるようにしたい」と言えばWordPress一択、「難しいことはすべてお任せします」という場合は静的HTMLで始めて後からWordPressに移行するというアプローチも有効です。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-3. WordPressの基本的な仕組みを理解する</span></h2>
+<p>WordPressとは「サーバー上で動く、Webサイトのコンテンツ管理システム（CMS）」です。通常のHTMLファイルは「完成品をサーバーに置くだけ」ですが、WordPressは「サーバー上にプログラムが動いていて、管理画面からコンテンツを追加・変更するとWebページが自動的に生成される」仕組みです。この仕組みのおかげで、HTMLの知識がないクライアントでも「ブログ記事を書く感覚でサイトのコンテンツを更新できる」ようになります。</p>
+<p>WordPressで最初に理解すべき重要な概念が「テーマ」と「プラグイン」と「固定ページ」の3つです。テーマはサイト全体のデザインと構造を定義するテンプレートです。プラグインはWordPressの機能を拡張するアドオンで、お問い合わせフォームやSEO設定などを追加できます。固定ページはLP・HP・会社概要ページなど、制作者が作成する静的なコンテンツです。ClaudeのHTMLをこの「固定ページ」に組み込むことがこの章の核心です。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第2章：WordPress管理画面の基本操作──まず画面の構成を把握する</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-1. 管理画面へのログイン手順</span></h2>
+<p>上の図はWordPress管理画面の構成を示しています。左側のサイドバーが主なナビゲーションで、右側の広いエリアが各メニューの操作画面です。管理画面にアクセスするにはサイトのURL末尾に「/wp-admin」を付けてブラウザで開きます。たとえばサイトのURLが「https://example.com」であれば「https://example.com/wp-admin」が管理画面のURLです。</p>
+<table><tbody><tr><td><p><strong>🖥️ 管理画面へのログイン操作手順</strong></p><p>【STEP 1】ブラウザで https://サイトのURL/wp-admin を開く</p><p>　→ クライアントのサイトを設定する場合は、クライアントから</p><p>　管理画面URLとログイン情報（ユーザー名・パスワード）を受け取る</p><p>【STEP 2】ユーザー名（またはメールアドレス）とパスワードを入力して「ログイン」</p><p>　→ ログインに成功するとダッシュボード画面が表示される</p><p>　→ ダッシュボードにはサイトの最近の投稿・コメント・</p><p>　WordPressのアップデート情報が表示されている</p><p>【ログインできない場合の対処法】</p><p>　→ パスワードを忘れた場合：ログイン画面の「パスワードをお忘れですか？」を</p><p>　クリックしてメールアドレスにパスワードリセットリンクを送信する</p><p>　→ URLを間違えている可能性：「/wp-login.php」でもアクセスできる場合がある</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-2. 固定ページと投稿の違い（これが最重要の基礎知識）</span></h2>
+<p>WordPressを初めて使うときに最も混乱しやすいのが「固定ページ（Page）」と「投稿（Post）」の違いです。この2つを正確に理解することが、HP制作を効率よく進める上での最重要の基礎知識です。</p>
+<p>固定ページはサイトの骨格を成すコンテンツです。トップページ・サービス紹介・会社概要・お問い合わせなど、一度作ったら大きく変わらないページが固定ページです。ClaudeのHTMLを組み込む場所は常にこの「固定ページ」です。一方、投稿はブログ記事・お知らせ・施工事例など「日付があって定期的に追加される動的なコンテンツ」を管理する場所です。クライアントが自分で更新するのは主にこの「投稿」エリアになります。</p>
+<table><tbody><tr><td><p><strong>項目</strong></p></td><td><p><strong>固定ページ（Page）</strong></p></td><td><p><strong>投稿（Post）</strong></p></td></tr><tr><td><p>使う場面</p></td><td><p>トップ・サービス・会社概要・お問い合わせ等の骨格ページ</p></td><td><p>ブログ記事・お知らせ・事例・採用情報など</p></td></tr><tr><td><p>更新頻度</p></td><td><p>低い（制作者が一度設定）</p></td><td><p>高い（クライアントが定期的に追加）</p></td></tr><tr><td><p>日付表示</p></td><td><p>なし</p></td><td><p>あり</p></td></tr><tr><td><p>URLの形式</p></td><td><p>設定したスラッグがそのままURL（/about/ 等）</p></td><td><p>投稿日や記事名が入ったURL</p></td></tr><tr><td><p>HPとの関係</p></td><td><p>ClaudeのHTMLをここに組み込む</p></td><td><p>クライアントが自力で管理する部分</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-3. HP制作で使う主要メニューの操作場所</span></h2>
+<p>管理画面の左サイドバーには多くのメニューがありますが、HP制作で頻繁に使うのは「固定ページ」「外観」「プラグイン」「設定」の4つだけです。それ以外のメニューは最初は無視して構いません。</p>
+<table><tbody><tr><td><p><strong>メニュー名</strong></p></td><td><p><strong>HP制作での主な使い方</strong></p></td><td><p><strong>アクセスの方法</strong></p></td></tr><tr><td><p>固定ページ</p></td><td><p>ClaudeのHTMLを組み込む各ページを作成・管理する</p></td><td><p>左サイドバーの「固定ページ」をクリック→「新規追加」で新規ページ作成</p></td></tr><tr><td><p>外観</p></td><td><p>テーマのカスタマイズ・追加CSS入力・テーマファイルエディター</p></td><td><p>左サイドバーの「外観」をクリック→「カスタマイズ」で追加CSS入力</p></td></tr><tr><td><p>プラグイン</p></td><td><p>Contact Form 7・Yoast SEO等のインストールと有効化</p></td><td><p>左サイドバーの「プラグイン」→「新規追加」でプラグイン検索・インストール</p></td></tr><tr><td><p>設定→表示設定</p></td><td><p>フロントページを「固定ページ」に設定する（最重要設定）</p></td><td><p>左サイドバー「設定」→「表示設定」→「ホームページの表示」を変更</p></td></tr><tr><td><p>設定→パーマリンク</p></td><td><p>URLの形式を「投稿名」に変更する</p></td><td><p>左サイドバー「設定」→「パーマリンク設定」→「投稿名」を選択して保存</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第3章：ClaudeのHTMLをWordPressに組み込む──完全操作手順</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-1. 「body部分だけを貼り付ける」という大原則</span></h2>
+<div class="callout-box"><p>上の操作フロー図がWordPressへのHTML組み込みの5ステップです。このフローを実行する上で最も重要な原則を最初に理解してください。それは「ClaudeのHTMLのうちWordPressに貼り付けるのはbody部分の中身だけ」ということです。</p></div>
+<p>Claudeが生成するHTMLは完全な構造を持っています。先頭の&lt;!DOCTYPE html&gt;から始まり、&lt;head&gt;タグ（CSSやJSのリンク・メタ情報）、&lt;body&gt;タグ（実際のページコンテンツ）、末尾の&lt;/html&gt;という構造です。しかしWordPressはすでに独自の&lt;head&gt;と&lt;body&gt;構造を持っているため、Claudeが生成した&lt;head&gt;の内容はWordPressの設定（後述のfunctions.php）で別途読み込みます。固定ページに貼り付けるのは「&lt;body&gt;タグの直後から&lt;/body&gt;タグの直前まで」の部分だけです。この原則を守らないとHTMLが二重になってページが崩れます。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-2. トップページを固定ページに組み込む（詳細手順）</span></h2>
+<p>実際の操作手順を、トップページ（index.html）をWordPressのフロントページとして設定する例で解説します。これがHP制作の4ページ中で最も設定が複雑です。他のページはこの手順の繰り返しです。</p>
+<table><tbody><tr><td><p><strong>🖥️ トップページをWordPressに組み込む完全手順</strong></p><p>【STEP 1】管理画面にログインして「固定ページ」→「新規追加」をクリック</p><p>　→ 画面上部のタイトル欄に「トップページ」と入力</p><p>　（このタイトルはURL・サイト表示には影響しない）</p><p>【STEP 2】エディターを「コードエディター」に切り替える</p><p>　→ 画面右上の「…」（縦三点ドット）アイコンをクリック</p><p>　→ ドロップダウンメニューの中から「コードエディター」を選択</p><p>　→ テキスト入力エリアが１つの大きなテキストボックスに変わればOK</p><p>　※ここで「ビジュアルエディター」のままだとHTMLが正しく機能しない</p><p>【STEP 3】index.htmlのbody部分だけをコピーする</p><p>　→ VSCodeまたはメモ帳でindex.htmlを開く</p><p>　→ &lt;body&gt;タグの行の次から&lt;/body&gt;タグの前の行まで選択</p><p>　→ Ctrl+C（Mac: Command+C）でコピー</p><p>【STEP 4】WordPressのコードエディターに貼り付ける</p><p>　→ コードエディターのテキストボックスをクリックしてカーソルを置く</p><p>　→ Ctrl+V（Mac: Command+V）で貼り付け</p><p>【STEP 5】スラッグ（URL）を設定する</p><p>　→ 画面右側のパネルを見る</p><p>　→ 「概要」または「ページ属性」エリアにある「URLスラッグ」を確認</p><p>　→ トップページはスラッグ不要（フロントページ設定で制御するため）</p><p>【STEP 6】「下書き保存」→「プレビュー」で確認する</p><p>　→ まずはプレビューで表示を確認してからPublish（公開）する</p><p>　→ この時点ではCSS・フォントが未適用のため崩れることがある</p><p>　→ 第4章でCSS・フォントを設定すると正しく表示される</p><p>【STEP 7】「公開」ボタンをクリックして固定ページを公開する</p><p>　→ 確認が取れたら右上の「公開」ボタンをクリック</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-3. フロントページ（トップページ）の設定──必ず行う重要設定</span></h2>
+<p>固定ページを作成しただけでは、そのページがサイトのトップ（ルートURL）に表示されるわけではありません。「このページをサイトのトップとして使います」という設定を管理画面で行う必要があります。初めてWordPressを触る方がよくつまずくポイントです。</p>
+<table><tbody><tr><td><p><strong>🖥️ フロントページの設定手順（必須）</strong></p><p>【STEP 1】左メニューの「設定」→「表示設定」をクリック</p><p>【STEP 2】「ホームページの表示」のラジオボタンを確認する</p><p>　→ デフォルトは「最新の投稿」になっている</p><p>　→ 「固定ページ」のラジオボタンをクリックして変更する</p><p>【STEP 3】「ホームページ」のドロップダウンを設定する</p><p>　→ 「ホームページ」のドロップダウンをクリック</p><p>　→ 先ほど作成した「トップページ」を選択する</p><p>　※「投稿ページ」はブログがある場合のみ設定。なければ空欄のまま</p><p>【STEP 4】「変更を保存」ボタンをクリックする</p><p>【STEP 5】ブラウザでサイトのルートURLを開いて確認する</p><p>　→ https://クライアントのドメイン/ を開いてトップページが表示されることを確認</p><p>　→ 表示されれば設定完了</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-4. パーマリンクの設定──URLを正しく機能させる</span></h2>
+<p>サービスページ・会社概要・お問い合わせの各固定ページのURLが「/service/」「/about/」「/contact/」という形式で機能するためには、WordPressのパーマリンク設定を変更する必要があります。デフォルトの設定では「/?page_id=123」という読みにくいURLになってしまいます。</p>
+<table><tbody><tr><td><p><strong>🖥️ パーマリンクの設定手順</strong></p><p>【STEP 1】左メニューの「設定」→「パーマリンク設定」をクリック</p><p>【STEP 2】「一般設定」の中の「投稿名」のラジオボタンをクリックして選択する</p><p>　→ これでURLが「https://サイトURL/ページ名/」という読みやすい形式になる</p><p>　→ サンプルURLが「https://example.com/sample-post/」のように変わればOK</p><p>【STEP 3】「変更を保存」ボタンをクリックする</p><p>→ この設定をしてから各固定ページのスラッグを設定すると</p><p>　「https://サイトURL/service/」「https://サイトURL/about/」という</p><p>　URLが正しく機能するようになる</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-5. サービス・会社概要・お問い合わせページの組み込み</span></h2>
+<p>トップページと同じ手順で残りの3ページも固定ページとして作成します。トップページとの違いは「スラッグ（URLの末尾部分）」を設定することです。スラッグを設定しないとWordPressが日本語のURLを自動生成して、ナビゲーションのリンクと一致しなくなる場合があります。</p>
+<table><tbody><tr><td><p><strong>ページ名</strong></p></td><td><p><strong>固定ページのタイトル</strong></p></td><td><p><strong>スラッグ</strong></p></td><td><p><strong>設定後のURL</strong></p></td></tr><tr><td><p>サービス紹介</p></td><td><p>サービス紹介</p></td><td><p>service</p></td><td><p>https://サイトURL/service/</p></td></tr><tr><td><p>会社概要</p></td><td><p>会社概要</p></td><td><p>about</p></td><td><p>https://サイトURL/about/</p></td></tr><tr><td><p>お問い合わせ</p></td><td><p>お問い合わせ</p></td><td><p>contact</p></td><td><p>https://サイトURL/contact/</p></td></tr></tbody></table>
+<table><tbody><tr><td><p><strong>🖥️ スラッグの設定方法（各固定ページで行う操作）</strong></p><p>【固定ページの編集画面での操作】</p><p>1. 固定ページを「コードエディター」で開いた状態から</p><p>　 右側のパネルを確認する</p><p>2. 「概要」セクションを展開して「URLスラッグ」または「パーマリンク」欄を探す</p><p>　 ※見つからない場合は右側パネルの「ページ属性」を確認</p><p>3. テキストボックスにスラッグを半角英数で入力する</p><p>　 例：サービスページなら「service」を入力</p><p>4. 「更新」または「公開」ボタンをクリックして保存する</p><p>5. 固定ページの一覧画面に戻ると、URLが「/service/」のように</p><p>　 設定したスラッグに変わっていることが確認できる</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第4章：CSSとJavaScriptをWordPressで読み込む──デザインを正しく表示させる</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-1. なぜHTMLを貼り付けただけではデザインが崩れるのか</span></h2>
+<p>ClaudeのHTMLをWordPressの固定ページに貼り付けてプレビューすると、最初はデザインが崩れた状態に見えることがあります。これはTailwind CSSのCDNリンクとGoogle FontsのリンクがClaudeのHTMLの&lt;head&gt;部分にあったのに、&lt;body&gt;部分だけを貼り付けたためです。&lt;head&gt;の内容が読み込まれていないのでCSSが効かず、フォントも適用されていない状態になります。</p>
+<p>この問題を解決するために、TailwindとGoogle FontsをWordPress側で全ページに読み込む設定を行います。方法は主に2つあります。①functions.phpに追記する方法（推奨）と、②外観→カスタマイズの「追加HTML」に追記する方法です。①は正しいWordPressの方法でより安定しており、②は手軽ですが一部テーマでは機能しない場合があります。初心者には②を試してから①に進む順番がおすすめです。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-2. 方法①：外観→カスタマイズから読み込む（簡単・まず試す方法）</span></h2>
+<table><tbody><tr><td><p><strong>🖥️ 外観→カスタマイズでCDNを追加する手順</strong></p><p>【STEP 1】左メニューの「外観」→「カスタマイズ」をクリック</p><p>　→ フロントエンドのプレビューが付いたカスタマイズ画面が開く</p><p>【STEP 2】左側のメニューから「追加CSS」を探してクリック</p><p>　※テーマによっては「追加JavaScript」や「カスタムHTML」の</p><p>　ような項目がある場合もある</p><p>【STEP 3】以下のコードを入力欄に貼り付ける</p><p>　※ただしここはCSSのみ対応。TailwindのJSは別途設定が必要</p><p>　@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;display=swap");</p><p>　body { font-family: "Noto Sans JP", sans-serif; }</p><p>【STEP 4】「公開」ボタンをクリックして保存する</p><p>【TailwindのCDN（JavaScript）を追加する場合】</p><p>　→ テーマによって「外観→カスタマイズ→追加スクリプト」や</p><p>　「外観→ウィジェット→フッターウィジェット」などから追加できる場合がある</p><p>　→ テーマが対応していない場合は方法②のfunctions.phpを使う</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-3. 方法②：functions.phpに追記する（確実・推奨）</span></h2>
+<p>functions.phpはWordPressテーマのメインPHPファイルで、ここにコードを追加することでサイトの全ページに任意のスクリプトを読み込ませることができます。これがWordPressの正しい実装方法です。ただし誤ったコードを追加するとサイトが真っ白になることがあるため、必ずバックアップを取ってから行ってください。</p>
+<table><tbody><tr><td><p><strong>⚠️ functions.phpを編集する前に必ずやること</strong></p><p>1. 現在のfunctions.phpの全内容をコピーして</p><p>　 テキストファイルとして手元に保存しておく</p><p>2. 保存場所：デスクトップの「functions_php_バックアップ_日付.txt」など</p><p>→ もしサイトが真っ白になったら、このバックアップを使って</p><p>　 FTPソフト（FileZilla）で元のファイルに上書きして復旧できる</p></td></tr></tbody></table>
+<table><tbody><tr><td><p><strong>🖥️ functions.phpへのコード追加手順</strong></p><p>【STEP 1】左メニューの「外観」→「テーマファイルエディター」をクリック</p><p>　→ 画面右側に「テーマファイルの編集」というリストが表示される</p><p>【STEP 2】右側のファイルリストから「functions.php」を探してクリック</p><p>　→ ファイルの内容がエディター画面に表示される</p><p>【STEP 3】ファイルの内容の「最後の？&gt;の直前」または「末尾」に</p><p>　以下のコードを追加する（Claudeに生成させると確実）</p><p>　function add_tailwind_and_fonts() {</p><p>　　wp_enqueue_script("tailwindcss",</p><p>　　　"https://cdn.tailwindcss.com", array(), null, false);</p><p>　　wp_enqueue_style("noto-sans-jp",</p><p>　　　"https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;display=swap",</p><p>　　array(), null);</p><p>　}</p><p>　add_action("wp_enqueue_scripts", "add_tailwind_and_fonts");</p><p>【STEP 4】「ファイルを更新」ボタンをクリックして保存</p><p>【STEP 5】サイトをブラウザで開いてデザインが正しく表示されることを確認</p></td></tr></tbody></table>
+<table><tbody><tr><td><p><strong>💡 ClaudeにWordPress用のfunctions.phpコードを生成させる方法</strong></p><p>以下のプロンプトをそのまま使えます：</p><p>「WordPressのfunctions.phpに追加するコードを生成してください。</p><p>サイトの全ページのheadタグに以下を読み込ませてください：</p><p>①Tailwind CSS CDN：https://cdn.tailwindcss.com（scriptタグ）</p><p>②Google Fonts（Noto Sans JP・400/700ウェイト）</p><p>wp_enqueue_scriptsフックを使ったWordPressの正しい方法で、</p><p>functions.phpのどの位置に追記すべきかも示してください」</p><p>→ Claudeが正しいPHPコードと追記場所を教えてくれる</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-4. ナビゲーションのリンクをWordPress形式に変更する</span></h2>
+<p>8-5で作成したHPのHTMLではナビゲーションのリンクが「service.html」「about.html」のようなファイル名形式です。WordPressに組み込む際は、各固定ページのパーマリンク（/service/ 等）に合わせて変更する必要があります。この変更も全4ページ分まとめてClaudeに依頼できます。</p>
+<table><tbody><tr><td><p><strong>📋 WordPress用ナビリンク一括変換プロンプト（コピペ用）</strong></p><p>「以下の4ページのHTMLのナビゲーションのhref属性を</p><p>WordPressのパーマリンク形式に変更してください。</p><p>変更ルール：</p><p>href="index.html"   → href="/"（ルートURL）</p><p>href="service.html" → href="/service/"</p><p>href="about.html"   → href="/about/"</p><p>href="contact.html" → href="/contact/"</p><p>【index.html全文】（Paste）</p><p>【service.html全文】（Paste）</p><p>【about.html全文】（Paste）</p><p>【contact.html全文】（Paste）</p><p>ナビゲーション以外のHTMLは変更しないでください。</p><p>修正後に4ページすべてを出力してください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第5章：プラグインの設定──お問い合わせフォームとSEO</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-1. Contact Form 7でお問い合わせフォームを実装する</span></h2>
+<p>8-4・8-5でHTMLのお問い合わせフォームを作成しましたが、このHTMLフォームだけでは実際にメールが届くお問い合わせ機能を持っていません。フォームからメールを送信するには「バックエンド（サーバーサイド）」の処理が必要で、WordPressではContact Form 7というプラグインを使うのが最もポピュラーな方法です。インストールして設定すれば、問い合わせフォームから送信した内容がクライアントのメールアドレスに届くようになります。</p>
+<table><tbody><tr><td><p><strong>🖥️ Contact Form 7のインストールから設定まで完全手順</strong></p><p>【STEP 1：プラグインのインストール】</p><p>　→ 左メニューの「プラグイン」→「新規追加」をクリック</p><p>　→ 右上の検索欄に「Contact Form 7」と入力</p><p>　→ 検索結果に表示された「Contact Form 7」の</p><p>　「今すぐインストール」ボタンをクリック</p><p>　→ インストール完了後「有効化」ボタンをクリック</p><p>　→ 左サイドバーに「お問い合わせ」メニューが追加されればインストール完了</p><p>【STEP 2：デフォルトフォームの確認と編集】</p><p>　→ 左メニューの「お問い合わせ」→「コンタクトフォーム 1」をクリック</p><p>　→ フォームの「フォーム」タブで項目を確認・編集できる</p><p>　→ デフォルトは「お名前・メール・件名・本文」の4項目が設定済み</p><p>　→ 必要に応じて「会社名」「電話番号」等の項目を追加できる</p><p>【STEP 3：受信先メールアドレスの設定（重要）】</p><p>　→ 「メール」タブをクリック</p><p>　→ 「送信先」欄にクライアントのメールアドレスを入力</p><p>　→ 「件名」欄に「【お問い合わせ】サイト名からのお問い合わせ」等を入力</p><p>　→ 「保存」ボタンをクリック</p><p>【STEP 4：ショートコードのコピー】</p><p>　→ フォームの編集画面の最上部に</p><p>　「このショートコードをコピーして固定ページに貼り付けてください」という</p><p>　ショートコードが表示される</p><p>　例：[contact-form-7 id="xxxxx" title="コンタクトフォーム 1"]</p><p>　→ このショートコードをコピーする</p><p>【STEP 5：固定ページにショートコードを貼り付ける】</p><p>　→ contact.html組み込み済みの固定ページを開く</p><p>　→ コードエディターでHTMLフォームの部分（&lt;form&gt;〜&lt;/form&gt;）を</p><p>　上記のショートコードに置き換える</p><p>　→ 「更新」ボタンで保存して動作確認する</p><p>【STEP 6：テスト送信で動作確認する】</p><p>　→ 公開されたお問い合わせページからテスト送信する</p><p>　→ クライアントのメールアドレスに届くか確認する</p><p>　→ 届かない場合：「送信先」メールアドレスの設定ミスや</p><p>　サーバーのメール送信設定を確認する</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-2. Yoast SEOでSEOの基本設定を行う</span></h2>
+<p>Yoast SEOはWordPressで最も広く使われているSEOプラグインです。各ページのタイトルタグ・メタディスクリプション・OGP（SNSでシェアしたときの表示）などを管理画面から簡単に設定できます。クライアントがブログ記事を書くときにもSEOの基本設定ができるようになるため、HP納品時に設定しておくことを推奨します。</p>
+<table><tbody><tr><td><p><strong>🖥️ Yoast SEOのインストールと基本設定</strong></p><p>【インストール手順】</p><p>　→ 「プラグイン」→「新規追加」で「Yoast SEO」を検索</p><p>　→ インストール→有効化する</p><p>　→ 左サイドバーに「SEO」メニューが追加される</p><p>【各ページのタイトルとメタディスクリプション設定】</p><p>　→ 固定ページの編集画面を開く</p><p>　→ ページ下部にスクロールすると「Yoast SEO」の設定エリアが表示される</p><p>　→ 「SEOタイトル」欄：ブラウザのタブに表示されるタイトルを入力</p><p>　（例：サービス紹介 │ AIライター事務所）</p><p>　→ 「メタディスクリプション」欄：検索結果に表示される説明文を入力</p><p>　（例：AIとライティングを組み合わせたLP・HP制作サービスのご紹介）</p><p>　→ 緑・黄・赤のアイコンでSEOの最適化状態を確認できる</p><p>【サイト全体のSEO設定】</p><p>　→ 左メニューの「SEO」→「設定」→「サイト全体のSEO設定」</p><p>　→ サイト名・区切り文字・ホームページの説明を設定する</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第6章：WordPressのカスタマイズ──Claudeを使った追加実装</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-1. WordPress対応後のナビゲーション修正を確認する</span></h2>
+<p>WordPressに4ページを組み込んだ後、最も頻繁に発生する問題がナビゲーションのリンク切れです。HTMLファイル名形式（service.html）のままWordPressに組み込んでいる場合、クリックしても正しいページに移動しません。第4章で解説したナビリンク変換を行った後も、各ページで実際にナビのリンクをクリックして動作確認することが重要です。</p>
+<table><tbody><tr><td><p><strong>トラブル</strong></p></td><td><p><strong>原因</strong></p></td><td><p><strong>修正方法</strong></p></td></tr><tr><td><p>ナビをクリックするとページが変わらない</p></td><td><p>hrefが「#」または空</p></td><td><p>Claudeに「ナビのhrefをWordPress形式に修正して」と送る</p></td></tr><tr><td><p>クリックすると404エラーになる</p></td><td><p>スラッグの設定ミスまたはパーマリンク設定が未完了</p></td><td><p>パーマリンク設定を確認・再保存。固定ページのスラッグを確認</p></td></tr><tr><td><p>URLが/service/ではなく/?page_id=123になる</p></td><td><p>パーマリンク設定が「デフォルト」のまま</p></td><td><p>「設定→パーマリンク」で「投稿名」に変更して保存する</p></td></tr><tr><td><p>Tailwindが効かずデザインが崩れる</p></td><td><p>CDNがheadに読み込まれていない</p></td><td><p>functions.phpのコードを確認。Claudeに再生成させる</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-2. Claudeを使ったWordPressカスタマイズ</span></h2>
+<p>WordPressに組み込んだ後でデザインの細部を修正したい場合も、Claudeに依頼することで対応できます。「このセクションの背景色を変えたい」「CTAボタンをもう少し大きくしたい」という修正も、修正対象のHTMLをClaudeに渡して指示するだけです。修正されたHTMLを固定ページに貼り直すだけで変更が反映されます。</p>
+<table><tbody><tr><td><p><strong>📋 WordPress組み込み後の修正指示プロンプト（コピペ用）</strong></p><p>「WordPressの固定ページに組み込んでいるHTMLを修正してください。</p><p>【現在のHTMLのbody部分】</p><p>（固定ページのコードエディターの内容をここにPaste）</p><p>【修正してほしいこと】</p><p>・（例）CTAボタンのサイズをもう少し大きくしてください</p><p>・（例）お問い合わせセクションのContact Form 7の前に</p><p>　「2営業日以内にご返信します」というテキストを追加してください</p><p>修正後のbody部分のみを出力してください</p><p>（WordPressに直接貼り付けられる形式で）」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第7章：クライアントへの引き渡し──「自分で更新できる」状態を作る</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-1. 引き渡し前のチェックリスト</span></h2>
+<p>WordPress対応のHP制作が完成したら、クライアントへの引き渡し前に以下の確認を行います。単にサイトが動いているかだけでなく、クライアントが自分で更新できる状態になっているかまで確認することが、納品品質の差を生む部分です。</p>
+<table><tbody><tr><td><p><strong>確認項目</strong></p></td><td><p><strong>確認内容</strong></p></td><td><p><strong>確認方法</strong></p></td></tr><tr><td><p>フロントページ設定</p></td><td><p>サイトのトップURL（/）にトップページが表示されているか</p></td><td><p>ブラウザでルートURLを開いて確認</p></td></tr><tr><td><p>全ページのナビリンク</p></td><td><p>4ページすべてのナビゲーションが正しく動作するか</p></td><td><p>各ページを開いてナビの全リンクをクリックして確認</p></td></tr><tr><td><p>スマホ表示</p></td><td><p>全ページのスマホ表示が崩れていないか</p></td><td><p>デベロッパーツールでiPhone SEを選択して確認</p></td></tr><tr><td><p>お問い合わせフォーム</p></td><td><p>テスト送信してクライアントのメールに届くか</p></td><td><p>実際にフォームから送信してメールを確認</p></td></tr><tr><td><p>ログイン確認</p></td><td><p>クライアントが管理画面にログインできるか</p></td><td><p>クライアントのユーザー情報でログインテスト</p></td></tr><tr><td><p>TailwindとFontの表示</p></td><td><p>デザインとNoto Sans JPが正しく表示されているか</p></td><td><p>各ページをブラウザで開いて目視確認</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-2. ブログの更新方法をクライアントに説明する</span></h2>
+<p>WordPressで納品した場合の最大の価値は「クライアントが自分でコンテンツを更新できること」です。しかしWordPressを初めて使うクライアントにとって、管理画面の操作は最初は難しく感じます。引き渡し時に一緒に操作しながら説明することで、クライアントの自信と満足度が大幅に上がります。</p>
+<table><tbody><tr><td><p><strong>🖥️ ブログ記事の書き方をクライアントに説明する手順</strong></p><p>【一緒に操作しながら以下を実演する】</p><p>1. 管理画面にログインする</p><p>　→ URL・ユーザー名・パスワードをクライアントに書いて渡す</p><p>2. 「投稿」→「新規追加」をクリックする</p><p>　→ 「タイトルを追加」欄に記事タイトルを入力</p><p>　→ 本文エリアに記事内容を入力</p><p>　→ 「ビジュアルエディター」モードでWordのような感覚で書けることを見せる</p><p>3. アイキャッチ画像を設定する</p><p>　→ 右側パネルの「アイキャッチ画像」→「アイキャッチ画像を設定」をクリック</p><p>　→ 「ファイルをアップロード」でパソコンから画像を選択してアップロード</p><p>　→ 画像を選択して「アイキャッチ画像を設定」をクリック</p><p>4. カテゴリを設定する（あれば）</p><p>　→ 右側パネルの「カテゴリー」でカテゴリを選択</p><p>5. 「プレビュー」で確認してから「公開」ボタンをクリック</p><p>→ この一連の操作を実際にクライアントに触ってもらう</p><p>→ 1〜2回やってもらえれば大抵の方は自分でできるようになる</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-3. クライアント向け操作マニュアルをClaudeで生成する</span></h2>
+<table><tbody><tr><td><p><strong>📋 クライアント向けWordPress操作マニュアル生成プロンプト（コピペ用）</strong></p><p>「以下のWordPressサイトのクライアント向け操作マニュアルを作成してください。</p><p>サイト名：【入力】</p><p>管理画面URL：https://【ドメイン】/wp-admin</p><p>使用テーマ：【テーマ名】</p><p>使用プラグイン：Contact Form 7・Yoast SEO</p><p>連絡先：【あなたのメールアドレス】</p><p>含めてほしい内容：</p><p>①管理画面へのログイン方法（URL・ユーザー名・パスワードの入力場所）</p><p>②ブログ・お知らせ記事の書き方</p><p>　（投稿→新規追加→タイトルと本文の入力→アイキャッチ画像→公開）</p><p>③お問い合わせの確認方法</p><p>　（Contact Form 7から送信されたメールが届くメールアドレスの確認）</p><p>④既存ページのテキストを変更したいときの方法</p><p>⑤画像を差し替えたいときの方法（メディアライブラリの使い方）</p><p>⑥ログインできなくなったときの対処法</p><p>⑦困ったときの連絡先</p><p>WordPressを一度も使ったことがない方でも理解できる言葉で。</p><p>専門用語は使わず、「画面の左側のメニューの〇〇をクリック」のように</p><p>具体的な場所を示す説明にしてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-4. 継続サポートの提案──単価アップとリピート率向上の設計</span></h2>
+<p>WordPressで納品した後に継続サポートを提案することが副業収入の安定化につながります。クライアントにとっては「WordPressのバージョンアップやセキュリティ対応を任せたい」という需要が高く、月額での継続依頼は双方にメリットがあります。</p>
+<table><tbody><tr><td><p><strong>💰 継続サポート提案メール文例（納品時に送るメール）</strong></p><p>件名：○○様のHP制作完了のご報告と今後について</p><p>○○様</p><p>この度はHP制作をご依頼いただき、ありがとうございました。</p><p>先ほど最終確認が取れましたのでご報告いたします。</p><p>今後のサイト運用について以下のサポートプランをご用意しています。</p><p>【ライトプラン】月額〇〇〇〇円</p><p>・WordPress・プラグインの月次アップデート</p><p>・バックアップの確認</p><p>・軽微な修正対応（月1〜2件）</p><p>【スタンダードプラン】月額〇〇〇〇円</p><p>・ライトプランの全内容</p><p>・ブログ・事例の代理更新（月2本まで）</p><p>・新規固定ページの追加（月1ページまで）</p><p>ご不明な点はいつでもご連絡ください。</p><p>引き続きよろしくお願いいたします。</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第8章：WordPress特有のトラブルと対処法</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">8-1. よくあるトラブル一覧</span></h2>
+<table><tbody><tr><td><p><strong>トラブル</strong></p></td><td><p><strong>主な原因</strong></p></td><td><p><strong>対処法</strong></p></td></tr><tr><td><p>サイトが真っ白になった</p></td><td><p>functions.phpなどのPHPファイルに構文エラーが混入</p></td><td><p>FTPでサーバーにアクセスしてfunctions.phpをバックアップに戻す</p></td></tr><tr><td><p>Tailwindが効かない</p></td><td><p>CDNがheadに読み込まれていない</p></td><td><p>functions.phpのコードを確認。Claudeに正しいコードを再生成させる</p></td></tr><tr><td><p>ナビクリックで404</p></td><td><p>hrefがファイル名形式のまま・スラッグ設定ミス</p></td><td><p>WordPress形式に変換する。パーマリンク設定を再保存する</p></td></tr><tr><td><p>お問い合わせが届かない</p></td><td><p>Contact Form 7の送信先メールが間違い</p></td><td><p>「お問い合わせ→メール」タブで送信先アドレスを確認・修正</p></td></tr><tr><td><p>管理画面にログインできない</p></td><td><p>パスワード間違い・ログイン試行制限</p></td><td><p>ログイン画面の「パスワードをお忘れですか？」から再設定</p></td></tr><tr><td><p>画像が表示されない</p></td><td><p>メディアライブラリにアップロードされていない・URLが違う</p></td><td><p>メディアライブラリで画像を確認・再アップロードして差し込み直す</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">8-2. サイトが真っ白になったときの緊急対処法</span></h2>
+<p>functions.phpを編集してサイトが真っ白になった場合は焦らずに以下の手順で対処します。WordPressを使う以上、このトラブルは誰でも一度は経験します。FTPソフトがあれば5分以内に復旧できます。</p>
+<table><tbody><tr><td><p><strong>🆘 サイトが真っ白になったときの緊急復旧手順</strong></p><p>【STEP 1】FileZillaなどのFTPソフトでサーバーに接続する</p><p>　→ クライアントからFTP情報（ホスト・ユーザー名・パスワード）を受け取っておく</p><p>【STEP 2】WordPressのテーマフォルダに移動する</p><p>　→ サーバー側で /public_html/wp-content/themes/テーマ名/ に移動</p><p>【STEP 3】functions.phpを右クリックして「ダウンロード」→「テキストエディタで開く」</p><p>【STEP 4】追加したコードを削除またはバックアップのコードに置き換える</p><p>【STEP 5】修正したfunctions.phpをFTPでサーバーに上書きアップロードする</p><p>【STEP 6】ブラウザをリロードしてサイトが表示されることを確認する</p><p>→ サイトが元に戻ったら、追加するコードをClaudeに再生成させて</p><p>　 正しいコードを確認してから再度追加する</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第9章：実践プロンプト集8種</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト①：body部分の切り出し指示</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト①（コピペ用）</strong></p><p>「以下のHTMLからWordPressの固定ページに貼り付けるための</p><p>body部分（&lt;body&gt;タグの中身）だけを切り出してください。</p><p>&lt;!DOCTYPE html&gt;・&lt;html&gt;・&lt;head&gt;・&lt;body&gt;タグ自体は含めないでください。</p><p>（headのCSS/JSリンクは別途WordPressのfunctions.phpで設定するため不要）</p><p>【HTMLの全文をPaste】</p><p>body部分のコンテンツのみを出力してください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト②：functions.phpへのTailwind・フォント読み込みコード生成</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト②（コピペ用）</strong></p><p>「WordPressのfunctions.phpに追加するコードを生成してください。</p><p>サイトの全ページのheadタグに以下を読み込ませてください：</p><p>①Tailwind CSS CDN：https://cdn.tailwindcss.com（scriptタグ）</p><p>②Google Fonts Noto Sans JP（400/700ウェイト）</p><p>wp_enqueue_scriptsフックを使ったWordPressの正しい実装方法で。</p><p>functions.phpのどの位置に追記すべきかも教えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト③：WordPress用ナビリンク一括変換</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト③（コピペ用）</strong></p><p>「以下の4ページのnaviのhref属性をWordPress形式に変換してください。</p><p>index.html → / / service.html → /service/</p><p>about.html → /about/ / contact.html → /contact/</p><p>【4ページのHTMLをPaste】</p><p>ナビ以外は変更しないでください。全ページを出力してください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト④：Contact Form 7のカスタマイズCSS生成</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト④（コピペ用）</strong></p><p>「Contact Form 7のフォームをブランドデザインに合わせるCSSを生成してください。</p><p>メインカラー：#【入力】 / アクセント：#【入力】</p><p>・入力フィールドの背景：薄いメインカラー系</p><p>・フォーカス時：メインカラーのボーダー</p><p>・送信ボタン：アクセントカラー・白文字</p><p>WordPressの「外観→カスタマイズ→追加CSS」に貼り付けて使えるCSSで生成してください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑤：WordPress組み込み後の修正指示</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑤（コピペ用）</strong></p><p>「WordPressの固定ページのHTMLを修正してください。</p><p>【現在のHTMLのbody部分をPaste】</p><p>【修正してほしいこと】</p><p>（例：CTAボタンをもっと大きく / お問い合わせの前に説明文を追加 等）</p><p>WordPressに直接貼り付けられるbody部分のみを出力してください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑥：WordPressカスタマイズコード生成</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑥（コピペ用）</strong></p><p>「WordPressのカスタマイズコードを生成してください。</p><p>使用テーマ：【テーマ名】 / WordPressバージョン：【バージョン】</p><p>【やりたいこと：具体的に入力】</p><p>追加する場所（functions.php等）も明示してください。</p><p>テーマアップデートで消えない方法を優先してください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑦：クライアント向け操作マニュアル生成</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑦（コピペ用）</strong></p><p>「WordPressサイトのクライアント向け操作マニュアルを作成してください。</p><p>サイト名：【入力】 / 管理画面URL：https://【ドメイン】/wp-admin</p><p>連絡先：【メールアドレス】</p><p>含める項目：</p><p>①ログイン方法</p><p>②ブログ記事の書き方（新規作成〜公開）</p><p>③お問い合わせの確認方法</p><p>④画像の変更方法</p><p>⑤トラブル時の対処法</p><p>⑥連絡先</p><p>WordPressを使ったことがない方でも理解できる言葉で作成してください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑧：継続サポート提案メール生成</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑧（コピペ用）</strong></p><p>「WordPress制作後の継続サポート提案メールを作成してください。</p><p>クライアント名：【入力】 / 制作者名：【名前】</p><p>連絡先：【メールアドレス】</p><p>提案プラン：</p><p>・ライトプラン：月〇〇〇〇円（アップデート・バックアップ・軽微修正月2件）</p><p>・スタンダードプラン：月〇〇〇〇円（ライト+ブログ代理更新月2本）</p><p>丁寧かつ押し付けがましくない文体で、</p><p>クライアントが判断しやすいようにプランの違いを明確に示してください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">次のステップ：8-7「高単価受注の営業設計」へ</span></h2>
+<p>8-6でWordPressへの組み込み・管理画面操作・CSS設定・プラグイン設定・クライアント引き渡し・継続サポート提案まで習得しました。8-7ではポジショニング・ポートフォリオ・提案書・単価交渉の営業設計全体を学びます。</p>
+</div>
+</div>
+</body>
+</html>

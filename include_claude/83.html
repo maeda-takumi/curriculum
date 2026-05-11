@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>8-3. ClaudeでHTMLを生成する基礎</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">8-3. ClaudeでHTMLを生成する基礎</span></h1>
+<hr class="divider">
+<span class="label">フェーズ8｜高単価Web制作編</span>
+</div>
+<div class="card">
+<p><em>「ライティング力 × AIコード生成」で月収を1案件から跳ね上げる</em></p>
+<p><strong>コードを書かずにWebページを作る思考法</strong></p>
+<p>このマニュアルを読み終える頃には</p>
+<p><strong>HTMLの知識ゼロからでも、Claudeを使ってブラウザで動くLPを</strong></p>
+<p><strong>自分の手で完成させられるという確信が持てています</strong></p>
+<table><tbody><tr><td><p><strong>💰 この章で得られる効果</strong></p><p>・HTMLとCSSについて「知っておくべき最低限」と「Claudeに任せていい部分」の境界線がわかる</p><p>・LPのページ構造をブロックで視覚的に理解し、Claudeへの指示設計に活かせる</p><p>・「ワークフロー①設計→②指示→③生成→④確認→⑤修正」の5ステップが体に入る</p><p>・「詳細な指示」が修正回数を激減させるメカニズムを理解し、一発で高品質なHTMLを出せる</p><p>・ブラウザでの確認方法とデベロッパーツールの基本的な使い方を習得できる</p><p>・よくある「うまく生成されないケース」とその対処法がわかる</p><p>・Claudeへの修正指示の出し方（デザイン・コピー・構成の各種修正）をプロンプト集で習得できる</p></td></tr></tbody></table>
+<table><tbody><tr><td><p><strong>🤖 この章の学習方法</strong></p><p>・このマニュアルを読みながら、実際にClaude.aiを開いてプロンプトを試してみてください</p><p>・「読むだけ」より「手を動かしながら読む」ことで習得速度が3〜5倍変わります</p><p>・うまくいかないことがあっても「Claudeに何が足りなかったか」を考えることが最大の学習です</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第1章：まず「思考法」を変える──コードを書くのではなく「設計して翻訳させる」</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-1. ノーコード制作の本質的な意味</span></h2>
+<p>「ノーコード制作」という言葉は、しばしば誤解されます。「コードを使わずにWebページを作る」という意味ではありません。むしろ正確には「自分でコードを書かずに、AIにコードを生成させてWebページを作る」です。この違いは非常に重要です。</p>
+<p>完成したHTMLファイルにはコードがあります。ブラウザはそのコードを読んでページを表示します。あなたが変えるのは「誰がそのコードを書くか」です。エンジニアが書いていたコードを、Claudeが生成する。あなたの役割は「コードを書く人」から「何を作るかを設計して、Claudeに指示する人」へと移行します。この役割転換がノーコード制作の本質です。</p>
+<p>そしてこの「設計して指示する」という役割は、ライターにとって最も得意な仕事と構造的に同じです。クライアントの要望を理解し、ターゲットへの訴求を設計し、それを正確な言語で指示として表現する。あなたはフェーズ0〜7でまさにこの能力を磨いてきました。</p>
+<blockquote><p><em>「コードを書けないことは、ノーコード制作においては弱点ではない。むしろ「設計と指示」に集中できるという強みになる。」</em></p></blockquote>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-2. HTMLを「見る目」と「書く技術」は全く別物</span></h2>
+<p>「HTMLがわからないからWeb制作はできない」という思い込みは、2つの全く異なるスキルを混同しています。HTMLを「書く技術」とHTMLを「読んで理解できる目」は別物です。ノーコード制作に必要なのは後者だけです。そしてHTMLを「読む」ことは、ライターが文章を読むのと似ています。どんな情報が、どんな構造で、どの順番で並んでいるかを把握する力です。</p>
+<p>Claudeが生成したHTMLを見たとき、コードの細部がわからなくても「このブロックがFVセクションで、この部分がCTAボタンで、この文字がキャッチコピーだ」という構造的な理解ができれば十分です。修正指示も「このキャッチコピーを変えて」「このボタンの色を変えて」と日本語で言うだけです。HTMLのどの行を変えればいいかはClaudeが判断します。</p>
+<p>上の図はClaudeによるHTMLノーコード制作の基本ワークフローです。①設計→②指示→③生成→④確認→⑤修正という5ステップで、修正は②の指示ステップに戻る「ループ構造」になっています。このループを回すたびに成果物の品質が上がります。重要なのは、どのステップにおいても「HTMLを自分で書く」というプロセスがないことです。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第2章：最低限知っておくべきHTML・CSSの「語彙」</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-1. 「知っておくと指示精度が上がる」最低限の知識</span></h2>
+<p>上の図は「知っておくべき知識」と「Claudeに任せていい部分」の境界線を示しています。左側の青いゾーンの知識を持っていれば、ほぼすべてのLP・HP制作案件に対応できます。右側の紫のゾーンはClaudeに任せれば良く、自分で学ぶ必要はありません。</p>
+<p>重要なのは、左側のリストはHTMLのタグ名と「その役割の大意」を知っていれば十分だということです。正確な構文を暗記する必要はまったくありません。「h1は大きな見出し」「sectionはページのひとまとまり」「buttonはボタン」という程度の理解があれば、Claudeへの指示の中でこれらの言葉を自然に使えるようになります。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-2. 「Claudeに伝わる言葉」として使えるHTML・CSS基礎語彙</span></h2>
+<p>以下の語彙は「Claudeへの指示の中で使える言葉」として理解してください。暗記ではなく「こういう言葉を使うとClaudeに意図が伝わる」という実用的な知識です。</p>
+<table><tbody><tr><td><p><strong>HTMLタグ・CSS概念</strong></p></td><td><p><strong>意味</strong></p></td><td><p><strong>Claudeへの指示での使い方の例</strong></p></td></tr><tr><td><p>&lt;section&gt;</p></td><td><p>ページのひとまとまりのセクション（区切り）</p></td><td><p>「このsectionの背景色を変えて」「CTAのsectionをページ下部にもう1つ追加して」</p></td></tr><tr><td><p>&lt;div&gt;</p></td><td><p>グループ分けのための汎用コンテナ</p></td><td><p>「このdivを横並びにして」「カードのdivを3列グリッドにして」</p></td></tr><tr><td><p>&lt;h1&gt;〜&lt;h3&gt;</p></td><td><p>見出し（h1が最大・h3が小さい）</p></td><td><p>「FVのh1をもっと大きくして」「h2の下にサブタイトルのh3を追加して」</p></td></tr><tr><td><p>&lt;p&gt;</p></td><td><p>段落テキスト</p></td><td><p>「このpのフォントサイズを一回り大きくして」「p要素の行間を広げて」</p></td></tr><tr><td><p>&lt;a&gt;</p></td><td><p>リンク（ボタンのURLも含む）</p></td><td><p>「このaタグのリンク先を〇〇に変えて」「ボタンのhrefにアンカーリンクを設定して」</p></td></tr><tr><td><p>&lt;img&gt;</p></td><td><p>画像</p></td><td><p>「imgのalt属性に商品名を入れて」「この画像の横幅を全幅にして」</p></td></tr><tr><td><p>&lt;button&gt;</p></td><td><p>クリックできるボタン</p></td><td><p>「buttonの文字色を白にして」「buttonの角丸をもっと大きくして」</p></td></tr><tr><td><p>padding / margin</p></td><td><p>内側・外側の余白</p></td><td><p>「このセクションのpaddingを大きくして余白を増やして」「ボタンのpadding上下を増やして」</p></td></tr><tr><td><p>background-color</p></td><td><p>背景色</p></td><td><p>「このsectionのbackground-colorを#F5F5F5にして」「CTAセクションの背景を濃い青にして」</p></td></tr><tr><td><p>font-size</p></td><td><p>文字サイズ</p></td><td><p>「このh1のfont-sizeをスマホでも読みやすいサイズにして」</p></td></tr><tr><td><p>flex / grid</p></td><td><p>横並びレイアウト（Claudeに任せてOK）</p></td><td><p>「3カラムのカードレイアウトにして」とだけ言えば、ClaudeがflexまたはgridでHTMLを書いてくれる</p></td></tr><tr><td><p>@media（レスポンシブ）</p></td><td><p>画面サイズごとの見た目の変更（Claudeに任せてOK）</p></td><td><p>「スマホでは1列・PCでは3列にして」とだけ言えばClaudeが対応するコードを書く</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-3. 「Tailwind CSS」を知っておくと指示がさらに楽になる</span></h2>
+<p>ClaudeにHTMLを生成させるとき、「Tailwind CSS（テイルウィンド CSS）を使って」という一言を指示に加えることを強く推奨します。Tailwind CSSとは、HTMLの中に短いクラス名を書くだけでデザインを適用できるCSSフレームワークです。「tailwind CSSを使ってほしい」と伝えるだけで、Claudeが生成するHTMLのデザインが一段と洗練され、かつレスポンシブ対応も自動的に組み込まれます。</p>
+<p>使うためのセットアップも簡単です。Claudeが生成するHTMLの中に&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;という1行が自動で追加され、それだけで使えるようになります。自分でインストールする必要はありません。「Tailwind CSSを使う」という指示を覚えておくだけで、生成されるHTMLの品質が大きく向上します。</p>
+<table><tbody><tr><td><p><strong>📝 Tailwind CSSを使ったClaudeへの指示の基本形</strong></p><p>「以下の仕様でLPのHTMLを生成してください。</p><p>　【技術仕様】</p><p>　・HTML5 ＋ Tailwind CSS（CDNリンク使用）</p><p>　・モバイルファーストのレスポンシブ対応</p><p>　・Google Fonts（Noto Sans JP）使用</p><p>　【デザイン仕様】</p><p>　・メインカラー：#1B6EC2</p><p>　・アクセントカラー：#D85A30</p><p>　・背景：白（#FFFFFF）ベース</p><p>　・CTAボタン：角丸あり、メインカラー、白文字</p><p>　【LP構成】...(8-3 第4章以降で詳しく解説)」</p><p>→ 「Tailwind CSS（CDN使用）」の一言で、別途CSSファイルの作成が不要になる</p><p>→ Claudeがデザインの細かい調整もTailwindクラスで一括で管理してくれる</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第3章：LPをブロックで設計する──構造を理解してから指示する</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-1. LPは「感情設計のブロック」の積み重ね</span></h2>
+<p>左の図はLPのHTML構造をブロックで表したものです。&lt;header&gt;・&lt;section&gt;・&lt;footer&gt;という要素がページの縦方向に積み重なっています。LPとはこのブロックの並び順と各ブロックの内容で構成されています。この「ブロックの設計」がClaudeへの指示の出発点です。</p>
+<div class="callout-box"><p>右のグラフは指示の詳細度と修正回数の関係を示しています。曖昧な1行指示では平均8.2回の修正が必要なのに対して、ライター式フルスペック指示では平均0.8回まで削減されています。「詳細な指示を出すことが結果的に最速」というのが、このグラフの核心メッセージです。</p></div>
+<p>LPのブロック設計を先に紙に書き出してからClaudeに指示すると、指示が自然と詳細になります。「このLPは①FV→②問題提起→③解決策→④特徴3点→⑤CTA→⑥FAQ→⑦最終CTA」という構成が決まってから指示することで、Claudeは「全体の流れを理解した上でHTML全体を設計する」ことができます。構成を決めずに指示すると、Claudeは「一般的なLPのテンプレート」を生成するだけになりがちです。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-2. セクションごとの「役割」をClaudeに伝える重要性</span></h2>
+<p>LP制作でよく起きる問題の1つが「各セクションがバラバラな印象になる」ことです。これはClaudeに「LPのHTMLを生成して」という指示だけを出したとき、Claudeが各セクションを独立した要素として生成するためです。感情設計の「流れ」が伝わっていないと、各セクションがつながらないLPになります。</p>
+<p>この問題を解決するのが「各セクションの役割と感情目標を指示に含める」ことです。「問題提起セクションでは読者に「そうそう！」という強い共感を感じさせることを目標に」「解決策セクションでは「自分にもできそう」という希望を喚起することを目標に」という指示が、各セクションのコピーとデザインに反映されます。</p>
+<table><tbody><tr><td><p><strong>セクション</strong></p></td><td><p><strong>HTMLの要素</strong></p></td><td><p><strong>Claudeへの指示に含めるべき「役割と感情目標」</strong></p></td></tr><tr><td><p>ヘッダー/ナビ</p></td><td><p>&lt;header&gt;</p></td><td><p>「シンプルに。ロゴ左・メニュー右・CTAボタンあり。スクロールしても固定」</p></td></tr><tr><td><p>FV（ファーストビュー）</p></td><td><p>&lt;section&gt;</p></td><td><p>「3秒でターゲットが「自分向けのページだ」と感じさせること。キャッチ・サブ・CTAボタンで構成」</p></td></tr><tr><td><p>問題提起</p></td><td><p>&lt;section&gt;</p></td><td><p>「「そうそう、まさにこれだ」という強い共感を引き出す。ターゲットの悩みを情景描写で表現」</p></td></tr><tr><td><p>解決策提示</p></td><td><p>&lt;section&gt;</p></td><td><p>「「この方法なら自分にもできそう」という希望を持たせる。商品・サービスを自然に登場させる」</p></td></tr><tr><td><p>特徴・ベネフィット</p></td><td><p>&lt;section&gt;</p></td><td><p>「なぜこれが良いのかを論理的に納得させる。機能ではなくベネフィットで説明。3点カード形式」</p></td></tr><tr><td><p>実績・お客様の声</p></td><td><p>&lt;section&gt;</p></td><td><p>「「本当に効果があるのか」という疑念を解消する。具体的な変化と数字で信頼を作る」</p></td></tr><tr><td><p>FAQ</p></td><td><p>&lt;section&gt;</p></td><td><p>「購入前の最後の不安を解消する。行動への障壁をひとつずつ取り除く」</p></td></tr><tr><td><p>最終CTA</p></td><td><p>&lt;section&gt;</p></td><td><p>「今すぐ行動する動機を作る。緊急性・希少性・損失回避の要素を自然に組み込む」</p></td></tr><tr><td><p>フッター</p></td><td><p>&lt;footer&gt;</p></td><td><p>「会社情報・プライバシーポリシー・コピーライト。シンプルかつ信頼感のあるデザインで」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第4章：「一発で高品質なHTML」を生成するフルスペック指示の書き方</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-1. 指示を「5層構造」で組み立てる</span></h2>
+<p>Claudeへのコード生成指示を「どれだけ詳しく書けばいいか」という問いに対する答えは「5層構造で書く」です。この5層はそれぞれ独立した役割を持ち、すべてが揃ったとき一発で高品質なHTMLが生成されます。</p>
+<table><tbody><tr><td><p><strong>層</strong></p></td><td><p><strong>役割</strong></p></td><td><p><strong>含む内容</strong></p></td></tr><tr><td><p>第1層：技術仕様</p></td><td><p>どんなコードで作るか</p></td><td><p>HTML5・Tailwind CSS（CDN）・レスポンシブ対応・フォントの指定</p></td></tr><tr><td><p>第2層：デザイン仕様</p></td><td><p>どんな見た目にするか</p></td><td><p>カラーパレット・フォントサイズの方針・余白の感覚・ボタンスタイル</p></td></tr><tr><td><p>第3層：ターゲット＆BV-GL</p></td><td><p>誰に向けて・どんな世界観で</p></td><td><p>ターゲットの詳細プロファイル・ブランドボイス・NG表現</p></td></tr><tr><td><p>第4層：LP構成＆各セクションの役割</p></td><td><p>どんな順番で・各部分の目的</p></td><td><p>セクション名・並び順・各セクションで達成すべき感情目標</p></td></tr><tr><td><p>第5層：コピーの扱いの指示</p></td><td><p>テキストをどう処理するか</p></td><td><p>コピーはプレースホルダー形式で（後で差し込む）か、実際に書かせるか</p></td></tr></tbody></table>
+<p>この5層をすべて含んだ指示を出すと、Claudeは「設計の意図を理解した上でHTMLを生成する」ことができます。結果として修正が激減し、最初から高品質な成果物が得られます。5層の指示を書くこと自体が「LP設計の思考プロセス」でもあるため、指示を書きながら自然とLPの構造が整理されていきます。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-2. フルスペック指示の完全テンプレート（コピペ用）</span></h2>
+<table><tbody><tr><td><p><strong>📋 LP HTML生成 フルスペック指示テンプレート（コピペ用）</strong></p><p>「以下の仕様で、LP全体のHTMLとCSSを生成してください。</p><p>═══════════════════════════════</p><p>【第1層：技術仕様】</p><p>・使用技術：HTML5 ＋ Tailwind CSS（CDNリンクをheadに追加）</p><p>・フォント：Google Fonts（Noto Sans JP・400/700）</p><p>・レスポンシブ：モバイルファースト（スマホ→タブレット→PC）</p><p>・互換性：Chrome・Safari・Edge での表示を優先</p><p>【第2層：デザイン仕様】</p><p>・メインカラー：#【入力】</p><p>・アクセントカラー：#【入力】</p><p>・背景色：#FFFFFF（白）ベース</p><p>・フォントサイズ：本文16px・見出しは相対的に調整</p><p>・CTAボタン：角丸（rounded-full）・メインカラー・白文字・hover効果あり</p><p>・セクション間の余白：広めに（padding-y: 80〜100px相当）</p><p>【第3層：ターゲット＆BV-GL】</p><p>・ターゲット：【入力：年齢・性別・状況・悩みの詳細】</p><p>・ブランドパーソナリティ：【入力：形容詞3つ】</p><p>・トーン：【入力：口調・文体の方針】</p><p>・NG表現：【入力：使ってはいけない言葉・表現のリスト】</p><p>【第4層：LP構成＆各セクションの役割】</p><p>①&lt;header&gt;：ロゴ（左）＋CTAボタン（右）のシンプルナビ</p><p>②&lt;section id="fv"&gt;：FV。感情目標：3秒で「自分のためのページだ」と感じさせる</p><p>③&lt;section id="problem"&gt;：問題提起。感情目標：「そうそう、まさにこれ」という共感</p><p>④&lt;section id="solution"&gt;：解決策。感情目標：「自分にもできそう」という希望</p><p>⑤&lt;section id="features"&gt;：特徴3点（カード形式）。感情目標：論理的な納得</p><p>⑥&lt;section id="voices"&gt;：お客様の声3名。感情目標：社会的証明による信頼</p><p>⑦&lt;section id="faq"&gt;：FAQ5問。感情目標：最後の不安の解消</p><p>⑧&lt;section id="cta"&gt;：最終CTA。感情目標：今すぐ行動する動機</p><p>⑨&lt;footer&gt;：会社情報・プライバシーポリシー・コピーライト</p><p>【第5層：コピーの扱い】</p><p>・各セクションのコピー（テキスト）は[プレースホルダー]形式で示してください</p><p>　例：[キャッチコピーをここに入れる]、[サブコピーをここに入れる]</p><p>・ただしFVのキャッチコピーだけはターゲットに合わせて実際に書いてください</p><p>　（残りは後で自分で差し込みます）</p><p>═══════════════════════════════</p><p>生成後、「このHTMLで特に意識した設計のポイント」を3点教えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-3. 「コピーも一緒に書かせる」バージョン</span></h2>
+<p>上のテンプレートはコピーをプレースホルダーにしていますが、BV-GLとターゲット情報が十分に揃っている場合は、コピーも一緒に書かせることができます。その場合は第5層の指示を以下のように変えます。</p>
+<table><tbody><tr><td><p><strong>💡 コピーも同時に生成させるときの第5層の指示</strong></p><p>【第5層：コピーの扱い（コピーも生成バージョン）】</p><p>・各セクションのコピーも、以下の方針で実際に書いてください</p><p>　- FVキャッチコピー：ターゲットの「内なる独り言」を代弁する表現</p><p>　- 問題提起：ターゲットが日常で感じているフラストレーションを情景描写</p><p>　- 解決策：商品・サービスを「救いに来た存在」として自然に登場させる</p><p>　- CTA文言：「今すぐ申し込む」より行動のハードルが低い表現で</p><p>　- 薬機法・景表法に配慮が必要な場合は自動的に安全な表現を使用してください</p><p>→ BV-GLとターゲット情報を先に渡してあれば、</p><p>　 Claudeはそれらを参照しながらコピーも生成できる</p><p>→ 後でコピーを差し込む手間がなくなる分、制作が1ステップ短縮される</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第5章：生成されたHTMLを「ブラウザで確認する」方法</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-1. 生成されたコードをファイルに保存する手順</span></h2>
+<p>Claudeが生成したHTMLは、Claude.aiの画面上に長いテキストとして表示されます。これをブラウザで確認するためには、まずファイルに保存する必要があります。以下の手順で進めてください。</p>
+<table><tbody><tr><td><p><strong>📋 HTMLをファイルに保存する手順（Windows・Mac共通）</strong></p><p>【STEP 1】Claudeが生成したHTMLコードをすべてコピーする</p><p>　→ 生成されたコードの先頭（&lt;!DOCTYPE html&gt;）から末尾（&lt;/html&gt;）まで全選択</p><p>　→ コードブロックの右上の「コピー」ボタンを使うと便利</p><p>【STEP 2】テキストエディタを開く</p><p>　→ Windowsなら「メモ帳」（無料・最初から入っている）</p><p>　→ Macなら「テキストエディット」（無料・最初から入っている）</p><p>　→ より快適に使いたい場合はVSCode（無料・インストール推奨）</p><p>【STEP 3】コードを貼り付けて保存</p><p>　→ テキストエディタに貼り付ける</p><p>　→ 「名前を付けて保存」で保存</p><p>　→ ファイル名は「index.html」にする（拡張子が.htmlなら名前は何でもOK）</p><p>【STEP 4】ブラウザで開く</p><p>　→ 保存したファイルをダブルクリックするだけ</p><p>　→ Google Chrome・Safari・Edgeいずれでも確認できる</p><p>→ これだけでブラウザにページが表示される</p><p>→ 「なんかうまく表示されない」場合は次のセクションの対処法を確認</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-2. 表示の確認で見るべき3つのポイント</span></h2>
+<p>ブラウザで表示を確認するとき、いきなり細部を見るのではなく、以下の3つを順番に確認する習慣をつけてください。この順番が、修正作業の効率を大きく上げます。</p>
+<table><tbody><tr><td><p><strong>確認の順番</strong></p></td><td><p><strong>確認すること</strong></p></td><td><p><strong>問題があった場合のClaudeへの修正指示例</strong></p></td></tr><tr><td><p>①全体の構成確認</p></td><td><p>ページをスクロールして、すべてのセクションが意図した順番で存在しているか</p></td><td><p>「FAQセクションがありません。CTAの上に追加してください」</p></td></tr><tr><td><p>②スマホ表示の確認</p></td><td><p>ブラウザのデベロッパーツール（F12）でスマホサイズに切り替えて、崩れていないか</p></td><td><p>「スマホ表示でFVのキャッチコピーが2行になって見切れています。文字サイズを小さくして」</p></td></tr><tr><td><p>③デザインの印象確認</p></td><td><p>ブランドボイスGLで設定したトーンと一致した雰囲気になっているか</p></td><td><p>「全体的に硬い印象です。もう少し温かみのある色調に調整してください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-3. デベロッパーツールの「スマホ確認」だけ覚える</span></h2>
+<div class="callout-box"><p>HTMLの確認で最も重要な操作は「スマホ表示の確認」です。LP・HPへのアクセスの60〜70%はスマホからです。PCで見た目が良くてもスマホで崩れているとクライアントから即修正依頼が来ます。スマホ表示の確認方法だけは必ず覚えてください。</p></div>
+<table><tbody><tr><td><p><strong>💡 スマホ表示の確認方法（Chrome推奨）</strong></p><p>【操作手順】</p><p>1. Chromeでページを開いた状態でF12キーを押す（デベロッパーツールが開く）</p><p>2. 上部のアイコンの中から「スマホとタブレットのアイコン」（Toggle Device Toolbar）をクリック</p><p>3. 画面上部のドロップダウンで「iPhone SE」または「iPhone 14 Pro」を選ぶ</p><p>4. ページがスマホサイズで表示される。スクロールして全体を確認</p><p>【Macの場合】</p><p>→ F12の代わりにCommand ＋ Option ＋ Iでデベロッパーツールが開く</p><p>【確認するポイント】</p><p>・文字がはみ出していないか</p><p>・ボタンが小さすぎて押しにくくないか</p><p>・画像が正しいサイズで表示されているか</p><p>・セクションの余白が狭すぎてゴチャゴチャしていないか</p><p>→ 問題があればClaudeに「スマホで〇〇が〇〇になっています。修正してください」と伝えるだけ</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第6章：「会話で修正する」技術──デザイン・コピー・構成の修正指示集</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-1. 修正は「何が問題か」→「どうしてほしいか」の2段構成で</span></h2>
+<p>Claudeへのhtml修正指示で最もよくある失敗は「なんか違う」「もっとかっこよくして」という曖昧な指示です。Claudeは「なんか違う」の「違う部分」がわからないため、全体を変えてしまうか、的外れな修正をすることがあります。修正指示は「①何がどう問題か→②どう変えてほしいか」という2段構成で伝えることが重要です。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-2. デザイン修正の指示パターン集</span></h2>
+<table><tbody><tr><td><p><strong>修正したい状況</strong></p></td><td><p><strong>✗ 避けるべき指示</strong></p></td><td><p><strong>✅ 効果的な指示の書き方</strong></p></td></tr><tr><td><p>色が好みに合わない</p></td><td><p>「なんか色が違う」</p></td><td><p>「FVセクションの背景色が明るすぎます。#1B6EC2（メインカラー）をもっと暗くした#0E4A8E程度に変えてください」</p></td></tr><tr><td><p>ボタンが目立たない</p></td><td><p>「ボタンをもっと目立たせて」</p></td><td><p>「CTAボタンのサイズが小さいです。縦方向のpaddingを2倍にして、文字サイズも少し大きくしてください」</p></td></tr><tr><td><p>全体的に窮屈</p></td><td><p>「なんか窮屈な感じがする」</p></td><td><p>「各セクション間の余白が少なく窮屈です。すべてのsectionのpadding-topとpadding-bottomを80px以上にしてください」</p></td></tr><tr><td><p>フォントが合わない</p></td><td><p>「フォントを変えて」</p></td><td><p>「見出しのフォントをNoto Serif JPに変えてください。本文はNoto Sans JPのままで」</p></td></tr><tr><td><p>スマホで崩れている</p></td><td><p>「スマホが崩れてる」</p></td><td><p>「スマホ表示でFVの特徴カードが横にはみ出しています。スマホでは1カラムに変えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-3. コピー修正の指示パターン集</span></h2>
+<table><tbody><tr><td><p><strong>修正したい状況</strong></p></td><td><p><strong>✗ 避けるべき指示</strong></p></td><td><p><strong>✅ 効果的な指示の書き方</strong></p></td></tr><tr><td><p>キャッチが刺さらない</p></td><td><p>「キャッチコピーを変えて」</p></td><td><p>「現在のキャッチが機能訴求になっています。ターゲット（副業を3ヶ月先送りしている30代）の「内なる独り言」を代弁する表現に変えてください」</p></td></tr><tr><td><p>CTAの文言が弱い</p></td><td><p>「CTAをもっと魅力的に」</p></td><td><p>「「今すぐ申し込む」では行動のハードルが高い。「まず無料で相談してみる」のような、ハードルを下げた表現に変えてください」</p></td></tr><tr><td><p>トーンがブランドに合わない</p></td><td><p>「もう少し柔らかくして」</p></td><td><p>「問題提起セクションの口調が説教的です。ブランドボイスGL（温かく・正直・専門的）に合わせて、一緒に問題を共有するような共感的なトーンに変えてください」</p></td></tr><tr><td><p>表現が法的にNG</p></td><td><p>「この言葉を変えて」</p></td><td><p>「「シミが消える」は薬機法上NGです。「シミが目立ちにくくなる実感」のような暗示的表現に変えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-4. 構成修正の指示パターン集</span></h2>
+<table><tbody><tr><td><p><strong>修正したい状況</strong></p></td><td><p><strong>✗ 避けるべき指示</strong></p></td><td><p><strong>✅ 効果的な指示の書き方</strong></p></td></tr><tr><td><p>セクションの順番を変えたい</p></td><td><p>「なんか順番がおかしい」</p></td><td><p>「お客様の声セクションをFAQの後ではなく前に移動してください。「証拠→疑問解消→CTA」の順にしたい」</p></td></tr><tr><td><p>セクションを追加したい</p></td><td><p>「セクションを増やして」</p></td><td><p>「特徴セクションの後に「他社との比較表」のセクションを追加してください。3項目を横に並べた比較テーブルで」</p></td></tr><tr><td><p>CTAの数を増やしたい</p></td><td><p>「CTAをもっとつけて」</p></td><td><p>「現在CTAが最後にしかありません。FVの直下とFAQの後にもCTAセクションを追加してください。それぞれ少し文言を変えて」</p></td></tr><tr><td><p>セクションを削除したい</p></td><td><p>「いらないセクション消して」</p></td><td><p>「「会社沿革」セクションが不要です。削除してください。他のセクションには影響させないでください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第7章：よくある「うまく生成されないケース」と対処法</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-1. 「途中で出力が止まる」問題</span></h2>
+<p>LPのHTMLは非常に長いコードになるため、Claudeが「コンテキストの上限」に達して出力が途中で止まることがあります。これは特にLP全体を一度に生成しようとするときに起きやすい問題です。</p>
+<table><tbody><tr><td><p><strong>⚠️ 出力が途中で止まったときの対処法</strong></p><p>【対処法①】「続きを書いてください」と送る</p><p>　→ Claudeが途中から続きを出力してくれる</p><p>　→ 繰り返し使える。3〜5回送れば完成することが多い</p><p>【対処法②】LP全体を一度に生成させず、セクションごとに分割して生成する</p><p>　→ 「まずヘッダーとFVだけ生成してください」→確認→「次に問題提起セクションを追加して」</p><p>　→ 分割することで各セクションの品質が上がる副効果もある</p><p>【対処法③】コピーをプレースホルダーにして、まず構造だけを生成する</p><p>　→ テキストが短くなるのでコード全体が短縮される</p><p>　→ 構造が完成してから、コピーをあとから差し込む</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-2. 「スマホで表示が崩れる」問題</span></h2>
+<p>Tailwind CSSを指定しても、スマホ表示が崩れることがあります。特に「横並びにしたカードがスマホで横にはみ出す」という問題が頻発します。これはレスポンシブ設定の漏れが原因です。</p>
+<table><tbody><tr><td><p><strong>💡 スマホ崩れを防ぐClaudeへの追加指示</strong></p><p>初回の指示に以下を追加するだけで、スマホ崩れが大幅に減ります：</p><p>「スマホ表示を最優先にしてください。</p><p>　具体的には：</p><p>　・横並びのカード・グリッドはスマホでは必ず縦1列に変わること</p><p>　・画像はスマホで画面幅いっぱいに表示されること</p><p>　・文字サイズはスマホで読みやすい大きさを保つこと</p><p>　・横スクロールが発生しないこと（overflow-x: hiddenを設定）</p><p>　Tailwindのresizing（sm:・md:・lg:）を適切に使ってください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-3. 「Tailwind CSSが適用されない」問題</span></h2>
+<p>「Tailwind CSSを使って生成してもらったのに、見た目が普通のHTMLと変わらない」という問題が起きることがあります。多くの場合、HTMLのhead部分にTailwindのCDNリンクが入っていないか、リンクが誤っているのが原因です。</p>
+<table><tbody><tr><td><p><strong>⚠️ Tailwind CSSが効いていないときの確認と修正</strong></p><p>【確認方法】</p><p>ClaudeのHTMLの&lt;head&gt;タグの中に以下の行があるか確認してください：</p><p>　&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p><p>【修正指示】</p><p>「Tailwind CSSのスタイルが適用されていないようです。</p><p>　&lt;head&gt;内にTailwindのCDNリンクが正しく入っているか確認して、</p><p>　もし入っていなければ追加してください」</p><p>【代替案】</p><p>最初の指示で明示的に指定することで予防できます：</p><p>「&lt;head&gt;内に必ず以下を含めてください：</p><p>　&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p><p>　&lt;link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&amp;display=swap" rel="stylesheet"&gt;」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-4. 「コピーのトーンがブランドボイスと合わない」問題</span></h2>
+<p>BV-GLを指定したのに生成されたコピーがブランドボイスと合わない場合、多くはBV-GLの情報量が足りていないことが原因です。特に「3つの形容詞」だけを指定して、「それぞれの具体的な意味」「使うべき言葉のリスト」「避けるべき言葉のリスト」が省略されている場合に起きやすい問題です。</p>
+<table><tbody><tr><td><p><strong>💡 BV-GLの指定を「もれなく」含めるチェックリスト</strong></p><p>Claudeへの指示に以下がすべて入っているか確認してください：</p><p>✅ ブランドパーソナリティ：形容詞3つ＋それぞれの意味</p><p>✅ トーン：文末表現・一文の長さ・読者への呼びかけ方</p><p>✅ 積極的に使う言葉のリスト（10語以上）</p><p>✅ 絶対に使わない言葉のリスト（10語以上）</p><p>✅ サンプル文（「このような文体で書いてください：[50字の例文]」）</p><p>→ サンプル文を提示するのが最も効果的なBVGL指定方法</p><p>→ Claudeはサンプル文のリズム・語彙・温度感を参照して文章を生成できる</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-5. 「日本語フォントが反映されない」問題</span></h2>
+<p>日本語フォントを指定したのに、ブラウザで確認するとシステムデフォルトのフォントになっているという問題があります。これはGoogle Fontsのリンクが正しく設定されていないか、Tailwindの設定でフォントが上書きされていないことが原因です。</p>
+<table><tbody><tr><td><p><strong>📝 日本語フォント（Noto Sans JP）を確実に適用する指示テンプレート</strong></p><p>「以下のフォント設定を確実に実装してください。</p><p>　【headに追加するリンク】</p><p>　&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p><p>　&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p><p>　&lt;link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"&gt;</p><p>　【Tailwindのフォント設定】</p><p>　tailwind.config の fontFamily に Noto Sans JP を設定するか、</p><p>　bodyに直接 style属性でNoto Sans JPを指定してください。</p><p>　サイト全体のデフォルトフォントをNoto Sans JPにしてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第8章：実践プロンプト集──シーン別コピペ即使用</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト①：シンプルなLP（1ページ）の生成指示【最初の練習用】</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト①：シンプルLP生成（コピペ用）</strong></p><p>「シンプルな1ページのLPのHTMLを生成してください。</p><p>初めてのLP制作の練習用です。</p><p>【技術仕様】</p><p>HTML5 ＋ Tailwind CSS（CDN）・Google Fonts（Noto Sans JP）・レスポンシブ対応</p><p>【デザイン仕様】</p><p>メインカラー：#1B6EC2（青）・アクセント：#D85A30（オレンジ）・背景：白</p><p>【構成（この順番で）】</p><p>①ナビ：ロゴ（左）＋CTAボタン（右）</p><p>②FV：大きなキャッチコピー＋サブコピー＋CTAボタン</p><p>③特徴3点：アイコン（emoji可）＋見出し＋説明文のカード3枚横並び</p><p>④CTA：背景色あり・ボタン大きめ・申し込みを促すシンプルな文</p><p>⑤フッター：コピーライト文のみ</p><p>【コピー】すべてプレースホルダー形式で：[〇〇をここに入れる]</p><p>生成後、このHTMLをブラウザで表示する方法も教えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト②：FVセクションの強化（感情設計を加える）</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト②：FV感情設計強化（コピペ用）</strong></p><p>「現在のLPのFVセクション（&lt;section id="fv"&gt;）を強化してください。</p><p>【現在の問題点】</p><p>・キャッチコピーが機能訴求になっていてターゲットに刺さっていない</p><p>・FVが静的で動きがない（視覚的なインパクトが弱い）</p><p>【ターゲット】〇〇（詳細に入力）</p><p>【ターゲットの「内なる独り言」】〇〇（例：「また今週も先送りしてしまった…」）</p><p>【強化してほしい内容】</p><p>①キャッチコピー：ターゲットの内なる独り言を代弁する表現に変える</p><p>②サブコピー：キャッチで引き込んだ後、続きを読みたくさせる1〜2文</p><p>③ビジュアル：Nano Bananaで別途生成した画像を差し込める領域を確保</p><p>　（imgタグのsrc=""にプレースホルダーを入れておく）</p><p>④CTAボタン：「今すぐ申し込む」より行動ハードルが低い文言で</p><p>⑤スクロール誘導：FV下部に「もっと見る↓」のスクロール誘導を追加</p><p>FVセクションのHTMLだけを出力してください（他のセクションは変えない）」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト③：既存の文字コピーをHTMLに差し込む</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト③：コピーの差し込み（コピペ用）</strong></p><p>「以下のコピーをプレースホルダーと入れ替えて、LPのHTMLを更新してください。</p><p>【差し込むコピーのリスト】</p><p>FV キャッチコピー：[ここに実際のキャッチコピーを入れる]</p><p>FV サブコピー：[ここに実際のサブコピーを入れる]</p><p>FV CTAボタン文言：[ここに実際のボタン文言を入れる]</p><p>問題提起 見出し：[ここに実際の見出しを入れる]</p><p>（以下続く）</p><p>【注意事項】</p><p>・コピーの差し込み以外のHTMLは変更しないでください</p><p>・改行が必要な箇所は&lt;br&gt;タグで処理してください</p><p>・コピーの中に鉤括弧などの特殊文字が含まれる場合は正しくエスケープしてください</p><p>差し込みが完了したら「差し込んだ箇所の一覧」を教えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト④：CTAの最適化（複数のパターンをA/Bテスト用に）</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト④：CTAの最適化（コピペ用）</strong></p><p>「現在のLPのCTAセクションを3パターン生成してください。</p><p>A/Bテスト用に異なるアプローチで作ってください。</p><p>【ターゲット】〇〇</p><p>【CTAで誘導したいアクション】〇〇（例：無料相談への申し込み）</p><p>【パターンA】緊急性アプローチ</p><p>　→ 「今だけ・期間限定・残り〇席」系の緊急性・希少性</p><p>【パターンB】ベネフィットアプローチ</p><p>　→ 「〇〇ができるようになる・〇〇が手に入る」系の未来の姿</p><p>【パターンC】ハードル低下アプローチ</p><p>　→ 「まずは・無料で・1分で」系の行動のしやすさ</p><p>各パターンについて：</p><p>・CTA見出し（25字以内）</p><p>・CTA説明文（50字以内）</p><p>・ボタン文言（15字以内）</p><p>・デザインの差分（背景色・ボタンスタイル等）</p><p>HTMLで3パターンを出力してください。</p><p>最後に「どのパターンがこのターゲットに最も効くか」の推奨を理由付きで教えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑤：スマホ表示の徹底最適化</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑤：スマホ最適化（コピペ用）</strong></p><p>「以下の問題をすべて修正して、スマホ表示を完全に最適化してください。</p><p>【確認して修正してほしいこと】</p><p>①すべての横並びレイアウト（カード・グリッド）をスマホでは縦1列に変更</p><p>②FVのキャッチコピーのフォントサイズ：スマホでは24〜28px相当に調整</p><p>③全セクションのpadding：スマホでは上下40px・左右16px程度に</p><p>④ナビゲーション：スマホではハンバーガーメニューにするか、</p><p>　ロゴとCTAボタンだけのシンプルナビに変更</p><p>⑤画像：スマホでは幅100%表示</p><p>⑥タップ対象（ボタン・リンク）：最小44×44pxのタップ領域を確保</p><p>⑦横スクロールが絶対に発生しないこと（overflow-x: hidden）</p><p>修正後に「スマホでの表示確認ポイント」のチェックリストも教えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑥：お問い合わせフォームの追加</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑥：フォーム追加（コピペ用）</strong></p><p>「LPのCTAセクションにお問い合わせフォームを追加してください。</p><p>【フォームの仕様】</p><p>入力項目：</p><p>・お名前（必須）</p><p>・メールアドレス（必須）</p><p>・電話番号（任意）</p><p>・お問い合わせ内容（テキストエリア・必須）</p><p>【デザインの要件】</p><p>・ブランドのカラーテーマに合わせたデザイン</p><p>・入力欄はシンプルで入力しやすいサイズ</p><p>・送信ボタンは目立つCTAデザインで</p><p>・バリデーション（未入力チェック）はHTML5のrequiredで実装</p><p>【注意事項】</p><p>・フォームの送信機能（バックエンド処理）はこのHTMLには含めない</p><p>・送信ボタンのアクションはaction="#"でOK</p><p>・後でGoogleフォームの埋め込みコードと入れ替える想定なので、</p><p>　フォームエリアのHTMLを差し替えやすい構造にしてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑦：色調・デザインのバリエーション確認</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑦：デザインバリエーション（コピペ用）</strong></p><p>「現在のLPのデザインについて、2つの配色バリエーションを提案してください。</p><p>【現在の配色】</p><p>メイン：#1B6EC2（青）・アクセント：#D85A30（オレンジ）・背景：白</p><p>【ターゲットとブランドボイス】</p><p>〇〇（入力）</p><p>【バリエーション①】</p><p>・このターゲットに最もCVRが高いと予想される配色</p><p>・理由も説明してください</p><p>【バリエーション②】</p><p>・現在の配色と最も差別化できる配色</p><p>・ターゲットの感情にどんな影響を与えるかも説明してください</p><p>各バリエーションについて：</p><p>・メインカラー・アクセントカラー・背景色のカラーコード</p><p>・このデザインが与える感情的な印象（1〜2文）</p><p>・実際に確認できるようFVセクションだけを各バリエーションのHTMLで出力してください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑧：「セクションだけ切り出す」指示（大規模修正前の確認用）</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑧：セクション切り出し（コピペ用）</strong></p><p>「現在のLPの〇〇セクション（&lt;section id="〇〇"&gt;）だけを</p><p>単独で表示できるHTMLとして切り出してください。</p><p>切り出しの目的：</p><p>・このセクションだけを別のデザインで試したい</p><p>・クライアントへのセクション単体のデザイン確認に使いたい</p><p>【切り出し方の要件】</p><p>・headにTailwind CSSとフォントのリンクを含めてください</p><p>・対象のセクション以外は含めないでください</p><p>・背景色・余白はそのまま維持してください</p><p>切り出しが完了したら、</p><p>「このセクションの現状の改善提案」を2〜3点教えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑨：全体の最終チェック指示</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑨：完成前の最終チェック（コピペ用）</strong></p><p>「以下のLPのHTMLを全体的にレビューして、</p><p>改善すべき点をリストアップしてください。</p><p>【レビューしてほしい観点】</p><p>①コピーライティングの観点</p><p>　・ターゲットへの刺さり方（感情設計が機能しているか）</p><p>　・BV-GLとのトーンの一致度</p><p>　・薬機法・景表法上のリスクがある表現</p><p>②デザインの観点</p><p>　・CTA（行動喚起）の目立ち方と配置</p><p>　・視覚的な情報の優先順位が適切か</p><p>　・スマホ表示での問題点</p><p>③構成の観点</p><p>　・感情設計の流れが自然か</p><p>　・離脱しやすいポイントはどこか</p><p>　・「読んだ人が行動したくなるか」という観点で不足している要素</p><p>④技術的な観点</p><p>　・読み込みが遅くなりそうな要因</p><p>　・SEOの基本設定（titleタグ・descriptionのチェック）</p><p>各問題点には「修正指示の例文」も添えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑩：完成したHTMLをWordPress用に変換する準備指示</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑩：WordPress対応準備（コピペ用）</strong></p><p>「完成したLPのHTMLをWordPressのカスタムHTMLブロックに</p><p>貼り付けられる形に整えてください。</p><p>【WordPressへの組み込み方法】</p><p>・クライアントのWordPressサイトの「固定ページ」にカスタムHTMLブロックとして</p><p>　貼り付ける予定です</p><p>【整えてほしい内容】</p><p>①&lt;head&gt;タグ内のリンク（TailwindCSS・フォント）を別途貼り付けるための</p><p>　コードリストを分けて出力してください</p><p>　（WordPressのfunctions.phpまたはカスタムHTMLで追加する用）</p><p>②&lt;body&gt;タグ内のLPコンテンツ部分だけを切り出してください</p><p>　（WordPressのカスタムHTMLブロックに貼り付けるのはbodyのコンテンツだけ）</p><p>③WordPressのデフォルトCSSと干渉しそうな部分があれば指摘してください</p><p>最後に「WordPressへの貼り付け手順」をステップバイステップで教えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第9章：「コードを読む目」を育てる──最低限の確認スキル</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-1. HTMLを「音読する」という習慣</span></h2>
+<p>HTMLを理解するための最も簡単なアプローチは「音読する」ことです。&lt;section id="fv"&gt;を見たら「FVセクション開始」、&lt;/section&gt;を見たら「FVセクション終了」、&lt;h1 class="text-4xl font-bold"&gt;を見たら「大きな太字の見出し開始」と頭の中で読む。この習慣が自然についてくると、Claudeが生成したHTMLのどこに何があるかが一目でわかるようになります。</p>
+<p>完全な理解は不要です。「だいたいこのあたりがFVで、このあたりがCTA」という構造的な把握ができれば、「FVのキャッチコピーを変えたい」という修正指示を正確に出せます。Claudeへの修正指示の精度は、この「構造的な把握」があるかどうかで大きく変わります。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-2. よく見かける「Tailwind CSSのクラス名」と意味の対応</span></h2>
+<p>Claudeが生成するHTMLにはTailwindのクラス名が大量に使われます。すべてを覚える必要はまったくありませんが、「見てだいたいの意味がわかる」クラスを10〜20個知っておくと、修正指示の精度が上がります。</p>
+<table><tbody><tr><td><p><strong>Tailwindクラス名</strong></p></td><td><p><strong>意味</strong></p></td><td><p><strong>修正指示への活用例</strong></p></td></tr><tr><td><p>text-4xl / text-6xl</p></td><td><p>文字サイズ（4xlが大・6xlがより大）</p></td><td><p>「FVのキャッチのtext-4xlをtext-5xlに変えて」</p></td></tr><tr><td><p>font-bold / font-normal</p></td><td><p>太字・通常の太さ</p></td><td><p>「この見出しにfont-boldを追加して」</p></td></tr><tr><td><p>text-white / text-gray-700</p></td><td><p>文字色（白・グレー）</p></td><td><p>「ボタンの文字をtext-whiteに変えて」</p></td></tr><tr><td><p>bg-blue-600 / bg-white</p></td><td><p>背景色（青・白）</p></td><td><p>「このセクションのbgをbg-gray-50に変えて」</p></td></tr><tr><td><p>py-20 / px-8</p></td><td><p>縦・横の余白（paddingの略）</p></td><td><p>「このセクションのpy-20をpy-32にして余白を広げて」</p></td></tr><tr><td><p>flex / grid</p></td><td><p>横並びレイアウト</p></td><td><p>「このカードをgrid grid-cols-3にして3列にして」</p></td></tr><tr><td><p>rounded-full / rounded-lg</p></td><td><p>ボタン等の角丸（全丸・中程度）</p></td><td><p>「CTAボタンをrounded-lgからrounded-fullに変えて」</p></td></tr><tr><td><p>shadow-md / shadow-xl</p></td><td><p>影（中程度・大きめ）</p></td><td><p>「カードにshadow-mdを追加して立体感を出して」</p></td></tr><tr><td><p>sm: / md: / lg:</p></td><td><p>レスポンシブ（スマホ/タブレット/PC）</p></td><td><p>「md:grid-cols-3をmd:grid-cols-2にして」</p></td></tr><tr><td><p>hidden / block</p></td><td><p>非表示・表示</p></td><td><p>「スマホでこの要素をhiddenにしてPCだけ表示して」</p></td></tr></tbody></table>
+<p>このテーブルはClaudeへの修正指示を出すときの「辞書」として使ってください。完全に暗記する必要はなく、「こういうクラスがあるんだな」という感覚を持つだけで十分です。実際の制作では「Claudeにどう指示するか」を考えることに集中して、Tailwindの詳細はClaudeに任せてください。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">次のステップ：8-4「LP制作完全実践」へ</span></h2>
+<p>8-3でClaudeへのHTML生成の基礎と修正の技術が整いました。8-4ではいよいよ「売れるLP1本を完成させる」実践に入ります。設計からClaude生成・Nano Bananaビジュアル・完成・納品まで、実際の案件を想定したフルワークフローをプロンプト集付きで完全収録します。</p>
+</div>
+</div>
+</body>
+</html>

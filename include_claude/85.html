@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>8-5. HP制作完全実践</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">8-5. HP制作完全実践</span></h1>
+<hr class="divider">
+<span class="label">フェーズ8｜高単価Web制作編</span>
+</div>
+<div class="card">
+<p><strong>複数ページのコーポレートサイトを設計・生成・修正・納品する</strong></p>
+<p>このマニュアルを読み終える頃には</p>
+<p><strong>4ページのコーポレートサイトを設計・生成・修正・納品する</strong></p>
+<p><strong>完全なワークフローが体に入っています</strong></p>
+<table><tbody><tr><td><p><strong>💰 この章で得られる効果</strong></p><p>・LPとHPの根本的な違いを目的・構成・コピーの3軸で完全に理解できる</p><p>・HPの標準4ページ構成と各ページが担う役割・情報の振り分けを把握できる</p><p>・「共通部品（ナビ・フッター）を先に作る」というHP制作の核心的なアプローチを習得できる</p><p>・ClaudeのHTML出力がどんな形で出てくるか・コピーしてファイルに保存する操作を完全にマスターできる</p><p>・ページ間リンクを含めたブラウザ確認・デベロッパーツールの使い方を習得できる</p><p>・Nano BananaとClaudeを組み合わせたHP用ビジュアル制作フローを習得できる</p><p>・複数HTMLファイルの管理・サーバーアップロード・WordPress組み込みを実践できる</p><p>・修正指示の出し方・クライアントの言葉をClaudeへの指示に翻訳する技術を習得できる</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第1章：LP制作との違い──HPを作る前に押さえる発想の転換</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-1. LPとHPは「目的が根本的に違う」</span></h2>
+<p>8-4でLPの制作を習得したあなたは、HPの制作でも同じ手順が使えます。ただし、LPとHPは構造は似ていますが、そもそもの目的が根本的に違うということを最初に理解しておく必要があります。この違いを理解せずに制作を始めると、「なんかLPの焼き直しみたいなHPになってしまった」という問題が起きます。</p>
+<p>上の比較表を見てください。LPは「1つのアクション（問い合わせ・購入）を促す」ことだけに特化した1ページの設計物です。だからこそナビゲーションを置かず（他のページに逃がさないため）、感情設計でCVRを最大化することに集中します。一方HPは「会社全体の信頼性を構築し、様々な角度から訪問者と関係を作る」複数ページのサイトです。今日初めて訪問した人が会社の存在を認識し、サービスの詳細を確認し、信頼できる会社だと判断し、問い合わせる気持ちになるまでの「長い関係構築のプロセス」を支えるのがHPです。</p>
+<p>この違いはコピーの書き方にも直結します。LPでは「このページを読んでいる今すぐ行動してほしい」という緊急性と感情設計が重要でした。HPでは「まだ決めていない人が何度か訪問するうちに信頼を積み上げていく」という視点でコンテンツを作ります。「今すぐ決めて」ではなく「いつでも来てください。私たちはここにいます」というスタンスです。</p>
+<p>もう一点、更新頻度の違いも重要です。LPは一度公開したら大きく変えることは少なく、リニューアルが主な更新です。HPはブログ記事・新しい事例・スタッフ紹介の追加など、頻繁に更新されることが想定されています。この更新のしやすさを考えた設計が、HPの制作では特に大切になります。WordPressを使う案件が多い理由も、クライアントが自分でコンテンツを更新できることへの需要が高いからです。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-2. HPを作るときに「追加で理解が必要な3点」</span></h2>
+<p>8-4でLP制作を習得したことで、あなたはすでにClaudeへのHTML生成指示・ファイルの保存・ブラウザでの確認・Nano Bananaによるビジュアル生成という基本操作をすべて持っています。HPを作るためには、この基礎の上にあと3つのことを加えるだけです。</p>
+<p>1つ目は「複数ページの設計」です。LPは1ページを縦に設計しますが、HPは4〜6ページを横方向に設計します。どのページにどの情報を置くか、どのページからどのページへ誘導するかというページ間の構造設計が必要になります。2つ目は「共通部品の設計と管理」です。HPはナビゲーションとフッターを全ページで共有します。この共通部品を最初に設計・生成することで、全ページが統一されたデザインになります。LPではこの概念がなかったため、初めて登場します。3つ目は「複数ファイルの管理」です。LPはindex.htmlの1ファイルで完結しましたが、HPは4〜6つのHTMLファイルと画像フォルダを同じ場所に置いてリンクで繋ぐ構造になります。ファイルの置き場所とリンクのパスが正しくないとページ間の移動ができなくなります。</p>
+<p>これら3点はLPの知識を「少し拡張する」だけで対応できます。まったく新しいスキルではなく、LPで学んだことの応用です。ひとつずつ確認しながら進めれば、着実にHPが完成します。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第2章：HP制作の全体ワークフロー──LPと違う「共通部品先行」</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-1. 「共通部品を先に作る」がなぜ重要なのか</span></h2>
+<p>上の1枚目の図がHP制作の6ステップ、2枚目の図が実際の手の動き（操作フロー）です。1枚目を見ると、②「共通部品生成」が③「トップページ」より前に来ています。これはLP制作にはなかったステップであり、HP制作で最も重要な順序の違いです。</p>
+<div class="callout-box"><p>LPは1ページなので「全体を一気に生成する」アプローチが最効率でした。しかしHPは4〜6ページが同じナビゲーション・同じフッター・同じCSSを共有します。これを後から変えようとすると、変えたいナビのデザインを全4ページで修正しなければならなくなります。先にナビとフッターを確定してから各ページを作れば、各ページは「このナビをそのまま使って」という指示だけで統一感が保たれます。</p></div>
+<p>実際の制作でよく起きる問題が「サービスページだけナビのデザインが違う」という状況です。これはトップページと別のチャットでサービスページを生成したため、Claudeが参照できる情報が少なく、微妙に違うナビを生成してしまったことが原因です。template.htmlという共通部品を最初に作り、「この共通部品を使って各ページを生成して」という指示のパターンを徹底することで、この問題は根本から防げます。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-2. この章で使う「架空案件」の設定</span></h2>
+<p>この章では架空のコーポレートサイトを実際に作りながら解説します。読みながら同じ操作を実践することで、この章を一通り終えたとき「ポートフォリオ用のコーポレートサイト」が手元に完成します。架空案件の設定は以下の通りです。</p>
+<table><tbody><tr><td><p><strong>項目</strong></p></td><td><p><strong>設定内容</strong></p></td></tr><tr><td><p>会社名</p></td><td><p>「AIライター事務所」（架空の個人事業主ブランド）</p></td></tr><tr><td><p>サービス</p></td><td><p>AIを活用したコピーライティング・LP制作・HP制作の3本立て</p></td></tr><tr><td><p>ターゲット</p></td><td><p>中小企業・個人事業主・副業でAIを活用したい人</p></td></tr><tr><td><p>BV-GL</p></td><td><p>パーソナリティ：専門的で親しみやすい・誠実・実践的</p></td></tr><tr><td><p>カラー</p></td><td><p>メイン：#1B6EC2（信頼感のある青）／アクセント：#D85A30（行動を促すオレンジ）</p></td></tr><tr><td><p>HP構成</p></td><td><p>トップ（index.html）・サービス（service.html）・会社概要（about.html）・お問い合わせ（contact.html）</p></td></tr></tbody></table>
+<p>架空案件を使うことには大きなメリットがあります。失敗してもやり直せること、実験的な指示をためらいなく出せること、そしてこの章が終わったとき「自分がどんなHP制作をするか」を示すポートフォリオがそのまま完成することです。最初の1本を「練習」と思わず、「将来クライアントに見せる実績の1本」という意識で丁寧に作ることをお勧めします。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第3章：HP全体の設計──4ページの役割を正確に理解する</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-1. コーポレートHPの標準4ページ構成</span></h2>
+<p>上の構成マップがHPの全体像です。共通ナビゲーションがすべてのページをつなぎ、共通フッターが全ページ下部に配置されます。その間に4つの個別ページが並んでいます。矢印が双方向になっているのは、訪問者がナビを使って自由にページを移動できることを示しています。LPでは一方通行の縦のスクロールでしたが、HPは横方向に広がるサイト全体を訪問者が自由に探索します。</p>
+<p>この構成の設計で最も大切なことは「どの情報をどのページに置くか」という情報の振り分けです。よくある失敗パターンは「トップページにすべての情報を詰め込んでしまう」ことです。会社の概要・サービスの詳細・料金・お客様の声・会社理念・アクセスをすべてトップページに置くと、訪問者は「なんか情報が多くて疲れた」という感覚になります。各ページには「このページに来た人が知りたいこと」を集中させることで、ページごとの役割が明確になり、訪問者の体験が格段に良くなります。</p>
+<table><tbody><tr><td><p><strong>ページ名</strong></p></td><td><p><strong>ファイル名</strong></p></td><td><p><strong>主な役割</strong></p></td><td><p><strong>置くべき情報・置かない情報</strong></p></td></tr><tr><td><p>トップページ</p></td><td><p>index.html</p></td><td><p>会社の第一印象を作り各ページへ誘導する</p></td><td><p>置く：会社の一言コンセプト・サービス概要カード・実績数字・お客様の声ダイジェスト　置かない：サービスの詳細・料金・会社の沿革（他ページに誘導する）</p></td></tr><tr><td><p>サービス紹介</p></td><td><p>service.html</p></td><td><p>「このサービスが自分に合っているか」を判断させる</p></td><td><p>置く：各サービスの詳細・料金目安・対象者・このサービスのお客様の声・FAQ　置かない：会社の理念・アクセス情報（他ページに誘導する）</p></td></tr><tr><td><p>会社概要</p></td><td><p>about.html</p></td><td><p>「信頼できる会社・人物か」を判断させる</p></td><td><p>置く：会社理念・代表プロフィール・沿革・スタッフ・会社概要テーブル　置かない：サービスの詳細・料金（サービスページに誘導する）</p></td></tr><tr><td><p>お問い合わせ</p></td><td><p>contact.html</p></td><td><p>「問い合わせへの最後のハードルを下げる」</p></td><td><p>置く：問い合わせフォーム・返答期間・アクセス・電話・よくある質問　置かない：詳細なサービス説明（すでに他ページで見ている前提）</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-2. フォルダ構造を先に作る</span></h2>
+<p>HP制作で最初にすべきことは、PCにフォルダを作ることです。複数のHTMLファイルを管理するためのフォルダ構造を整えておかないと、後でファイルのリンクが切れたり、画像が見つからなかったりという問題が続出します。「これくらいは後でもいい」と思わず、制作を始める前に必ず整えてください。</p>
+<table><tbody><tr><td><p><strong>🖥️ HPのフォルダ構造の作り方（操作手順）</strong></p><p>【STEP 1】デスクトップに「HP制作_クライアント名」フォルダを新規作成</p><p>　Windowsの場合：デスクトップ上で右クリック→「新規作成」→「フォルダー」</p><p>　Macの場合：デスクトップ上で右クリック（またはControl+クリック）→「新規フォルダ」</p><p>　フォルダ名の例：HP制作_AIライター事務所</p><p>【STEP 2】そのフォルダの中に「images」フォルダを作成</p><p>　HP制作フォルダを開いて、同じ手順でimagesフォルダを作る</p><p>【完成後のフォルダ構造】</p><p>HP制作_AIライター事務所/</p><p>　├─ template.html   ← 共通部品テンプレート（参照用）</p><p>　├─ index.html   ← トップページ</p><p>　├─ service.html ← サービスページ</p><p>　├─ about.html   ← 会社概要ページ</p><p>　├─ contact.html ← お問い合わせページ</p><p>　└─ images/</p><p>　　├─ hero.jpg（トップのFV画像）</p><p>　　├─ profile.jpg（代表者写真）</p><p>　　└─ service1.jpg（サービス画像）など</p><p>→ このフォルダ構造を作ってから制作を始めることで、</p><p>　 ページ間のリンクパスが正しくなり、画像の管理も整理される</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第4章：共通部品の生成──HPはここから始まる</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-1. 共通部品の生成指示をClaude.aiに送る</span></h2>
+<p>フォルダ構造が整ったら、最初にClaudeへの共通部品生成指示を送ります。8-4で学んだClaude.aiの操作（新しいチャットを開く→モデルを選択する→指示を貼り付けて送信する）はまったく同じです。ただしHP制作では、このtemplate.htmlの生成を最初に行うという順番が違います。</p>
+<p>共通部品の指示では、ナビゲーション・フッター・共通CSSスタイルという3つの要素を一度に生成します。ナビには4ページへのリンクをすべて含め、スマホ表示ではハンバーガーメニューになるよう指示します。フッターにはコピーライト・連絡先・ページリンクを含めます。共通CSSにはカラー変数・フォントスタイル・ボタンの基本スタイルを定義します。これらを一括で生成することで、後の各ページ生成が「このtemplate.htmlのスタイルを使って」という簡潔な指示で済みます。</p>
+<table><tbody><tr><td><p><strong>📋 共通部品（template.html）生成プロンプト（コピペ用）</strong></p><p>「コーポレートHPの共通部品をtemplate.htmlとして生成してください。</p><p>【HP基本情報】</p><p>サイト名：AIライター事務所</p><p>ページ構成：index.html / service.html / about.html / contact.html</p><p>【デザイン仕様】</p><p>Tailwind CSS（CDN）/ Google Fonts（Noto Sans JP 400/700）</p><p>メイン：#1B6EC2 / アクセント：#D85A30 / 背景：#FFFFFF</p><p>【①グローバルナビゲーション】</p><p>・左：ロゴ「AIライター事務所」（#1B6EC2・太字）</p><p>・中央：メニュー（トップ/サービス/会社概要/お問い合わせ）</p><p>　各hrefは上記のHTMLファイル名で設定してください</p><p>・右：CTAボタン「お問い合わせ」（#D85A30・白文字・rounded-lg）</p><p>・スクロール時に上部固定（sticky top-0）</p><p>・スマホ：ハンバーガーメニュー（JavaScript実装）</p><p>【②フッター】</p><p>・背景：#1B6EC2・白文字</p><p>・左：サイト名とキャッチフレーズ / 中央：ページリンク / 右：メール</p><p>・最下部：© 2025 AIライター事務所</p><p>【③共通CSSスタイル】</p><p>・Tailwindカスタム設定でメイン・アクセントを変数化</p><p>・h1/h2/h3の基本スタイル</p><p>・CTAボタンの共通スタイル（primary/secondary）</p><p>bodyのコンテンツ部分は空でOK。</p><p>生成後にナビの各メニューのhref値を一覧で教えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-2. 生成されたtemplate.htmlの確認と保存</span></h2>
+<p>Claudeがtemplate.htmlを生成したら、8-4で学んだ手順でファイルに保存してブラウザで確認します。ここで見るべきポイントはLPとは少し違います。LPではデザインの細部を確認しましたが、template.htmlで最優先に確認すべきは「ナビゲーションの4つのリンクが正しく設定されているか」です。</p>
+<p>ブラウザでtemplate.htmlを開いて、ナビゲーションの各リンクを一つずつクリックします。この時点では他のページファイルはまだ存在しないので「ページが見つかりません（404）」になるのは正常です。確認すべきはリンクをクリックしたときにブラウザのアドレスバーに表示されるURLが正しいかどうかです。「index.html」「service.html」「about.html」「contact.html」という正しいファイル名で設定されていれば、後で各ページを作ったときに自動的につながります。</p>
+<table><tbody><tr><td><p><strong>🖥️ template.htmlのナビリンク確認手順</strong></p><p>【確認手順】</p><p>1. template.htmlをダブルクリックしてブラウザで開く</p><p>2. ナビゲーションの「サービス」リンクをクリックする</p><p>3. ブラウザのアドレスバーを確認する</p><p>【正しい場合のアドレスバーの表示例】</p><p>　file:///Users/○○/Desktop/HP制作フォルダ/service.html</p><p>　→ 「service.html」というファイル名が末尾に表示されればOK</p><p>【問題がある場合のアドレスバーの表示例】</p><p>　file:///Users/○○/Desktop/HP制作フォルダ/service</p><p>　→ 「.html」が抜けている（リンク切れになる）</p><p>　file:///service.html</p><p>　→ フォルダのパスがない（別の場所を参照している）</p><p>→ 問題があればClaudeに「サービスのhrefがservice.htmlになっていません。</p><p>　修正してください」と伝えて修正してもらう</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第5章：各ページの生成──Claudeへの指示と出力・保存の全手順</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-1. 各ページ生成の基本方針：「index.htmlを参照させる」</span></h2>
+<p>共通部品テンプレートが完成したら、次にトップページ（index.html）を生成します。そしてトップページが完成したら、以降のページは「index.htmlと同じデザインで生成して」という指示を使います。なぜtemplate.htmlではなくindex.htmlを参照するのかというと、トップページが実際の完成形のデザインを最もよく示しているからです。template.htmlは共通部品だけで内容が空のため、各ページの「余白の感覚・フォントサイズの体系・セクションの見た目」はindex.htmlを作って初めて確立します。</p>
+<p>指示の中に「以下のindex.htmlを参照してください」としてindex.htmlの全文を貼り付けることで、Claudeは「このHPのデザイン言語」を正確に理解した上で各ページを生成できます。これがページ間のデザイン統一を保証する最も確実な方法です。少し指示が長くなりますが、後から修正する手間を考えると圧倒的に効率的です。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-2. トップページ（index.html）の生成と保存</span></h2>
+<p>トップページは訪問者が最初に目にするページです。「この会社は何をやっているか」を3秒で理解させ、「もっと知りたい」という気持ちで内部ページへ誘導することが役割です。LPほどCVRに特化する必要はありませんが、会社の価値観とサービスの全体像を伝えながら自然に行動を促す設計が大切です。</p>
+<table><tbody><tr><td><p><strong>📋 トップページ（index.html）生成プロンプト（コピペ用）</strong></p><p>「template.htmlの共通部品を使ってトップページ（index.html）を生成してください。</p><p>【技術仕様】template.htmlと同じTailwind CSS・Noto Sans JP</p><p>【トップページの構成と各セクションの感情目標】</p><p>①&lt;header&gt;：template.htmlと同じグローバルナビ（「トップ」のみアクティブ：font-bold追加）</p><p>②&lt;section id="hero"&gt;：感情目標「この会社はプロだ・相談してみたい」</p><p>　・キャッチコピー（[キャッチコピーをここに入れる]）</p><p>　・サブコピー（[サブコピーをここに入れる]）</p><p>　・CTAボタン「まずは無料相談」（contact.htmlへリンク）</p><p>　・右側にhero.jpgを差し込む予定の画像エリア（src="images/hero.jpg"で設定）</p><p>③&lt;section id="services"&gt;：感情目標「何ができるかわかった・詳しく知りたい」</p><p>　・3サービスのカードを横並びで表示</p><p>　・各カードに「詳しく見る」ボタン（service.htmlへリンク）</p><p>④&lt;section id="works"&gt;：感情目標「実績がある・安心できる」</p><p>　・実績数字を3項目（例：支援実績○社・CVR平均○倍・満足度○%）</p><p>　・数字はプレースホルダー形式で</p><p>⑤&lt;section id="voices"&gt;：感情目標「自分と同じような人が成功している」</p><p>　・お客様の声を2名分。引用符デザインのカード形式</p><p>⑥&lt;section id="cta"&gt;：感情目標「今すぐ相談してみよう」</p><p>　・背景#1B6EC2・白文字・大きなCTAボタン（contact.htmlへリンク）</p><p>⑦&lt;footer&gt;：template.htmlと同じフッター</p><p>コピーはすべてプレースホルダー形式で出力してください</p></td></tr></tbody></table>
+<p>上の指示を送ると、Claudeは完全なHTMLを生成します。このとき出力がどんな形で来るかを思い出してください（8-4で学習済み）。コードブロックの右上にある「コピー」ボタンを押して全コードをコピーし、VSCodeで「index.html」として保存します。保存したらダブルクリックでブラウザを開き、セクション数・デザインのイメージ・スマホ表示の3点を確認します。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-3. サービスページ（service.html）の生成</span></h2>
+<p>トップページが完成したら、サービスページを生成します。このとき指示の中に「完成したindex.htmlの全文」を貼り付けることで、Claudeはindex.htmlのデザイン言語を正確に引き継いだページを生成できます。貼り付けるのが少し面倒ですが、この一手間がページ間のデザイン統一を保証します。</p>
+<p>サービスページはHP内で最もCVRに直結するページです。「このサービスは自分に合っているか」「料金はいくらか」「実際に使った人はどんな体験をしたか」という3つの疑問に答えることが最重要です。LPで学んだ感情設計の考え方をここで部分的に応用します。ただしLP全体のような感情の流れではなく、情報を論理的に整理しながら「なぜこのサービスが良いか」を説得力を持って伝えることが目的です。</p>
+<table><tbody><tr><td><p><strong>📋 サービスページ（service.html）生成プロンプト（コピペ用）</strong></p><p>「以下のindex.htmlを参照して、同じデザインでservice.htmlを生成してください。</p><p>【参照するindex.html全文】</p><p>（完成したindex.htmlの全文をここにPaste）</p><p>【service.htmlの構成】</p><p>①&lt;header&gt;：index.htmlと同じナビ（「サービス」のみアクティブ：font-bold追加）</p><p>②ページヒーロー：タイトル「サービス紹介」・パンくず「ホーム &gt; サービス」</p><p>③サービス詳細×3：交互レイアウト（奇数：テキスト左・画像右 / 偶数：逆）</p><p>　各サービスに：サービス名・対象者・内容・料金目安・CTAボタン</p><p>　画像エリアはsrc="images/service1.jpg"などのプレースホルダーで設定</p><p>④このサービスのお客様の声×2</p><p>⑤FAQアコーディオン×5問（JavaScript実装）</p><p>⑥CTAセクション（contact.htmlへ）</p><p>⑦&lt;footer&gt;：index.htmlと同じフッター</p><p>注意：ナビのhref値はすべてindex.htmlと完全に一致させてください</p><p>コピーはすべてプレースホルダー形式</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-4. 会社概要ページ（about.html）の生成</span></h2>
+<p>会社概要ページは「信頼性を構築するページ」です。代表プロフィールと想い・会社の理念・実績データなど「この会社は信頼できるか」という疑問に答えるコンテンツを中心に構成します。このページのコピーは、LPのような感情的な緊急性ではなく、「誠実さ・人間性・専門性への信頼」を積み上げるトーンで書きます。</p>
+<p>ライター出身の制作者がこのページで特に強みを発揮できるのが「代表プロフィールの書き方」です。単なる経歴の羅列（〇〇年〇〇に入社。〇〇年独立）ではなく、「なぜこの仕事をするようになったか」というストーリーを添えることで、訪問者は会社への共感と信頼を感じます。フェーズ3で学んだ感情設計の技術が、ここで形を変えて活きてきます。</p>
+<table><tbody><tr><td><p><strong>📋 会社概要ページ（about.html）生成プロンプト（コピペ用）</strong></p><p>「以下のindex.htmlと同じデザインでabout.htmlを生成してください。</p><p>【参照するindex.html全文をPaste】</p><p>【about.htmlの構成】</p><p>①&lt;header&gt;：同じナビ（「会社概要」のみアクティブ）</p><p>②ページヒーロー：タイトル「会社概要」・パンくず「ホーム &gt; 会社概要」</p><p>③理念・ミッションセクション：中央揃えの大きなテキスト（背景#F8FAFF）</p><p>④代表者プロフィール：左に写真エリア（src="images/profile.jpg"）・右にテキスト</p><p>　スマホでは縦積みレイアウト（写真が上・テキストが下）</p><p>⑤会社概要テーブル：左列グレー背景ラベル・右列内容（会社名・設立・所在地等）</p><p>⑥CTAセクション</p><p>⑦&lt;footer&gt;：同じフッター</p><p>信頼性・誠実さを感じさせるデザインを優先してください。</p><p>コピーはすべてプレースホルダー形式</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-5. お問い合わせページ（contact.html）の生成</span></h2>
+<p>お問い合わせページは4ページの中でHTMLの実装が最も複雑です。フォームの入力項目・バリデーション・エラー表示・送信ボタンを実装する必要があります。ただしフォームの実際の「送信機能（入力内容をメールで届ける仕組み）」はGoogleフォームなどの外部サービスに任せます。ClaudeにはHTMLのデザイン部分だけを生成させることで、バックエンド（サーバーサイドの処理）の知識なしに問い合わせフォームが完成します。</p>
+<p>このページのコピーで最も重要なのは「問い合わせへの最後のハードルを下げること」です。「どんな内容でも相談してください」「返答は2営業日以内です」という安心感を与える文言を入れることで、フォームへの入力率が上がります。また「よくある質問」を3問ほど配置することで、フォームを送る前の「この程度の質問でもいいのかな」という不安を解消できます。</p>
+<table><tbody><tr><td><p><strong>📋 お問い合わせページ（contact.html）生成プロンプト（コピペ用）</strong></p><p>「以下のindex.htmlと同じデザインでcontact.htmlを生成してください。</p><p>【参照するindex.html全文をPaste】</p><p>【contact.htmlの構成】</p><p>①&lt;header&gt;：同じナビ（「お問い合わせ」のみアクティブ）</p><p>②ページヒーロー：タイトル「お問い合わせ」</p><p>　サブ：「どんな小さなご相談でもお気軽にどうぞ。2営業日以内にご返信します」</p><p>③フォーム＋アクセス情報（PCは2カラム・スマホは縦積み）</p><p>　フォーム項目：お名前（必須）・会社名（任意）・メール（必須）・</p><p>　お問い合わせ種別（セレクト：サービス相談/料金確認/その他）・</p><p>　お問い合わせ内容（テキストエリア・必須）・送信ボタン</p><p>　action属性は「#」でOK（後でGoogleフォームに変更予定）</p><p>　HTML5のrequiredでバリデーション・エラー時の赤いボーダースタイルも実装</p><p>④FAQミニ×3問（アコーディオン）</p><p>　「どんな内容でも相談できますか」「返信にかかる期間は」「費用はどのくらいですか」</p><p>⑤&lt;footer&gt;：同じフッター</p><p>フォームはシンプルで入力しやすいデザインを優先してください</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第6章：世界観の統一──4ページをひとつのサイトとして仕上げる</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-1. 「ページをまたいだデザインのブレ」はなぜ起きるか</span></h2>
+<p>HP制作で最もよくあるクオリティの問題は「ページによって見た目が違う」という現象です。トップページは洗練されているのにサービスページだけ野暮ったい、会社概要ページだけフォントが少し違う、お問い合わせページのナビのデザインが微妙に異なる──こういった状況はなぜ起きるのでしょうか。</p>
+<p>主な原因は2つです。1つは「各ページを別々のチャットで生成した」こと。別チャットではClaudeが前のページの情報を参照できないため、独自の解釈でデザインを生成してしまいます。2つ目は「index.htmlを参照させずに生成した」こと。「このデザインで」という指示だけでは、Claudeには確認できる具体的な見本がないため、微妙な違いが生まれます。</p>
+<div class="callout-box"><p>この問題を防ぐための最善策は「各ページを生成するとき、必ず直前に完成したindex.htmlの全文を貼り付ける」ことです。長くなりますが、これが最も確実です。すでにデザインのブレが生じてしまった場合は、以下の一括修正プロンプトで対応できます。</p></div>
+<table><tbody><tr><td><p><strong>📋 全4ページ一括デザイン統一プロンプト（コピペ用）</strong></p><p>「以下の4ページのHTMLを確認して、index.htmlを基準にデザインを完全に統一してください。</p><p>確認・修正してほしい点：</p><p>・ナビゲーションの構造・スタイル・全hrefリンク先</p><p>・フッターの構造・スタイル</p><p>・フォントの種類とサイズ体系</p><p>・カラーパレット（メイン#1B6EC2・アクセント#D85A30）</p><p>・ボタンのスタイル（rounded-lgのサイズ感・色）</p><p>・セクションの余白体系（py-16〜py-24）</p><p>【index.html全文】（Paste）</p><p>【service.html全文】（Paste）</p><p>【about.html全文】（Paste）</p><p>【contact.html全文】（Paste）</p><p>修正後に4ページすべてのHTMLを出力してください。</p><p>各ページの先頭に「=== ○○.html ===」というラベルを付けてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-2. アクティブメニューの設定──「今どこにいるか」をわかりやすく</span></h2>
+<p>HPの使い勝手を大きく左右する細かいポイントがあります。それは「現在開いているページをナビゲーションで視覚的に示す」アクティブメニューの実装です。「サービス」ページを開いているとき、ナビの「サービス」リンクが太字になるか色が変わることで、訪問者は「今自分がどのページにいるか」を直感的に把握できます。これが抜けていると、ページを移動するたびに「どこにいるんだろう」という軽い混乱が生まれます。</p>
+<p>Claudeへの指示では「そのページに対応するメニューアイテムにのみアクティブスタイルを適用してください」と伝えます。具体的なスタイルはTailwindの「font-bold」や「text-[#D85A30]」（アクセントカラーでのテキスト色変更）が最もシンプルで見やすいです。</p>
+<table><tbody><tr><td><p><strong>💡 アクティブメニューの一括設定プロンプト（コピペ用）</strong></p><p>「以下の各ページのナビゲーションに、そのページのメニューのアクティブスタイルを追加してください。</p><p>アクティブスタイル：対象のメニューリンクに font-bold + text-[#D85A30] を追加</p><p>・index.html → 「トップ」のみアクティブ</p><p>・service.html → 「サービス」のみアクティブ</p><p>・about.html → 「会社概要」のみアクティブ</p><p>・contact.html → 「お問い合わせ」のみアクティブ</p><p>【4ページのHTMLをPaste】</p><p>修正後に全ページのHTMLを出力してください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-3. ページ間のリンクが切れないようにする</span></h2>
+<p>複数のHTMLファイルが同じフォルダに置かれているとき、ナビゲーションのhref属性が正しく設定されていなければページ間の移動ができません。以下の対応表で正しい書き方を確認してください。</p>
+<table><tbody><tr><td><p><strong>リンク先</strong></p></td><td><p><strong>正しいhrefの書き方</strong></p></td><td><p><strong>よくあるミスの例</strong></p></td><td><p><strong>なぜミスが起きるか</strong></p></td></tr><tr><td><p>index.html</p></td><td><p>href="index.html"</p></td><td><p>href="/"（ルートパスになる）</p></td><td><p>Webサーバー上ではOKだがローカルでは動作しないことがある</p></td></tr><tr><td><p>service.html</p></td><td><p>href="service.html"</p></td><td><p>href="service"（.htmlが抜ける）</p></td><td><p>ファイル名の拡張子を省略する習慣からのミス</p></td></tr><tr><td><p>about.html</p></td><td><p>href="about.html"</p></td><td><p>href="./about"（相対パス）</p></td><td><p>同じフォルダ内のファイルには必要ない記述</p></td></tr><tr><td><p>contact.html</p></td><td><p>href="contact.html"</p></td><td><p>href="#contact"（同一ページのアンカー）</p></td><td><p>CTAセクションのIDと混同している</p></td></tr></tbody></table>
+<table><tbody><tr><td><p><strong>⚠️ リンクが切れていることを示すサイン</strong></p><p>【サイン①】クリックしてもページが変わらない</p><p>　→ href="#"（空のアンカー）になっている可能性大</p><p>【サイン②】クリックすると「404 Not Found」が表示される</p><p>　→ ファイル名のスペルミスまたは拡張子の抜け忘れ</p><p>　→ ファイルが別のフォルダに保存されている</p><p>【サイン③】クリックするとブラウザのアドレスバーにルートパス（/service等）が表示される</p><p>　→ hrefがhtmlファイル名ではなくスラッシュから始まるパスになっている</p><p>→ どのサインが出てもClaudeに「〇〇ページのナビから〇〇へのリンクが機能しません。</p><p>　hrefを確認して修正してください」と伝えれば解決できる</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第7章：Nano BananaでHPのビジュアルを制作する</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-1. HPには複数のビジュアル素材が必要になる</span></h2>
+<p>HPはLPより多くのビジュアル素材が必要です。トップページのFVヒーロー画像・サービスページの各サービスイメージ・会社概要ページの代表者写真・セクション区切りの背景テクスチャなど、ページをまたいで多くの画像が登場します。これらすべてを最高品質で揃えようとするとプロジェクトが進まなくなるため、優先度をつけて順番に用意することが重要です。</p>
+<p>最も優先度が高いのはトップページのFVヒーロー画像です。訪問者がHPを開いた瞬間に目に入る最大のビジュアル要素であり、「このサイトはプロが作ったものだ」という第一印象を決定します。次に代表者写真（実写が理想的）とサービスページの画像が続きます。セクション区切りの背景やアイコンなどの補助的なビジュアルは後回しにしても制作は進められます。</p>
+<p>Nano Bananaを使ったHP用ビジュアル制作の手順はLPとほぼ同じですが、HPには「全ページを通じた世界観の統一」が求められるという違いがあります。各ページの画像が別々の雰囲気になると、訪問者がページを移動するたびに「なんか雰囲気が変わった」という違和感を感じます。これを防ぐために、Nano Bananaへの指示の冒頭に毎回「このHPのビジュアルコンセプト」を添えるという習慣を作ることをお勧めします。</p>
+<table><tbody><tr><td><p><strong>素材</strong></p></td><td><p><strong>ページ</strong></p></td><td><p><strong>優先度</strong></p></td><td><p><strong>推奨ツール</strong></p></td><td><p><strong>指示の方向性</strong></p></td></tr><tr><td><p>FVヒーロー画像</p></td><td><p>トップ</p></td><td><p>最高</p></td><td><p>Nano Banana</p></td><td><p>ブランドの世界観を体現・温かみのある横長画像（16:9）</p></td></tr><tr><td><p>代表者プロフィール写真</p></td><td><p>会社概要</p></td><td><p>高</p></td><td><p>実写推奨</p></td><td><p>実際の写真が最良。難しければNano Bananaでプロ風イラスト</p></td></tr><tr><td><p>サービスイメージ×3</p></td><td><p>サービス</p></td><td><p>中</p></td><td><p>Nano Banana</p></td><td><p>各サービスを象徴するプロフェッショナルなシーン</p></td></tr><tr><td><p>実績数字の背景</p></td><td><p>トップ</p></td><td><p>中</p></td><td><p>DALL-E 3</p></td><td><p>シンプルなグラデーション・数字が映えるミニマルデザイン</p></td></tr><tr><td><p>セクション区切り背景</p></td><td><p>全ページ</p></td><td><p>低</p></td><td><p>Nano Banana</p></td><td><p>テキスト重ね前提・ブランドカラーに合わせたシンプルな背景</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-2. トップページ FVヒーロー画像の生成</span></h2>
+<p>HP制作でNano Bananaが最も威力を発揮するのはトップページのFVヒーロー画像です。LPと同じ操作手順で生成できますが、HPではブランドの「事業全体の世界観」を表すビジュアルが求められます。コンサルタント・デザイナー・ライターといったサービス業のHPでは、「プロフェッショナルだが親しみやすい」雰囲気が重要です。派手すぎずシンプルすぎない、清潔感のある仕事の現場感が伝わる画像が最もフィットします。</p>
+<table><tbody><tr><td><p><strong>📋 HP FVヒーロー画像生成プロンプト（Nano Banana・コピペ用）</strong></p><p>【GeminiアプリのNano Banana（バナナアイコン🍌）を使用】</p><p>「HP用のFVヒーロー画像を生成してください。</p><p>【このHPのビジュアルコンセプト】</p><p>AIとライティングで中小企業の成果を高めるプロ集団の</p><p>「誠実さ・専門性・親しみやすさ」を感じさせる画像</p><p>【具体的な指示】</p><p>・シーン：整頓されたデスクワーク・ノートPCとメモ帳・自然光の窓際</p><p>・人物：30代〜40代・後ろ姿か手元のみ（顔は映らなくてOK）</p><p>・雰囲気：集中しているが圧迫感がない・落ち着いた専門性</p><p>・カラートーン：ブルー系をベース・白とライトグレーのインテリア</p><p>・構図：横長（16:9）・左60%にテキストを配置できる余白</p><p>・スタイル：プロフェッショナルな写真風</p><p>【生成後の修正例（会話で続けて指示する）】</p><p>→「もう少し明るい雰囲気にして」</p><p>→「左側の余白をさらに広げて」</p><p>→「ブルーの色味をもう少し落ち着かせて」」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-3. 全ページのビジュアル統一感を保つための「プレフィックス指示」</span></h2>
+<p>HPの各ページ画像を生成するとき、毎回の指示の冒頭に同じ「ビジュアルコンセプト文」を付けることを習慣にしてください。この一手間で全ページの画像のカラートーン・雰囲気・スタイルが統一され、「どのページに移動しても同じ世界観だ」という体験が生まれます。</p>
+<table><tbody><tr><td><p><strong>💡 HP全ページのビジュアル統一を保つNano Banana指示プレフィックス</strong></p><p>【毎回の画像生成指示の冒頭に付ける「プレフィックス」】</p><p>「以下のビジュアルコンセプトを守りながら画像を生成してください：</p><p>　・カラートーン：ブルー系（#1B6EC2ベース）・白・ライトグレー</p><p>　・雰囲気：プロフェッショナルで親しみやすい・清潔感</p><p>　・スタイル：写真風（フォトリアリスティック）・自然光</p><p>　・禁止：派手すぎる色・人工的な照明・ゴチャゴチャした背景</p><p>　その上で、以下の画像を生成してください：</p><p>　[各ページ固有の指示をここに書く]」</p><p>→ このプレフィックスを毎回使うことでHP全体の画像のトーンが揃う</p><p>→ 「about.htmlの画像だけ雰囲気が全然違う」という問題を防げる</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-4. 生成した画像をHTMLに差し込む操作手順</span></h2>
+<p>Nano BananaやDALL-E 3で生成した画像をHTMLに組み込む手順はLPと同じです。ただしHPではファイルが複数あるため、画像ファイルをどこに保存するかが重要になります。すべての画像ファイルは「imagesフォルダ」に保存し、HTMLからは「images/ファイル名.jpg」という形でパスを指定します。この一点を守るだけで、後から納品・アップロードするときの混乱がなくなります。</p>
+<table><tbody><tr><td><p><strong>🖥️ 画像をHTMLに差し込む手順（HP版・コピペ用）</strong></p><p>【STEP 1】生成した画像をimagesフォルダに保存する</p><p>　→ 画像の上で右クリック→「名前を付けて画像を保存」</p><p>　→ 保存先：「HP制作フォルダ」→「images」フォルダ</p><p>　→ ファイル名：hero.jpg（FV）/ service1.jpg（サービス1）などわかりやすい名前で</p><p>【STEP 2】ClaudeにHTMLへの差し込みを指示する</p><p>　「index.htmlのFVセクションのhero.jpgエリアに以下の設定で画像を差し込んでください。</p><p>　・src属性：images/hero.jpg</p><p>　・横幅：w-full / 高さ：min-h-[60vh]・object-fit: cover</p><p>　・alt属性：AIライター事務所 トップビジュアル</p><p>　・HTML以外のデザインは変更しないこと」</p><p>【STEP 3】修正されたHTMLを上書き保存</p><p>　→ ClaudeのHTMLをコピー</p><p>　→ VSCodeでindex.htmlを開く → Ctrl+A で全選択 → Ctrl+V で貼り付け</p><p>　→ Ctrl+S で保存</p><p>【STEP 4】ブラウザをリロード（F5キー）して画像が表示されるか確認</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第8章：コピーの差し込みと完成確認</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">8-1. 各ページへのコピー差し込み</span></h2>
+<p>4ページすべてのHTMLの骨格が完成したら、各ページのプレースホルダーに実際のコピーを差し込みます。コピーを差し込む順序は「最も重要度が高いページから」が基本です。トップページ・サービスページ・会社概要ページ・お問い合わせページという順番が一般的です。</p>
+<p>コピーを書くときは、LPで学んだ感情設計の技術をページの性質に合わせて使い分けます。トップページは「第一印象でブランドを伝える」ため、短くインパクトのある言葉が有効です。サービスページは「詳細を論理的に伝えつつCVRを意識する」ため、LPに近い設計が使えます。会社概要は「誠実さと人間性を伝える」ため、ストーリーテリングのアプローチが有効です。お問い合わせページは「相談のハードルを下げる」ため、シンプルで温かみのある言葉を使います。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">8-2. HP全体の最終チェックリスト</span></h2>
+<table><tbody><tr><td><p><strong>チェック種別</strong></p></td><td><p><strong>確認内容</strong></p></td><td><p><strong>確認方法</strong></p></td></tr><tr><td><p>ナビリンク全確認</p></td><td><p>全ページのナビから全リンクが正しく動作するか</p></td><td><p>各ページを開いてナビの全リンクをクリックして確認</p></td></tr><tr><td><p>デザイン統一確認</p></td><td><p>全ページのナビ・フッター・フォント・カラーが統一されているか</p></td><td><p>4ページを順番に開いてスクロールして目視確認</p></td></tr><tr><td><p>アクティブメニュー</p></td><td><p>各ページで現在のページのメニューがアクティブ表示されているか</p></td><td><p>各ページを開いてナビを確認</p></td></tr><tr><td><p>スマホ全ページ確認</p></td><td><p>全ページのスマホ表示が崩れていないか</p></td><td><p>デベロッパーツールでiPhone SEを選択して4ページ確認</p></td></tr><tr><td><p>画像の表示確認</p></td><td><p>全ページの画像が正しく表示されているか</p></td><td><p>各ページをスクロールして画像の表示を確認</p></td></tr><tr><td><p>プレースホルダーの確認</p></td><td><p>プレースホルダーが残っていないか</p></td><td><p>全ページを通読。[〇〇をここに入れる]の文字が残っていないか</p></td></tr><tr><td><p>フォームの動作確認</p></td><td><p>お問い合わせフォームのバリデーションが動作するか</p></td><td><p>空欄で送信ボタンを押してエラーメッセージが出るか確認</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第9章：修正対応──クライアントの言葉をClaudeへの指示に翻訳する</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-1. クライアントの言葉の「翻訳」が制作者の仕事</span></h2>
+<p>クライアントはHTML・CSS・JavaScriptの言葉を使いません。「なんか違う」「もっとかっこよくして」「暗い感じがする」という言葉で修正を依頼してきます。この曖昧な言葉をClaudeへの具体的な修正指示に翻訳することが、制作者の重要な仕事です。</p>
+<p>翻訳が雑だとClaudeが的外れな修正をして、「そうじゃない」という往復が増えます。逆に翻訳が正確であれば、Claudeは一発で意図した修正を実装してくれます。以下の表はクライアントがよく使う言葉とその翻訳例です。初めて見るパターンに遭遇したときも、「具体的にどこの・何が・どう変わればいいか」という3点を意識して翻訳すれば、ほとんどの修正に対応できます。</p>
+<table><tbody><tr><td><p><strong>クライアントの言葉</strong></p></td><td><p><strong>翻訳の思考プロセス</strong></p></td><td><p><strong>Claudeへの指示</strong></p></td></tr><tr><td><p>"なんか暗い感じがする"</p></td><td><p>カラーの問題。メインカラーが暗すぎるか、背景が暗いか</p></td><td><p>"全体的な印象が暗いです。メインカラーを#1B6EC2から#2980D4（少し明るい青）に変えてください"</p></td></tr><tr><td><p>"文字が多くてごちゃごちゃしてる"</p></td><td><p>コピーが長すぎるか、余白が少なすぎる</p></td><td><p>"各セクションの本文テキストを20%短縮してください。改行を増やして読みやすく"</p></td></tr><tr><td><p>"ボタンをもっと目立たせてほしい"</p></td><td><p>ボタンのサイズか色が弱い</p></td><td><p>"CTAボタンのサイズをもっと大きく。padding-x: px-10 py-5以上にしてください"</p></td></tr><tr><td><p>"硬い印象がする"</p></td><td><p>フォントやレイアウトが固すぎる。角丸や余白の問題</p></td><td><p>"全体のトーンを柔らかく。角丸をrounded-lgからrounded-xlに変えて余白も少し広げて"</p></td></tr><tr><td><p>"スマホで見づらい"</p></td><td><p>スマホ表示が崩れているか文字が小さすぎる</p></td><td><p>"スマホ表示を全ページ確認して崩れている部分を全て修正してください"</p></td></tr><tr><td><p>"このページだけ雰囲気が違う"</p></td><td><p>デザインのブレ。共通部品が一致していない</p></td><td><p>"service.htmlのナビとフッターをindex.htmlの実装と完全に一致させてください"</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-2. HP制作特有のトラブルと対処法</span></h2>
+<table><tbody><tr><td><p><strong>トラブル</strong></p></td><td><p><strong>主な原因</strong></p></td><td><p><strong>Claude修正指示の例</strong></p></td></tr><tr><td><p>ページ間でデザインが違う</p></td><td><p>各ページを別チャットで生成した</p></td><td><p>"service.htmlのナビをindex.htmlと完全に一致させてください。参照：[index.html全文]"</p></td></tr><tr><td><p>ナビクリックで404</p></td><td><p>hrefのファイル名・拡張子のミス</p></td><td><p>"ナビの「会社概要」リンクをクリックすると404になります。hrefをabout.htmlに修正して"</p></td></tr><tr><td><p>スマホでナビが機能しない</p></td><td><p>ハンバーガーメニューのJSが動いていない</p></td><td><p>"スマホでハンバーガーメニューをタップしてもメニューが開きません。JSを修正して"</p></td></tr><tr><td><p>画像が表示されない</p></td><td><p>imagesフォルダのパスが間違っている</p></td><td><p>"hero.jpgが表示されません。srcをimages/hero.jpgに修正してください"</p></td></tr><tr><td><p>フォント・余白がページごとに違う</p></td><td><p>headタグの内容が各ページで一致していない</p></td><td><p>"about.htmlのheadタグをindex.htmlと完全に一致させてください"</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第10章：納品──HPを複数ファイルごとクライアントに届ける</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">10-1. 納品物の整理</span></h2>
+<p>HP制作の納品物はLPより多くなります。4つのHTMLファイル・画像フォルダ・操作説明書（README）・HP設計書のPDFがセットになります。これをGoogleドライブまたはZIPファイルでクライアントに渡します。</p>
+<table><tbody><tr><td><p><strong>納品物</strong></p></td><td><p><strong>内容</strong></p></td><td><p><strong>ファイル名</strong></p></td></tr><tr><td><p>トップページ</p></td><td><p>HTMLファイル</p></td><td><p>index.html</p></td></tr><tr><td><p>サービスページ</p></td><td><p>HTMLファイル</p></td><td><p>service.html</p></td></tr><tr><td><p>会社概要</p></td><td><p>HTMLファイル</p></td><td><p>about.html</p></td></tr><tr><td><p>お問い合わせ</p></td><td><p>HTMLファイル</p></td><td><p>contact.html</p></td></tr><tr><td><p>画像フォルダ</p></td><td><p>ビジュアル素材一式</p></td><td><p>images/（フォルダごと）</p></td></tr><tr><td><p>操作説明書</p></td><td><p>README</p></td><td><p>README.txt</p></td></tr><tr><td><p>設計書</p></td><td><p>HP設計書PDF</p></td><td><p>HP設計書_サービス名.pdf</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">10-2. GoogleドライブでのHP共有手順</span></h2>
+<p>複数ファイルが含まれるHPの納品で最も使いやすいのは、Googleドライブでフォルダごと共有する方法です。フォルダをまるごとアップロードすることで、imagesフォルダとの相対パスの関係が保たれます。修正があった場合も、該当ファイルを上書きアップロードするだけで更新でき、URLは変わりません。</p>
+<table><tbody><tr><td><p><strong>🖥️ GoogleドライブでHPフォルダを共有する手順</strong></p><p>【STEP 1】drive.google.comを開く</p><p>　→ 「マイドライブ」に「HP_クライアント名」フォルダを作成</p><p>【STEP 2】HP制作フォルダの中身をすべてアップロード</p><p>　→ 4つのhtmlファイル・imagesフォルダ・README.txtを</p><p>　Googleドライブのフォルダにドラッグ&amp;ドロップ</p><p>　→ imagesフォルダごとアップロードすること（画像ファイルも全部含む）</p><p>【STEP 3】共有URLを取得してクライアントに送る</p><p>　→ フォルダを右クリック→「共有」→「リンクをコピー」</p><p>　→ 「リンクを知っている全員が閲覧可能」に設定</p><p>　→ URLをメールに添えて送信</p><p>【修正時】修正したファイルを同じフォルダに上書きアップロードするだけ</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">10-3. FTPでのサーバーへのアップロード</span></h2>
+<p>クライアントがサーバーを持っている場合、FileZillaを使って直接アップロードします。LPのときより多くのファイルがあるため、フォルダ構造が正しく保たれているかを特に注意して確認します。</p>
+<table><tbody><tr><td><p><strong>🖥️ FileZillaでのHP一括アップロード手順</strong></p><p>【STEP 1】クライアントからFTP情報（ホスト名・ユーザー名・パスワード）を受け取る</p><p>【STEP 2】FileZillaでサーバーに接続</p><p>　→ 上部にFTP情報を入力→「クイック接続」</p><p>【STEP 3】HPフォルダの中身をすべて選択してアップロード</p><p>　→ 左側パネル（ローカル）でHP制作フォルダを開く</p><p>　→ 4つのhtmlファイル・imagesフォルダをすべて選択して</p><p>　右側パネル（サーバーの/public_html等）にドラッグ&amp;ドロップ</p><p>【重要】imagesフォルダごとアップロードすること</p><p>　→ imagesフォルダの中身を忘れると全ページの画像が表示されない</p><p>【STEP 4】ブラウザでURLを確認してクライアントに報告する</p><p>　→ https://クライアントのドメイン/ でトップページ確認</p><p>　→ ナビの全リンクが動作するか確認してから報告する</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">10-4. WordPressへの複数ページ組み込み</span></h2>
+<p>WordPressを使っているクライアントの場合、生成した4ページのHTMLをそれぞれWordPressの「固定ページ」として組み込みます。8-4で学んだ1ページの組み込み手順を4回繰り返すイメージですが、ナビゲーションのhref値をWordPressのURL形式に変更する必要があります。</p>
+<table><tbody><tr><td><p><strong>ページ</strong></p></td><td><p><strong>WordPressのスラッグ（URL）</strong></p></td><td><p><strong>ナビのhref変更内容</strong></p></td><td><p><strong>注意点</strong></p></td></tr><tr><td><p>トップページ</p></td><td><p>フロントページとして設定</p></td><td><p>変更不要（自動でルートになる）</p></td><td><p>「外観→カスタマイズ→ホームページの設定」でフロントページに指定</p></td></tr><tr><td><p>サービスページ</p></td><td><p>service（/service）</p></td><td><p>"service.html"→"/service"</p></td><td><p>WordPressのURL形式に変更が必要</p></td></tr><tr><td><p>会社概要</p></td><td><p>about（/about）</p></td><td><p>"about.html"→"/about"</p></td><td><p>同上</p></td></tr><tr><td><p>お問い合わせ</p></td><td><p>contact（/contact）</p></td><td><p>"contact.html"→"/contact"</p></td><td><p>ContactForm7などのプラグインでフォームを追加する場合も</p></td></tr></tbody></table>
+<table><tbody><tr><td><p><strong>💡 WordPress用ナビリンク一括修正プロンプト（コピペ用）</strong></p><p>「WordPressに組み込むため全ページのナビのhref属性を修正してください。</p><p>変更ルール：</p><p>index.html → /（スラッシュのみ）</p><p>service.html → /service</p><p>about.html → /about</p><p>contact.html → /contact</p><p>【4ページのHTMLをPaste】</p><p>ナビ以外のHTMLは変更しないでください。</p><p>修正後に4ページすべてのHTMLを出力してください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第11章：実践プロンプト集10種</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト①：共通部品テンプレート生成</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト①（コピペ用）</strong></p><p>「コーポレートHPの共通部品をtemplate.htmlとして生成してください。</p><p>HP名：【入力】 / ページ構成：index・service・about・contact</p><p>メイン：#【入力】 / アクセント：#【入力】 / 背景：#FFFFFF</p><p>Tailwind CSS（CDN）・Google Fonts（Noto Sans JP）</p><p>①グローバルナビ：ロゴ（左）・メニュー4項目（中）・CTAボタン（右）</p><p>　スクロール固定・スマホはハンバーガーメニュー（JS）</p><p>②フッター：メインカラー背景・白文字・ページリンク・コピーライト</p><p>③共通CSS：カラー変数・h1/h2/h3スタイル・ボタン共通スタイル</p><p>bodyは空でOK。生成後にhref値一覧を教えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト②：トップページ（index.html）生成</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト②（コピペ用）</strong></p><p>「template.htmlの共通部品を使ってindex.htmlを生成してください。</p><p>構成：ナビ（トップがアクティブ）→FVヒーロー（hero.jpgを後で差し込む予定）</p><p>→サービス概要カード×3（各service.htmlへリンク）→実績数字→お客様の声→CTA→フッター</p><p>CTAはcontact.htmlへ。コピーはすべてプレースホルダー形式」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト③：サービスページ（service.html）生成</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト③（コピペ用）</strong></p><p>「以下のindex.htmlと同じデザインでservice.htmlを生成してください。</p><p>【index.html全文をPaste】</p><p>ナビは「サービス」のみアクティブ（font-bold追加）。</p><p>構成：ページヒーロー（パンくず付き）→サービス詳細×3（交互レイアウト）</p><p>→お客様の声×2→FAQアコーディオン×5（JS）→CTA→フッター。</p><p>コピーはすべてプレースホルダー形式」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト④：会社概要（about.html）生成</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト④（コピペ用）</strong></p><p>「以下のindex.htmlと同じデザインでabout.htmlを生成してください。</p><p>【index.html全文をPaste】</p><p>ナビは「会社概要」のみアクティブ。</p><p>構成：ページヒーロー→理念（背景#F8FAFF）→代表者プロフィール（2カラム）</p><p>→会社概要テーブル→CTA→フッター。</p><p>代表写真エリアはprofile.jpgを後で差し込む予定の領域を確保。</p><p>信頼性・誠実さを感じさせるデザインを優先。プレースホルダー形式」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑤：お問い合わせ（contact.html）生成</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑤（コピペ用）</strong></p><p>「以下のindex.htmlと同じデザインでcontact.htmlを生成してください。</p><p>【index.html全文をPaste】</p><p>ナビは「お問い合わせ」のみアクティブ。</p><p>構成：ページヒーロー（「2営業日以内に返信」）</p><p>→フォーム+アクセス情報（2カラム）→FAQミニ×3（アコーディオン）→フッター</p><p>フォーム項目：お名前/会社名/メール/種別(セレクト)/内容(テキストエリア)</p><p>action="#"・HTML5バリデーション・エラースタイル実装」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑥：全4ページのデザイン統一</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑥（コピペ用）</strong></p><p>「以下の4ページをindex.htmlを基準にデザインを完全に統一してください。</p><p>確認・修正ポイント：ナビ全href・フッター・フォント・カラー・ボタンスタイル</p><p>【index.html全文】【service.html全文】【about.html全文】【contact.html全文】</p><p>修正後に全ページのHTMLを出力。各ページの先頭に「=== ○○.html ===」ラベルを付けて」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑦：アクティブメニュー一括設定</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑦（コピペ用）</strong></p><p>「各ページのナビにアクティブスタイルを追加してください。</p><p>アクティブスタイル：font-bold + text-[#D85A30]</p><p>・index.html→トップ / service.html→サービス</p><p>・about.html→会社概要 / contact.html→お問い合わせ</p><p>【4ページのHTMLをPaste】</p><p>修正後に全ページを出力してください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑧：Nano Banana HP用FVヒーロー画像生成</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑧（Nano Banana用・コピペ用）</strong></p><p>【GeminiアプリのNano Banana（🍌）で使用】</p><p>「HP用のFVヒーロー画像を生成してください。</p><p>ビジュアルコンセプト：【ブランドの世界観を1文で入力】</p><p>具体的な指示：</p><p>・シーン：【プロフェッショナルな日常シーン】</p><p>・人物：後ろ姿または手元のみ（顔は不要）</p><p>・カラートーン：【ブランドのメインカラー系・白・ライトグレー】</p><p>・構図：横長16:9・左60%にテキスト配置の余白</p><p>・スタイル：写真風（フォトリアリスティック）」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑨：WordPress用ナビリンク一括修正</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑨（コピペ用）</strong></p><p>「WordPressに組み込むため全ページのナビhref属性を修正してください。</p><p>変更ルール：</p><p>index.html→/ / service.html→/service / about.html→/about / contact.html→/contact</p><p>【4ページのHTMLをPaste】</p><p>ナビ以外は変更しないでください。修正後に全ページを出力してください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑩：HP全体のREADME自動生成</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑩（コピペ用）</strong></p><p>「このHPの納品用README.txtを作成してください。</p><p>サイト名：【入力】 / 作成者：【名前】 / 作成日：【日付】</p><p>連絡先：【メールアドレス】</p><p>含めてほしい内容：</p><p>①各ページのファイル名と役割</p><p>②サーバーへのアップロード方法（フォルダ構造保持）</p><p>③各ページのテキストを更新する方法</p><p>④画像を差し替える方法</p><p>⑤WordPress組み込みの基本手順</p><p>⑥Googleフォームの管理方法</p><p>⑦不明点があった場合の連絡先</p><p>Web制作に詳しくない人でも理解できる言葉で、番号付きで書いてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">次のステップ：8-6「WordPressへの展開」へ</span></h2>
+<p>8-5でコーポレートHP4ページの設計・生成・修正・ビジュアル制作・納品を完全習得しました。8-6ではWordPressへの本格的な組み込みと、クライアントが自分でコンテンツを更新できる運用体制の構築を実践します。</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>7-5. Perplexity完全攻略</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">7-5. Perplexity完全攻略</span></h1>
+<hr class="divider">
+<span class="label">フェーズ7｜AI使い分け戦略編</span>
+</div>
+<div class="card">
+<p><em>「横展開 × AI最適化」で収益の品質と速度を引き上げる</em></p>
+<p><strong>「出典付きリアルタイムリサーチ」で副業の情報精度を革命する</strong></p>
+<p>このマニュアルを読み終える頃には</p>
+<p><strong>Perplexityを「副業のリサーチ専門家」として完全に使いこなし、</strong></p>
+<p><strong>情報の鮮度・精度・信頼性において他のライターと明確な差をつけられるようになっています</strong></p>
+<table><tbody><tr><td><p><strong>💰 この章で得られる効果</strong></p><p>・Perplexityが「検索エンジンの再発明」と呼ばれる理由と、副業への本質的な価値がわかる</p><p>・「出典付き回答」が副業ライターの信頼性をどう変えるかを具体的に理解できる</p><p>・通常検索とPro検索の違いを把握し、最もコスパの良い使い方が設計できる</p><p>・Perplexityが副業で輝く5つの場面と、各場面での具体的な検索戦略を習得できる</p><p>・Perplexity→Claude/ChatGPTへの「情報橋渡しフロー」で情報収集と文章化を連携させられる</p><p>・副業シーン別プロンプト10種（コピペ即使用）を収録</p></td></tr></tbody></table>
+<table><tbody><tr><td><p><strong>🤖 この章でのAI活用ポイント</strong></p><p>・Perplexity自体で「最新のPerplexityのアップデート情報」をリサーチする（最も実践的な体験）</p><p>・ClaudeでPerplexityの使い方を自分の副業スタイルに落とし込んだ「リサーチSOP」を作る</p><p>・ChatGPTとPerplexityの分担を決めて、今週の案件から実際に試してみる</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第1章：Perplexityとは何か──「検索エンジンの再発明」という野望</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-1. Perplexity AIが解こうとした「古い問題」</span></h2>
+<p>Perplexity AIは2022年に設立された比較的新しい会社ですが、解こうとした問題は非常にシンプルで本質的です。「なぜ私たちは、答えを得るためにGoogle検索で10個のリンクをクリックして、10個のページを読み、自分で情報を取捨選択しなければならないのか？」という問いです。</p>
+<p>従来の検索エンジンは「関連するWebページへのリンク一覧」を返します。ユーザーはそこから自分でクリックし、読み、判断し、まとめる必要がありました。Perplexityはこのプロセスをまるごと引き受けます。「リンクを探す」「ページを読む」「情報を要約する」「出典を明示する」という4つの工程を、AIがひとまとめに処理して答えを返してくれます。これが「検索エンジンの再発明」という表現の意味です。</p>
+<p>Perplexity AIの創業者にはGoogleやOpenAIの出身者が含まれており、既存の検索体験の問題点を内側から知っていた人たちが、その解決策として作ったプロダクトです。2024年から2025年にかけて急速に認知が広まり、多くの副業者・ライター・リサーチャーが「調べものにはPerplexity」という習慣を持ち始めています。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-2. 従来の検索 vs Perplexityの本質的な違い</span></h2>
+<p>従来の検索エンジン（Google等）とPerplexityの違いを、副業ライターの日常作業で具体的に見てみましょう。SEO記事を書くために「転職 30代 未経験 エンジニア」というキーワードの競合記事を調べるケースを比較します。</p>
+<table><tbody><tr><td><p><strong>📋 従来のGoogle検索でのリサーチプロセス（所要時間：40〜60分）</strong></p><p>Step 1：Googleで「転職 30代 未経験 エンジニア」を検索（1分）</p><p>Step 2：上位10記事のタイトル・ディスクリプションを確認（5分）</p><p>Step 3：上位5記事を開いてそれぞれ読む（20〜30分）</p><p>Step 4：各記事の構成・見出し・主要な主張をメモする（10〜15分）</p><p>Step 5：メモを整理して「競合記事の共通点と差別化ポイント」をまとめる（10分）</p><p>合計：約40〜60分　→　さらにこれをChatGPTに渡して記事を書かせる</p></td></tr></tbody></table>
+<table><tbody><tr><td><p><strong>📋 Perplexityでのリサーチプロセス（所要時間：8〜12分）</strong></p><p>Step 1：Perplexityに質問する（1分）</p><p>「転職 30代 未経験 エンジニアというキーワードでSEO上位の記事の共通点、</p><p>　使われているH2見出しのパターン、差別化できる切り口を教えてください」</p><p>Step 2：出典付きの回答が届く（1〜2分で処理）</p><p>→ 複数のWebページを参照した回答が、出典URLとともに整理されて返ってくる</p><p>Step 3：不明点があれば追加質問（3〜5分）</p><p>→「この記事でカバーされていないトピックは何か教えて」</p><p>→「30代未経験転職の最新の成功事例はあるか」</p><p>合計：約8〜12分　→　この情報をそのままClaudeに渡して記事を書かせる</p></td></tr></tbody></table>
+<div class="callout-box"><p>この比較だけで、1本の記事あたり30〜50分のリサーチ時間が短縮されることがわかります。月10本の記事を書くライターなら月5〜8時間、月20本なら月10〜16時間の時短になります。Perplexityへの課金（月3,000円）は、この時短だけで十分に元が取れます。</p></div>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-3. Perplexityが「情報の信頼性問題」を解決する仕組み</span></h2>
+<p>ChatGPTやClaudeを使っていると、時折「自信満々に間違いを言う（ハルシネーション）」という問題に遭遇します。AIが学習データの中にある情報を、あたかも確かな事実のように提示するこの問題は、副業ライターにとって非常に深刻です。クライアントに不正確な情報を含んだ記事を納品してしまうと、信頼を失うどころか、クライアントのビジネスに実害を与える可能性があります。</p>
+<p>Perplexityはこの問題を「ソース付き回答」という仕組みで根本的に解決します。Perplexityが提示する情報には、その情報を取得したWebページのURLが付いています。回答の各文章がどのWebページに基づいているかを確認できるため、「この情報はどこから来ているのか」が透明になります。ChatGPTが「この情報は学習データに基づいています（出典不明）」という状態なのに対して、Perplexityは「この情報は〇〇というページから取得しました（出典明示）」という状態です。</p>
+<table><tbody><tr><td><p><strong>情報の信頼性</strong></p></td><td><p><strong>ChatGPT/Claude</strong></p></td><td><p><strong>Perplexity</strong></p></td><td><p><strong>副業での実用的な意味</strong></p></td></tr><tr><td><p>情報の出典</p></td><td><p>基本的に不明（学習データ）</p></td><td><p>各文章に出典URLが付く</p></td><td><p>クライアントへの根拠提示が即可能</p></td></tr><tr><td><p>情報の鮮度</p></td><td><p>学習カットオフ日以前の情報</p></td><td><p>リアルタイムで最新ページを参照</p></td><td><p>最新の法改正・トレンドに対応できる</p></td></tr><tr><td><p>ハルシネーションリスク</p></td><td><p>ある（確信を持って間違いを言う）</p></td><td><p>出典が明示されるため低い</p></td><td><p>誤情報を記事に混入するリスクが減る</p></td></tr><tr><td><p>情報の検証可能性</p></td><td><p>困難（どこで確認すべきか不明）</p></td><td><p>出典URLをクリックして即確認可能</p></td><td><p>一次情報との照合が容易</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第2章：Perplexityのレーダーチャートを深く読む</span></h2>
+<p>左のレーダーチャートはPerplexityの7分野評価です。リアルタイム情報（★5）だけが際立って突き出た「一点突破型」の形です。この形を最初に見たとき「弱いAIに見える」と感じた方もいるかもしれません。しかしこれは「リサーチという副業の最重要工程において、他のすべてのAIを圧倒する専門性」を表しています。右のグラフはリアルタイム情報分野での5大AI比較です。Perplexityが★5で、他のAIが★2〜4の範囲であることが一目でわかります。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-1. 「一点集中型チャート」が示す設計哲学</span></h2>
+<p>Perplexityのチャートが一点集中型になっている理由は明確です。Perplexityは「最高の検索AIになる」という1つの目標に特化して設計されているからです。ChatGPTが「何でもできる汎用AI」、Claudeが「長文・誠実・コードの専門AI」、Geminiが「Google連携・画像理解の専門AI」として設計されたのとは対照的に、Perplexityは「情報を正確にリアルタイムで取得して提示する」という1つの機能を極限まで磨きました。</p>
+<p>この設計哲学は副業での使い方に直接影響します。Perplexityを「情報収集専門のAI」として明確に位置づけ、文章を書く作業はClaudeやChatGPTに任せるという役割分担が、最も自然な使い方です。Perplexityに「この情報をもとにLPを書いて」と頼むのは適切ではありません。「この情報を整理して」というリサーチの文脈で使い、文章化は別のAIに委ねることで、それぞれのAIの得意が活きます。</p>
+<table><tbody><tr><td><p><strong>分野</strong></p></td><td><p><strong>スコア</strong></p></td><td><p><strong>副業での意味</strong></p></td></tr><tr><td><p>テキスト生成</p></td><td><p>★★☆☆☆（2）</p></td><td><p>情報を「まとめる・要約する」用途は可能。感情設計が必要な文章は不得意</p></td></tr><tr><td><p>リアルタイム情報</p></td><td><p>★★★★★（5）</p></td><td><p>他のAIに不可能なリアルタイム検索×要約×出典付き回答。副業のリサーチを革命する</p></td></tr><tr><td><p>長文・文脈</p></td><td><p>★★☆☆☆（2）</p></td><td><p>リサーチ結果の要約が主。長文コンテンツの生成はClaudeに譲る</p></td></tr><tr><td><p>安全性・倫理</p></td><td><p>★★★☆☆（3）</p></td><td><p>出典が明示されるため情報の検証が可能。情報の正確性担保が間接的な安全配慮</p></td></tr><tr><td><p>Google連携</p></td><td><p>★★☆☆☆（2）</p></td><td><p>独立したサービスのためGoogleとの直接連携なし</p></td></tr><tr><td><p>画像理解</p></td><td><p>★★★☆☆（3）</p></td><td><p>画像を含む検索・画像の情報収集は可能。単体の画像分析はGeminiに劣る</p></td></tr><tr><td><p>コード・技術</p></td><td><p>★★☆☆☆（2）</p></td><td><p>コード生成よりも技術情報のリサーチが主な用途</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第3章：リアルタイム情報★5──「出典付き回答」が変える副業の信頼性</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-1. 「出典付き回答」が副業ライターに与える3つの価値</span></h2>
+<p>上のグラフはリサーチ作業時間の比較です。競合記事リサーチが60分→12分、市場トレンド調査が45分→8分、法規制確認が40分→10分という結果です。この時短の本質は「5つのページを読んでまとめる作業をPerplexityが代行している」ことにあります。しかしPerplexityが副業ライターに与える価値は時短だけではありません。もっと本質的な3つの価値があります。</p>
+<h3>価値①：「根拠を提示できるライター」になれる</h3>
+<p>副業でクライアントワークをしているとき、クライアントから「この記事に書いてある統計の出典はどこですか？」「この情報は最新のものですか？」という質問を受けることがあります。ChatGPTやClaudeで書いた記事は学習データに基づいているため、出典が不明確なことが多い。この質問に答えられないと信頼を失います。Perplexityで調べた情報なら、各情報に出典URLが付いているため「〇〇省の公式データに基づいています（出典：https://…）」と即座に提示できます。</p>
+<p>この「根拠を提示できる」という能力は、特に医療・法律・金融・統計を扱うコンテンツで圧倒的な差別化になります。これらの分野のクライアントは情報の正確性に敏感です。「根拠付きで書けるライター」はこの市場で選ばれやすく、単価交渉でも優位に立てます。</p>
+<h3>価値②：「ハルシネーション」のリスクを劇的に下げる</h3>
+<p>AIが自信満々に間違った情報を提示するハルシネーションは、副業ライターにとって最も恐ろしいリスクの1つです。特に「〇〇市場の規模は△△兆円」「〇〇制度では〇〇が義務化されている」といった具体的な数字や制度に関する情報で起きると、そのまま記事に書いてしまうリスクがあります。Perplexityは情報収集のたびに実際のWebページを参照するため、「でたらめな情報を自信満々に提示する」というリスクが大幅に低くなります。出典が明示されているため、「本当にこのページにこう書いてあるか」を確認することも容易です。</p>
+<h3>価値③：「常に最新の情報を持っているライター」というポジション</h3>
+<p>ChatGPTやClaudeで書いた記事は、学習データのカットオフ日以前の情報しか含まれていません。2025年に書いた記事でも、実質的には2024年以前の情報を元にしている可能性があります。Perplexityは常にリアルタイムのWebを参照するため、「今週起きた法改正」「先月発表された新しい統計データ」「直近の業界トレンド」をリサーチして記事に組み込めます。これにより「常に最新の情報が入っている記事」を書けるライターとしてのポジションが確立されます。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-2. Perplexityが特に強い「情報の種類」</span></h2>
+<p>Perplexityがリアルタイム情報において特に精度が高い情報の種類があります。以下の情報を調べる場合、ChatGPTやClaudeより明確に優れた結果が得られます。</p>
+<table><tbody><tr><td><p><strong>情報の種類</strong></p></td><td><p><strong>なぜPerplexityが優れるか</strong></p></td><td><p><strong>副業での具体的な活用場面</strong></p></td></tr><tr><td><p>法律・規制の最新情報</p></td><td><p>官公庁・行政機関のページを直接参照できる</p></td><td><p>薬機法・景表法の最新解釈、ステマ規制の最新ガイドライン確認</p></td></tr><tr><td><p>市場規模・統計データ</p></td><td><p>調査会社・統計局の最新レポートを参照</p></td><td><p>SEO記事での「〇〇市場は〇兆円規模（出典：〇〇）」という根拠付き記述</p></td></tr><tr><td><p>企業・サービスの最新情報</p></td><td><p>企業のプレスリリース・IR情報を参照</p></td><td><p>LP制作前のクライアント企業調査・競合他社の最新動向把握</p></td></tr><tr><td><p>業界トレンド・新技術</p></td><td><p>専門メディア・論文・学会発表を横断的に参照</p></td><td><p>IT・AI・医療・教育分野のSEO記事での最新トレンド把握</p></td></tr><tr><td><p>SEO競合記事の現状</p></td><td><p>現時点でのGoogle検索上位ページを参照</p></td><td><p>今書く記事が差別化すべき競合コンテンツの分析</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第4章：Pro検索の活用で情報精度を最大化する</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-1. 通常検索とPro検索の違いを正確に理解する</span></h2>
+<p>上のグラフは通常検索とPro検索の機能差を5項目で比較しています。Pro検索が通常検索と比べてすべての項目で高いスコアを示していますが、特に「専門情報へのアクセス」と「ファイル分析」は通常検索との差が大きくなっています。副業での使い方に応じて、どちらのプランが適切かを判断する必要があります。</p>
+<table><tbody><tr><td><p><strong>機能</strong></p></td><td><p><strong>通常検索（無料）</strong></p></td><td><p><strong>Pro検索（有料）</strong></p></td><td><p><strong>副業での実用的な差</strong></p></td></tr><tr><td><p>1日の高精度検索回数</p></td><td><p>無制限（通常精度）</p></td><td><p>300回以上/日（Pro精度）</p></td><td><p>毎日複数案件のリサーチができる量</p></td></tr><tr><td><p>検索の深さ</p></td><td><p>標準的なWeb検索</p></td><td><p>複数ソースの深い検索・学術論文へのアクセス</p></td><td><p>医療・法律・学術的な根拠が必要な記事に差が出る</p></td></tr><tr><td><p>情報精度</p></td><td><p>一般的なWebページを横断</p></td><td><p>高信頼性ソースを優先的に参照</p></td><td><p>官公庁・専門機関のデータを優先して返してくれる</p></td></tr><tr><td><p>ファイルのアップロード分析</p></td><td><p>不可</p></td><td><p>PDF・Word等を読み込んで分析可能</p></td><td><p>クライアントから受け取った資料を直接分析できる</p></td></tr><tr><td><p>画像の生成</p></td><td><p>不可</p></td><td><p>Pro版で可能（DALL-E等との連携）</p></td><td><p>副業での直接的な活用は限定的</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-2. Pro検索を「重要な案件だけに絞る」使い方</span></h2>
+<p>Perplexity Proは月約3,000円（$20）の課金ですが、「すべての調べものをPro検索でやる必要はない」という判断が大切です。日常的な軽いリサーチには通常検索（無料・無制限）を使い、重要度の高い案件だけにPro検索を使うことで、費用対効果を最大化できます。</p>
+<table><tbody><tr><td><p><strong>💡 Pro検索を使うべき場面 vs 通常検索で十分な場面</strong></p><p>【Pro検索を使うべき場面（精度・信頼性が重要）】</p><p>・薬機法・景表法・個人情報保護法など法規制の確認</p><p>・医療・健康・金融に関する統計・データの収集</p><p>・クライアント企業の財務情報・IR・プレスリリースの調査</p><p>・高単価案件（5万円以上）の競合分析</p><p>・学術論文・専門機関の調査レポートへのアクセスが必要な場合</p><p>【通常検索で十分な場面（速度・量が重要）】</p><p>・一般的なSEO競合記事のタイトル・構成確認</p><p>・楽天ROOMの商品カテゴリのトレンド把握</p><p>・SNSの話題・ハッシュタグのリサーチ</p><p>・ブログ記事のアイデア収集</p><p>・軽い業界情報のキャッチアップ</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-3. Pro検索で「PDFを読ませる」という高度活用</span></h2>
+<p>Perplexity Proの中でも特に副業ライターに価値があるのが「PDFのアップロード分析」機能です。クライアントから「この会社概要のPDFをもとにHPのコピーを書いてほしい」「この商品カタログのPDFを参考に紹介記事を書いてほしい」という依頼を受けたとき、PerplexityにそのPDFを読み込ませて「このPDFから、HPのコピーを書くための情報を整理して」と指示できます。</p>
+<p>PDFを手動でテキスト化する作業がなくなり、Perplexityが自動で内容を整理してくれます。さらに「このPDFに書いてある商品の特徴を、競合製品と比較する形でまとめて」という複合的な指示も可能です。PDFの内容を参照しながらWebで最新の競合情報を検索し、比較表の形で整理してくれます。このような「PDFの内容×リアルタイムWeb情報の統合分析」はPerplexity Proでしかできない作業です。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第5章：Perplexityが副業で輝く5つの場面</span></h2>
+<h3>場面①：SEO記事の競合リサーチ</h3>
+<p>SEO記事を書くとき、書き始める前の「競合分析」が記事の品質を左右します。どんな構成で、どんな情報を、どんな順番で伝えているかを把握したうえで、「これを超えるにはどうするか」を設計することが重要です。この競合分析がPerplexityを使うと劇的に効率化されます。</p>
+<table><tbody><tr><td><p><strong>📝 SEO競合分析プロンプト（すぐ使える）</strong></p><p>「〇〇（キーワード）でGoogle検索1〜5位の記事について、</p><p>以下を分析してください。</p><p>①各記事のH2見出し構成（概要）</p><p>②5記事に共通して含まれているコンテンツの要素</p><p>③5記事がカバーしていない「穴」（ニーズが満たされていないポイント）</p><p>④読者が「もっと知りたい」と思いそうなのに、5記事が答えていない疑問</p><p>⑤私が記事を書くとしたら差別化できそうな切り口（3点）</p><p>各回答に出典URLを付けてください」</p></td></tr></tbody></table>
+<div class="callout-box"><p>このプロンプト1つで、従来40〜60分かかっていた競合分析が10〜15分で完成します。さらに重要なのは「5記事がカバーしていない穴」を発見できることです。この「コンテンツギャップ」を埋める記事を書くことが、後発でも検索上位を狙える戦略の核心です。</p></div>
+<h3>場面②：法規制・コンプライアンスの確認</h3>
+<p>副業で美容・健康・医療・法律・金融のコンテンツを書くとき、法規制の確認は避けて通れません。しかし「薬機法の最新ガイドラインを確認する」という作業は、従来は「厚生労働省のサイトを探す→PDFを開く→該当箇所を探す→理解する」という複数のステップが必要でした。Perplexityに直接質問することで、この確認作業が大幅に効率化されます。</p>
+<table><tbody><tr><td><p><strong>📝 法規制確認プロンプト（薬機法の例）</strong></p><p>「2025年現在の薬機法において、化粧品・健康食品の広告で</p><p>以下の表現は使用できますか？それぞれについて、</p><p>①使用可能か不可か②その根拠（関連条文・ガイドラインの名称）</p><p>③安全に使える代替表現を教えてください。</p><p>出典として厚生労働省や消費者庁の公式ページのURLを付けてください。</p><p>確認したい表現：</p><p>・「シミが消える」</p><p>・「アンチエイジング効果」</p><p>・「医師推薦」</p><p>・「〇%の方に効果がありました」（臨床試験なしの場合）」</p></td></tr></tbody></table>
+<p>このようなプロンプトに対してPerplexityは、厚生労働省・消費者庁の公式ガイドラインを出典として、具体的な回答を返してくれます。「薬機法上NGな表現をClaudeで書いてしまうリスク」を事前にPerplexityで潰してから、ClaudeにLPの執筆を依頼するというワークフローが理想的です。ただし最終的な法的判断は専門家に委ねることを必ず付記してください。</p>
+<h3>場面③：クライアント企業の事前調査</h3>
+<p>新しいクライアントから案件を受注したとき、その企業・事業について事前に把握しておくことは、質の高いヒアリングと提案につながります。Perplexityにクライアント企業名を入れて「この会社の事業内容・最近のニュース・競合との差別化ポイント・主要なターゲット顧客」を調べることで、初回打ち合わせ前に基礎知識を持った状態で臨めます。</p>
+<p>特にB2Bのクライアントの場合、「その業界のトレンド・課題・専門用語」を事前に把握しておくことで、クライアントが「このライターはうちの業界をわかっている」という印象を持ちます。これが継続依頼・単価アップの交渉において大きな差を生みます。</p>
+<table><tbody><tr><td><p><strong>📝 クライアント事前調査プロンプト</strong></p><p>「〇〇（企業名またはサービス名）について、以下を調べてください。</p><p>①会社・サービスの概要（事業内容・創業時期・規模）</p><p>②最近1年間の主なニュース・プレスリリース・動向</p><p>③競合と比べた差別化ポイント・強み</p><p>④主なターゲット顧客（どんな人が使っているか）</p><p>⑤業界全体の最新トレンド・課題</p><p>⑥このクライアントのWebサイトで使われているキーワード・訴求軸</p><p>出典URLを付けてください。</p><p>公式情報と第三者の評価・口コミ情報を分けて提示してください」</p></td></tr></tbody></table>
+<h3>場面④：業界トレンドのキャッチアップ</h3>
+<p>副業で特定の業界に特化しているライターにとって、その業界の最新動向を常に把握していることは大きな強みです。しかし毎日何十ものWebサイトやニュースを確認する時間はありません。Perplexityに定期的に「〇〇業界の今週の主なニュースと動向を教えて」と質問することで、週に10〜15分の投資で業界情報を常に最新に保てます。</p>
+<p>毎週月曜日にPerplexityで「担当している業界の週次ニュース」を収集するルーティンを作るだけで、クライアントとの打ち合わせで「先週の〇〇の発表について、どうお考えですか？」という会話ができるようになります。「業界に詳しいライター」という評価は、単価交渉で最も有利に働く評価の1つです。</p>
+<h3>場面⑤：「引用できる数字・データ」の収集</h3>
+<p>SEO記事や提案書・LPで「〇〇市場の規模は〇兆円」「〇〇を利用しているユーザーは〇%」という具体的な数字を使うと、文章の説得力が劇的に上がります。しかし根拠のない数字を書くと信頼性を失います。Perplexityは市場調査レポート・統計局のデータ・業界団体の発表を参照して、「引用できる数字」を出典付きで提供してくれます。</p>
+<table><tbody><tr><td><p><strong>📝 統計データ収集プロンプト（LP・記事向け）</strong></p><p>「以下のテーマに関連する、記事・LP・提案書で使える「引用できる数字」を</p><p>出典付きで5〜10個教えてください。</p><p>テーマ：〇〇（例：副業・フリーランス・在宅ワーク）</p><p>【欲しいデータの種類】</p><p>・市場規模（〇〇億円・兆円）</p><p>・利用者数・実施率（〇万人・〇%）</p><p>・トレンドの変化（前年比〇%増等）</p><p>・課題・問題の認知率（〇%が〇〇と感じている等）</p><p>出典は政府機関・上場企業の調査・業界団体など信頼性の高いものを優先してください。</p><p>2023年以降のデータを優先し、古いデータは「〇年時点」と明記してください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第6章：Perplexity→Claude/ChatGPTへの「情報橋渡しフロー」</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-1. 「情報収集」と「文章化」を分離する発想</span></h2>
+<div class="callout-box"><p>Perplexityを副業に組み込む最重要の考え方は「情報収集と文章化を分離する」です。Perplexityはリサーチのプロ、ClaudeとChatGPTはライティングのプロです。この2つを混在させると、どちらのAIの強みも中途半端になります。「情報はPerplexityから取得する→文章はClaudeまたはChatGPTで作る」という明確な分業が、最高の成果を生みます。</p></div>
+<p>実際のワークフローは極めてシンプルです。まずPerplexityで「この案件に必要な情報をすべて収集する」というリサーチを10〜15分で完了します。次にその出力をコピーして、ClaudeまたはChatGPTへの指示プロンプトに貼り付けます。最後に「以下の情報をもとに〇〇を書いて」という指示で文章化を依頼します。この3ステップを習慣にするだけで、記事の品質と作成スピードが大幅に向上します。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-2. 「橋渡しプロンプト」の設計</span></h2>
+<p>Perplexityの出力をClaudeやChatGPTに効果的に渡すためには、「橋渡しプロンプト」の設計が重要です。単に「以下の情報を使って記事を書いて」と指示するだけでは、Perplexityの情報の価値が半減します。以下のテンプレートを使って情報の使い方を明確に指示することで、AIが情報を最大限に活かして文章を生成します。</p>
+<table><tbody><tr><td><p><strong>💡 Perplexity→Claude/ChatGPT「橋渡しテンプレート」</strong></p><p>【SEO記事への橋渡しテンプレート】</p><p>「以下はPerplexityで収集した最新のリサーチ結果です。</p><p>この情報をベースに、SEO記事を書いてください。</p><p>【収集した情報】</p><p>（PerplexityのリサーチテキストをここにそのままPaste）</p><p>【書き方の指示】</p><p>・上記の情報は「事実・データ・出典」として扱い、文章には出典URLを付けること</p><p>・情報を単に羅列するのではなく、ターゲット読者の文脈で自然に組み込むこと</p><p>・Perplexityが提供した情報から「最もターゲットに刺さる情報」を選択してください</p><p>・数字は必ず出典付きで使い、古いデータには「〇年時点」と注記してください」</p><p>【LP制作への橋渡しテンプレート】</p><p>「以下はPerplexityで調査した競合分析と市場データです。</p><p>この情報を踏まえて、差別化されたLPのコピーを設計してください。</p><p>【競合分析結果】</p><p>（Perplexityの出力をPaste）</p><p>【この情報をLPにどう活かすか】</p><p>・競合が使っていない訴求軸を見つけて、そこを中心に設計すること</p><p>・競合の弱点（カバーしていないペインポイント）を自社の強みとして打ち出すこと</p><p>・市場データは「共感」パートで読者の問題意識を高める文脈で使うこと」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-3. 情報の「鮮度チェック」をPerplexityに任せる</span></h2>
+<p>完成した記事や既存のコンテンツを定期的に更新するとき、Perplexityを「鮮度チェックツール」として使う方法があります。既存の記事の主要な情報をPerplexityに渡して「この情報は2025年現在も正確ですか？古くなっている部分があれば指摘してください」と質問します。Perplexityは最新のWebを参照して、どの情報が古くなっているかを出典付きで指摘してくれます。</p>
+<p>特にコンテンツを大量に持っているメディア運営者・ブロガーの案件では、この「コンテンツ鮮度チェック」サービスをPerplexityを使って提供することで、新しい付加価値を生み出せます。「半年に1回、全記事のコンテンツ鮮度チェックと更新提案を行います」という継続サービスは、月額での継続課金案件につながります。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第7章：副業シーン別プロンプト集10種（コピペ即使用）</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト①：SEO競合記事の完全分析</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト①：SEO競合分析（コピペ用）</strong></p><p>【キーワード】で検索上位を狙うSEO記事を書く前の競合分析をしてください。</p><p>【キーワード】：【入力】</p><p>【分析内容】</p><p>①現在のGoogle検索1〜5位記事のH2見出し構成の概要</p><p>②5記事すべてが共通して含んでいる必須コンテンツ要素</p><p>③5記事の中で「読者の疑問に答えていない部分」（コンテンツギャップ）</p><p>④私が書く記事で差別化できる3つの切り口（独自性のある視点）</p><p>⑤このキーワードで検索する読者が「本当に知りたいこと」（検索意図の深層）</p><p>⑥2025年現在の最新情報・法改正・トレンドで、競合記事が触れていないもの</p><p>各分析には出典URLを付けてください。</p><p>最後に「この分析をもとに記事を書くとしたら、最初の1行はこれにする」という</p><p>提案も1つ添えてください</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト②：市場規模・業界データの収集（LP・記事向け）</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト②：統計・市場データ収集（コピペ用）</strong></p><p>以下のテーマに関する「記事・LPで引用できる信頼性の高いデータ」を</p><p>出典付きで収集してください。</p><p>【テーマ・業界】：【入力】</p><p>【用途】：【入力：SEO記事の根拠として / LPの問題提起パートで / 提案書の市場分析で】</p><p>【収集してほしいデータの種類】</p><p>①市場規模（金額・成長率）</p><p>②利用者数・普及率・実施率（%）</p><p>③課題・問題の認知率・深刻度（「〇%が〇〇に悩んでいる」等）</p><p>④最近3年間のトレンド変化（前年比・コロナ前後の変化等）</p><p>⑤専門家・業界団体・政府機関による今後の予測・展望</p><p>【出典の優先順位】</p><p>①政府機関・官公庁（最優先）</p><p>②上場企業の公式調査レポート</p><p>③業界団体の公式統計</p><p>④信頼性の高い調査会社（矢野経済研究所・マクロミル等）</p><p>2023年以前のデータは「〇年時点の情報」と明示してください</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト③：法規制・コンプライアンスの確認</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト③：法規制確認（コピペ用）</strong></p><p>以下のコンテンツを作成するにあたって、法規制上の注意点を確認してください。</p><p>【コンテンツの種類】：【入力：美容LP / 健康食品の記事 / 金融サービスの広告 / etc】</p><p>【確認したい表現・内容】：</p><p>（確認したい具体的な表現を列挙してください）</p><p>【回答してほしいこと】</p><p>①各表現が以下のどれに該当するか：</p><p>　「問題なし」「要注意（条件付きでOK）」「NG（使用不可）」</p><p>②NGまたは要注意の根拠となる法律・ガイドラインの名称と条文番号</p><p>③NGの場合の安全な代替表現の提案</p><p>④2024〜2025年の関連する法改正・ガイドライン改定があれば教えてください</p><p>出典として官公庁・行政機関の公式URLを必ず付けてください。</p><p>最後に「この情報はあくまでも参考情報であり、</p><p>最終的な法的判断は専門家（弁護士・薬事コンサルタント等）に確認することを推奨します」</p><p>という注記を入れてください</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト④：クライアント企業の徹底調査</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト④：クライアント事前調査（コピペ用）</strong></p><p>新しいクライアントとの打ち合わせ前に、以下の情報を調べてください。</p><p>【企業名またはサービス名】：【入力】</p><p>【業種・カテゴリ】：【入力】</p><p>①企業・サービスの概要</p><p>　（事業内容・創業時期・規模・代表者・本社所在地）</p><p>②最近12ヶ月間の主なニュース・プレスリリース・メディア掲載</p><p>③競合との比較（同業他社と比べた強み・弱み・ポジショニング）</p><p>④主なターゲット顧客（誰向けのサービスか・実際のユーザー像）</p><p>⑤業界全体の最新トレンドと、このクライアントが取り組んでいる課題</p><p>⑥クライアントのWebサイト・SNSでよく使われているキーワード・メッセージ</p><p>⑦口コミ・評判（SNS・レビューサイト等での実際のユーザーの声）</p><p>公式情報と第三者情報を分けて提示してください。</p><p>特に⑦については、ポジティブとネガティブの両方を公平に示してください。</p><p>出典URLを各情報に付けてください</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑤：業界週次トレンドの定期収集</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑤：週次トレンド収集（毎週月曜日用）</strong></p><p>【業界/カテゴリ名】の今週（または直近1週間）の主なニュースと動向を</p><p>教えてください。</p><p>【業界/カテゴリ名】：【入力（例：副業・フリーランス / 美容・コスメ / AI・テクノロジー）】</p><p>【知りたい情報】</p><p>①今週の主なニュース・トピック（上位5件）</p><p>②業界で注目されている新しいサービス・製品・技術</p><p>③SNS（X・Instagram等）で今週話題になったキーワード・ハッシュタグ</p><p>④競合他社・同業者の動向で注目すべきもの</p><p>⑤今週の情報をもとに「来週どんなコンテンツを作ると刺さるか」の提案3点</p><p>このリサーチ結果を副業のコンテンツ制作（記事・SNS・楽天ROOM）に</p><p>活用することが目的です。実践的な視点でまとめてください</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑥：「引用できる事例・成功事例」の収集</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑥：事例・事例調査（コピペ用）</strong></p><p>LP・記事・提案書で「社会的証明」として使える事例を調べてください。</p><p>【テーマ/主張の内容】：【入力（例：「副業で月10万円は達成可能」という主張の裏付け）】</p><p>【収集してほしい情報】</p><p>①このテーマの成功事例・具体的なケーススタディ（実名でなくても可）</p><p>②このテーマを支持する調査・研究・専門家の発言</p><p>③逆に「よくある失敗パターン」とその回避方法（コンテンツに深みを出すため）</p><p>④このテーマに関連して「よく引用される数字・データ」</p><p>⑤メディア・書籍・専門家がこのテーマについて何と言っているか</p><p>出典URLを必ず付けてください。</p><p>「誰が言ったか・どこで発表されたか」が明確なものを優先してください。</p><p>不確かな情報は「〇〇によると」という形で情報源を明示してください</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑦：LP・記事の「既存コンテンツの鮮度チェック」</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑦：コンテンツ鮮度チェック（コピペ用）</strong></p><p>以下の記事/コピーに含まれる情報の鮮度を2025年現在の基準でチェックしてください。</p><p>【チェック対象のテキスト】</p><p>（記事・LPのテキストをここに貼り付ける）</p><p>【チェックしてほしいこと】</p><p>①2025年現在、古くなっている情報・数字・法規制への言及</p><p>②2025年現在の正しい情報・最新データへの更新提案</p><p>③「2024〜2025年の新しい動向や法改正」で追加すべき情報</p><p>④削除または修正すべき「現在では不正確になった表現」</p><p>各指摘に出典URLを付けてください。</p><p>「問題なし」の情報は省略し、</p><p>「更新が必要な部分」だけを箇条書きで明確に示してください</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑧：競合企業の訴求軸・差別化ポイント分析</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑧：競合訴求軸分析（コピペ用）</strong></p><p>以下の業種・カテゴリで、現在活発にマーケティング活動をしている</p><p>主要競合3〜5社の訴求軸と差別化ポイントを分析してください。</p><p>【業種・カテゴリ】：【入力】</p><p>【自社・クライアントの商品/サービス】：【入力（比較のため）】</p><p>【分析してほしいこと】</p><p>①各競合が使っている主な訴求軸（価格/品質/実績/感情/ライフスタイル等）</p><p>②各競合のキャッチコピー・主要なメッセージ（現在の広告・HPから）</p><p>③競合全体として「誰も言っていないこと」（市場のホワイトスペース）</p><p>④自社・クライアントが差別化できる可能性が高いポイント（3点）</p><p>⑤競合の弱点・ネガティブな口コミ・ユーザーの不満点</p><p>競合名は直接記載せず「A社」「B社」等に置き換えてください。</p><p>各情報に出典URLを付けてください</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑨：「〇〇に詳しい専門家」になるための集中学習</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑨：専門知識の集中インプット（コピペ用）</strong></p><p>私は【業種・テーマ】に関するコンテンツを作成するライターです。</p><p>この分野を「クライアントに信頼される専門家レベル」で理解するために必要な</p><p>情報を体系的に教えてください。</p><p>【業種・テーマ】：【入力（例：不動産投資 / 機能性食品 / D2Cブランド）】</p><p>【教えてほしいこと】</p><p>①この業界の基本的な仕組み・ビジネスモデル（初心者向けに）</p><p>②業界特有の専門用語・キーワード（15〜20語）とその意味</p><p>③業界の主なプレイヤー・勢力図（業界地図）</p><p>④業界の規制・法律・コンプライアンス上の注意点</p><p>⑤業界の最新トレンド（2024〜2025年の動向）</p><p>⑥この業界のコンテンツで「してはいけないこと・避けるべき表現」</p><p>⑦この業界のターゲット顧客がよく使う言葉・悩みの表現方法</p><p>出典は公式機関・業界団体・権威ある専門書を優先してください。</p><p>「このライターはうちの業界をわかっている」と思わせるための</p><p>実践的な知識を重視してまとめてください</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑩：記事・LP用の「権威ある一文」収集</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑩：権威ある引用・発言の収集（コピペ用）</strong></p><p>以下のテーマに関して、記事・LP・提案書で「根拠・信頼性の裏付け」として</p><p>使える「権威ある発言・調査結果・専門家の見解」を収集してください。</p><p>【テーマ】：【入力】</p><p>【使用目的】：【入力：LP共感パートの裏付け / SEO記事の導入部分の権威付け / etc】</p><p>【収集してほしいもの】</p><p>①政府・官公庁の公式発表で引用できるもの（「〇〇省によると」形式）</p><p>②著名な専門家・医師・弁護士・経済学者等の発言や著書からの引用</p><p>③信頼性の高い調査機関（マクロミル・電通・矢野経済研究所等）の調査結果</p><p>④大手メディアの特集記事・社説で取り上げられた内容</p><p>⑤国際機関（WHO・OECD・IMF等）の発表（国際的な信頼性が必要な場合）</p><p>各情報に出典URLを付けてください。</p><p>「誰が」「いつ」「どこで」「何を言ったか」が明確なものを優先してください。</p><p>「広く言われている」ような曖昧な情報は除いてください</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第8章：Perplexityの苦手なことと補い方</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">8-1. Perplexityの苦手4項目</span></h2>
+<p>Perplexityの強みである「リアルタイムリサーチ」に特化した設計は、当然ながら他の分野での弱さを意味します。Perplexityが苦手なことを正確に理解し、適切なAIで補うことが重要です。</p>
+<table><tbody><tr><td><p><strong>苦手な項目</strong></p></td><td><p><strong>具体的な問題</strong></p></td><td><p><strong>補うAI</strong></p></td><td><p><strong>補い方</strong></p></td></tr><tr><td><p>感情設計を伴う長文執筆</p></td><td><p>LPや電子書籍の「感情的に引き込む文章」の生成は弱い</p></td><td><p>Claude</p></td><td><p>PerplexityでリサーチしたデータをClaudeに渡して文章化</p></td></tr><tr><td><p>バリエーション量産</p></td><td><p>コピーの大量生成・多角的な切り口の展開はChatGPTに劣る</p></td><td><p>ChatGPT</p></td><td><p>Perplexityのリサーチ結果をChatGPTに渡してコピーを量産</p></td></tr><tr><td><p>Google Workspaceとの連携</p></td><td><p>GeminiのようなGoogleドキュメントとの直接連携はない</p></td><td><p>Gemini</p></td><td><p>データ整理・自動化はGemini。情報収集はPerplexityという役割分担</p></td></tr><tr><td><p>Xのリアルタイムトレンド</p></td><td><p>X投稿データへのアクセスはGrokほど深くない</p></td><td><p>Grok</p></td><td><p>SNSバズトレンドはGrok。業界・法規制リサーチはPerplexityという分担</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">8-2. Perplexityの「回答の限界」を知る</span></h2>
+<p>PerplexityはリアルタイムでWebを検索しますが、その回答が「完全に正確」とは限りません。参照しているWebページ自体が誤っている場合、Perplexityもその誤情報を回答に含めてしまう可能性があります。特に以下の場面では、Perplexityの出力を「鵜呑みにしない」という姿勢が重要です。</p>
+<table><tbody><tr><td><p><strong>⚠️ Perplexityを「最終判断の根拠」にしてはいけない場面</strong></p><p>①法律・規制の解釈（最終的には弁護士・行政書士等の専門家に確認）</p><p>　→ Perplexityは参考情報として使い、官公庁の一次情報で必ず確認する</p><p>②医療・健康に関する具体的なアドバイス</p><p>　→ 「医師に相談してください」という形で専門家への誘導を必ず入れる</p><p>③具体的な数字・統計（特に最新のもの）</p><p>　→ 出典URLをクリックして、元のページで数字を直接確認する</p><p>④個人・企業に関する「事実確認」が必要な情報</p><p>　→ 名誉毀損リスクがあるため、複数の出典で裏を取る</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第9章：四角形の体制の中でのPerplexityの役割</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-1. Perplexityは「四角形」の「情報の入口」</span></h2>
+<p>7-4で解説した「四角形の体制（Perplexity・Gemini・Claude・ChatGPT）」において、Perplexityが果たす役割は「情報の入口」です。副業の仕事の流れを見ると、まず「情報を集める」という工程があり、その後「情報を整理する」「情報を文章にする」「文章を量産・展開する」という工程に続きます。Perplexityは最初の「情報を集める」工程を担当する、情報フローの始点です。</p>
+<table><tbody><tr><td><p><strong>工程</strong></p></td><td><p><strong>担当AI</strong></p></td><td><p><strong>Perplexityとの関係</strong></p></td></tr><tr><td><p>情報を集める（リサーチ）</p></td><td><p>Perplexity</p></td><td><p>担当。競合・法規制・市場データ・事例を出典付きで収集する</p></td></tr><tr><td><p>情報を整理する（構造化）</p></td><td><p>Gemini / Claude</p></td><td><p>Perplexityの出力を受け取り、記事やLPの構成に落とし込む</p></td></tr><tr><td><p>情報を文章にする（執筆）</p></td><td><p>Claude</p></td><td><p>Perplexityのリサーチ結果を感情設計を加えて文章化する</p></td></tr><tr><td><p>文章を量産・展開する（派生）</p></td><td><p>ChatGPT</p></td><td><p>Claudeの文章をSNS・広告・メルマガ等の形式に展開する</p></td></tr><tr><td><p>成果物を管理する（整理）</p></td><td><p>Gemini</p></td><td><p>スプレッドシートやドライブでの管理・自動化を担当</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-2. Perplexityを「起点」にした完全ワークフロー</span></h2>
+<table><tbody><tr><td><p><strong>💡 Perplexityを起点にした「高品質SEO記事」完全ワークフロー</strong></p><p>【STEP 1 / Perplexity：リサーチ（15分）】</p><p>プロンプト①：競合記事の徹底分析</p><p>プロンプト②：市場規模・引用できる統計データの収集</p><p>→ 出典付きの最新情報とコンテンツギャップが整理された状態になる</p><p>【STEP 2 / Claude：構成設計（10分）】</p><p>「Perplexityのリサーチ結果をもとに、競合が差別化できる構成案を提案して」</p><p>→ 競合記事の弱点を突いた独自性のある構成が完成する</p><p>【STEP 3 / Claude：全文執筆（60〜90分）】</p><p>「上記の構成・情報で、感情設計最優先の記事全文を書いて。数字は全て出典付きで」</p><p>→ 最新情報を含み、感情的にも読まれる高品質記事が完成する</p><p>【STEP 4 / ChatGPT：タイトル・メタ生成（5分）】</p><p>→ タイトル10案・メタディスクリプション5案を量産</p><p>→ 合計：約90〜120分で業界最高水準の品質のSEO記事1本完成</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-3. 副業規模別のPerplexity活用ロードマップ</span></h2>
+<table><tbody><tr><td><p><strong>📌 副業規模別のPerplexity活用レベル</strong></p><p>【Level 1：副業開始期（月収〜1万円）】</p><p>・通常検索（無料）だけでリサーチを開始</p><p>・週2〜3回の競合リサーチでSEO記事の品質を向上させる</p><p>・Perplexityに慣れることを最優先にする</p><p>【Level 2：成長期（月収1〜5万円）】</p><p>・Pro検索（月3,000円）への課金を検討</p><p>・法規制確認・クライアント事前調査にPro検索を活用</p><p>・Perplexity→Claude/ChatGPT橋渡しフローを習慣化</p><p>【Level 3：安定期（月収5〜10万円）】</p><p>・週次トレンドリサーチを習慣化して「業界に詳しいライター」ポジションを確立</p><p>・コンテンツ鮮度チェックサービスをクライアントへの付加価値として提案</p><p>・四角形の体制（Perplexity+Gemini+Claude+ChatGPT）を完成させる</p><p>【Level 4：拡大期（月収10万円以上）】</p><p>・Perplexityのリサーチ能力を「調査・分析レポートの提供」という高単価案件に活かす</p><p>・業界調査レポートを定期提供するコンサルティング型の継続案件に発展させる</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">次のステップ：7-6「画像生成AI群の使い分け」へ</span></h2>
+<p>7-5でPerplexityの「リサーチ革命」を習得しました。7-6ではDALL-E・Midjourney・Stable Diffusion・Canva AIの4つの画像生成AIを徹底比較。副業ビジュアル制作の最適フローと、各AIの「どれを・いつ・何のために使うか」を完全収録します。</p>
+</div>
+</div>
+</body>
+</html>

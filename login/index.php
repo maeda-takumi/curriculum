@@ -13,7 +13,7 @@ $appBase = str_replace('\\', '/', dirname($scriptDir));
 if ($appBase === '.' || $appBase === '/') {
     $appBase = '';
 }
-$defaultNext = ($appBase === '' ? '' : rtrim($appBase, '/')) . '/?page=index';
+$defaultNext = ($appBase === '' ? '' : rtrim($appBase, '/')) . '/?page=index&curriculum=practice';
 function normalize_next_path(mixed $candidate, string $defaultNext, string $appBase): string
 {
     if (!is_string($candidate) || $candidate === '' || str_starts_with($candidate, 'http://') || str_starts_with($candidate, 'https://') || str_starts_with($candidate, '//')) {

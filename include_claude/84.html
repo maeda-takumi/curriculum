@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>8-4. LP制作完全実践</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">8-4. LP制作完全実践</span></h1>
+<hr class="divider">
+<span class="label">フェーズ8｜高単価Web制作編</span>
+</div>
+<div class="card">
+<p><em>「ライティング力 × AIコード生成」で月収を1案件から跳ね上げる</em></p>
+<p><strong>Claude × Nano Bananaで「売れるLP」を完成させる全工程</strong></p>
+<p>このマニュアルを読み終える頃には</p>
+<p><strong>設計・コピー・HTML生成・ビジュアル・納品まで</strong></p>
+<p><strong>実際に手を動かして1本のLPを完成させられる状態になっています</strong></p>
+<table><tbody><tr><td><p><strong>💰 この章で得られる効果</strong></p><p>・LP制作の5フェーズ（設計→コピー→HTML→ビジュアル→仕上げ）の全体像が把握できる</p><p>・ClaudeがHTMLを出力したとき「どんな形で出てくるのか」「どうコピーするのか」が明確になる</p><p>・生成されたHTMLをファイルに保存してブラウザで確認するまでの操作を完全にマスターできる</p><p>・Nano BananaでFVヒーロー画像を生成してHTMLに差し込む具体的なフローを習得できる</p><p>・完成したLPをクライアントに納品する方法（5種類の選択肢と使い分け）がわかる</p><p>・クライアントからの修正依頼への対応フローと修正回数の設計方法まで習得できる</p><p>・コピペ即使用のプロンプト10種を収録</p></td></tr></tbody></table>
+<table><tbody><tr><td><p><strong>🤖 この章の学習方法</strong></p><p>・実際にClaude.aiを開きながら読み進めてください</p><p>・架空の「副業スクールLP」を実際に作ることを前提に書かれています</p><p>・「読むだけ」より「手を動かしながら読む」ことで習得速度が大幅に上がります</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第1章：LP制作の全体フローと「架空案件」の設定</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-1. 5フェーズの流れを頭に入れてから始める</span></h2>
+<p>上のワークフロー図がこの章の地図です。PHASE 1（設計）→PHASE 2（コピー）→PHASE 3（HTML生成）→PHASE 4（ビジュアル生成）→PHASE 5（仕上げ・納品）という5つのフェーズで、LP1本が完成します。それぞれのフェーズを担当するAIも決まっています。この流れを守ることが「後から大幅な作り直し」を防ぐ最大のコツです。</p>
+<div class="callout-box"><p>特にPHASE 1の設計を省略したくなる気持ちはよくわかります。「早くHTMLを生成してみたい」という気持ちは当然です。しかし設計を飛ばしてPHASE 3から始めると、Claudeは「一般的なLP」を生成します。ターゲットもブランドも感情設計も入っていない、どこにでもあるページです。設計に時間をかけるほど、後の工程が速くなり、修正が少なくなります。</p></div>
+</div>
+<div class="card">
+<h2><span class="gradient-text">1-2. この章で使う「架空案件」の設定</span></h2>
+<p>この章全体を通じて、以下の架空サービスのLPを実際に作ります。読みながら同じ操作を実践することで、この章が終わったとき「自分のポートフォリオ用LP」が手元に完成します。</p>
+<table><tbody><tr><td><p><strong>項目</strong></p></td><td><p><strong>設定内容</strong></p></td></tr><tr><td><p>サービス名</p></td><td><p>「30代からの副業スタートアップ講座」（架空）</p></td></tr><tr><td><p>サービス内容</p></td><td><p>AIとライティングを組み合わせた副業の始め方を教えるオンライン講座</p></td></tr><tr><td><p>価格</p></td><td><p>198,000円（12ヶ月サポート付き）</p></td></tr><tr><td><p>メインターゲット</p></td><td><p>30〜45歳・会社員・副業に半年以上悩んでいる・月10万円以上の副業収入が目標</p></td></tr><tr><td><p>競合との差別化</p></td><td><p>「AIを使いこなす」ではなく「AIとライティングを組み合わせる」独自アプローチ</p></td></tr><tr><td><p>LP構成</p></td><td><p>ナビ→FV→問題提起→解決策→特徴×3→お客様の声×3→FAQ→CTA→フッター</p></td></tr><tr><td><p>使用AI</p></td><td><p>Perplexity（リサーチ）・Claude（コピー＋HTML）・Nano Banana（ビジュアル）</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第2章：PHASE 1──LP設計書を作る</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-1. LP設計書の目的と構成</span></h2>
+<p>LP設計書とは「このLPで何を・誰に・どう伝えるか」を1ドキュメントにまとめたものです。ClaudeへのHTML生成指示の「素材集」としても、クライアントへの事前確認資料としても機能します。設計書さえあれば、後のコピー生成もHTML生成も「設計書の情報を渡すだけ」になります。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-2. 架空案件の設計書（完成例）</span></h2>
+<table><tbody><tr><td><p><strong>📄 LP設計書（架空案件・完成例）</strong></p><p>【①ペルソナ】</p><p>　田中さん（仮名）・35歳・都内の会社員・月収38万円</p><p>　副業に6ヶ月悩んでいるが何も動けていない</p><p>　休日にYouTubeで副業動画を見ては「勉強になった」で終わる</p><p>【②ターゲットの「内なる独り言」（3パターン）】</p><p>　A：「3ヶ月前も同じことを検索していた気がする…」</p><p>　B：「情報は山ほどある。でもなぜか動けない」</p><p>　C：「やる気がないわけじゃないんだけど、何から始めたらいいか…」</p><p>【③感情設計マップ】</p><p>　FV：「これは自分のことだ」→ 共感と驚き</p><p>　問題提起：「そうそう、まさにこれ」→ 強い共感</p><p>　解決策：「この方法なら自分にもできそう」→ 希望</p><p>　特徴：「なぜこれが良いか理屈でわかった」→ 信頼</p><p>　お客様の声：「自分と似た人が成功している」→ 確信</p><p>　CTA：「今動かないと後悔する」→ 行動</p><p>【④LP構成案】</p><p>　①ナビ②FV③問題提起④解決策⑤特徴×3⑥お客様の声×3⑦FAQ⑧CTA⑨フッター</p><p>【⑤BV-GL】</p><p>　パーソナリティ：正直・実践的・温かい</p><p>　トーン：友人が経験談を語るような口調。「あなた」を使う</p><p>　使わない言葉：稼ぐ・楽して・簡単に・誰でも・年収アップ</p><p>【⑥One Big Idea】</p><p>　「副業で悩んでいる人の問題は、やる気でも時間でもなく「正しい地図」がないことだ」</p><p>【⑦カラーパレット】</p><p>　メイン：#1B6EC2（信頼感のある深めの青）</p><p>　アクセント：#D85A30（行動を促すオレンジ）</p><p>　背景：#FFFFFF（白）</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">2-3. Claudeへの設計書作成依頼プロンプト</span></h2>
+<table><tbody><tr><td><p><strong>📋 LP設計書生成プロンプト（コピペ用）</strong></p><p>「以下の情報からLP制作用の設計書を作ってください。</p><p>サービス名：30代からの副業スタートアップ講座</p><p>サービス内容：AIとライティングを組み合わせた副業の始め方を教えるオンライン講座</p><p>価格：198,000円（12ヶ月サポート付き）</p><p>ターゲット：30〜45歳の会社員。副業に半年以上悩んでいるが動けていない。月10万円の副業収入が目標</p><p>競合との差別化：「AIを使いこなす」ではなく「AIとライティングを組み合わせる」独自アプローチ</p><p>含めてほしい項目：</p><p>①ペルソナ（1人の人物として詳細に）</p><p>②ターゲットの内なる独り言（3パターン）</p><p>③感情設計マップ（セクション別の感情の変化）</p><p>④LP構成案（セクション名・並び順・各セクションの役割）</p><p>⑤BV-GL（パーソナリティ3語・トーン・使う言葉・使わない言葉）</p><p>⑥One Big Idea（このLPの核となる1文）</p><p>⑦カラーパレット提案（メイン・アクセント・背景のHEXコード）</p><p>最後にFVキャッチコピーのサンプル3案を添えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第3章：PHASE 2──コピーライティング（LPの魂を作る）</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-1. コピーを先に作るべき理由</span></h2>
+<p>「コピーが先かHTMLが先か」は迷いやすいポイントです。答えは「コピーを先に書いてからHTMLを生成する」です。HTMLの構造はコピーの量と内容に合わせて設計されるからです。キャッチコピーが2行か3行かでFVのデザインが変わり、問題提起の文字数でセクションの余白が変わります。後からコピーを差し込もうとすると「収まらない」問題が頻発します。</p>
+<p>ただし全コピーが完全に確定してからHTMLに入る必要はありません。FVのキャッチコピーとCTAの文言が確定した段階でHTMLの骨格を生成し、他のセクションは後からプレースホルダーと入れ替えるのが最もスムーズなフローです。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-2. FVキャッチコピーの生成と選定</span></h2>
+<table><tbody><tr><td><p><strong>📋 FVキャッチコピー生成プロンプト（コピペ用）</strong></p><p>「以下の情報をもとにLPのFVキャッチコピーを10案生成してください。</p><p>ターゲットの内なる独り言（設計書から）：</p><p>・「3ヶ月前も同じことを検索していた気がする…」</p><p>・「情報は山ほどある。でもなぜか動けない」</p><p>・「何から始めたらいいかわからない」</p><p>BV-GL：</p><p>・パーソナリティ：正直・実践的・温かい</p><p>・使わない言葉：稼ぐ・楽して・簡単に・誰でも</p><p>One Big Idea：</p><p>「副業で悩んでいる人の問題は、やる気でも時間でもなく正しい地図がないことだ」</p><p>条件：</p><p>・20〜35字以内</p><p>・独り言を代弁するパターンを半数以上</p><p>・商品説明的なキャッチは1案まで</p><p>各案に「なぜこの表現か・どの感情に刺さるか」の1行解説を付けてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3-3. 全セクションコピーの一括生成</span></h2>
+<table><tbody><tr><td><p><strong>💡 全セクションコピー一括生成プロンプト（コピペ用）</strong></p><p>「以下の設計書に基づいてLP全セクションのコピーを一括で書いてください。</p><p>【設計書全文】（2-2で作成した設計書をここにPaste）</p><p>【確定済みのコピー】</p><p>FVキャッチ：（選定したキャッチコピーを入れる）</p><p>【書いてほしいセクション】</p><p>①問題提起（あるあるシーン3つを情景描写・150〜200字）</p><p>②解決策提示（希望を持たせる・200字）</p><p>③特徴×3（各100字・ベネフィットで表現）</p><p>④お客様の声×3（属性→悩み→変化の順・各150字）</p><p>⑤FAQ×6（最大の不安6つへのQ&amp;A）</p><p>⑥最終CTA（緊急性あり・誇大表現なし・100字）</p><p>各セクションの冒頭に「感情目標：〇〇」を一行つけてください。</p><p>薬機法・景表法に自動的に配慮してください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第4章：PHASE 3──ClaudeでHTMLを生成する（操作の完全ガイド）</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-1. ClaudeへのHTML生成指示を出す前の準備</span></h2>
+<p>HTML生成に入る前に、手元に以下の情報が揃っていることを確認してください。設計書とコピーが揃っている状態でHTML生成指示を出すと、「一発で高品質なHTML」が生成される確率が大幅に上がります。</p>
+<table><tbody><tr><td><p><strong>準備物</strong></p></td><td><p><strong>確認内容</strong></p></td><td><p><strong>揃っていない場合</strong></p></td></tr><tr><td><p>LP設計書</p></td><td><p>ペルソナ・BV-GL・感情設計・カラーパレットが完成しているか</p></td><td><p>第2章に戻って設計書を作成する</p></td></tr><tr><td><p>FVキャッチコピー</p></td><td><p>確定した1案があるか</p></td><td><p>第3章のプロンプトで生成して選定する</p></td></tr><tr><td><p>LP構成案</p></td><td><p>9つのセクション名と順番が決まっているか</p></td><td><p>設計書の④LP構成案から転記する</p></td></tr><tr><td><p>カラーコード</p></td><td><p>メイン・アクセント・背景の3色のHEXコードがあるか</p></td><td><p>設計書の⑦カラーパレットから転記する</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-2. HTML生成指示の送り方（Claude.aiの操作）</span></h2>
+<p>HTML生成指示はClaude.aiのチャット画面に、8-3で学んだフルスペック指示をそのまま貼り付けて送信します。指示の長さが気になるかもしれませんが、長くて詳細な指示の方が品質の高いHTMLが生成されます。以下の操作手順に従って進めてください。</p>
+<table><tbody><tr><td><p><strong>🖥️ Claude.aiでHTML生成指示を送る手順（画面操作）</strong></p><p>【STEP 1】Claude.ai（claude.ai）をブラウザで開く</p><p>　→ Googleアカウントまたはメールアドレスでログイン</p><p>　→ 「New conversation」または「新しい会話」をクリックして新規チャットを開始</p><p>【STEP 2】モデルを選択する</p><p>　→ 画面上部またはチャット入力欄の近くにあるモデル選択ドロップダウンをクリック</p><p>　→ 「Claude Sonnet 4.6」または「Claude Opus 4.6」を選択</p><p>　※ Proプランに加入している場合はOpus 4.6を推奨（より高品質なHTML）</p><p>　※ 無料プランの場合はSonnet系を使用</p><p>【STEP 3】フルスペック指示をチャット欄に貼り付ける</p><p>　→ テキストエリアをクリックして、Ctrl+V（Mac: Command+V）で貼り付ける</p><p>　→ 長い指示でも問題なし。送信前に設計書のカラーコード等が正しく入っているか確認</p><p>【STEP 4】送信ボタンを押す（またはEnterキー）</p><p>　→ Claudeが処理を開始し、コードの出力が始まる</p><p>　→ 長いHTMLの場合、生成に30秒〜2分程度かかることがある。待つ</p><p>【STEP 5】出力が完了するまで待つ</p><p>　→ 画面の右側（または下部）に処理中のインジケーターが表示される</p><p>　→ 完全に出力が止まったことを確認してから次のステップへ</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-3. Claudeの出力がどんな形で出てくるか</span></h2>
+<p>HTML生成指示を送ると、Claudeの返答はいくつかの要素が混在した形で出力されます。最初は少し混乱するかもしれませんが、構造を知っておけばすぐに慣れます。</p>
+<table><tbody><tr><td><p><strong>出力の要素</strong></p></td><td><p><strong>画面上の見た目</strong></p></td><td><p><strong>あなたが取るべきアクション</strong></p></td></tr><tr><td><p>説明テキスト</p></td><td><p>通常のテキストとして表示される文章。「以下のLPのHTMLを生成しました」などの説明</p></td><td><p>読んで内容を確認するだけ。コピーは不要</p></td></tr><tr><td><p>コードブロック</p></td><td><p>背景がグレーまたは黒になった枠の中に、等幅フォントでコードが表示される</p></td><td><p>「このブロックのコードをコピーする」がメインのアクション</p></td></tr><tr><td><p>コードブロックの「コピーボタン」</p></td><td><p>コードブロックの右上に「Copy」または「コピー」というボタンが表示される</p></td><td><p>このボタンをクリックするとコード全体がクリップボードにコピーされる</p></td></tr><tr><td><p>コードの先頭</p></td><td><p>「&lt;!DOCTYPE html&gt;」から始まる行が見える</p></td><td><p>HTMLが正しく生成されている確認ポイント。この行が見えればOK</p></td></tr><tr><td><p>コードの末尾</p></td><td><p>「&lt;/html&gt;」で終わる行が見える</p></td><td><p>コードが途中で切れていないかの確認。最後まで出力されているか確認</p></td></tr><tr><td><p>設計ポイントの説明</p></td><td><p>コードブロックの後に「特に意識した設計ポイント」などの説明テキストが続く</p></td><td><p>Claudeの設計意図を理解するために読んでおく</p></td></tr></tbody></table>
+<table><tbody><tr><td><p><strong>⚠️ 出力が途中で止まった場合の対処法</strong></p><p>長いLPのHTMLを生成すると、コードが途中で止まることがあります。</p><p>【確認方法】コードブロックの末尾が「&lt;/html&gt;」で終わっていない場合は途中で止まっている</p><p>【対処法①】チャットに「続きを書いてください」と送信する</p><p>　→ Claudeが止まったところから続きを出力する</p><p>　→ これを繰り返してすべてのコードが出揃うまで待つ</p><p>【対処法②】セクションを分割して生成する</p><p>　→ 「まずヘッダーとFVとナビだけ生成して」→確認→「次に問題提起セクションを追加して」</p><p>　→ 分割することでひとつひとつの品質も上がる</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-4. 生成されたHTMLをファイルに保存する（詳細手順）</span></h2>
+<p>上の図は「Claude出力からブラウザ確認まで」の6ステップを示しています。Claudeがコードを出力したら、②③④のステップでファイルを作成します。この手順は一度やれば体が覚えるほどシンプルです。</p>
+<h3>手順①：コードブロックをコピーする</h3>
+<table><tbody><tr><td><p><strong>🖥️ コードのコピー操作（画面操作）</strong></p><p>【方法A：コピーボタンを使う（最も簡単・推奨）】</p><p>　1. コードブロックの右上隅を見る</p><p>　2. 「Copy code」または「コピー」という小さなボタンがある</p><p>　3. そのボタンをクリックする</p><p>　4. 「Copied!」または「コピーしました」という表示が出れば成功</p><p>　→ コードブロック全体がクリップボードにコピーされた状態になる</p><p>【方法B：手動で全選択してコピー（ボタンが見当たらない場合）】</p><p>　1. コードブロックの中をクリックしてカーソルを置く</p><p>　2. Ctrl+A（Mac: Command+A）で全選択</p><p>　3. Ctrl+C（Mac: Command+C）でコピー</p></td></tr></tbody></table>
+<h3>手順②：テキストエディタに貼り付ける</h3>
+<table><tbody><tr><td><p><strong>🖥️ テキストエディタへの貼り付け操作</strong></p><p>【VSCodeを使う場合（推奨）】</p><p>　1. VSCodeを起動する（インストール済みの場合）</p><p>　2. 「ファイル」→「新規ファイル」で新しいファイルを開く</p><p>　3. エディタ画面をクリックしてカーソルを置く</p><p>　4. Ctrl+V（Mac: Command+V）で貼り付ける</p><p>　5. 貼り付けた直後に「言語モードの選択」ポップアップが出る場合は「HTML」を選択</p><p>【メモ帳を使う場合（Windowsの簡易版）】</p><p>　1. スタートメニューから「メモ帳」を開く</p><p>　2. Ctrl+Vで貼り付ける</p><p>　※ メモ帳はHTMLの色分けなどはできないが、ファイルの保存には十分</p><p>【テキストエディット（Macの場合）】</p><p>　1. テキストエディットを開く</p><p>　2. 「フォーマット」→「標準テキストにする」を選択（重要！）</p><p>　3. Ctrl+Vで貼り付ける</p><p>　※「リッチテキスト」のままだと.htmlで保存できないので必ずこの手順を踏む</p></td></tr></tbody></table>
+<h3>手順③：.html形式でファイルを保存する</h3>
+<table><tbody><tr><td><p><strong>🖥️ HTMLファイルとして保存する操作</strong></p><p>【VSCodeでの保存】</p><p>　1. Ctrl+S（Mac: Command+S）を押す</p><p>　2. ファイル保存ダイアログが開く</p><p>　3. ファイル名を「index.html」と入力する</p><p>　※ 「.html」の拡張子まで含めて入力することが重要</p><p>　4. 保存場所を選ぶ（デスクトップに「LP制作」フォルダを作ってその中に保存するとわかりやすい）</p><p>　5. 「保存」ボタンをクリック</p><p>【メモ帳での保存（Windows）】</p><p>　1. 「ファイル」→「名前をつけて保存」を選択</p><p>　2. 「ファイルの種類」のドロップダウンを「すべてのファイル」に変更（重要！）</p><p>　※ これをしないと「index.html.txt」という名前で保存されてしまう</p><p>　3. ファイル名を「index.html」と入力</p><p>　4. 「保存」をクリック</p><p>【確認方法】保存が正しくできているか確認する</p><p>　→ エクスプローラー（Finder）でファイルを探す</p><p>　→ ファイルのアイコンがブラウザのアイコン（ChromeやEdgeのロゴ）になっていればOK</p><p>　→ まだ普通のテキストアイコンになっている場合は拡張子の設定を見直す</p></td></tr></tbody></table>
+<h3>手順④：ブラウザでファイルを開いて確認する</h3>
+<table><tbody><tr><td><p><strong>🖥️ ブラウザでの確認操作</strong></p><p>【最もシンプルな方法】</p><p>　1. エクスプローラー（Finder）で保存した「index.html」ファイルを探す</p><p>　2. ファイルをダブルクリックする</p><p>　3. 自動的にブラウザが開いて、LPのページが表示される</p><p>【ブラウザのアドレスバーで確認する方法】</p><p>　→ アドレスバーに「file:///C:/Users/名前/Desktop/LP制作/index.html」のような</p><p>　ファイルパスが表示されていればOK（ローカルファイルが開かれている状態）</p><p>【表示されない・エラーが出る場合の対処】</p><p>　① ファイルの拡張子を確認する：「index.html」になっているか（「.txt」になっていないか）</p><p>　② ブラウザをリロードする：F5キー（Mac: Command+R）</p><p>　③ 別のブラウザで試す：Chrome・Edge・Safariで試す</p><p>【スマホ表示の確認方法（デベロッパーツール）】</p><p>　1. Chromeで開いた状態でF12キー（Mac: Command+Option+I）を押す</p><p>　2. デベロッパーツールが開く</p><p>　3. 上部のスマホ・タブレットアイコンをクリック（Toggle Device Toolbar）</p><p>　4. 「iPhone SE」または「iPhone 14 Pro」を選択</p><p>　5. スマホサイズでの表示が確認できる</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-5. フルスペック指示の完成例（架空案件）</span></h2>
+<table><tbody><tr><td><p><strong>📋 LP HTML生成フルスペック指示（架空案件・コピペ用）</strong></p><p>「以下の仕様で「30代からの副業スタートアップ講座」のLP全体のHTMLを生成してください。</p><p>【技術仕様】</p><p>HTML5 ＋ Tailwind CSS（CDN）・Google Fonts（Noto Sans JP）・モバイルファースト</p><p>【デザイン仕様】</p><p>メインカラー：#1B6EC2 / アクセント：#D85A30 / 背景：#FFFFFF</p><p>CTAボタン：rounded-full・アクセントカラー・白文字・shadow-md</p><p>交互セクション：白と#F8FAFF（薄青）を交互に使用</p><p>【ターゲット＆BV-GL】</p><p>ターゲット：35歳会社員・副業に6ヶ月悩んでいる・何から始めればいいかわからない</p><p>パーソナリティ：正直・実践的・温かい</p><p>トーン：友人が経験談を語るような口調。「あなた」を使う</p><p>NG：稼ぐ・楽して・簡単に・誰でも</p><p>【LP構成（感情目標付き）】</p><p>①&lt;header&gt;：ロゴ（左）＋CTA「まず話を聞いてみる」（右）</p><p>②&lt;section id="fv"&gt;：感情目標：「これは自分のことだ」</p><p>③&lt;section id="problem"&gt;：感情目標：「そうそうこれだ」。3つのあるあるシーンをカード形式で</p><p>④&lt;section id="solution"&gt;：感情目標：「自分にもできそう」</p><p>⑤&lt;section id="features"&gt;：感情目標：論理的な納得。3カラムカード（スマホ1列）</p><p>⑥&lt;section id="voices"&gt;：感情目標：社会的証明。3カラム・引用符デザイン付き</p><p>⑦&lt;section id="faq"&gt;：感情目標：最後の不安の解消。JavaScriptアコーディオン</p><p>⑧&lt;section id="cta"&gt;：感情目標：今すぐ行動。背景#1B6EC2・白文字・ボタン大きめ</p><p>⑨&lt;footer&gt;：プライバシーポリシー・特商法・コピーライト</p><p>【コピーの扱い】全てプレースホルダー形式で。例：[キャッチコピーをここに入れる]</p><p>生成後に「設計ポイント3点」を教えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">4-6. 最初の確認：生成されたHTMLをチェックする5項目</span></h2>
+<table><tbody><tr><td><p><strong>確認順</strong></p></td><td><p><strong>チェック内容</strong></p></td><td><p><strong>問題があった場合のClaude指示</strong></p></td></tr><tr><td><p>①セクション数</p></td><td><p>9つすべてのsectionが揃っているか</p></td><td><p>「〇〇セクションがありません。〇〇セクションの後に追加してください」</p></td></tr><tr><td><p>②スマホ表示</p></td><td><p>デベロッパーツールでiPhone SEにしてレイアウトが崩れていないか</p></td><td><p>「スマホ表示でFVのテキストがはみ出しています。font-sizeを小さくして」</p></td></tr><tr><td><p>③カラー適用</p></td><td><p>メイン・アクセントカラーがボタンや見出しに正しく使われているか</p></td><td><p>「CTAボタンの色が#D85A30になっていません。修正してください」</p></td></tr><tr><td><p>④FAQ動作</p></td><td><p>FAQをクリックして開閉が正常に動作するか</p></td><td><p>「FAQのアコーディオンが動作しません。JavaScriptを確認して修正してください」</p></td></tr><tr><td><p>⑤コード完結</p></td><td><p>最後の行が&lt;/html&gt;で終わっているか（途中切れしていないか）</p></td><td><p>「続きを書いてください」と送信する</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第5章：PHASE 4──Nano BananaでFVヒーロー画像を生成する</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-1. FVヒーロー画像の重要性</span></h2>
+<div class="callout-box"><p>LPを開いた瞬間に目に飛び込む最大の視覚要素がFVヒーロー画像です。テキストを読む前に「この雰囲気は自分向けだ」と感じさせるか、逆に「違う気がする」と思わせるかで、直帰率が大きく変わります。Nano Bananaならこの専用のオリジナル画像が生成できます。</p></div>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-2. Nano BananaへのFVヒーロー画像生成指示</span></h2>
+<table><tbody><tr><td><p><strong>📋 Nano BananaへのFVヒーロー画像指示（架空案件・コピペ用）</strong></p><p>【GeminiアプリのNano Banana（バナナアイコン🍌）を使用して生成】</p><p>「LP用のFVヒーロー画像を生成してください。</p><p>【ビジュアルコンセプト】</p><p>副業への第一歩を踏み出したい35歳の会社員が</p><p>「自分にもできそう」という希望と「温かい場所に来た」という安心感を感じる画像</p><p>【具体的な指示】</p><p>・シーン：カフェまたは自宅の窓際・ノートPCを前にしている・朝か夕方の自然光</p><p>・人物：30代の男性または女性・後ろ姿か横顔（顔は見えなくてOK）</p><p>・雰囲気：ほっとする温かみ・前向き・「始められそう」という解放感</p><p>・カラートーン：暖かみのある自然光・ベージュ×白×木目のインテリア</p><p>・構図：横長（16:9）・左半分にテキストを重ねられる余白を作る</p><p>・スタイル：写真風（フォトリアリスティック）</p><p>【生成後の修正例（会話で続けて送る）】</p><p>→「もう少し明るい雰囲気にして」</p><p>→「左側の余白をもう少し広げて」</p><p>→「人物をもう少し右側に寄せて」」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-3. 生成した画像をHTMLに差し込む操作手順</span></h2>
+<table><tbody><tr><td><p><strong>🖥️ 生成画像をHTMLに差し込む手順（画面操作）</strong></p><p>【STEP 1】Nano Bananaで生成した画像を保存する</p><p>　→ 生成された画像の上で右クリック（Mac: Control+クリック）</p><p>　→ 「名前を付けて画像を保存」を選択</p><p>　→ ファイル名を「hero.jpg」にして、index.htmlと同じフォルダに保存</p><p>【STEP 2】ClaudeにHTMLへの差し込みを指示する</p><p>　→ 現在作業しているチャットに以下を送信する：</p><p>　「FVセクションのプレースホルダー部分に hero.jpg という画像ファイルを差し込んでください。</p><p>　　横幅は画面いっぱい・高さはpaddingで自然に調整・alt属性に「副業スタートアップ講座」を」</p><p>【STEP 3】修正されたHTMLをコピーしてindex.htmlに上書き保存する</p><p>　→ 新しいHTMLが出力される</p><p>　→ コードブロックのコピーボタンでコピー</p><p>　→ VSCodeでindex.htmlを開いて全選択（Ctrl+A）してから貼り付け（Ctrl+V）</p><p>　→ 保存（Ctrl+S）</p><p>【STEP 4】ブラウザをリロードして画像が表示されているか確認する</p><p>　→ F5キーまたはCommand+Rでリロード</p><p>　→ FVに画像が表示されていればOK</p><p>　→ 表示されない場合は画像ファイルがindex.htmlと同じフォルダに入っているか確認</p></td></tr></tbody></table>
+<table><tbody><tr><td><p><strong>⚠️ 画像が表示されないときの主な原因と解決法</strong></p><p>【原因①】画像ファイルがHTMLと別のフォルダにある</p><p>　→ hero.jpgがindex.htmlと同じフォルダに入っているか確認</p><p>　→ フォルダ構造：「LP制作フォルダ」の中に「index.html」と「hero.jpg」が並んでいる</p><p>【原因②】ファイル名の大文字・小文字が一致していない</p><p>　→ HTMLの src="hero.jpg" とファイル名「Hero.jpg」が一致していない場合がある</p><p>　→ ファイル名を完全に小文字（hero.jpg）に統一する</p><p>【原因③】画像の拡張子が違う</p><p>　→ Nano Bananaで保存したファイルが「hero.png」なのにHTMLに「hero.jpg」と書かれている</p><p>　→ Claudeに「画像ファイルのsrcをhero.pngに変更してください」と伝える</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">5-4. FVヒーロー画像以外に生成するビジュアル素材</span></h2>
+<p>FVヒーロー画像以外にも生成しておくと品質が上がるビジュアル素材があります。</p>
+<table><tbody><tr><td><p><strong>素材</strong></p></td><td><p><strong>役割</strong></p></td><td><p><strong>推奨AI</strong></p></td><td><p><strong>Nano Bananaへの簡易指示</strong></p></td></tr><tr><td><p>特徴セクションのアイコン×3</p></td><td><p>3つの特徴カードのビジュアル補完</p></td><td><p>DALL-E 3</p></td><td><p>フラットデザイン・ブランドカラー・白背景・シンプルなアイコン</p></td></tr><tr><td><p>お客様の声の引用符デザイン背景</p></td><td><p>証言セクションに温かみと信頼感を追加</p></td><td><p>Nano Banana</p></td><td><p>ニュートラルで温かみのある薄いグレー系テクスチャ・テキスト重ね前提</p></td></tr><tr><td><p>問題提起のあるあるイラスト</p></td><td><p>3つのシーンの情景描写を視覚化して共感を強化</p></td><td><p>DALL-E 3</p></td><td><p>シンプルなライン画風・感情が伝わるポーズ・白背景</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第6章：PHASE 5──コピー差込・完成・チェック</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-1. コピーをプレースホルダーと入れ替える</span></h2>
+<p>PHASE 2で作成したコピーをHTMLのプレースホルダーと入れ替えます。Claudeに一括でやらせることで効率化できます。</p>
+<table><tbody><tr><td><p><strong>📋 コピー差し込み：Claudeへの一括指示（コピペ用）</strong></p><p>「現在のLPのHTMLに以下のコピーを差し込んでください。</p><p>プレースホルダーを実際のコピーと置き換えてください。</p><p>【差し込むコピー一覧】</p><p>FV キャッチ：「3ヶ月前と同じ検索をしている、あなたへ。」</p><p>FV サブコピー：「副業で悩んでいる人の問題は、やる気でも時間でもなかった。」</p><p>FV CTAボタン：「まず話を聞いてみる（無料）」</p><p>（以下、全セクションのコピーを同様の形式で列挙）</p><p>注意：コピー以外のHTML（デザイン・構造）は変更しないこと</p><p>差し込み後に「変更した箇所の数と一覧」を教えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">6-2. 最終品質チェック（Claudeにレビューさせる）</span></h2>
+<p>上のレーダーチャートはLP完成度の目標スコアと一般制作者の平均を比較しています。完成前に以下のチェックリストを使って確認してください。</p>
+<table><tbody><tr><td><p><strong>チェック項目</strong></p></td><td><p><strong>確認内容</strong></p></td><td><p><strong>問題があった場合の対処</strong></p></td></tr><tr><td><p>FV訴求力</p></td><td><p>キャッチコピーが「内なる独り言」を代弁しているか</p></td><td><p>設計書の独り言リストと照合。再生成も選択肢</p></td></tr><tr><td><p>コピー感情設計</p></td><td><p>各セクションの感情目標が達成されているか</p></td><td><p>設計書の感情設計マップと照合して外れている箇所を修正</p></td></tr><tr><td><p>HTML完成度</p></td><td><p>9セクション揃い・FAQアコーディオンが動くか</p></td><td><p>不足セクションの追加・動作しないJSの修正をClaudeに指示</p></td></tr><tr><td><p>ビジュアル品質</p></td><td><p>FVヒーロー画像がカラートーンと一致しているか</p></td><td><p>Nano Bananaで再生成。または別カットで試す</p></td></tr><tr><td><p>スマホ表示</p></td><td><p>iPhone SEで崩れなくすべて表示されるか</p></td><td><p>崩れ箇所を「スマホで〇〇が崩れています」と伝えてClaudeが修正</p></td></tr><tr><td><p>CTA配置</p></td><td><p>CTAが3箇所（ヘッダー・FV・最終）にあるか</p></td><td><p>不足しているCTAをClaudeに追加指示</p></td></tr><tr><td><p>法的配慮</p></td><td><p>薬機法・景表法上リスクのある表現がないか</p></td><td><p>Perplexityで確認→Claudeで修正</p></td></tr></tbody></table>
+<table><tbody><tr><td><p><strong>📋 ClaudeへのLP第三者レビュー依頼プロンプト（コピペ用）</strong></p><p>「以下のLPのHTMLとコピーを確認して改善提案をしてください。</p><p>（完成したLPのHTMLをここにPaste）</p><p>以下の観点でレビューしてください：</p><p>①感情設計：FVから最終CTAまでの感情の流れは自然か</p><p>②コピー：ターゲットへの刺さり方・BV-GLとのトーン一致度・法的リスク</p><p>③デザイン：CTAの目立ち方・スマホ表示の問題点</p><p>各問題点に「修正指示の例文」を添えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第7章：完成したLPを「どうやって納品するか」──5つの方法と選び方</span></h2>
+<p>上のグラフは5つの納品方法を「制作者側の操作のしやすさ」と「クライアントの満足度」の2軸で比較したものです。最も単純なHTMLファイル渡しが制作者には簡単ですが、クライアント満足度は中程度です。サーバーへの直接アップロードとWordPressへの組み込みは両方の評価が高く、プロとしての印象を与えます。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-1. 方法①：HTMLファイル一式をそのまま渡す（最も簡単）</span></h2>
+<p>完成したindex.htmlと画像ファイル一式をZIPにまとめてクライアントに渡す最もシンプルな方法です。クライアントが自分でサーバーにアップロードできる技術があれば問題なく機能します。クライアントにある程度の技術力がある場合や「とりあえず確認してほしい」というケースに適しています。</p>
+<table><tbody><tr><td><p><strong>🖥️ ZIPファイルの作り方（操作手順）</strong></p><p>【Windowsの場合】</p><p>　1. LP制作フォルダ（index.html・hero.jpg等が入っているフォルダ）を右クリック</p><p>　2. 「送る」→「圧縮（ZIP形式）フォルダー」を選択</p><p>　3. 同じ場所にZIPファイルが作成される</p><p>　4. そのZIPファイルをメールに添付するか、Googleドライブにアップロードして共有URLを送る</p><p>【Macの場合】</p><p>　1. LP制作フォルダを右クリック（Control+クリック）</p><p>　2. 「○○を圧縮」を選択</p><p>　3. 同じ場所に「○○.zip」が作成される</p><p>　4. そのZIPファイルをメール添付またはAirDropで送る</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-2. 方法②：Googleドライブで共有する（最も使いやすい）</span></h2>
+<p>GoogleドライブにフォルダをアップロードしてH共有URLを送る方法です。ファイルの更新があってもURLが変わらないため、修正のたびにファイルを送り直す必要がありません。また「ドライブで確認してもらったらOKを出してください」という確認フローが自然に作れます。</p>
+<table><tbody><tr><td><p><strong>🖥️ Googleドライブでの共有手順</strong></p><p>【STEP 1】Googleドライブにフォルダをアップロード</p><p>　→ drive.google.com を開く</p><p>　→ 「マイドライブ」に「LP制作_クライアント名」というフォルダを作成</p><p>　→ index.html・hero.jpg等のファイルをフォルダにドラッグ&amp;ドロップ</p><p>【STEP 2】フォルダの共有URLを取得する</p><p>　→ フォルダを右クリック→「共有」をクリック</p><p>　→ 「リンクをコピー」ボタンをクリック</p><p>　→ 「リンクを知っている全員」に変更してからURLをコピー</p><p>【STEP 3】クライアントにURLを送る</p><p>　→ メールやチャットに「以下のURLからご確認ください」と添えて送信</p><p>　→ クライアントはURLを開いてファイルをダウンロードできる</p><p>【修正時の対応】</p><p>　→ 修正したindex.htmlを同じフォルダに上書きアップロード</p><p>　→ URLは変わらないため、クライアントに「更新しました」と一言連絡するだけ</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-3. 方法③：クライアントのサーバーに直接アップロードする（プロの納品）</span></h2>
+<p>クライアントがすでにサーバーを持っている場合、FTPソフトを使ってHTMLファイルを直接サーバーにアップロードする方法です。アップロード後すぐにURLでLPを確認・公開できるため、クライアントの満足度が最も高い方法です。「完成したらURLをお送りします」という提案が高単価案件では標準的です。</p>
+<table><tbody><tr><td><p><strong>🖥️ FileZilla（無料FTPソフト）を使ったサーバーアップロード手順</strong></p><p>【事前準備】FileZillaをインストール（filezilla-project.org で無料ダウンロード）</p><p>【STEP 1】クライアントからFTP情報を受け取る</p><p>　→ 以下の4点を確認メールで依頼する：</p><p>　・FTPサーバーのホスト名（例：ftp.○○○.com）</p><p>　・FTPユーザー名</p><p>　・FTPパスワード</p><p>　・アップロード先のフォルダパス（例：/public_html/lp/）</p><p>【STEP 2】FileZillaでサーバーに接続する</p><p>　→ FileZillaを起動</p><p>　→ 上部の「ホスト」「ユーザー名」「パスワード」「ポート（21）」を入力</p><p>　→ 「クイック接続」をクリック</p><p>　→ サーバーとの接続が確立すると右側のパネルにサーバーのファイル一覧が表示される</p><p>【STEP 3】ファイルをアップロードする</p><p>　→ 左側のパネル（ローカルのPC）でLP制作フォルダを開く</p><p>　→ index.html・hero.jpg等を選択して右側のパネル（サーバー）にドラッグ&amp;ドロップ</p><p>　→ アップロードが完了するとファイルがサーバーに反映される</p><p>【STEP 4】ブラウザでURLを確認する</p><p>　→ 「https://クライアントのドメイン/lp/」などのURLをブラウザで開く</p><p>　→ LPが表示されたらアップロード成功</p><p>　→ このURLをクライアントに報告する</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-4. 方法④：WordPressに組み込む（最も依頼が多い形式）</span></h2>
+<p>クライアントのサイトがWordPressで動いている場合、生成したHTMLをWordPressの「固定ページ」に組み込む方法です。クライアントが既存サイトとの統一感を求めている場合や、問い合わせフォームがWordPressに既にある場合に適しています。</p>
+<table><tbody><tr><td><p><strong>🖥️ WordPressへの組み込み手順</strong></p><p>【STEP 1】WordPress管理画面にログインする</p><p>　→ クライアントから「/wp-admin」のログイン情報を受け取る</p><p>　→ ブラウザで「クライアントのURL/wp-admin」を開いてログイン</p><p>【STEP 2】新しい固定ページを作成する</p><p>　→ 左メニューの「固定ページ」→「新規追加」をクリック</p><p>　→ ページタイトルを入力（例：「LP 副業講座」）</p><p>【STEP 3】エディターをコードエディターに切り替える</p><p>　→ 右上の「…」（三点ドット）メニューをクリック</p><p>　→ 「コードエディター」を選択</p><p>　→ テキスト入力エリアが1つの大きなテキストボックスに変わる</p><p>【STEP 4】HTMLのbody部分だけを貼り付ける</p><p>　→ index.htmlを開いて&lt;body&gt;〜&lt;/body&gt;の間のコードだけをコピー</p><p>　（&lt;body&gt;タグ自体は含めない・中身だけ）</p><p>　→ コードエディターのテキストボックスに貼り付ける</p><p>【STEP 5】TailwindとフォントのCDNリンクを追加する</p><p>　→ 「外観」→「テーマファイルエディター」→「functions.php」を開く</p><p>　→ 以下のコードを追加する（ClaudeにfunctionsPHPへの追加コードを生成させると確実）：</p><p>　「WordPress向けにTailwind CSSとNoto Sans JPをfunctions.phpで読み込む</p><p>　　add_action コードを書いてください」</p><p>【STEP 6】「公開」ボタンを押してURLを確認する</p><p>　→ 右上の「公開」ボタンをクリック</p><p>　→ 「ページを表示」でURLを確認</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">7-5. 方法⑤：Googleサイトに組み込む（最も手軽な公開方法）</span></h2>
+<p>クライアントがサーバーを持っておらず、WordPressも使っていない場合の最も手軽な選択肢がGoogleサイト（sites.google.com）です。無料で使え、Googleアカウントがあれば誰でも使えます。Googleサイトの「埋め込み」機能を使うことで、生成したHTMLをGoogleサイト内に表示できます。デザインの自由度は下がりますが、「とりあえず公開する」段階では十分です。</p>
+<table><tbody><tr><td><p><strong>📌 納品方法の選び方チートシート</strong></p><p>【クライアントが技術的にある程度できる場合】</p><p>　→ Googleドライブで共有（ZIPを渡す方法でも可）</p><p>【クライアントがサーバーを持っている場合】</p><p>　→ FTPでサーバーに直接アップロード</p><p>【クライアントのサイトがWordPressの場合】</p><p>　→ WordPressの固定ページに組み込み</p><p>【クライアントが何も持っていない場合（最もよくある）】</p><p>　→ まずGoogleドライブで確認してもらい → 公開はサーバー契約を案内するか</p><p>　Googleサイトで簡易公開する</p><p>→ 受注時に「サーバーはお持ちですか？」と確認しておくと納品方法が決まりやすい</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第8章：クライアントへの修正対応フロー</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">8-1. 修正が来たときの「3ステップ対応」</span></h2>
+<p>クライアントから修正依頼が来たときの対応は、次の3ステップで進めます。</p>
+<table><tbody><tr><td><p><strong>ステップ</strong></p></td><td><p><strong>やること</strong></p></td><td><p><strong>ポイント</strong></p></td></tr><tr><td><p>STEP 1 修正内容の整理</p></td><td><p>クライアントの修正依頼をリストアップして、「Claudeへの指示」に翻訳する</p></td><td><p>曖昧な要望（「なんか違う」）を具体的な指示に変換することが最重要</p></td></tr><tr><td><p>STEP 2 Claude一括修正</p></td><td><p>まとめた修正指示をClaude.aiに送り、すべての修正を一括で処理させる</p></td><td><p>1回の指示で複数の修正をまとめて依頼すると効率的</p></td></tr><tr><td><p>STEP 3 確認・納品</p></td><td><p>修正されたHTMLをブラウザで確認し、問題なければクライアントに提出</p></td><td><p>スマホ表示の確認を忘れずに。確認後に納品物を更新</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">8-2. クライアントの言葉をClaudeへの指示に「翻訳」する</span></h2>
+<div class="callout-box"><p>クライアントは技術的な言葉を使いません。「なんか違う」「もっとかっこよくして」という言葉をそのままClaudeに送っても、的外れな修正が返ってきます。「クライアントの言葉→Claudeへの具体的な指示」への翻訳が制作者の仕事です。</p></div>
+<table><tbody><tr><td><p><strong>クライアントの言葉</strong></p></td><td><p><strong>Claudeへの指示への翻訳例</strong></p></td></tr><tr><td><p>"なんか暗い印象がする"</p></td><td><p>"全体のカラーを少し明るくして。メインカラーを#1B6EC2から#2980D4に変えて"</p></td></tr><tr><td><p>"文字が多すぎてごちゃごちゃしてる"</p></td><td><p>"各セクションの本文テキストを20%短縮して。箇条書きはシンプルに"</p></td></tr><tr><td><p>"ボタンをもっと目立たせてほしい"</p></td><td><p>"CTAボタンのサイズをもっと大きく。padding: px-10 py-5以上にして。font-sizeも一回り大きく"</p></td></tr><tr><td><p>"なんか硬い感じがする"</p></td><td><p>"全体のトーンを少し柔らかくして。角丸を増やし（rounded-lgをrounded-xlに）余白も少し広げて"</p></td></tr><tr><td><p>"スマホで見づらい"</p></td><td><p>"スマホ表示を確認して崩れている部分を全て修正して。特に文字サイズと余白を最優先で"</p></td></tr><tr><td><p>"ここの文章を変えたい"</p></td><td><p>"〇〇セクションの[現在のテキスト]を[新しいテキスト]に変更してください。デザインはそのままで"</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">8-3. 修正回数の上限設計</span></h2>
+<table><tbody><tr><td><p><strong>💡 修正上限の設計と伝え方テンプレート</strong></p><p>【受注時の提案書に記載する文例】</p><p>"LP制作の品質を守るため、修正は2ラウンドまで含まれています。</p><p>　1ラウンドは「まとめてリストをいただき、一括で対応する」形式です。</p><p>　中間確認（「この方向性で合ってますか？」という確認）は制作中いつでも可能です。</p><p>　2ラウンドを超える修正は追加料金（1ラウンド●万円）をいただきます。</p><p>　設計書を事前にご確認いただくため、多くの案件では1ラウンドで完了しています"</p><p>→ 「品質のため」という文脈で伝えると理解を得やすい</p><p>→ 中間確認は無制限にすることでクライアントの不安を解消できる</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第9章：納品物の整理とREADMEの作成</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-1. 納品物として渡すファイルの整理</span></h2>
+<table><tbody><tr><td><p><strong>納品ファイル</strong></p></td><td><p><strong>内容</strong></p></td><td><p><strong>ファイル名の例</strong></p></td></tr><tr><td><p>LP本体</p></td><td><p>HTMLファイル</p></td><td><p>index.html</p></td></tr><tr><td><p>画像フォルダ</p></td><td><p>ビジュアル素材一式</p></td><td><p>images/（フォルダ）→ hero.jpg・icon1.png等</p></td></tr><tr><td><p>説明書</p></td><td><p>README（操作説明）</p></td><td><p>README.txt</p></td></tr><tr><td><p>設計書</p></td><td><p>LP設計書のPDF</p></td><td><p>LP設計書_サービス名.pdf</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">9-2. READMEの自動生成プロンプト</span></h2>
+<table><tbody><tr><td><p><strong>📋 README自動生成プロンプト（コピペ用）</strong></p><p>「このLPの納品用README.txtを作成してください。</p><p>サービス名：30代からの副業スタートアップ講座</p><p>作成者：【あなたの名前】</p><p>作成日：【入力】</p><p>連絡先：【あなたのメールアドレス】</p><p>含めてほしい内容：</p><p>①LP公開方法（サーバーへのアップロード手順・初心者向け）</p><p>②コピー（テキスト）を更新したいときの方法</p><p>③FVヒーロー画像を差し替えたいときの方法</p><p>④WordPress組み込みを希望する場合の基本手順</p><p>⑤問い合わせフォームの設置方法（Googleフォームの埋め込み手順）</p><p>⑥不明点があった場合の連絡先</p><p>Web制作に詳しくないクライアントでも理解できる言葉で。</p><p>専門用語は使わず具体的な操作手順を番号付きで書いてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">第10章：実践プロンプト集10種</span></h2>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト①：LP設計書の生成</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト①（コピペ用）</strong></p><p>「以下の情報からLP制作用の設計書を作ってください。</p><p>サービス名：【入力】 / サービス内容：【入力】 / 価格：【入力】円</p><p>ターゲット：【詳細に】 / 競合との差別化：【入力】</p><p>競合調査（Perplexityで収集したもの）：【Paste】</p><p>含めてほしい項目：①ペルソナ ②内なる独り言3パターン ③感情設計マップ ④LP構成案 ⑤BV-GL ⑥One Big Idea ⑦カラーパレット</p><p>最後にFVキャッチコピーのサンプル3案を添えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト②：FVキャッチコピー10案</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト②（コピペ用）</strong></p><p>「設計書の情報をもとにFVキャッチコピーを10案生成してください。</p><p>【設計書の②内なる独り言・⑤BV-GL・⑥One Big IdeaをPaste】</p><p>条件：20〜35字以内・独り言代弁パターン半数以上</p><p>各案に「なぜこの表現か」の1行解説を付けてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト③：全セクションコピー一括生成</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト③（コピペ用）</strong></p><p>「設計書に基づいてLP全セクションのコピーを一括で書いてください。</p><p>【設計書全文をPaste】</p><p>確定済みFVキャッチ：【入力】</p><p>書いてほしいセクション：</p><p>①問題提起（あるあるシーン3つ・150〜200字）②解決策（200字）</p><p>③特徴×3（各100字・ベネフィット表現）④お客様の声×3（各150字）</p><p>⑤FAQ×6 ⑥最終CTA（100字）</p><p>各セクション冒頭に「感情目標：〇〇」を付けてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト④：HTML生成フルスペック指示</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト④（コピペ用）</strong></p><p>「以下の仕様でLPのHTMLを生成してください。</p><p>【技術仕様】HTML5＋Tailwind CSS（CDN）・Noto Sans JP・レスポンシブ</p><p>【デザイン仕様】メイン：#【入力】 アクセント：#【入力】 背景：#FFFFFF</p><p>CTAボタン：rounded-full・アクセントカラー・白文字</p><p>【ターゲット＆BV-GL】（設計書から転記）</p><p>【LP構成（感情目標付き）】①ナビ②FV③問題提起...⑨フッター</p><p>【コピー】すべてプレースホルダー形式</p><p>生成後に設計ポイント3点を教えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑤：Nano BananaへのFV画像生成</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑤（コピペ用）</strong></p><p>【GeminiアプリのNano Banana（🍌）で使用】</p><p>「LP用FVヒーロー画像を生成してください。</p><p>ビジュアルコンセプト：【ターゲットが感じるべき感情を1文で】</p><p>具体的な指示：</p><p>・シーン：【ターゲットが共感するシーン】</p><p>・人物：【後ろ姿または横顔・顔は不要】</p><p>・雰囲気：【ブランドのパーソナリティに合わせた感情的な雰囲気】</p><p>・カラートーン：【BV-GLのカラーに合わせて】</p><p>・構図：横長16:9・左半分にテキスト配置の余白</p><p>・スタイル：写真風（フォトリアリスティック）」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑥：HTMLへの画像差し込み</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑥（コピペ用）</strong></p><p>「FVセクションのプレースホルダー部分に hero.jpg という画像を差し込んでください。</p><p>・横幅：画面いっぱい（w-full）</p><p>・高さ：自然なアスペクト比を維持（h-autoまたはmin-h-[60vh]）</p><p>・alt属性：【サービス名】のLP画像</p><p>・objectFit：cover でトリミング</p><p>img以外のHTMLは変更しないでください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑦：コピーの一括差し込み</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑦（コピペ用）</strong></p><p>「現在のLPのHTMLにコピーを差し込んでください。</p><p>FVキャッチ：【確定したコピー】</p><p>FVサブコピー：【確定したコピー】</p><p>CTAボタン文言：【確定した文言】</p><p>（以下、全セクション分を同様の形式で列挙）</p><p>コピー以外のHTML（デザイン・構造）は変更しないこと。</p><p>差し込み完了後に変更箇所の一覧を報告してください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑧：クライアント修正依頼の一括対応</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑧（コピペ用）</strong></p><p>「クライアントから以下の修正依頼をいただきました。</p><p>一括で対応してください。</p><p>【修正依頼リスト】</p><p>・修正①：【クライアントの言葉→Claudeへの指示に翻訳したもの】</p><p>・修正②：【同上】</p><p>・修正③：【同上】</p><p>修正完了後に「変更した箇所の一覧」と「修正前後の主な差分」を教えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑨：LP完成前レビュー</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑨（コピペ用）</strong></p><p>「以下のLPを確認して改善提案をしてください。</p><p>（完成したLPのHTMLをPaste）</p><p>観点：</p><p>①感情設計：FVから最終CTAの感情の流れは自然か・離脱しそうな箇所</p><p>②コピー：ターゲットへの刺さり方・BVGLとのトーン一致・法的リスク</p><p>③デザイン：CTAの目立ち方・スマホ表示の問題点</p><p>各問題点に修正指示の例文を添えてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">プロンプト⑩：README自動生成</span></h2>
+<table><tbody><tr><td><p><strong>📋 プロンプト⑩（コピペ用）</strong></p><p>「このLPの納品用README.txtを作成してください。</p><p>サービス名：【入力】 / 作成者：【名前】 / 作成日：【日付】</p><p>連絡先：【メールアドレス】</p><p>含めてほしい内容：</p><p>①LP公開方法（サーバーへのアップロード手順・初心者向け）</p><p>②コピーを更新したいときの方法</p><p>③FV画像を差し替えたいときの方法</p><p>④WordPress組み込みの基本手順</p><p>⑤問い合わせフォームの設置方法（Googleフォームの埋め込み）</p><p>⑥不明点があった場合の連絡先</p><p>Web制作に詳しくない人でも理解できる言葉で、</p><p>専門用語は使わず番号付きで書いてください」</p></td></tr></tbody></table>
+</div>
+<div class="card">
+<h2><span class="gradient-text">次のステップ：8-5「HP制作完全実践」へ</span></h2>
+<p>8-4でLP1本を完成させる全工程と操作方法・納品方法を習得しました。8-5ではトップページ・サービス紹介・会社概要・お問い合わせの複数ページで構成されるコーポレートHPの設計・制作を実践します。</p>
+</div>
+</div>
+</body>
+</html>

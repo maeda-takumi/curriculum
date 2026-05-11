@@ -13,6 +13,8 @@ $curriculum = (string)($_GET['curriculum'] ?? '');
 $nextPath = ($appBase === '' ? '' : rtrim($appBase, '/')) . '/?page=index';
 if ($curriculum === 'lesson' || $curriculum === 'claude') {
     $nextPath .= '&curriculum=' . rawurlencode($curriculum);
+} else {
+    $nextPath .= '&curriculum=practice';
 }
 $_SESSION = [];
 session_destroy();

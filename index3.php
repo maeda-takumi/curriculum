@@ -81,7 +81,11 @@ $requestedCurriculum = isset($_GET['curriculum']) && is_string($_GET['curriculum
 if ($requestedCurriculum !== null) {
     $_SESSION['curriculum'] = $requestedCurriculum;
 }
-$curriculum = normalize_curriculum((string)($_SESSION['curriculum'] ?? 'practice'));
+if (!isset($_SESSION['curriculum'])) {
+    header('Location: ' . $appBasePath . 'error.html');
+    exit;
+}
+$curriculum = normalize_curriculum((string)$_SESSION['curriculum']);
 $isLessonCurriculum = $curriculum === 'lesson';
 $isClaudeCurriculum = $curriculum === 'claude';
 
