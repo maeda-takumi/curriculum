@@ -15,6 +15,12 @@ function normalize_role(mixed $role): string
 {
     return ((string)$role) === 'admin' ? 'admin' : 'user';
 }
+function normalize_last_curriculum(mixed $curriculum): string
+{
+    $value = (string)$curriculum;
+
+    return in_array($value, ['practice', 'lesson', 'claude'], true) ? $value : 'practice';
+}
 /**
  * @return array<string, bool>
  */
@@ -115,6 +121,7 @@ function load_users(): array
             'password_hash' => password_hash($defaultPassword, PASSWORD_DEFAULT),
             'status' => 'active',
             'role' => 'admin',
+            'last_curriculum' => 'practice',
         ]];
         save_users($default);
         return $default;
@@ -154,6 +161,7 @@ function load_users(): array
             'password_hash' => $passwordHash,
             'status' => normalize_status($row['status'] ?? 'inactive'),
             'role' => normalize_role($row['role'] ?? 'user'),
+            'last_curriculum' => normalize_last_curriculum($row['last_curriculum'] ?? 'practice'),
             'phase_locks' => normalize_phase_locks($row['phase_locks'] ?? null),
             'claude_phase_locks' => normalize_claude_phase_locks($row['claude_phase_locks'] ?? null),
             'lesson_week_locks' => normalize_lesson_week_locks($row['lesson_week_locks'] ?? null),
@@ -165,7 +173,14 @@ function load_users(): array
 
 function save_users(array $users): void
 {
-    file_put_contents(users_file_path(), json_encode(array_values($users), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+    $json = json_encode(array_values($users), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    if ($json === false) {
+        throw new RuntimeException('Failed to encode users.json.');
+    }
+
+    if (file_put_contents(users_file_path(), $json, LOCK_EX) === false) {
+        throw new RuntimeException('Failed to write users.json.');
+    }
 }
 
 function next_user_id(array $users): int

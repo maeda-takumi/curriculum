@@ -53,6 +53,50 @@ function invalid_page_fallback(string $curriculum, string $appBasePath): string
     return $appEntryPath . '?page=index' . curriculum_query_suffix($curriculum);
 }
 
+function resolve_login_user_last_curriculum(): ?string
+{
+    $loginEmail = trim((string)($_SESSION['login_email'] ?? ''));
+    if ($loginEmail === '') {
+        return null;
+    }
+
+    foreach (load_users() as $user) {
+        $email = trim((string)($user['email'] ?? ''));
+        if ($email !== '' && hash_equals($email, $loginEmail)) {
+            return normalize_curriculum((string)($user['last_curriculum'] ?? 'practice'));
+        }
+    }
+
+    return null;
+}
+
+function save_login_user_last_curriculum(string $curriculum): void
+{
+    $loginEmail = trim((string)($_SESSION['login_email'] ?? ''));
+    if ($loginEmail === '') {
+        return;
+    }
+
+    $users = load_users();
+    $updated = false;
+    foreach ($users as &$user) {
+        $email = trim((string)($user['email'] ?? ''));
+        if ($email === '' || !hash_equals($email, $loginEmail)) {
+            continue;
+        }
+
+        if (normalize_curriculum((string)($user['last_curriculum'] ?? 'practice')) !== $curriculum) {
+            $user['last_curriculum'] = $curriculum;
+            $updated = true;
+        }
+        break;
+    }
+    unset($user);
+
+    if ($updated) {
+        save_users($users);
+    }
+}
 function is_mobile_client(): bool
 {
     $chUaMobile = strtolower(trim((string) ($_SERVER['HTTP_SEC_CH_UA_MOBILE'] ?? '')));
@@ -84,8 +128,10 @@ if ($requestedCurriculum !== null) {
 if (!isset($_SESSION['curriculum'])) {
     header('Location: ' . $appBasePath . 'error.html');
     exit;
+    $_SESSION['curriculum'] = resolve_login_user_last_curriculum() ?? 'practice';
 }
 $curriculum = normalize_curriculum((string)$_SESSION['curriculum']);
+$_SESSION['curriculum'] = $curriculum;
 $isLessonCurriculum = $curriculum === 'lesson';
 $isClaudeCurriculum = $curriculum === 'claude';
 
@@ -97,6 +143,9 @@ if (!is_string($page) || trim($page) === '') {
 if (!preg_match('/^[a-zA-Z0-9_-]+$/', $page)) {
     header('Location: ' . invalid_page_fallback($curriculum, $appBasePath));
     exit;
+}
+if ($page === 'index') {
+    save_login_user_last_curriculum($curriculum);
 }
 
 $includeDirectoryName = $isLessonCurriculum ? 'include_lesson' : ($isClaudeCurriculum ? 'include_claude' : 'include');
