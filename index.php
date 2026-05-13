@@ -1619,8 +1619,35 @@ $loadingOverlayScript = <<<'JS'
     showLoadingOverlay();
   }, true);
 
-  window.addEventListener('pageshow', waitForStableRenderThenHide);
-  window.addEventListener('load', waitForStableRenderThenHide, { once: true });
+  function hideWhenPageLoadCompletes() {
+    if (document.readyState === 'complete') {
+      hideLoadingOverlay();
+      return;
+    }
+
+    window.addEventListener('load', hideLoadingOverlay, { once: true });
+  }
+
+  function handlePageShow(event) {
+    if (overlay.getAttribute('data-hide-mode') === 'load') {
+      if (event.persisted) {
+        hideLoadingOverlay();
+        return;
+      }
+
+      hideWhenPageLoadCompletes();
+      return;
+    }
+
+    waitForStableRenderThenHide();
+  }
+
+  window.addEventListener('pageshow', handlePageShow);
+  if (overlay.getAttribute('data-hide-mode') === 'load') {
+    hideWhenPageLoadCompletes();
+  } else {
+    window.addEventListener('load', waitForStableRenderThenHide, { once: true });
+  }
 })();
 </script>
 JS;
@@ -1691,7 +1718,8 @@ if ($responsiveCssVersion !== '') {
     $responsiveCssHref .= '?v=' . rawurlencode($responsiveCssVersion);
 }
 $responsiveCssTag = '<link rel="stylesheet" href="' . htmlspecialchars($responsiveCssHref, ENT_QUOTES, 'UTF-8') . '">';
-$loadingOverlayMarkup = '<div id="global-loading-overlay" class="is-visible" aria-hidden="false" role="status" aria-live="polite"><div class="global-loading-overlay__card"><div class="global-loading-overlay__spinner" aria-hidden="true"></div>読み込み中</div></div>';
+$loadingOverlayHideMode = in_array($page, ['index', 'article'], true) ? 'load' : 'stable';
+$loadingOverlayMarkup = '<div id="global-loading-overlay" class="is-visible" aria-hidden="false" role="status" aria-live="polite" data-hide-mode="' . htmlspecialchars($loadingOverlayHideMode, ENT_QUOTES, 'UTF-8') . '"><div class="global-loading-overlay__card"><div class="global-loading-overlay__spinner" aria-hidden="true"></div>読み込み中</div></div>';
 if ($html === false) {
     header('Location: ' . invalid_page_fallback($curriculum, $appBasePath));
     exit;
