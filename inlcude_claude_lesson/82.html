@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Week8 ②動画にフック（冒頭で惹きつける要素）を入れる</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">Week8 ②動画にフック（冒頭で惹きつける要素）を入れる</span></h1>
+<hr class="divider">
+<span class="label">フェーズ</span>
+</div>
+<div class="card">
+<p><strong>フックの基本概念と心理的役割</strong></p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">フックとは何か？</span></h2>
+<p>「フック」とは、視聴者が“続きを見たい”と感じる最初の刺激のことです。</p>
+<p>文章でいえばキャッチコピー、映像でいえばつかみの部分。</p>
+<p>TikTokやInstagramリールのようにスクロールが早いプラットフォームでは、冒頭3秒で印象が決まります。</p>
+<div class="callout-box"><p>アルゴリズムもこの“最初の離脱率”を重視しているため、フックが弱いとどれだけ中身が良くても再生されません。</p></div>
+<p>逆に、強いフックがあると再生完了率が上がり、動画がどんどんレコメンドされるようになります。</p>
+<h3>視聴者心理を理解する</h3>
+<p>視聴者は、動画を「見る」前に「見る価値があるか」を3秒以内で判断しています。</p>
+<p>だからこそ、冒頭で「得られる報酬」を明確に見せることが大切です。</p>
+<ul class="bullet-list"><li>3秒ルール：3秒で興味を引けないとスワイプされる</li><li>期待形成：「この先どうなるんだろう？」と思わせる</li><li>報酬予測：「この動画を見ると○○が分かる」と伝える</li></ul>
+<p>たとえば「この方法で5分早く準備できます」と言われれば、誰でも続きを見たくなります。</p>
+<h3>フックの種類（基本形）</h3>
+<p>初心者でも使いやすいフックの型を紹介します。</p>
+<ul class="bullet-list"><li>問いかけ型：「これ知ってますか？」</li><li>驚き型：「実は○○って危険なんです」</li><li>逆説型：「努力しすぎる人ほど失敗する理由」</li><li>数字・ランキング型：「3秒でできる集中法」</li><li>ストーリー型：「昨日、人生変わる出会いがありました…」</li></ul>
+<p>このように、短く・明確で・感情を刺激する言葉を使うと効果的です。</p>
+<p>Claudeに「○○というテーマでフックを5種類作って」と依頼すると、すぐに案を作成してくれます。</p>
+<h3>初心者がやりがちな失敗</h3>
+<ul class="bullet-list"><li>前置きが長い：「こんにちは、今日は〜」と始めると離脱されやすい</li><li>抽象的すぎる：「すごいことが起きました」では内容が伝わらない</li><li>表情が硬い：無表情だと興味を持たれにくい</li></ul>
+<p>ポイントは「話すより先に興味を引く」。</p>
+<p>笑顔・動き・短い言葉を意識しましょう。</p>
+<p><strong>フックを仕掛ける技術とパターン集</strong></p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">構成の黄金律</span></h2>
+<p>効果的なフックは、次の3ステップで作れます。</p>
+<ul class="bullet-list"><li>1秒目：強いビジュアル or 言葉で注意を奪う</li><li>2〜3秒目：「なぜ？」「もっと知りたい」を生み出す</li><li>4秒以降：自然に本題に繋げる</li></ul>
+<blockquote><p>たとえば「1日5分で人生が変わる習慣」→「実は誰でもできるんです」→「その方法は…」という流れです。</p></blockquote>
+<p>フック→期待→展開という構造を常に意識しましょう。</p>
+<h3>実践的フック例</h3>
+<p>ジャンル別に使えるフック例を紹介します。</p>
+<ul class="bullet-list"><li>教育系：「99%の人が間違える英単語の覚え方」</li><li>ライフハック系：「スマホの充電、これやってません？」</li><li>共感系：「朝、二度寝する人、これ絶対共感する」</li><li>挑発系：「まだそのダイエット方法、信じてるの？」</li><li>変化型：「ビフォーアフターを先に見せると驚かれます」</li></ul>
+<p>これらは短くて印象的なフレーズですが、Claudeで量産できます。</p>
+<p>「副業テーマで刺激的なフックを10個作って」と頼めば、数分で素材が揃います。</p>
+<h3>編集でフックを強化する</h3>
+<p>フックの内容だけでなく、編集でも印象を強くできます。</p>
+<ul class="bullet-list"><li>テロップ：冒頭に大きく一言「必見！」「衝撃！」などを表示</li><li>BGM：冒頭に勢いのある音楽を使うと集中力を引き上げる</li><li>カット：余白を削りテンポを速く</li><li>効果音：ポン！ドン！などの音でリズムを出す</li></ul>
+<p>CapCutで冒頭3秒にこれらを入れるだけで、動画の印象が大きく変わります。</p>
+<h3>フックを失敗しない工夫</h3>
+<ul class="bullet-list"><li>Claudeで「テーマに合うフックを10個」生成してネタを貯める</li><li>Canvaで「冒頭タイトルカード」を作り視覚的に印象づける</li><li>表情と声にエネルギーを持たせる（少しオーバーでちょうど良い）</li></ul>
+<p>特に冒頭で声を張る・動きをつけるだけで離脱率が下がります。</p>
+<p>撮影時は「少しテンション高め」を意識しましょう。</p>
+<p><strong>応用戦略とフックの磨き方</strong></p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">コンテンツジャンル別フック戦略</span></h2>
+<p>ジャンルによって響くフックは異なります。</p>
+<ul class="bullet-list"><li>学習系：数字や成果を入れる（例：「30秒で覚える英単語法」）</li><li>エンタメ系：笑いや驚きを入れる（例：「これマジでヤバい…！」）</li><li>商品紹介系：問題提起→解決（例：「高い化粧品買う前にこれ試せ！」）</li><li>ストーリー系：結果を先に見せて興味を引く（例：「たった3ヶ月でこうなりました」）</li></ul>
+<p>ジャンルを決めてから、Claudeに「このジャンルに合うフックを作って」と依頼するのがコツです。</p>
+<h3>データで改善する方法</h3>
+<p>TikTokのアナリティクスを使えば、どのタイミングで視聴者が離れているかが分かります。</p>
+<p>特に「1〜3秒で離脱しているか」を確認しましょう。</p>
+<p>もし多くの人が冒頭で離れているなら、フックの言葉や演出を変えるべきです。</p>
+<p>問いかけ型・数字型・ストーリー型など、複数パターンをABテストして比較します。</p>
+<p>Notionに「フック案」「動画リンク」「結果（完了率など）」を記録しておけば、最も効果的なフックをデータで分析できます。</p>
+<h3>差別化のコツ</h3>
+<p>フックは「自分らしさ」を混ぜることで強くなります。</p>
+<p>同じテーマでも、あなたの声・表情・体験談が加わると一気にオリジナルになります。</p>
+<p>また、Canvaでブランドカラーやフォントを統一しておくと、「この動画＝あなた」と認識されやすくなります。</p>
+<p>Claudeに「個性が出る言い回し」を提案させるのもおすすめです。</p>
+<h3>Claude・CapCut・Notion活用</h3>
+<ul class="bullet-list"><li>Claude：フックの文案を作成。複数案を出して比較。</li><li>CapCut：冒頭3秒に効果音・字幕・ズームを入れて印象を強化。</li><li>Notion：フック案・結果データ・改善メモを管理してPDCAを回す。</li></ul>
+<p>この3ツールを組み合わせれば、“フックの自動改善サイクル”が作れます。</p>
+<h3>フックの本質</h3>
+<p>フックは情報より「感情」を動かす要素です。</p>
+<p>人は“感情が動いた瞬間”に動画を見続けます。</p>
+<div class="callout-box"><p>最初の3秒で「驚き」「共感」「学び」「笑い」のどれかを与えられれば、それだけで伸びる可能性が高くなります。</p></div>
+<p>最初は難しく感じても、数を重ねてデータを取れば「自分の勝ちパターン」が見えてきます。</p>
+<p><strong>まとめ</strong></p>
+<div class="callout-box"><p>TikTokやリールで伸びるかどうかは、冒頭3秒のフック次第です。</p></div>
+<ul class="bullet-list"><li>視聴者心理を掴み「続きを見たい」を作る</li><li>編集でテンポと期待感を演出する</li><li>データを基に改善し、ABテストで磨く</li><li>Claude＝フック案の生成</li><li>Canva＝ビジュアル補強</li><li>CapCut＝編集・演出</li><li>Notion＝記録と分析</li></ul>
+<p>この4つを連携すれば、個人でもプロ並みの「伸びる動画設計」が可能になります。</p>
+<p>フックは動画の命。3秒で心を掴めるあなたになれば、どんなジャンルでも再生数と収益は自然に伸びていきます。</p>
+</div>
+</div>
+</body>
+</html>

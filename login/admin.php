@@ -47,6 +47,7 @@ $lessonWeekOptions = [
     'week12' => 'Week 12',
 ];
 
+$claudeLessonWeekOptions = $lessonWeekOptions;
 /**
  * @param array<string, string> $phaseOptions
  * @return array<string, bool>
@@ -128,6 +129,33 @@ function default_create_lesson_week_locks(): array
     return $locks;
 }
 
+/**
+ * @param array<string, string> $claudeLessonWeekOptions
+ * @return array<string, bool>
+ */
+function collect_claude_lesson_week_locks_from_post(array $claudeLessonWeekOptions): array
+{
+    $locks = default_claude_lesson_week_locks();
+    foreach ($claudeLessonWeekOptions as $weekKey => $_) {
+        $locks[$weekKey] = (string)($_POST['claude_lesson_lock_' . $weekKey] ?? '0') === '1';
+    }
+
+    return normalize_claude_lesson_week_locks($locks);
+}
+
+/**
+ * @return array<string, bool>
+ */
+function default_create_claude_lesson_week_locks(): array
+{
+    $locks = default_claude_lesson_week_locks();
+    foreach ($locks as $weekKey => $_) {
+        $locks[$weekKey] = $weekKey !== 'week1';
+    }
+
+    return $locks;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = (string)($_POST['action'] ?? '');
 
@@ -141,6 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $phaseLocks = collect_phase_locks_from_post($phaseOptions);
         $claudePhaseLocks = collect_claude_phase_locks_from_post($claudePhaseOptions);
         $lessonWeekLocks = collect_lesson_week_locks_from_post($lessonWeekOptions);
+        $claudeLessonWeekLocks = collect_claude_lesson_week_locks_from_post($claudeLessonWeekOptions);
 
         if ($lineName === '' || $email === '' || $password === '') {
             $error = 'LINE名・メールアドレス・パスワードは必須です。';
@@ -170,6 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'phase_locks' => $phaseLocks,
                     'claude_phase_locks' => $claudePhaseLocks,
                     'lesson_week_locks' => $lessonWeekLocks,
+                    'claude_lesson_week_locks' => $claudeLessonWeekLocks,
                 ];
                 save_users($users);
                 header('Location: admin.php?message=' . urlencode('ユーザを追加しました。'));
@@ -189,6 +219,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $phaseLocks = collect_phase_locks_from_post($phaseOptions);
         $claudePhaseLocks = collect_claude_phase_locks_from_post($claudePhaseOptions);
         $lessonWeekLocks = collect_lesson_week_locks_from_post($lessonWeekOptions);
+        $claudeLessonWeekLocks = collect_claude_lesson_week_locks_from_post($claudeLessonWeekOptions);
 
         if ($lineName === '' || $email === '') {
             $error = 'LINE名・メールアドレスは必須です。';
@@ -220,6 +251,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $user['phase_locks'] = $phaseLocks;
                     $user['claude_phase_locks'] = $claudePhaseLocks;
                     $user['lesson_week_locks'] = $lessonWeekLocks;
+                    $user['claude_lesson_week_locks'] = $claudeLessonWeekLocks;
                     if ($password !== '') {
                         $user['password'] = $password;
                         $user['password_hash'] = password_hash($password, PASSWORD_DEFAULT);
@@ -270,6 +302,7 @@ $usersOnPage = array_slice($filteredUsers, $offset, $perPage);
 $createDefaultPhaseLocks = default_create_phase_locks();
 $createDefaultClaudePhaseLocks = default_create_claude_phase_locks();
 $createDefaultLessonWeekLocks = default_create_lesson_week_locks();
+$createDefaultClaudeLessonWeekLocks = default_create_claude_lesson_week_locks();
 
 function page_link(int $page, string $lineName, string $realName, string $email): string
 {
@@ -360,6 +393,19 @@ function page_link(int $page, string $lineName, string $realName, string $email)
                 ?>
               </div>
               <div class="user-password">
+                Claude Lessonロック中:
+                <?php
+                $lockedClaudeLessonWeekLabels = [];
+                $userClaudeLessonLocks = normalize_claude_lesson_week_locks($user['claude_lesson_week_locks'] ?? null);
+                foreach ($claudeLessonWeekOptions as $weekKey => $weekLabel) {
+                    if (($userClaudeLessonLocks[$weekKey] ?? false) === true) {
+                        $lockedClaudeLessonWeekLabels[] = $weekLabel;
+                    }
+                }
+                echo h($lockedClaudeLessonWeekLabels === [] ? 'なし' : implode(', ', $lockedClaudeLessonWeekLabels));
+                ?>
+              </div>
+              <div class="user-password">
                 Claudeロック中:
                 <?php
                 $lockedClaudeLabels = [];
@@ -410,6 +456,7 @@ function page_link(int $page, string $lineName, string $realName, string $email)
                   data-phase-locks='<?= h(json_encode(normalize_phase_locks($user["phase_locks"] ?? null), JSON_UNESCAPED_UNICODE) ?: "{}") ?>'
                   data-claude-phase-locks='<?= h(json_encode(normalize_claude_phase_locks($user["claude_phase_locks"] ?? null), JSON_UNESCAPED_UNICODE) ?: "{}") ?>'
                   data-lesson-week-locks='<?= h(json_encode(normalize_lesson_week_locks($user["lesson_week_locks"] ?? null), JSON_UNESCAPED_UNICODE) ?: "{}") ?>'
+                  data-claude-lesson-week-locks='<?= h(json_encode(normalize_claude_lesson_week_locks($user["claude_lesson_week_locks"] ?? null), JSON_UNESCAPED_UNICODE) ?: "{}") ?>'
                 >編集</button>
                 <button
                   type="button"
@@ -479,6 +526,17 @@ function page_link(int $page, string $lineName, string $realName, string $email)
           </div>
         </fieldset>
         <fieldset>
+          <legend>Claude Lesson Week閲覧ロック（チェックで閉場）</legend>
+          <div class="permission-grid">
+            <?php foreach ($claudeLessonWeekOptions as $weekKey => $weekLabel): ?>
+              <label class="permission-item">
+                <span class="lock_label"><?= h($weekLabel) ?></span>
+                <input type="checkbox" id="create-claude-lesson-lock-<?= h($weekKey) ?>" name="claude_lesson_lock_<?= h($weekKey) ?>" value="1">
+              </label>
+            <?php endforeach; ?>
+          </div>
+        </fieldset>
+        <fieldset>
           <legend>フェーズ閲覧ロック（チェックで閉場）</legend>
           <div class="permission-grid">
             <?php foreach ($phaseOptions as $phaseKey => $phaseLabel): ?>
@@ -539,6 +597,17 @@ function page_link(int $page, string $lineName, string $realName, string $email)
               <label class="permission-item">
                 <span class="lock_label"><?= h($weekLabel) ?></span>
                 <input type="checkbox" id="edit-lesson-lock-<?= h($weekKey) ?>" name="lesson_lock_<?= h($weekKey) ?>" value="1">
+              </label>
+            <?php endforeach; ?>
+          </div>
+        </fieldset>
+        <fieldset id="edit-claude-lesson-week-locks">
+          <legend>Claude Lesson Week閲覧ロック（チェックで閉場）</legend>
+          <div class="permission-grid">
+            <?php foreach ($claudeLessonWeekOptions as $weekKey => $weekLabel): ?>
+              <label class="permission-item">
+                <span class="lock_label"><?= h($weekLabel) ?></span>
+                <input type="checkbox" id="edit-claude-lesson-lock-<?= h($weekKey) ?>" name="claude_lesson_lock_<?= h($weekKey) ?>" value="1">
               </label>
             <?php endforeach; ?>
           </div>
@@ -604,6 +673,12 @@ function page_link(int $page, string $lineName, string $realName, string $email)
         createLessonCheckbox<?= h($weekKey) ?>.checked = <?= $isLocked ? 'true' : 'false' ?>;
       }
       <?php endforeach; ?>
+      <?php foreach ($createDefaultClaudeLessonWeekLocks as $weekKey => $isLocked): ?>
+      const createClaudeLessonCheckbox<?= h($weekKey) ?> = document.getElementById('create-claude-lesson-lock-<?= h($weekKey) ?>');
+      if (createClaudeLessonCheckbox<?= h($weekKey) ?> instanceof HTMLInputElement) {
+        createClaudeLessonCheckbox<?= h($weekKey) ?>.checked = <?= $isLocked ? 'true' : 'false' ?>;
+      }
+      <?php endforeach; ?>
       const openButtons = document.querySelectorAll('[data-modal-target]');
       openButtons.forEach((openButton) => {
         openButton.addEventListener('click', () => {
@@ -641,6 +716,7 @@ function page_link(int $page, string $lineName, string $realName, string $email)
             let phaseLocks = {};
             let claudePhaseLocks = {};
             let lessonWeekLocks = {};
+            let claudeLessonWeekLocks = {};
             try {
               phaseLocks = JSON.parse(openButton.dataset.phaseLocks ?? '{}');
             } catch (error) {
@@ -657,6 +733,11 @@ function page_link(int $page, string $lineName, string $realName, string $email)
               lessonWeekLocks = JSON.parse(openButton.dataset.lessonWeekLocks ?? '{}');
             } catch (error) {
               lessonWeekLocks = {};
+            }
+            try {
+              claudeLessonWeekLocks = JSON.parse(openButton.dataset.claudeLessonWeekLocks ?? '{}');
+            } catch (error) {
+              claudeLessonWeekLocks = {};
             }
             <?php foreach (array_keys($phaseOptions) as $phaseKey): ?>
             {
@@ -678,6 +759,12 @@ function page_link(int $page, string $lineName, string $realName, string $email)
               const checkbox = editForm.querySelector(`input[name="lesson_lock_${weekKey}"]`);
               if (checkbox instanceof HTMLInputElement) {
                 checkbox.checked = Boolean(lessonWeekLocks[weekKey]);
+              }
+            });
+            ['week1', 'week2', 'week3', 'week4', 'week5', 'week6', 'week7', 'week8', 'week9', 'week10', 'week11', 'week12'].forEach((weekKey) => {
+              const checkbox = editForm.querySelector(`input[name="claude_lesson_lock_${weekKey}"]`);
+              if (checkbox instanceof HTMLInputElement) {
+                checkbox.checked = Boolean(claudeLessonWeekLocks[weekKey]);
               }
             });
           }

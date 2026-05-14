@@ -19,7 +19,7 @@ function normalize_last_curriculum(mixed $curriculum): string
 {
     $value = (string)$curriculum;
 
-    return in_array($value, ['practice', 'lesson', 'claude'], true) ? $value : 'practice';
+    return in_array($value, ['practice', 'lesson', 'claude', 'claude_lesson'], true) ? $value : 'practice';
 }
 /**
  * @return array<string, bool>
@@ -57,6 +57,21 @@ function normalize_lesson_week_locks(mixed $weekLocks): array
     }
 
     return $normalized;
+}
+/**
+ * @return array<string, bool>
+ */
+function default_claude_lesson_week_locks(): array
+{
+    return default_lesson_week_locks();
+}
+
+/**
+ * @return array<string, bool>
+ */
+function normalize_claude_lesson_week_locks(mixed $weekLocks): array
+{
+    return normalize_lesson_week_locks($weekLocks);
 }
 /**
  * @return array<string, bool>
@@ -122,6 +137,10 @@ function load_users(): array
             'status' => 'active',
             'role' => 'admin',
             'last_curriculum' => 'practice',
+            'phase_locks' => default_phase_locks(),
+            'claude_phase_locks' => default_claude_phase_locks(),
+            'lesson_week_locks' => default_lesson_week_locks(),
+            'claude_lesson_week_locks' => default_claude_lesson_week_locks(),
         ]];
         save_users($default);
         return $default;
@@ -165,6 +184,7 @@ function load_users(): array
             'phase_locks' => normalize_phase_locks($row['phase_locks'] ?? null),
             'claude_phase_locks' => normalize_claude_phase_locks($row['claude_phase_locks'] ?? null),
             'lesson_week_locks' => normalize_lesson_week_locks($row['lesson_week_locks'] ?? null),
+            'claude_lesson_week_locks' => normalize_claude_lesson_week_locks($row['claude_lesson_week_locks'] ?? null),
         ];
     }
 

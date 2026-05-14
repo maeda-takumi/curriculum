@@ -31,7 +31,7 @@ require_once __DIR__ . '/login_check.php';
 
 function normalize_curriculum(string $curriculum): string
 {
-    return in_array($curriculum, ['lesson', 'claude'], true) ? $curriculum : 'practice';
+    return in_array($curriculum, ['lesson', 'claude', 'claude_lesson'], true) ? $curriculum : 'practice';
 }
 
 function curriculum_query_suffix(string $curriculum): string
@@ -132,6 +132,7 @@ $curriculum = normalize_curriculum((string)$_SESSION['curriculum']);
 $_SESSION['curriculum'] = $curriculum;
 $isLessonCurriculum = $curriculum === 'lesson';
 $isClaudeCurriculum = $curriculum === 'claude';
+$isClaudeLessonCurriculum = $curriculum === 'claude_lesson';
 
 $page = $_GET['page'] ?? 'index';
 if (!is_string($page) || trim($page) === '') {
@@ -146,7 +147,14 @@ if ($page === 'index') {
     save_login_user_last_curriculum($curriculum);
 }
 
-$includeDirectoryName = $isLessonCurriculum ? 'include_lesson' : ($isClaudeCurriculum ? 'include_claude' : 'include');
+$includeDirectoryName = 'include';
+if ($isLessonCurriculum) {
+    $includeDirectoryName = 'include_lesson';
+} elseif ($isClaudeCurriculum) {
+    $includeDirectoryName = 'include_claude';
+} elseif ($isClaudeLessonCurriculum) {
+    $includeDirectoryName = 'include_claude_lesson';
+}
 $includeDir = __DIR__ . '/' . $includeDirectoryName;
 $requested = $includeDir . '/' . $page . '.html';
 $realIncludeDir = realpath($includeDir);
@@ -415,6 +423,27 @@ function resolve_login_user_lesson_week_locks(): array
         $email = trim((string)($user['email'] ?? ''));
         if ($email !== '' && hash_equals($email, $loginEmail)) {
             return normalize_lesson_week_locks($user['lesson_week_locks'] ?? null);
+        }
+    }
+
+    return $default;
+}
+
+/**
+ * @return array<string, bool>
+ */
+function resolve_login_user_claude_lesson_week_locks(): array
+{
+    $default = function_exists('default_claude_lesson_week_locks') ? default_claude_lesson_week_locks() : [];
+    $loginEmail = trim((string)($_SESSION['login_email'] ?? ''));
+    if ($loginEmail === '') {
+        return $default;
+    }
+
+    foreach (load_users() as $user) {
+        $email = trim((string)($user['email'] ?? ''));
+        if ($email !== '' && hash_equals($email, $loginEmail)) {
+            return normalize_claude_lesson_week_locks($user['claude_lesson_week_locks'] ?? null);
         }
     }
 
@@ -859,6 +888,170 @@ $lessonPhases = [
     ],
 ];
 
+$claudeLessonPhases = [
+    [
+        'label' => 'Week 1',
+        'title' => 'Week 1｜Claude入門 ─ AIとの最初の対話',
+        'items' => [
+            ['num' => '1-1.', 'title' => 'Claudeとは何か？正体・背景・できること', 'page' => '11'],
+            ['num' => '1-2.', 'title' => 'Claudeの基本：プロンプトとは何か', 'page' => '12'],
+            ['num' => '1-3.', 'title' => 'よくある失敗例と修正例', 'page' => '13'],
+            ['num' => '1-4.', 'title' => 'Claudeを使いこなすためのマインド', 'page' => '14'],
+            ['num' => '1-5.', 'title' => '【テスト課題】冷蔵庫の中身から料理案を出してみよう', 'page' => '15'],
+            ['num' => '1-6.', 'title' => '【実践課題①】洋楽のタイトルを打ち込んで和訳してみよう', 'page' => '16'],
+            ['num' => '1-7.', 'title' => '【実践課題②】今日の出来事を川柳にしてもらおう', 'page' => '17'],
+            ['num' => '1-8.', 'title' => '【実践課題③】簡単な自己紹介文を3パターン作ってみよう', 'page' => '18'],
+        ],
+    ],
+    [
+        'label' => 'Week 2',
+        'title' => 'Week 2｜Claudeプロンプト応用',
+        'items' => [
+            ['num' => '2-1.', 'title' => 'Claudeプロンプト応用完全ガイド', 'page' => '21'],
+            ['num' => '2-2.', 'title' => '役割設定の意味と効力', 'page' => '22'],
+            ['num' => '2-3.', 'title' => 'Claudeと「文章リライト」', 'page' => '23'],
+            ['num' => '2-4.', 'title' => 'Claudeで「情報整理」する力', 'page' => '24'],
+            ['num' => '2-5.', 'title' => '【テスト課題】インフルエンサーになってSNS広告文を作ろう', 'page' => '25'],
+            ['num' => '2-6.', 'title' => '【実践課題①】一日の出来事を3スタイルでリライト', 'page' => '26'],
+            ['num' => '2-7.', 'title' => '【実践課題②】ニュース記事を3行要約・対象別リライト', 'page' => '27'],
+        ],
+    ],
+    [
+        'label' => 'Week 3',
+        'title' => 'Week 3｜Canva入門 ─ デザインの基礎',
+        'items' => [
+            ['num' => '3-1.', 'title' => 'Canvaとは？初心者のための徹底入門ガイド', 'page' => '31'],
+            ['num' => '3-2.', 'title' => 'テンプレートの使い方完全ガイド', 'page' => '32'],
+            ['num' => '3-3.', 'title' => 'フォントと色彩設定の基礎', 'page' => '33'],
+            ['num' => '3-4.', 'title' => '画像と素材の挿入方法完全ガイド', 'page' => '34'],
+            ['num' => '3-5.', 'title' => '【テスト課題】自分の名刺を作ろう', 'page' => '35'],
+            ['num' => '3-6.', 'title' => '【応用課題①】自己紹介カードを作ろう', 'page' => '36'],
+            ['num' => '3-7.', 'title' => '【応用課題②】誕生日おめでとうカードを作成しよう', 'page' => '37'],
+            ['num' => '3-8.', 'title' => '【応用課題③】LINEアイコンを作成しよう', 'page' => '38'],
+        ],
+    ],
+    [
+        'label' => 'Week 4',
+        'title' => 'Week 4｜Canvaデザイン応用',
+        'items' => [
+            ['num' => '4-1.', 'title' => 'Canvaのデザイン原則（余白・整列・コントラスト）', 'page' => '41'],
+            ['num' => '4-2.', 'title' => 'テンプレートの応用方法', 'page' => '42'],
+            ['num' => '4-3.', 'title' => '写真と文字のバランス', 'page' => '43'],
+            ['num' => '4-4.', 'title' => '実用的なデータ書き出し', 'page' => '44'],
+            ['num' => '4-5.', 'title' => '【テスト課題】YouTubeサムネイルを作成しよう', 'page' => '45'],
+            ['num' => '4-6.', 'title' => '【実践課題①】オリジナル壁紙を作ろう', 'page' => '46'],
+            ['num' => '4-7.', 'title' => '【実践課題②】お礼LINEで送れる一言画像', 'page' => '47'],
+            ['num' => '4-8.', 'title' => '【実践課題③】季節のイベント告知ポスター作成', 'page' => '48'],
+        ],
+    ],
+    [
+        'label' => 'Week 5',
+        'title' => 'Week 5｜Notion入門 ─ 情報管理の基礎',
+        'items' => [
+            ['num' => '5-1.', 'title' => 'Notionとは？全体像と基本概念', 'page' => '51'],
+            ['num' => '5-2.', 'title' => 'Notionの基本の操作', 'page' => '52'],
+            ['num' => '5-3.', 'title' => '日常生活での活用例（家計簿・習慣トラッカー）', 'page' => '53'],
+            ['num' => '5-4.', 'title' => '副業に向けた整理術', 'page' => '54'],
+            ['num' => '5-5.', 'title' => '【テスト課題】1週間の献立表をNotionで管理しよう', 'page' => '55'],
+            ['num' => '5-6.', 'title' => '【実践課題①】ToDoリストを作る', 'page' => '56'],
+            ['num' => '5-7.', 'title' => '【実践課題②】欲しい物リスト作成', 'page' => '57'],
+        ],
+    ],
+    [
+        'label' => 'Week 6',
+        'title' => 'Week 6｜Notion応用 ─ データベースと副業活用',
+        'items' => [
+            ['num' => '6-1.', 'title' => 'Claude × Notionで作る「データベース活用」', 'page' => '61'],
+            ['num' => '6-2.', 'title' => 'テンプレート活用とカスタマイズ', 'page' => '62'],
+            ['num' => '6-3.', 'title' => 'チーム利用を意識したページ共有方法', 'page' => '63'],
+            ['num' => '6-4.', 'title' => '副業への直結例（ブログネタ管理・SNSカレンダー）', 'page' => '64'],
+            ['num' => '6-5.', 'title' => '【テスト課題】副業アイデアリストを作成しよう', 'page' => '65'],
+            ['num' => '6-6.', 'title' => '【実践課題①】副業アイデアリストを作る', 'page' => '66'],
+            ['num' => '6-7.', 'title' => '【実践課題②】夢・目標のロードマップを作る', 'page' => '67'],
+        ],
+    ],
+    [
+        'label' => 'Week 7',
+        'title' => 'Week 7｜CapCut動画編集入門',
+        'items' => [
+            ['num' => '7-1.', 'title' => 'CapCutとは？スマホでできる動画編集の基本', 'page' => '71'],
+            ['num' => '7-2.', 'title' => '素材の取り込み（動画・写真・音楽）', 'page' => '72'],
+            ['num' => '7-3.', 'title' => 'CapCut編集の基本操作（カット・テロップ・BGM）', 'page' => '73'],
+            ['num' => '7-4.', 'title' => 'CapCut × VOICEVOXでナレーション動画入門', 'page' => '74'],
+            ['num' => '7-5.', 'title' => 'TikTok / Instagram向け縦動画の作り方', 'page' => '75'],
+            ['num' => '7-6.', 'title' => '【テスト課題】テロップ入りショート動画（30秒）', 'page' => '76'],
+            ['num' => '7-7.', 'title' => '【実践課題①】今日の1日を写真＋音楽でスライド化', 'page' => '77'],
+        ],
+    ],
+    [
+        'label' => 'Week 8',
+        'title' => 'Week 8｜動画クオリティUP ─ 伸びる動画の設計',
+        'items' => [
+            ['num' => '8-1.', 'title' => 'TikTokやリールで伸びる動画の特徴', 'page' => '81'],
+            ['num' => '8-2.', 'title' => '動画にフック（冒頭で惹きつける要素）を入れる', 'page' => '82'],
+            ['num' => '8-3.', 'title' => 'Claudeでスクリプトを作って動画化', 'page' => '83'],
+            ['num' => '8-4.', 'title' => '【テスト課題】AIナレーションを入れた3分動画を作ろう', 'page' => '84'],
+            ['num' => '8-5.', 'title' => '【実践課題①】Claudeに原稿を書かせ、CapCutで編集', 'page' => '85'],
+        ],
+    ],
+    [
+        'label' => 'Week 9',
+        'title' => 'Week 9｜マーケティング基礎 ─ 売れる仕組みを理解する',
+        'items' => [
+            ['num' => '9-1.', 'title' => 'マーケティングとは何か？本質と全体像', 'page' => '91'],
+            ['num' => '9-2.', 'title' => 'STP分析の超入門', 'page' => '92'],
+            ['num' => '9-3.', 'title' => '4P分析の超入門', 'page' => '93'],
+            ['num' => '9-4.', 'title' => '消費者心理の基本：AIDMAモデル', 'page' => '94'],
+            ['num' => '9-5.', 'title' => '【テスト課題】ユニクロとGUの4P戦略を比較する', 'page' => '95'],
+            ['num' => '9-6.', 'title' => '【実践課題①】商品の「値段以外の価値」を3つ書き出す', 'page' => '96'],
+            ['num' => '9-7.', 'title' => '【実践課題②】よく買う商品の「ターゲット」を考える', 'page' => '97'],
+            ['num' => '9-8.', 'title' => '【実践課題③】購入の流れをAIDMAに当てはめる', 'page' => '98'],
+        ],
+    ],
+    [
+        'label' => 'Week 10',
+        'title' => 'Week 10｜マーケティング応用① ─ ブランドと顧客価値',
+        'items' => [
+            ['num' => '10-1.', 'title' => 'カスタマージャーニーとは？', 'page' => '101'],
+            ['num' => '10-2.', 'title' => 'ロゴ・色・キャッチコピーがなぜ大事なのか', 'page' => '102'],
+            ['num' => '10-3.', 'title' => '競合優位性と差別化戦略', 'page' => '103'],
+            ['num' => '10-4.', 'title' => 'LTV（顧客生涯価値）を考える', 'page' => '104'],
+            ['num' => '10-5.', 'title' => '【テスト課題】架空の飲料ブランドの企画書を書く', 'page' => '105'],
+            ['num' => '10-6.', 'title' => '【実践課題①】自分のカスタマージャーニーを書き出す', 'page' => '106'],
+            ['num' => '10-7.', 'title' => '【実践課題②】商品のブランド戦略を分析する', 'page' => '107'],
+            ['num' => '10-8.', 'title' => '【実践課題③】競合商品を比較して差別化ポイントを書く', 'page' => '108'],
+            ['num' => '10-9.', 'title' => '【実践課題④】自分のサービスのLTVを計算する', 'page' => '109'],
+        ],
+    ],
+    [
+        'label' => 'Week 11',
+        'title' => 'Week 11｜マーケティング応用② ─ ファネルとデータ戦略',
+        'items' => [
+            ['num' => '11-1.', 'title' => 'ファネル設計とは？', 'page' => '111'],
+            ['num' => '11-2.', 'title' => 'KPI・KGIの考え方', 'page' => '112'],
+            ['num' => '11-3.', 'title' => 'オンライン広告の基本構造', 'page' => '113'],
+            ['num' => '11-4.', 'title' => 'ストーリーテリングの力', 'page' => '114'],
+            ['num' => '11-5.', 'title' => '【テスト課題】自分の副業アイデアをファネルに落とし込む', 'page' => '115'],
+            ['num' => '11-6.', 'title' => '【実践課題①】ポスターのストーリーテリング要素を抽出する', 'page' => '116'],
+            ['num' => '11-7.', 'title' => '【実践課題②】架空の商品のKGI・KPIを設計する', 'page' => '117'],
+            ['num' => '11-8.', 'title' => '【実践課題③】サービスのLTVを計算する', 'page' => '118'],
+        ],
+    ],
+    [
+        'label' => 'Week 12',
+        'title' => 'Week 12｜マーケティング応用③ ─ 差別化とブランド構築',
+        'items' => [
+            ['num' => '12-1.', 'title' => 'ブルーオーシャン戦略', 'page' => '121'],
+            ['num' => '12-2.', 'title' => '価格戦略の心理学', 'page' => '122'],
+            ['num' => '12-3.', 'title' => 'データ分析と改善', 'page' => '123'],
+            ['num' => '12-4.', 'title' => '持続的なブランド作り', 'page' => '124'],
+            ['num' => '12-5.', 'title' => '【テスト課題】日常で体験したマーケティングの罠を分析する', 'page' => '125'],
+            ['num' => '12-6.', 'title' => '【実践課題①】衝動買いの行動経済学的理由を説明する', 'page' => '126'],
+            ['num' => '12-7.', 'title' => '【実践課題②】コンビニの棚でアンカリング効果を探す', 'page' => '127'],
+            ['num' => '12-8.', 'title' => '【実践課題③】SNSに希少性を取り入れた投稿を考える', 'page' => '128'],
+        ],
+    ],
+];
 $claudePhases = [
     [
         'label' => 'PHASE 0',
@@ -994,6 +1187,35 @@ if ($isClaudeCurriculum) {
 
     if ($page !== 'index' && $page !== 'lock' && (($lockedPages[$page] ?? false) === true)) {
         header('Location: ' . lock_page_url($page, 'claude'));
+        exit;
+    }
+} elseif ($isClaudeLessonCurriculum) {
+    $pagePhaseMap = build_page_phase_map($claudeLessonPhases);
+    $claudeLessonWeekLocks = resolve_login_user_claude_lesson_week_locks();
+    $lessonWeekIndexMap = [
+        'week1' => 'phase0',
+        'week2' => 'phase1',
+        'week3' => 'phase2',
+        'week4' => 'phase3',
+        'week5' => 'phase4',
+        'week6' => 'phase5',
+        'week7' => 'phase6',
+        'week8' => 'phase7',
+        'week9' => 'phase8',
+        'week10' => 'phase9',
+        'week11' => 'phase10',
+        'week12' => 'phase11',
+    ];
+    foreach ($pagePhaseMap as $targetPage => $phaseKey) {
+        $weekKey = array_search($phaseKey, $lessonWeekIndexMap, true);
+        $lockedPages[$targetPage] = ($weekKey !== false && (($claudeLessonWeekLocks[$weekKey] ?? false) === true));
+    }
+    foreach ($lessonWeekIndexMap as $weekKey => $phaseKey) {
+        $phaseLocks[$phaseKey] = ($claudeLessonWeekLocks[$weekKey] ?? false) === true;
+    }
+    $claudeLessonWeekKey = resolve_lesson_week_key_from_page($page);
+    if ($page !== 'index' && $page !== 'lock' && $claudeLessonWeekKey !== null && (($claudeLessonWeekLocks[$claudeLessonWeekKey] ?? false) === true)) {
+        header('Location: ' . lock_page_url($page, 'claude_lesson'));
         exit;
     }
 } elseif (!$isLessonCurriculum) {
@@ -1753,7 +1975,7 @@ if ($isMobileClient) {
             strpos($html, '"page":"/published/[docId]"') !== false
             || strpos($html, '"page":"\\/published\\/[docId]"') !== false;
 
-        $requiresMobileRouteLoader = $isGammaPublishedRoute || !$isLessonCurriculum;
+        $requiresMobileRouteLoader = $isGammaPublishedRoute || !($isLessonCurriculum || $isClaudeLessonCurriculum);
 
         if ($requiresMobileRouteLoader) {
             if ($isGammaPublishedRoute) {
@@ -1847,7 +2069,9 @@ if (stripos($html, '</body>') !== false) {
     $html .= $loadingOverlayScript;
 }
 if ($page !== 'index') {
-    $menuPhases = $isLessonCurriculum ? $lessonPhases : ($isClaudeCurriculum ? $claudePhases : $practicePhases);
+    $menuPhases = $isLessonCurriculum
+        ? $lessonPhases
+        : ($isClaudeLessonCurriculum ? $claudeLessonPhases : ($isClaudeCurriculum ? $claudePhases : $practicePhases));
     $menuMarkup = renderHamburgerMenu($menuPhases, $page, $phaseLocks, $lockedPages, $curriculum);
     if (stripos($html, '</head>') !== false) {
         $html = preg_replace('/<\/head>/i', $menuStyle . "\n</head>", $html, 1) ?? $html;
@@ -1869,10 +2093,13 @@ if ($page !== 'index') {
 }
 
 $lessonNextNavigationMap = build_sequential_next_navigation($lessonPhases);
+$claudeLessonNextNavigationMap = build_sequential_next_navigation($claudeLessonPhases);
 $claudeNextNavigationMap = build_sequential_next_navigation($claudePhases);
 $nextNavigation = $isLessonCurriculum
     ? ($lessonNextNavigationMap[$page] ?? null)
-    : ($isClaudeCurriculum ? ($claudeNextNavigationMap[$page] ?? null) : resolveNextNavigation($page));
+    : ($isClaudeLessonCurriculum
+        ? ($claudeLessonNextNavigationMap[$page] ?? null)
+        : ($isClaudeCurriculum ? ($claudeNextNavigationMap[$page] ?? null) : resolveNextNavigation($page)));
 if ($nextNavigation !== null) {
     $assignmentLinksByCurriculum = [
         'practice' => [
@@ -1928,6 +2155,20 @@ if ($nextNavigation !== null) {
             ],
         ],
         'lesson' => [
+            '15' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=8vNpIx&ts=1776162709'],
+            '25' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=vqO53v&ts=1776162709'],
+            '35' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=BLJAOL&ts=1776162709'],
+            '45' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=zscGqj&ts=1776162709'],
+            '55' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=1ZomDX&ts=1776162709'],
+            '65' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=UvKnlm&ts=1776162709'],
+            '76' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=36THG8&ts=1776162709'],
+            '84' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=SNCvMh&ts=1776162709'],
+            '95' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=DKL76B&ts=1776162709'],
+            '105' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=UamQDK&ts=1776162709'],
+            '115' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=WGHgsE&ts=1776162709'],
+            '125' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=NuS7lw&ts=1776162709'],
+        ],
+        'claude_lesson' => [
             '15' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=8vNpIx&ts=1776162709'],
             '25' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=vqO53v&ts=1776162709'],
             '35' => ['label' => '課題提出', 'href' => 'https://liff.line.me/2006803756-gbYNK5eY?unique_key=BLJAOL&ts=1776162709'],

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Week1 ③よくある失敗例と修正例</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">Week1 ③よくある失敗例と修正例</span></h1>
+<hr class="divider">
+<span class="label">フェーズ</span>
+</div>
+<div class="card">
+<p><strong>なぜ失敗するのか？初心者が陥る落とし穴</strong></p>
+<h3>「AIは万能」という思い込み</h3>
+<p>Claudeを初めて使う人の多くは、「AIなら何でも完璧に答えてくれる」と思いがちです。しかし実際には、Claudeは「魔法の道具」ではなく「あなたの指示に従うアシスタント」です。つまり、どんな質問をするか、どんな条件を伝えるかで、出てくる答えの質がまったく変わります。</p>
+<p>たとえば「歴史を教えて」と入力すると、Claudeは広すぎる範囲をカバーしようとして、焦点の定まらない説明を返します。でも「江戸時代の文化について、小学生に分かるように200字で説明して」と具体的に伝えれば、誰にでもわかるコンパクトな文章になります。</p>
+<p>副業でClaudeを使うときも同じです。「ブログ記事を書いて」とだけ言うより、「30代主婦向けに、節約生活のコツを紹介するブログ記事を800字で」と言う方が、すぐ使える記事が出てきます。AIを使いこなすコツは、指示を的確に出すことです。</p>
+<h3>曖昧な依頼</h3>
+<p>「短く」「わかりやすく」「丁寧に」などの言葉は便利ですが、人によって基準が違います。Claudeも同じで、「短く」と言われても何文字が適切かは判断できません。</p>
+<p>たとえば「この文章を短くして」とだけ言うと、Claudeは自分なりの判断で短くします。でもあなたの基準とはズレてしまうことが多いです。そこで「この文章を100字以内で要約して」と指定すると、意図通りの長さになります。</p>
+<p>副業で文章作成をするときも、「長い」「短い」など曖昧な言葉よりも、「文字数」「形式」「対象」を明確に伝えることで、修正の手間を減らせます。</p>
+<h3>一度で完璧を求める</h3>
+<p>Claudeに「一回で完璧な文章を出してほしい」と思う人は多いです。しかしAIとのやり取りは、1回で終わるものではなく、「試す → 修正する → もう一度試す」という繰り返しが基本です。</p>
+<p>たとえば「プレゼン資料を作って」と言っても、全体がまとまりにくいことがあります。そんなときは、「まず5つの見出しだけ提案して。そのあと、それぞれの内容を詳しく説明して」と段階を分けて依頼すると、自然で整理された資料が作れます。</p>
+<p>副業でも、最初から完璧な成果物を狙うより、「下書きを作って、Claudeと一緒に仕上げる」意識を持つと、早く上達します。</p>
+<h3>考え方の転換</h3>
+<p>Claudeは「先生」ではなく「相談相手」です。正しい答えをもらうよりも、「一緒に考えながら形にしていく相棒」として使う方が効果的です。</p>
+<p>たとえば、アイデアを考えるときは、「これが正しい答えを出して」と求めるよりも、「一緒に10個くらい案を出して、良さそうなものを選ぼう」と伝えた方が柔軟な発想が得られます。</p>
+<div class="callout-box"><p>Claudeはあなたの「質問力」に応じて進化します。つまり、上手な質問をすればするほど、AIはより良い提案を返してくれるのです。</p></div>
+</div>
+<div class="card">
+<h2><span class="gradient-text">失敗例と修正例 プロンプト改善トレーニング</span></h2>
+<h3>説明依頼の失敗</h3>
+<blockquote><p>悪い例：「AIについて説明して」</p></blockquote>
+<p>あまりにも広く、内容がぼやける。</p>
+<blockquote><p>良い例：「AIとは何かを、IT初心者向けに200字で説明して。比喩を1つ入れて」</p></blockquote>
+<p>対象・長さ・説明スタイルが明確になり、読みやすい解説が得られます。</p>
+<p>副業ライターとして記事を書くときも、このように具体的に条件を設定することが大切です。</p>
+<h3>要約依頼の失敗</h3>
+<blockquote><p>悪い例：「この文章をまとめて」</p></blockquote>
+<p>どんな目的で、どれくらいの長さでまとめるのか不明。</p>
+<blockquote><p>良い例：「以下の文章を中学生向けに150字で要約して」</p></blockquote>
+<p>対象者と長さを指定することで、読みやすく的確な要約になります。</p>
+<p>Claudeは要約が得意なので、ビジネス資料やブログ原稿を整理するときにとても役立ちます。</p>
+<h3>文章生成依頼の失敗</h3>
+<blockquote><p>悪い例：「メール文を作って」</p></blockquote>
+<p>どんな場面のメールか分からず、使いにくい文章になる。</p>
+<blockquote><p>良い例：「上司に残業をお願いする、丁寧で短め（100字以内）のメール文を作って」</p></blockquote>
+<p>内容・トーン・長さを明確にすれば、すぐに使える文面になります。</p>
+<p>このように副業でメール代行や文書作成を行うときも、プロンプトを明確にすれば精度が上がります。</p>
+<h3>創作依頼の失敗</h3>
+<blockquote><p>悪い例：「物語を書いて」</p></blockquote>
+<p>テーマやジャンルが分からず、目的に合わない話になる。</p>
+<blockquote><p>良い例：「500字以内の短編で、主人公は高校生、テーマは友情、最後に感動的な結末を」</p></blockquote>
+<p>指示が具体的なので、完成度の高いストーリーが得られます。</p>
+<p>小説・脚本・漫画のプロット作成など、副業クリエイターにおすすめの使い方です。</p>
+<h3>比較依頼の失敗</h3>
+<blockquote><p>悪い例：「マーケティングと営業の違いを説明して」</p></blockquote>
+<p>専門的すぎて初心者には理解しにくい。</p>
+<blockquote><p>良い例：「マーケティングと営業の違いを、中学生でも分かるように、例え話で説明して」</p></blockquote>
+<p>対象を明確にすれば、読み手に伝わる説明文を作ることができます。</p>
+<h3>翻訳依頼の失敗</h3>
+<blockquote><p>悪い例：「これを英語にして」</p></blockquote>
+<p>どんな場面で使うのかが不明。</p>
+<blockquote><p>良い例：「以下の文をビジネスメール用の英語に翻訳して。丁寧でフォーマルに」</p></blockquote>
+<p>トーンと目的を指定することで、実用的な翻訳になります。</p>
+<p>Claudeは翻訳も得意なので、海外向けの副業や輸出ビジネスを行うときにも活躍します。</p>
+<p><strong>まとめ</strong></p>
+<p>プロンプトを改善するポイントは、「対象」「形式」「目的」を明確にすることです。Claudeは、何度でも練習相手になってくれるAIです。会話を繰り返しながら、あなた自身の「伝える力」を磨くことができます。</p>
+</div>
+<div class="card">
+<h2><span class="gradient-text">考え方を変えれば結果は変わる</span></h2>
+<h3>「答えをもらう」から「一緒に考える」へ</h3>
+<p>Claudeは答えを教えてくれるツールではなく、考えを整理するための相棒です。初心者は「AIが正解を出す」と考えがちですが、上級者は「AIと一緒に考える」スタンスで使います。</p>
+<p>たとえば「ビジネスのアイデアが欲しい」と言うだけでは、一般的な答えしか返りません。しかし、「副業向けで、初期費用1万円以内、SNSを活用するアイデアを10個出して」と伝えれば、現実的な案が出てきます。</p>
+<h3>Claudeを「編集者」として使う</h3>
+<p>文章や企画を作るときは、まず自分で下書きをして、それをClaudeに見せて意見をもらうと効果的です。</p>
+<p>例：</p>
+<blockquote><p>「以下の文章をもっと読みやすくして」</p><p>「この文章にキャッチコピーを3つ追加して」</p></blockquote>
+<p>副業で記事を書くときも、Claudeを添削パートナーとして使えば、短時間で質の高い文章が完成します。</p>
+<h3>プロンプトを会話のキャッチボールと考える</h3>
+<div class="callout-box"><p>AIとのやり取りは「キャッチボール」のようなものです。一発で完璧な答えを求めるより、少しずつ投げ返しながら形にしていくのが理想です。Claudeは「修正を前提に使う」ことで、本領を発揮します。</p></div>
+<h3>未来のプロンプト思考</h3>
+<div class="callout-box"><p>これからの時代、AIとの会話が「新しいスキル」になります。人に説明するように論理的な指示を出せる人は、AIを最大限に活かせます。プロンプト力は、情報を引き出し、整理し、伝える力です。つまり、これからの副業や仕事で最も価値のある「言語スキル」になります。</p></div>
+<p><strong>まとめ</strong></p>
+<p>初心者がつまずく原因は、「曖昧な依頼」と「一度で完璧を求める姿勢」です。修正のコツは、「対象」「形式」「目的」を具体的にすること。Claudeは、あなたと一緒に考え、成長する対話型パートナーです。使い方を変えれば、AIはあなたの強力な武器になり、文章作成・情報整理・アイデア発想など、あらゆる副業で成果を上げることができます。</p>
+</div>
+</div>
+</body>
+</html>

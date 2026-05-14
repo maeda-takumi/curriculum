@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>実践課題①：一日の出来事を長文でClaudeに入力し、「日記風・ニュース風・友達へのLINE風」でそれぞれ生成させよう！</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">実践課題①：一日の出来事を長文でClaudeに入力し、「日記風・ニュース風・友達へのLINE風」でそれぞれ生成させよう！</span></h1>
+<hr class="divider">
+<span class="label">フェーズ</span>
+</div>
+<div class="card">
+<p><strong>1. 課題の目的</strong></p>
+<ul class="bullet-list"><li>Claudeの文章リライト力を体験する。</li><li>同じ内容でも「書き方・トーン・読者」を変えるだけで、文章の印象が大きく変わることを学ぶ。</li><li>日常の出来事を素材にすることで、実践的かつ身近に感じながら練習する。</li></ul>
+<p><strong>2. やり方の手順</strong></p>
+<h3>STEP 1：一日の出来事を長文で入力する</h3>
+<p>例：</p>
+<blockquote><p>「今日は朝寝坊して会社に遅刻しました。昼は同僚とラーメンを食べて、午後は大きな会議でプレゼンをしました。夜は友達と居酒屋に行き、とても楽しかったです。」</p></blockquote>
+<h3>STEP 2：役割を与えてリライトを依頼する</h3>
+<p>入力例：</p>
+<blockquote><p>以下の一日の出来事を3種類の文体に書き換えてください。</p></blockquote>
+<ol class="numbered-list"><li>日記風</li><li>ニュース記事風</li><li>友達へのLINE風</li></ol>
+<h3>STEP 3：出力を確認してアレンジする</h3>
+<ul class="bullet-list"><li>もっとユーモラスに</li><li>300字程度に膨らませて</li><li>絵文字を入れて</li></ul>
+</div>
+<div class="card">
+<h2><span class="gradient-text">3. 出力例（回答イメージ）</span></h2>
+<h3>1）日記風</h3>
+<h3>2）ニュース記事風</h3>
+<h3>3）友達へのLINE風</h3>
+<p><strong>4. 発展課題（応用）</strong></p>
+<ul class="bullet-list"><li>ビジネスメール風に変換する</li><li>小説風にアレンジする</li><li>SNS投稿用に短くまとめる</li><li>英語に翻訳してカジュアル表現にする</li></ul>
+<p><strong>5. 学びポイント</strong></p>
+<ul class="bullet-list"><li>Claudeは「誰に向けて書くか」を指定すると文章が大きく変化する。</li><li>書き方を変えることで、同じ出来事でも印象や受け取り方が変わる。</li><li>この課題を通じて、リライト力と伝える視点の切り替えを体験できる。</li></ul>
+</div>
+</div>
+</body>
+</html>

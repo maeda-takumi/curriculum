@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Week2 ① Claudeプロンプト応用完全ガイド</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Petrona:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>:root{--bg:#faf2e9;--card-bg:#FDFAF7;--text:#1a1a2e;--accent:#6237C8;--gs:#591CE6;--gm:#F9598D;--ge:#FB8B61;--border:rgba(98,55,200,0.12);--shadow:0 2px 16px rgba(98,55,200,0.08)}*{box-sizing:border-box}body{margin:0;font-family:'Inter',"Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:var(--text);line-height:1.8}.page{max-width:860px;margin:0 auto;padding:40px 20px 80px}.card{background:var(--card-bg);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);padding:40px 48px;margin-bottom:20px}.card--title{background:linear-gradient(135deg,#f5eeff 0%,#fff3f8 50%,#fff6f0 100%);padding:52px 48px}.gradient-text{background:linear-gradient(135deg,var(--gs),var(--gm),var(--ge));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline}h1{font-family:'Petrona',serif;font-size:40px;font-weight:800;line-height:1.25;margin:0 0 16px}h2{font-family:'Petrona',serif;font-size:28px;font-weight:700;line-height:1.35;margin:0 0 20px}h3{font-family:'Petrona',serif;font-size:22px;font-weight:700;line-height:1.4;margin:24px 0 12px;color:var(--accent)}h3:first-child{margin-top:0}p{font-size:16px;color:#2a2a3e;margin:0 0 14px;line-height:1.85}p:last-child{margin-bottom:0}.doc-subtitle{font-family:'Petrona',serif;font-size:20px;font-weight:600;color:#8b6bbf;margin:0 0 20px}.label{display:inline-block;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:600;padding:5px 16px;border-radius:20px;margin-top:8px}.divider{border:none;border-top:2px solid rgba(98,55,200,0.12);margin:24px 0}blockquote{margin:16px 0;padding:16px 20px;background:#f5f0ff;border-left:4px solid var(--accent);border-radius:0 10px 10px 0}blockquote p{font-size:15px;color:#3a2080;margin:4px 0;font-style:italic}.callout-box{background:#ede8fb;border:1px solid rgba(98,55,200,0.2);border-radius:12px;padding:18px 20px 18px 52px;margin:16px 0;position:relative}.callout-box::before{content:"💡";position:absolute;left:18px;top:18px;font-size:18px}.callout-box p{font-size:15px;color:#3a1d8a;font-weight:500;margin:0}ul.bullet-list{margin:12px 0;padding-left:0;list-style:none}ul.bullet-list li{font-size:16px;color:#2a2a3e;padding:6px 0 6px 24px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07)}ul.bullet-list li:last-child{border-bottom:none}ul.bullet-list li::before{content:"";position:absolute;left:6px;top:15px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm))}ol.numbered-list{margin:12px 0;padding-left:0;list-style:none;counter-reset:num}ol.numbered-list li{font-size:16px;color:#2a2a3e;padding:8px 0 8px 42px;position:relative;border-bottom:1px solid rgba(98,55,200,0.07);counter-increment:num}ol.numbered-list li:last-child{border-bottom:none}ol.numbered-list li::before{content:counter(num);position:absolute;left:0;top:8px;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gs),var(--gm));color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}img{width:100%;height:auto;border-radius:10px;border:1px solid rgba(0,0,0,0.08);margin:12px 0}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}thead th{background:#ede8fb;color:#3a1d8a;font-weight:700;padding:12px 16px;border:1px solid rgba(98,55,200,0.15);text-align:left}tbody td{padding:11px 16px;border:1px solid rgba(98,55,200,0.1);vertical-align:top}tbody tr:nth-child(even){background:#faf8ff}@media(max-width:768px){.page{padding:20px 12px 60px}.card{padding:24px 20px}.card--title{padding:32px 20px}h1{font-size:28px}h2{font-size:22px}h3{font-size:18px}}</style>
+</head>
+<body>
+<div class="page">
+<div class="card card--title">
+<div class="doc-subtitle"><span class="gradient-text">AI副業スクール</span></div>
+<h1><span class="gradient-text">Week2 ① Claudeプロンプト応用完全ガイド</span></h1>
+<hr class="divider">
+<span class="label">フェーズ</span>
+</div>
+<div class="card">
+<p><strong>Week 2｜Claudeプロンプト応用</strong></p>
+<p><strong>プロンプトの基礎と考え方</strong></p>
+<h3>プロンプトとは何か</h3>
+<p>ここでWeek1のおさらいとして、プロンプトとは、Claudeに与える「指示文」のことです。つまり、あなたがClaudeに「どんな答えを出してほしいか」を伝えるための文章です。この指示の出し方一つで、AIが出す答えの質が大きく変わります。</p>
+<p>よくある誤解として、「Claudeは質問を入れるだけで完璧な答えを出すもの」と思われがちですが、実際は違います。Claudeは検索エンジンではなく会話型のアシスタントです。Google検索が情報を探す道具だとすれば、Claudeは情報を一緒に整理して、形にしてくれる相棒です。</p>
+<p>「Claude＝自分と一緒に考えてくれるパートナー」と考えると、使い方がぐっと上達します。</p>
+<h3>プロンプトの基本構造</h3>
+<p>良いプロンプトには3つの要素があります。</p>
+<ol class="numbered-list"><li>目的（何をしてほしいのか）</li><li>対象（誰のための内容なのか）</li><li>形式（どんな形で出してほしいか）</li></ol>
+<blockquote><p>例：「江戸時代の文化を、小学生向けに200字以内で説明して」</p></blockquote>
+<ul class="bullet-list"><li>目的：文化の説明</li><li>対象：小学生</li><li>形式：200字以内（文字数指定）</li></ul>
+<p>副業で記事やコンテンツを作る際も、この考え方を使うと、明確で実用的な出力を得られます。</p>
+<h3>初心者の失敗例と改善</h3>
+<p>初心者がよくやるミスは、「曖昧な質問」をすることです。</p>
+<p>悪い例：「歴史を教えて」<br> どの国の、どの時代の歴史かが分からず、広すぎる内容になります。</p>
+<p>良い例：「江戸時代の文化を、3つの具体例を挙げて説明して」<br> 条件が明確なので、答えが整理されて分かりやすくなります。</p>
+<p>このように、Claudeに伝えるときは「具体的な指示」を意識することが大切です。副業でも「誰に」「どんな目的で」「どのくらいの量を」などを明確にすると、成果物のクオリティが上がります。</p>
+<h3>比喩で理解</h3>
+<p>プロンプトを料理の注文に例えてみましょう。</p>
+<p>あなたはレストランの客、Claudeはシェフです。「カレーください」とだけ言うと、どんなカレーが出てくるか分かりません。でも「中辛・2人前・具はじゃがいも多め・15分以内で」と伝えれば、理想のカレーが出てきます。</p>
+<p>Claudeも同じで、プロンプト（注文）が具体的であるほど、満足できる答え（料理）が出てきます。</p>
+<p><strong>まとめ</strong></p>
+<p>プロンプトはAIを動かすための最も重要な鍵です。最初は難しく感じるかもしれませんが、目的・対象・形式の3点を意識するだけで十分です。この章では基礎を理解することが目的です。次の章からは、実際に副業に応用できる使いこなしのテクニックを学んでいきます。</p>
+<p><strong>実践で磨くプロンプト応用</strong></p>
+<h3>条件指定で精度を上げる</h3>
+<p>Claudeに指示を出すときは、条件を具体的に書くと、精度がぐっと上がります。</p>
+<ul class="bullet-list"><li>文字数：「500字で」</li><li>対象読者：「小学生にも分かるように」「経営者向けに」</li><li>表現方法：「ユーモアを入れて」「専門用語を使わずに」</li></ul>
+<p>たとえば、ブログ記事を作る副業なら、「30代主婦向けに、節約生活のコツをユーモアを交えて500字で」と伝えると、狙った読者に響く内容が出てきます。</p>
+<h3>基本操作の流れ</h3>
+<ol class="numbered-list"><li>Claudeに質問や依頼を入力する</li><li>AIが文章を作成して答える</li><li>「もっと詳しく」「別の例で」「子ども向けに説明して」など追加の指示を出す</li><li>出来上がった文章をコピー・保存・活用する</li></ol>
+<p>つまり、会話のようにやり取りするだけで、仕事や学習がどんどん進みます。</p>
+<h3>出力形式を操る</h3>
+<p>Claudeは、文章の形式も自由に変えられます。箇条書き、表、Markdown形式、ストーリー形式など、目的に合わせて指定できます。</p>
+<blockquote><p>例： 「副業の始め方を3つのステップで箇条書きにして」 「Webライターの仕事の流れを表形式で」 「主婦が副業に挑戦する物語を短く書いて」 </p></blockquote>
+<p>形式を変えることで、ブログ記事、資料、SNS投稿、どんな副業にも応用できます。</p>
+<h3>ロールプレイで役割を指定する</h3>
+<p>Claudeに役割を与えると、出てくる内容が一気にプロっぽくなります。</p>
+<ul class="bullet-list"><li>「あなたはプロの編集者です。この文章を直して」</li><li>「英語教師として、この英作文を添削してください」</li><li>「経営コンサルタントになったつもりで、ビジネスアイデアを考えて」</li></ul>
+<p>このテクニックを使えば、専門家の視点を借りて副業の質を高めることができます。</p>
+<h3>フィードバック型プロンプト</h3>
+<p>Claudeに添削や批評をしてもらう使い方です。</p>
+<ul class="bullet-list"><li>「この文章の良い点と改善点を3つ教えて」</li><li>「このアイデアを批判的に評価して」</li></ul>
+<p>このようにAIからのフィードバックを受けながら改善を重ねると、文章力や企画力が短期間で伸びます。</p>
+<h3>発展的な会話例</h3>
+<p>ここで終わると、一般的な回答しか得られません。次のように条件を加えると一気に実用的になります。</p>
+<blockquote><p>「初期費用1万円以内・土日だけ・3ヶ月で成果を出したい条件で、始められる副業を教えて」</p></blockquote>
+<p>これだけで、Claudeは現実的なロードマップを提案してくれます。このように条件追加はプロンプトの中級テクニックです。</p>
+<h3>実践課題例</h3>
+<p>以下の練習を行うことで、実践的なプロンプト力が身につきます。</p>
+<ul class="bullet-list"><li>冷蔵庫の食材リストからレシピを提案</li><li>予算3000円で買い物リストを作成</li><li>今日の出来事を川柳にする</li><li>SNS用のプロフィール文を3パターン作る</li></ul>
+<p>これらは実生活と直結しており、楽しみながらスキルアップできます。</p>
+<p><strong>戦略的プロンプト思考</strong></p>
+<h3>複数条件を組み合わせる</h3>
+<p>プロンプトを1つの条件だけで終わらせず、複数を組み合わせることで、より理想的な出力が得られます。</p>
+<blockquote><p>例：「500字以内・初心者向け・例を3つ・最後にまとめを入れて」</p></blockquote>
+<p>このように条件を積み重ねると、完成度の高い文章が出てきます。副業で記事作成を行うときは、こうした条件の足し算が成果を左右します。</p>
+<h3>創造を広げるプロンプト</h3>
+<p>Claudeは発想を広げるためにも使えます。「詩人になって今日を描いて」「未来の働き方を10年後の視点で考えて」と依頼すると、思いもよらない視点の答えが出てきます。</p>
+<p>AIを創造のパートナーとして使うと、副業の企画やコンテンツのアイデア出しが格段にスムーズになります。</p>
+<h3>問いの質を上げる思考法</h3>
+<p>良いプロンプトを作るためには、質問の質を上げることが大切です。</p>
+<ul class="bullet-list"><li>「なぜ？」を繰り返して深掘る</li><li>「もしだったら？」で発想を広げる</li><li>「逆の立場では？」で視点を変える</li></ul>
+<p>この3つを意識すると、Claudeの回答もどんどん深くなります。</p>
+<h3>戦略的活用シーン</h3>
+<p>プロンプト力はあらゆる場面で使えます。</p>
+<ul class="bullet-list"><li>ビジネス企画：「市場調査を5分でまとめて」</li><li>学習：「英単語を例文付きで覚える方法を」</li><li>日常：「旅行プランを3案、比較表で出して」</li></ul>
+<p>つまり、仕事にも日常にも活かせる万能スキルです。</p>
+<h3>プロンプト力は未来のリテラシー</h3>
+<div class="callout-box"><p>これからの時代、AIを使いこなせるかどうかが仕事力の差になります。「プロンプト力」とは、情報を整理し、正確に伝える力のことです。これは、検索力・論理的思考・表現力をすべて兼ね備えた新しいスキルです。副業でもこの力がある人ほど、短時間で高品質な成果を出せます。</p></div>
+<p><strong>まとめ</strong></p>
+<div class="callout-box"><p>プロンプトは、単なる質問文ではなく、戦略的思考ツールです。問いの立て方、条件の組み合わせ方、思考の深め方を学べば、あなたの仕事・学習・副業の効率が劇的に変わります。</p></div>
+<p>Claudeを正しく理解し、具体的に使いこなす力は、今後の副業・ビジネスで必ず武器になります。今日からあなたも、プロンプトを操る人としてAI時代の第一歩を踏み出しましょう。</p>
+</div>
+</div>
+</body>
+</html>
