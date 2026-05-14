@@ -317,7 +317,7 @@ button:hover, .btn:hover { filter: brightness(.97); }
     border-radius: 14px;
     /* width: min(560px, 92vw); */
     width: auto;
-    max-width: 1250px;
+    max-width: 800px;
     padding: 0 0 16px;
   padding: 0 0 16px;
 }

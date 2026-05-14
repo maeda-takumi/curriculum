@@ -1989,6 +1989,8 @@ if ($isMobileClient) {
 
             if ($page === '14') {
                 $mobileRouteLoaderPath = 'static/chunks/6cb26c7fd1b4603f.js';
+            } elseif (in_array($page, ['08'], true)) {
+                $mobileRouteLoaderPath = 'static/chunks/0_krh1g3jxqi1.js';
             } elseif (in_array($page, ['72', '73'], true)) {
                 $mobileRouteLoaderPath = 'static/chunks/a9071dc46c486e2f.js';
             } elseif (in_array($page, ['86'], true)) {

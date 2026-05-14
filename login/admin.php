@@ -515,7 +515,7 @@ function page_link(int $page, string $lineName, string $realName, string $email)
       </label>
       <div class="lock_flex">
         <fieldset>
-          <legend>Lesson Week閲覧ロック（チェックで閉場）</legend>
+          <legend>ChatGPT Week</legend>
           <div class="permission-grid">
             <?php foreach ($lessonWeekOptions as $weekKey => $weekLabel): ?>
               <label class="permission-item">
@@ -526,7 +526,7 @@ function page_link(int $page, string $lineName, string $realName, string $email)
           </div>
         </fieldset>
         <fieldset>
-          <legend>Claude Lesson Week閲覧ロック（チェックで閉場）</legend>
+          <legend>Claude Week</legend>
           <div class="permission-grid">
             <?php foreach ($claudeLessonWeekOptions as $weekKey => $weekLabel): ?>
               <label class="permission-item">
@@ -537,7 +537,7 @@ function page_link(int $page, string $lineName, string $realName, string $email)
           </div>
         </fieldset>
         <fieldset>
-          <legend>フェーズ閲覧ロック（チェックで閉場）</legend>
+          <legend>ChatGPT フェーズ</legend>
           <div class="permission-grid">
             <?php foreach ($phaseOptions as $phaseKey => $phaseLabel): ?>
               <label class="permission-item">
@@ -548,7 +548,7 @@ function page_link(int $page, string $lineName, string $realName, string $email)
           </div>
         </fieldset>
         <fieldset>
-          <legend>Claudeフェーズ閲覧ロック（チェックで閉場）</legend>
+          <legend>Claudeフェーズ</legend>
           <div class="permission-grid">
             <?php foreach ($claudePhaseOptions as $phaseKey => $phaseLabel): ?>
               <label class="permission-item">
