@@ -126,8 +126,6 @@ if ($requestedCurriculum !== null) {
     $_SESSION['curriculum'] = $requestedCurriculum;
 }
 if (!isset($_SESSION['curriculum'])) {
-    header('Location: ' . $appBasePath . 'error.html');
-    exit;
     $_SESSION['curriculum'] = resolve_login_user_last_curriculum() ?? 'practice';
 }
 $curriculum = normalize_curriculum((string)$_SESSION['curriculum']);
