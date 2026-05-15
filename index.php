@@ -1969,7 +1969,7 @@ if ($curriculum !== 'practice') {
 $isMobileClient = is_mobile_client();
 header('Vary: User-Agent, Sec-CH-UA-Mobile', false);
 if ($isMobileClient) {
-    $mobileOrderTargetPages = ['14', '71', '72', '73', '74', '75', '76', '77', '81', '82', '83', '84', '85', '86', '87', '88'];
+    $mobileOrderTargetPages = ['14', '08','71', '72', '73', '74', '75', '76', '77', '81', '82', '83', '84', '85', '86', '87', '88'];
     if (in_array($page, $mobileOrderTargetPages, true)) {
         $isGammaPublishedRoute =
             strpos($html, '"page":"/published/[docId]"') !== false

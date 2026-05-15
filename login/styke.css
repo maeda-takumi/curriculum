@@ -426,7 +426,7 @@ textarea {
 }
 .lock_flex{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-bottom: 20px;
 }
 @media (max-width: 768px) {
