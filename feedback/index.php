@@ -38,7 +38,6 @@ if ($markerPos !== false) {
     $appBase = substr($scriptName, 0, $markerPos);
 }
 $viewBasePath = ($appBase === '' ? '' : $appBase) . '/feedback/view.php';
-$adminPath = ($appBase === '' ? '' : $appBase) . '/login/feedback_admin.php';
 $homePath = ($appBase === '' ? '' : $appBase) . '/?page=index';
 
 /**
@@ -71,7 +70,6 @@ function feedback_user_label_for_index(array $users, int $userId): string
       <strong>フィードバック目次</strong>
       <nav class="nav">
         <a href="<?= h($homePath) ?>">カリキュラム</a>
-        <?php if ($isAdmin): ?><a href="<?= h($adminPath) ?>">フィードバック管理</a><?php endif; ?>
         <a href="../login/logout.php">Logout</a>
       </nav>
     </div>
@@ -82,7 +80,7 @@ function feedback_user_label_for_index(array $users, int $userId): string
       <div class="title-row">
         <div>
           <h1>フィードバック目次</h1>
-          <p class="muted">閲覧したいフィードバックを選択してください。URLボタンで閲覧ページのURLをコピーできます。</p>
+          <p class="muted">閲覧したいフィードバックを選択してください。</p>
         </div>
       </div>
 
@@ -95,22 +93,9 @@ function feedback_user_label_for_index(array $users, int $userId): string
             <h2><?= h($curriculumOptions[$curriculumKey] ?? $curriculumKey) ?></h2>
             <div class="feedback-list">
               <?php foreach ($items as $feedback): ?>
-                <?php
-                $viewPath = $viewBasePath . '?id=' . rawurlencode((string)$feedback['id']);
-                $viewUrl = feedback_absolute_url($viewPath);
-                ?>
+                <?php $viewPath = $viewBasePath . '?id=' . rawurlencode((string)$feedback['id']); ?>
                 <article class="feedback-item">
-                  <div>
-                    <h3><?= h((string)$feedback['name']) ?></h3>
-                    <p class="muted">
-                      <?php if ($isAdmin): ?><?= h(feedback_user_label_for_index($users, (int)$feedback['user_id'])) ?> / <?php endif; ?>
-                      <?= h((string)$feedback['created_at']) ?>
-                    </p>
-                  </div>
-                  <div class="feedback-actions">
-                    <a class="btn btn-sub btn-inline" href="<?= h($viewPath) ?>">閲覧</a>
-                    <button type="button" class="btn-inline js-copy-url" data-url="<?= h($viewUrl) ?>">URL</button>
-                  </div>
+                  <h3><a href="<?= h($viewPath) ?>"><?= h((string)$feedback['name']) ?></a></h3>
                 </article>
               <?php endforeach; ?>
             </div>
@@ -120,25 +105,5 @@ function feedback_user_label_for_index(array $users, int $userId): string
     </section>
   </main>
 
-  <script>
-    (() => {
-      document.querySelectorAll('.js-copy-url').forEach((button) => {
-        button.addEventListener('click', async () => {
-          const url = button.getAttribute('data-url') || '';
-          if (!url) {
-            return;
-          }
-
-          try {
-            await navigator.clipboard.writeText(url);
-            button.textContent = 'コピー済み';
-            window.setTimeout(() => { button.textContent = 'URL'; }, 1600);
-          } catch (error) {
-            window.prompt('URLをコピーしてください', url);
-          }
-        });
-      });
-    })();
-  </script>
 </body>
 </html>
