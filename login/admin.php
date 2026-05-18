@@ -335,6 +335,7 @@ function page_link(int $page, string $lineName, string $realName, string $email)
     <div class="header-inner">
       <strong>ログイン管理画面</strong>
       <nav class="nav">
+        <a href="feedback_admin.php">フィードバック管理</a>
         <a href="article_editor.php">記事編集</a>
         <a href="login_attempts.php">ログイン試行ログ</a>
         <a href="index.php">Login</a>
